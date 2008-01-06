@@ -1,20 +1,4 @@
-# autolatex - dia2pdf.mk
-# Copyright (C) 1998-07  Stephane Galland <galland@arakhne.org>
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; see the file COPYING.  If not, write to
-# the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-# Boston, MA 02111-1307, USA.
+# dia2pdf.mk
 
 ifeq ("$(call isTranslatorLoaded,dia2pdf)","false")
 
@@ -42,7 +26,7 @@ ifeq ("$(call isTranslatorLoaded,dia2pdf)","false")
 # Required synoptics of the command:
 # <binfile> <flags> <inputflags> <input.dia> <outputflags> <output.eps>
 DIA2EPS_BIN           = dia
-DIA2EPS_FLAGS         = --nosplash -t eps
+DIA2EPS_FLAGS         = --nosplash -t eps-pango
 DIA2EPS_INPUT_FLAGS   =
 DIA2EPS_OUTPUT_FLAGS  = --export=
 DIA2EPS_POST_FLAGS    =
@@ -55,7 +39,7 @@ DIA2EPS_OUTPUT_STDOUT = no
 
 # The commands to convert an EPS file into PDF is required
 ifeq ("$(call isTranslatorLoaded,eps2pdf)","false")
-include eps2pdf.mk
+include mkfiles/eps2pdf.mk
 endif
 
 # Notify of the loading of this module

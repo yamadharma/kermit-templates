@@ -1,24 +1,4 @@
-# autolatex - MainRules.mk
-# Copyright (C) 1998-07  Stephane Galland <galland@arakhne.org>
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; see the file COPYING.  If not, write to
-# the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-# Boston, MA 02111-1307, USA.
-
-#-----------------------------------
-#----------- DO NOT CHANGE BELOW
-#-----------------------------------
+# main_rules.mk
 
 # Update the makeindex flags with the style file
 ifneq ("-${MAKEINDEX_STYLEFILE}","-")
@@ -27,36 +7,7 @@ endif
 
 .PHONY:: all view gen_doc bibtex makeindex clean cleanall images showimages showpath showvars update commit
 
-view:: gen_doc
-ifeq ("${OPEN_PDF}","yes")
-ifeq ("${PDF_VIEWER}","")
-	@ if `which acroread 2>/dev/null >/dev/null`; \
-	then \
-		${ECHO_CMD} "${I18N_LAUNCH_ACROREAD}" && \
-		acroread ${PDFFILE}; \
-	elif `which kpdf 2>/dev/null >/dev/null`; \
-	then \
-		${ECHO_CMD} "${I18N_LAUNCH_KPDF}" && \
-		kpdf ${PDFFILE}; \
-	elif `which evince 2>/dev/null >/dev/null`; \
-	then \
-		${ECHO_CMD} "${I18N_LAUNCH_EVINCE}" && \
-		evince ${PDFFILE}; \
-	elif `which xpdf 2>/dev/null >/dev/null`; \
-	then \
-		${ECHO_CMD} "${I18N_LAUNCH_XPDF}" && \
-		xpdf ${PDFFILE}; \
-	elif `which gv 2>/dev/null >/dev/null`; \
-	then \
-		${ECHO_CMD} "${I18N_LAUNCH_GHOSTVIEW}" && \
-		gv ${PDFFILE}; \
-	else \
-		${ECHO_ERR_CMD} "${I18N_NO_VIEWER_DETECTED}"; \
-	fi	
-else
-	${PDF_VIEWER} ${PDFFILE}
-endif
-endif
+all:: gen_doc
 
 ifeq ("-${LATEX_GENERATION_PROCEDURE}","-dvi")
 gen_doc:: ${DVIFILE}
