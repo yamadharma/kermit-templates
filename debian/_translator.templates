@@ -1,8 +1,0 @@
-Template: shared/autolatex-select-translator
-Type: select
-Choices: ${translatorlist}
-Description: Select the default translator to activate
- AutoLaTeX has detected several available translators
- from ${figuretype} figures. But AutoLaTeX is not able
- to dynamically select a translator. Only one of them
- should be activated by default.
