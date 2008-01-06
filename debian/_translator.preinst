@@ -1,0 +1,365 @@
+#!/bin/perl -w
+# 
+# preinst maintainer script for the translator package.
+#
+# summary of how this script can be called:
+#        * <new-preinst> `install'
+#        * <new-preinst> `install' <old-version>
+#        * <new-preinst> `upgrade' <old-version>
+#        * <old-preinst> `abort-upgrade' <new-version>
+#
+# for details, see http://www.debian.org/doc/debian-policy/ or
+# the debian-policy package
+
+use strict;
+
+use File::Copy;
+use Debconf::Client::ConfModule ':all';
+
+my $MAIN_DIRECTORY = '/usr/lib/autolatex/mkfiles';
+my $CONFIG_FILE = '/etc/autolatex/default.cfg';
+
+#--------------------------------------------------------------
+# Print a message if in debug mode (see DEBCONF_DEBUG)
+sub printDbg(@) {
+	if (($ENV{'DEBCONF_DEBUG'})&&($ENV{'DEBCONF_DEBUG'} eq 'developer')) {
+		print STDERR ("AutoLaTeX config: ",@_,"\n");
+	}
+	1;
+}
+
+#--------------------------------------------------------------
+# Print an error message
+sub printErr(@) {
+	print STDERR (@_,"\n");
+	1;
+}
+
+#--------------------------------------------------------------
+# Read a configuration file and replies the data
+sub readConfigFile($;$) {
+	my $filename = shift;
+	my $filterCommentedAttrs = shift;
+	local *CFGFILE;
+	open(*CFGFILE, "< $filename") or die("$filename: $!\n");
+	my $currentsection = undef;
+	my %results = ();
+	while (my $line = <CFGFILE>) {
+		# Remove comments
+		$line =~ s/\#[^\#]*$//;
+
+		# Trim
+		$line =~ s/^\s+//;
+		$line =~ s/\s+$//;
+
+		if ($line) {
+			if ($line =~ /^\[([a-zA-Z0-9+_]+)\]$/) {
+				$currentsection = lc("$1");
+			}
+			elsif (($currentsection)&&($line =~ /^;\s*(.*?)\s*=\s*(.*?)$/)) {
+				if (!$filterCommentedAttrs) {
+					my $keyname = lc("$1");
+					my $keyvalue = "$2";
+					$results{"$currentsection"}{";$keyname"} = "$keyvalue";
+				}
+			}
+			elsif (($currentsection)&&($line =~ /^(.*?)\s*=\s*(.*?)$/)) {
+				my $keyname = lc("$1");
+				my $keyvalue = "$2";
+				$results{"$currentsection"}{"$keyname"} = "$keyvalue";
+			}
+		}
+	}
+	close(*CFGFILE);
+	return %results;
+}
+
+#--------------------------------------------------------------
+# Get installed translators with conflits
+sub getInstalledTranslatorsWithConflicts($@) {
+	my $dir = shift;
+	my %translators = ();
+	foreach my $tr (@_) {
+		if (!$translators{$tr->{'source'}}) {
+			$translators{$tr->{'source'}} = [];
+		}
+		push @{$translators{$tr->{'source'}}}, $tr;
+	}
+
+	local *DIR;
+	opendir(*DIR,"$dir") or die("$dir: $!\n");
+	while (my $subfile = readdir(*DIR)) {
+		if ($subfile =~ /^([a-zA-Z+]+)2([a-zA-Z0-9+]+)(?:_([a-zA-Z0-9_+]+))?.mk$/) {
+			my ($source,$target,$variante) = ($1,$2,$3||'');
+			my $fullname = $source.'2'.$target.($variante?"_$variante":'');
+			if ($target =~ /^(.*)\Q+tex\E$/) {
+				$target = "$1+TeX";
+				$source = "ltx.$source";
+			}
+
+			if (!$translators{"$source"}) {
+				$translators{"$source"} = [];
+			}
+
+			my $foundinlist = undef;
+			foreach my $tr (@{$translators{"$source"}}) {
+				if (($tr)&&($tr->{'fullname'} eq "$fullname")) {
+					$foundinlist = 1;
+					last;
+				}
+			}
+
+			unless ($foundinlist) {
+				push @{$translators{"$source"}}, {
+						'source' => "$source",
+						'target' => "$target",
+						'variante' => "$variante",
+						'fullname' => "$fullname",
+					};
+			}
+		}
+	}
+	closedir(*DIR);
+
+	my %currentConfig = readConfigFile("$CONFIG_FILE",1);
+
+	foreach my $key (keys %translators) {
+		if (@{$translators{"$key"}}<=1) {
+			delete $translators{"$key"};
+		}
+		else {
+			# Remove the unloaded translators
+			my @result = ();
+			foreach my $trans (@{$translators{"$key"}}) {
+				if ((! exists $currentConfig{$trans->{'fullname'}}{'include module'})||
+				    (!$currentConfig{$trans->{'fullname'}}{'include module'})||
+				    ($currentConfig{$trans->{'fullname'}}{'include module'} ne 'no')) {
+
+					push @result, $trans;
+				}
+			}
+			if (@result<=1) {
+				delete $translators{"$key"};
+			}
+		}
+	}
+
+	return %translators;
+}
+
+#--------------------------------------------------------------
+# Replace a value if the configuration file
+sub replaceInConfig($$$$$$) {
+	my $filename = shift;
+	my $section = lc(shift);
+	my $prefix = shift;
+	my $oldattribute = lc(shift);
+	my $newattribute = lc(shift);
+	my $value = shift;
+
+	local *NEWCFGFILE;
+	local *CFGFILE;
+	open(*CFGFILE, "< $filename") or die("$filename: $!\n");
+	open(*NEWCFGFILE, "> $filename.newtmp") or die("$filename.newtmp: $!\n");
+	my $currentsection = undef;
+	my $attradded = undef;
+	while (my $rline = <CFGFILE>) {
+		# Remove comments
+		my $line = $rline;
+		$line =~ s/\#[^\#]*$//;
+
+		# Trim
+		$line =~ s/^\s+//;
+		$line =~ s/\s+$//;
+		if ($line) {
+			if ($attradded) {
+				print NEWCFGFILE "$rline";
+			}
+			elsif ($line =~ /^\[([a-zA-Z0-9+_]+)\]$/) {
+				if (($currentsection)&&($currentsection eq $section)) {
+					# Add at the end of the section
+					print NEWCFGFILE "$newattribute = $value\n\n";
+				}
+				$currentsection = lc("$1");
+				print NEWCFGFILE "$rline";
+			}
+			elsif (($currentsection)&&($line =~ /^;\s*(.*?)\s*=\s*.*?\s*((?:\#.*)?)$/)) {
+				my ($attr,$cmt) = (lc("$1"),$2||'');
+				if (($section eq $currentsection)&&
+				    ($prefix eq ";")&&
+				    ("$attr" eq "$oldattribute")) {
+					print NEWCFGFILE "$newattribute = $value".($cmt?" $cmt":'')."\n";
+					$attradded = 1;
+				}
+				else {
+					print NEWCFGFILE "$rline";
+				}
+			}
+			elsif (($currentsection)&&($line =~ /^(.*?)\s*=\s*.*?\s*((?:\#.*)?)$/)) {
+				my ($attr,$cmt) = (lc("$1"),$2||'');
+				if (($section eq $currentsection)&&
+				    ($prefix ne ";")&&
+				    ("$attr" eq "$oldattribute")) {
+					print NEWCFGFILE "$newattribute = $value".($cmt?" $cmt":'')."\n";
+					$attradded = 1;
+				}
+				else {
+					print NEWCFGFILE "$rline";
+				}
+			}
+			else {
+				print NEWCFGFILE "$rline";
+			}
+		}
+		else {
+			print NEWCFGFILE "$rline";
+		}
+	}
+
+	if (!$attradded) {
+		print NEWCFGFILE "\n[$section]\n";
+		print NEWCFGFILE "$newattribute = $value\n";
+	}
+
+	close(*NEWCFGFILE);
+	close(*CFGFILE);
+
+	unlink("$filename") or die("$filename: $!\n");
+	move("$filename.newtmp","$filename") or die("$filename.newtmp: $!\n");
+}
+
+#--------------------------------------------------------------
+# Replace a value if the configuration file
+sub replaceConfig($$$;$) {
+	my $section = lc(shift);
+	my $attribute = lc(shift);
+	my $value = lc(shift);
+	my $msg = shift || '';
+
+	printDbg($msg) if ($msg);
+	printDbg("[",$section,"] ",$attribute," <- ",$value);
+
+	my %config = readConfigFile("$CONFIG_FILE");
+
+	if (exists $config{"$section"}{";$attribute"}) {
+		# uncomment the attribute
+		replaceInConfig("$CONFIG_FILE","$section",";","$attribute","$attribute","$value");
+	}
+	else {
+		# update the value
+		replaceInConfig("$CONFIG_FILE","$section","","$attribute","$attribute","$value");
+	}
+}
+
+#--------------------------------------------------------------
+# Solve a conflict between translators
+sub solveConflict(\%) {
+	my @ret;
+	my $tmp;
+	foreach my $source (keys %{$_[0]}) {
+		printDbg("Conflict on ",$source," source figures");
+		
+		# Display the wizard
+		my $state = 1;
+		my %allanswers = ();
+		while (1) {
+			if ($state == 0) {
+				# Allow the user to backup from image generation selection
+				$state = 1;
+		                next;
+			}
+			elsif ($state == 1) {
+				# Display the question
+				my @translatorlist = ();
+				foreach $tmp (@{$_[0]->{"$source"}}) {
+					push @translatorlist,
+						$tmp->{'source'}." to ".$tmp->{'target'}.
+						($tmp->{'variante'} ? (' with '.$tmp->{'variante'}) : '').
+						' ('.$tmp->{'fullname'}.')';
+				}
+		                fset("shared/autolatex-select-translator","seen","false");
+				subst("shared/autolatex-select-translator","translatorlist",join(', ',@translatorlist));
+				subst("shared/autolatex-select-translator","figuretype",".$source");
+				@ret = input("critical","shared/autolatex-select-translator");
+				if ($ret[0] != 0) {
+					set("shared/autolatex-select-translator","");
+				}
+			}
+			elsif ($state == 2) {
+				# Treat the answer
+				@ret = get("shared/autolatex-select-translator");
+				if ($ret[0] == 0) {
+					my $answer = $ret[1];
+					$answer =~ /\((.*?)\)$/;
+					$answer = "$1";
+					foreach $tmp (@{$_[0]->{"$source"}}) {
+						my $name = $tmp->{'fullname'};
+						$allanswers{"$name"} = ("$name" eq "$answer");
+					}
+				}
+				else {
+					printErr("ERROR: unable to get the selected translator for $source from DebConf");
+					stop();
+					exit(1);
+				}
+				last;
+			}
+
+			@ret = go();
+			if ($ret[0]==0) {
+				$state ++;
+			}
+			else {
+				$state --;
+			}
+		}
+
+		# Saving the answer
+		while (my ($transname, $includetrans) = each(%allanswers)) {
+			replaceConfig("$transname","include module",($includetrans ? 'yes' : 'no'));
+		}
+
+	}
+}
+
+
+
+
+
+if ($ARGV[0] eq 'install') {
+
+	printDbg("Running preinst script for translator xxx2xxx with target ",$ARGV[0]);
+
+	if (-f "$CONFIG_FILE") {
+
+		printDbg("Configuration file found.");
+		printDbg("Assuming that autolatex-core is already fully installed.");
+		printDbg("Check for conflicts");
+
+		my %conflictTranslators = getInstalledTranslatorsWithConflicts("$MAIN_DIRECTORY",
+###LOOP WITH , FROM 0###
+			{
+			'source' => "xxxSOURCExxx",
+			'target' => "xxxTARGETxxx",
+			'variante' => "xxxVARIANTExxx",
+			'fullname' => "xxx2xxx",
+			}
+###END LOOP###
+);
+
+		if (%conflictTranslators) {
+			solveConflict(%conflictTranslators);
+		}
+		else {
+			printDbg("No conflict detected.");
+		}
+	}
+	else {
+		printDbg("Configuration file not found.");
+		printDbg("Assuming that autolatex-core is under installation.");
+		printDbg("Return now");
+	}
+
+}
+
+exit(0);

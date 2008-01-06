@@ -1,0 +1,34 @@
+#!/bin/sh -e
+# 
+# postinst maintainer script for the Debian autolatex-gtk package.
+#
+# summary of how this script can be called:
+#	* <new-postinst> configure <new-version>
+#	* <new-postinst> reconfigure <new-version>
+#	* <old-postinst> abort-upgrade <new-version>
+#	* <conflictor's-postinst> abort-remove in-favour <package> <new-version>
+#	* <new-postinst> abort-remove
+#	* <deconfigured's-postinst> abort-deconfigure in-favour <failed-install-package>
+#		<version> removing <conflicting-package> <version>
+#
+# for details, see http://www.debian.org/doc/debian-policy/ or
+# the debian-policy package
+
+case "$1" in
+  configure|reconfigure)
+
+	update-alternatives \
+		--install /usr/bin/autolatex-gtk			\
+			autolatex-gtk 					\
+			/usr/lib/autolatex/autolatex-gtk.pl 		\
+			500
+
+	update-alternatives --auto autolatex-gtk
+	;;
+  *)
+	;;
+esac
+
+#DEBHELPER#
+
+exit 0

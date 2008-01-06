@@ -1,0 +1,3 @@
+usr/lib/autolatex/mkfiles/fig2pdf.mk
+usr/lib/autolatex/mkfiles/fig2pdf+tex.mk
+usr/lib/autolatex/scripts/fig2pstex_t

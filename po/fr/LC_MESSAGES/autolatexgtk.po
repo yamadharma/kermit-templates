@@ -1,0 +1,207 @@
+# autolatex - fr/LC_MESSAGES/autolatexgui.po
+# Copyright (C) 2007  Stephane Galland <galland@arakhne.org>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; see the file COPYING.  If not, write to
+# the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+# Boston, MA 02111-1307, USA.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: autolatex GTK GUI 5.1 or higher\n"
+"Report-Msgid-Bugs-To: Stéphane GALLAND <galland@arakhne.org>\n"
+"POT-Creation-Date: 2007-09-19 13:38+0200\n"
+"PO-Revision-Date: 2007-09-19 13:38+0200\n"
+"Last-Translator: Stéphane GALLAND <galland@arakhne.org>\n"
+"Language-Team: FRENCH <galland@arakhne.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "Generate PDF document"
+msgstr "Génération d'un document PDF"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "Generate DVI document"
+msgstr "Génération d'un document DVI"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "Generate Postscript document"
+msgstr "Génération d'un document Postscript"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "Generate PDF document via Postscript"
+msgstr "Génération d'un document PDF via Postscript"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "Use current configuration file value"
+msgstr "Utilise la valeur courante du fichier de configuration"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "Auto-detect the style inside the project directory"
+msgstr "Auto-détection du style dans le répertoire du projet"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "Use only the default AutoLaTeX style"
+msgstr "Utilise seulement le style proposé par AutoLaTeX"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "No style is passed to MakeIndex"
+msgstr "Pas de style passé à MakeIndex"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "Main TeX file (optional):"
+msgstr "Fichier TeX principal (optionnel) :"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "Automatic generation of pictures"
+msgstr "Génération automatique des figures"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "Type of generation:"
+msgstr "Type de génération :"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "Type of MakeIndex style research:"
+msgstr "Type de recherche du fichier de style MakeIndex :"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "Generation"
+msgstr "Génération"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "Viewer"
+msgstr "Prévisualisateur"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "Launch a viewer after compilation"
+msgstr "Lancer un prévisualisateur après la compilation"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "Command of the viewer (optional):"
+msgstr "Ligne de commande du prévisualisateur (optionnel) :"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "Cleaning"
+msgstr "Nettoyage"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "Files to clean:"
+msgstr "Fichiers à supprimer (clean) :"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "Files to desintegrate:"
+msgstr "Fichiers à désintégrer (cleanall) :"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "SCM support"
+msgstr "Support d'un SCM"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "Update command line:"
+msgstr "Ligne de commande pour la mise-à-jour locale :"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/GeneralPanel.pl
+msgid "Commit command line:"
+msgstr "Ligne de commande pour la mise-à-jour distante :"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/ToolPanel.pl
+msgid "No prefered launcher, use first available"
+msgstr "Pas de lanceur préféré, utiliser le premier disponible"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/ToolPanel.pl
+msgid "KDE console"
+msgstr "Terminal KDE"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/ToolPanel.pl
+msgid "Gnome terminal"
+msgstr "Terminal Gnome"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/ToolPanel.pl
+msgid "No graphical terminal"
+msgstr "Pas de terminal graphique"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/ToolPanel.pl
+msgid "Main TeX file:"
+msgstr "Fichier principal TeX :"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/ToolPanel.pl
+msgid "Prefered Launcher:"
+msgstr "Lanceur préféré :"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/ToolPanel.pl
+msgid "Clean"
+msgstr "Nettoyage simple"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/ToolPanel.pl
+msgid "Clean all"
+msgstr "Nettoyage complet"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/ToolPanel.pl
+msgid "Launching AutoLaTeX with parameters: {}"
+msgstr "Lancement d'AutoLaTeX avec les paramètres : {}"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/ToolPanel.pl
+msgid "trying prefered launcher: {}"
+msgstr "essai avec le lanceur préféré : {}"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/ToolPanel.pl
+msgid "launch succeeded"
+msgstr "lancement réussi"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/ToolPanel.pl
+msgid "trying {}"
+msgstr "essai avec {}"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/TranslatorPanel.pl
+msgid "List of available translators:"
+msgstr "Liste des convertisseurs disponibles :"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/WidgetUtil.pl
+msgid "icon not found: {}"
+msgstr "icône non trouvée : {}"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/WidgetUtil.pl
+msgid "{}: on Gtk signal '{}', calling {}($)"
+msgstr "{} : pour le signal Gtk '{}', appel de {}($)"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/WidgetUtil.pl
+msgid "Ignoring Gtk signal '{}'"
+msgstr "Ignore le signal Gtk '{}'"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/Window.pl
+msgid "*ADMINISTRATOR*"
+msgstr "*ADMINISTRATEUR*"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/Window.pl
+msgid "Tools"
+msgstr "Outils"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/Window.pl
+msgid "Project Configuration"
+msgstr "Configuration du projet"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/Window.pl
+msgid "User Configuration"
+msgstr "Configuration utilisateur"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/Window.pl
+msgid "System Configuration"
+msgstr "Configuration du système"
+
+#: ../../../pm/AutoLaTeX/GUI/Gtk/Window.pl
+msgid "Translators"
+msgstr "Convertisseurs"
+

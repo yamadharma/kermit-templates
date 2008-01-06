@@ -1,0 +1,36 @@
+#!/bin/sh -e
+# 
+# prerm maintainer script for the Debian autolatex-core package.
+#
+# summary of how this script can be called:
+#	* <old-prerm> remove
+#	* <old-prerm> upgrade <new-version>
+#	* <new-prerm> failed-upgrade <old-version>
+#	* <conflictor's-prerm> remove in-favour <package> <new-version>
+#	* <deconfigured's-prerm> deconfigure in-favour <package-being-installed> <version>
+#		removing <conflicting-package> <version>
+#
+# for details, see http://www.debian.org/doc/debian-policy/ or
+# the debian-policy package
+
+case "$1" in
+  remove|upgrade)
+	CONFIGFILE="`dirname $0`/autolatex-core.config"
+	if [ -f "$CONFIGFILE" ]
+	then
+		if $CONFIGFILE "$1"; then true; else exit 1; fi
+	else
+		echo "ERROR(prerm): No DebConf configuration script found: $CONFIGFILE" >&2
+		exit 1
+	fi
+
+	update-alternatives --remove autolatex /usr/lib/autolatex/autolatex.pl
+
+	;;
+  *)
+	;;
+esac
+
+#DEBHELPER#
+
+exit 0

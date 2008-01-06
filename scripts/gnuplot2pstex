@@ -1,0 +1,114 @@
+#!/usr/bin/perl
+
+# autolatex - gnuplot2pstex
+# Copyright (C) 1998-07  Stephane Galland <galland@arakhne.org>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; see the file COPYING.  If not, write to
+# the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+# Boston, MA 02111-1307, USA.
+
+use strict;
+
+use Cwd;
+use File::Temp;
+use File::Copy;
+use File::Spec;
+use File::Basename;
+
+my $INPUTFILE = $ARGV[0];
+my $OUTPUTFILE = $ARGV[1];
+
+my $inputdir = dirname("$INPUTFILE");
+if (!File::Spec->file_name_is_absolute("$inputdir")) {
+	$inputdir = File::Spec->rel2abs("$inputdir");
+}
+
+my $outputdir = dirname("$OUTPUTFILE");
+if (!File::Spec->file_name_is_absolute("$outputdir")) {
+	$outputdir = File::Spec->rel2abs("$outputdir");
+}
+
+my $base = basename("$OUTPUTFILE");
+$base =~ s/\.pstex_t$//;
+$base =~ s/\.pstex$//;
+
+my $TMPFILE = File::Temp::tempnam("$inputdir","${base}_").".plot";
+my $TEXFILE = File::Spec->catfile("$outputdir","$base.tex");
+my $PSFILE = File::Spec->catfile(dirname("$OUTPUTFILE"),"$base.ps");
+my $PDFFILE = File::Spec->catfile(dirname("$OUTPUTFILE"),"$base.pdf");
+
+local *OF;
+local *IF;
+
+open(*OF,"> $TMPFILE") or die("output $TMPFILE: $!\n");
+open(*IF,"< $INPUTFILE") or die("input $INPUTFILE: $!\n");
+
+print OF "set terminal pstex auxfile color\n";
+print OF "set output \"$TEXFILE\"\n\n";
+
+while (my $line = <IF>) {
+  if ($line !~ /^\s*quit\s*$/) {
+    print OF "$line";
+  }
+}
+
+print OF "unset output\n";
+print OF "quit\n";
+
+close(*IF);
+close(*OF);
+
+my $retvalue = 0;
+
+my @CMD = ("gnuplot",
+	   basename("$TMPFILE"),
+	   );
+my $origdir = getcwd();
+chdir("$inputdir") or die("$inputdir: $!\n");
+system(@CMD);
+$retvalue = $?;
+chdir("$origdir") or die("$origdir: $!\n");
+if ($retvalue==0) {
+
+	open(*OF,"> $TMPFILE") or die("output $TMPFILE: $!\n");
+	open(*IF,"< $TEXFILE") or die("input $TEXFILE: $!\n");
+
+	print OF "\\begin{picture}(0,0)%\n";
+	print OF "\\includegraphics{$PDFFILE}%\n";
+	print OF "\\end{picture}%\n";
+
+	my @lines = <IF>;
+	my $content = join('',@lines);
+	$content =~ s/\\special\s*\{.*?\}\s*//sg;
+
+	print OF "$content";
+
+	close(*IF);
+	close(*OF);
+}
+else {
+	print STDERR "Error when calling gnuplot\n";
+	$retvalue = 1;
+}
+
+unlink("$TEXFILE");
+
+move("$TMPFILE",File::Spec->catfile("$outputdir","$base.pstex_t"))
+	or die("$TMPFILE: $!\n");
+move("$PSFILE",File::Spec->catfile("$outputdir","$base.pstex"))
+	or die("$PSFILE: $!\n");
+
+unlink "$TMPFILE";
+
+exit($retvalue);

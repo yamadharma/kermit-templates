@@ -1,0 +1,67 @@
+#!/usr/bin/perl
+
+# autolatex - fig2pstex_t
+# Copyright (C) 1998-07  Stephane Galland <galland@arakhne.org>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; see the file COPYING.  If not, write to
+# the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+# Boston, MA 02111-1307, USA.
+
+use strict;
+
+use File::Temp qw/ :POSIX /;
+use File::Copy;
+use File::Spec;
+use File::Basename;
+
+my $INPUTFILE = $ARGV[0];
+my $OUTPUTFILE = $ARGV[1];
+
+my $tmpfilename = tmpnam();
+
+my $dir = dirname("$OUTPUTFILE");
+my $base = basename("$OUTPUTFILE");
+$base =~ s/\.pstex_t$//;
+$base .= ".pstex";
+
+my $PSFILE = File::Spec->catfile("$dir","$base");
+
+my @CMD = ("fig2dev",
+	   "-L", "pstex_t",
+	   "-p", "$PSFILE",
+	   "$INPUTFILE",
+           "$tmpfilename"
+	   );
+
+system(@CMD);
+
+local *OF;
+local *IF;
+
+
+open(*OF,"> $OUTPUTFILE") or die("$OUTPUTFILE: $!\n");
+open(*IF,"< $tmpfilename") or die("$tmpfilename: $!\n");
+
+while (my $line = <IF>) {
+  $line =~ s/\.pstex//g;
+  #s/.pstex//;s/includegraphics{/includegraphics[\\\\psteximgoptions]{/g;
+  print OF "$line";
+}
+
+close(*IF);
+close(*OF);
+
+unlink "$tmpfilename";
+
+exit(0);

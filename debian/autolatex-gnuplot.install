@@ -1,0 +1,4 @@
+usr/lib/autolatex/mkfiles/plot2pdf.mk
+usr/lib/autolatex/mkfiles/plot2pdf+tex.mk
+usr/lib/autolatex/scripts/gnuplot2eps
+usr/lib/autolatex/scripts/gnuplot2pstex

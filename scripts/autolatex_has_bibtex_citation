@@ -1,0 +1,114 @@
+#!/usr/bin/perl -w
+
+# autolatex - autolatex_has_bibtex_citation
+# Copyright (C) 1998-07  Stephane Galland <galland@arakhne.org>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; see the file COPYING.  If not, write to
+# the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+# Boston, MA 02111-1307, USA.
+
+use strict;
+
+use File::Basename;
+use File::Spec;
+
+# ARGV[0] : .tex file of the project
+# ARGV[1] : .bib file of the project
+# ARGV[2] : .aux file of the project
+# ARGV[3] : .bbl file of the project
+
+my ($texFile, $auxFile, $bblFile, @bibFiles);
+$texFile = shift @ARGV;
+$auxFile = shift @ARGV;
+$bblFile = shift @ARGV;
+@bibFiles = @ARGV;
+my ($bibFileTime, $auxFileTime, $bblFileTime) = (0,0,0);
+my ($mtime,$ctime);
+
+if (-e "$auxFile") {
+	(undef,undef,undef,undef,undef,undef,undef,
+	 undef,undef,$mtime,$ctime,undef,undef) = stat("$auxFile");
+	$auxFileTime = ($mtime<$ctime) ? $ctime : $mtime;
+}
+if (-e "$bblFile") {
+	(undef,undef,undef,undef,undef,undef,undef,
+	 undef,undef,$mtime,$ctime,undef,undef) = stat("$bblFile");
+	$bblFileTime = ($mtime<$ctime) ? $ctime : $mtime;
+}
+foreach my $bibFile (@bibFiles) {
+	if (-e "$bibFile") {
+		(undef,undef,undef,undef,undef,undef,undef,
+		 undef,undef,$mtime,$ctime,undef,undef) = stat("$bibFile");
+		my $time = ($mtime<$ctime) ? $ctime : $mtime;
+		$bibFileTime = $time if ($time>$bibFileTime);
+	}
+}
+
+my @citation = ();
+my $bibdatastyle = undef;
+
+local *FILE;
+open(*FILE, "< $auxFile") or die("$auxFile: $!\n");
+while (my $line = <FILE>) {
+	$line =~ s/%.*$//;
+	if (($line =~ /\\bibdata/)||($line =~ /\\bibstyle/)) {
+		$bibdatastyle = 1;
+	}
+	elsif ($line =~ /\\citation\{(.*?)\}/) {
+		push @citation, "CI_$1";
+	}
+	elsif ($line =~ /\\bibcite\{(.*?)\}/) {
+		push @citation, "BC_$1";
+	}
+}
+
+close(*FILE);
+
+@citation = sort @citation;
+my $currentDefs = join('|',@citation);
+my $changed = undef;
+my $filename = File::Spec->catfile(dirname("$auxFile"),"autolatex_bibtex.stamp");
+
+if ($bibdatastyle) {
+
+	if ( -f "$filename") {
+		open(*FILE,"< $filename") or die("$filename: $!\n");
+		my @content = <FILE>;
+		my $oldDefs = join('|',@content);
+		close(*FILE);
+		$changed = ($oldDefs ne $currentDefs);
+	}
+	else {
+		$changed = 1;
+	}
+}
+
+if ($changed) {
+	open(*FILE,"> $filename") or die("$filename: $!\n");
+	print FILE $currentDefs;
+	close(*FILE);
+}
+
+#----------------------------FOR DEBUG ONLY
+#use Data::Dumper;
+#print Dumper({'tex'=>$texFile, 'bib'=>\@bibFiles, 'aux'=>$auxFile, 'bbl'=>$bblFile, 'bibTime'=>$bibFileTime, 'auxTime'=>$auxFileTime, 'bblTime'=>$bblFileTime,'changed'=>$changed,'new'=>($bibFileTime>$bblFileTime)});
+#print "PAUSE\n";
+#my $input = <STDIN>;
+#----------------------------FOR DEBUG ONLY
+
+if (($changed)||($bibFileTime>$bblFileTime)) {
+	exit(0);
+}
+
+exit(1);
