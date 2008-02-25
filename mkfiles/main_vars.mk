@@ -84,9 +84,20 @@ ECHO_CMD = mkfiles/scripts/echo
 # Program that permits to display a message in stderr
 ECHO_ERR_CMD = mkfiles/scripts/echo_err
 
+# Program that permits to find a file
+FIND_CMD = autolatex_find
+
 #-----------------------------------
 #----------- DO NOT CHANGE BELOW
 #-----------------------------------
+
+#
+# External Script
+#
+# Launch a shell command
+launchShell = $(shell PATH="$$PATH:${PATH}" $1)
+
+
 
 TEXFILE=${FILE}.tex
 DVIFILE=${FILE}.dvi
@@ -97,12 +108,12 @@ AUXFILE=${FILE}.aux
 IDXFILE=${FILE}.idx
 INDFILE=${FILE}.ind
 
-ADDITIONALTEXFILES = $(shell find . -name "*.tex" -path "./*/*")
+ADDITIONALTEXFILES = $(call launchShell, ${FIND_CMD} . -name "*.tex" -path "./*/*")
 ADDITIONALAUXFILES = $(addsuffix .aux, $(basename ${ADDITIONALTEXFILES}))
 TEXFILES = ${TEXFILE} ${ADDITIONALTEXFILES}
-BIBFILES = $(shell find . -name "*.bib")
-STYFILES = $(shell find . -name "*.sty" -o -name "*.cls")
-EMACSFILES = $(shell find . -name "*.rel")
+BIBFILES = $(call launchShell, ${FIND_CMD} . -name "*.bib")
+STYFILES = $(call launchShell, ${FIND_CMD} . -name "*.sty" -o -name "*.cls")
+EMACSFILES = $(call launchShell, ${FIND_CMD} . -name "*.rel")
 
 TMPIMAGES =
 IMAGES =
@@ -110,28 +121,19 @@ SOURCE_IMAGES =
 
 MAKEFILE_FILENAME = Makefile
 
-#TMPFILES = autolatex_bibtex.stamp ${AUXFILE} *.log ${BBLFILE} *.blg \
-#	   *.cb *.toc *.out *.lof *.lot *.los \
-#           *.lom *.tmp *.loa ${IDXFILE} *.ilg ${INDFILE} \
-#           *.mtc *.mtc[0-9] *.mtc[0-9][0-9] *.bmt *.thlodef \
-#	   $(shell find . -name "auto") \
-#           autolatex_makeindex.stamp ${ADDITIONALAUXFILES} \
-#           ${PDFFILE} ${DVIFILE} ${PSFILE}
+TMPFILES = autolatex_bibtex.stamp ${AUXFILE} *.log ${BBLFILE} *.blg \
+	   *.cb *.toc *.out *.lof *.lot *.los *.maf *.fot \
+           *.lom *.tmp *.loa ${IDXFILE} *.ilg ${INDFILE} \
+           *.mtc *.mtc[0-9] *.mtc[0-9][0-9] *.bmt *.thlodef \
+	   $(call launchShell, ${FIND_CMD} . -name "auto") \
+           autolatex_makeindex.stamp ${ADDITIONALAUXFILES} \
+           ${PDFFILE} ${DVIFILE} ${PSFILE}
 
-TMPFILES =  bibtex.stamp ${AUXFILE} *.log ${BBLFILE} *.blg \
-	    *.cb *.toc *.out *.lof *.lot *.los *.fot \
-	    *.lom *.tmp *.loa ${IDXFILE} *.ilg ${INDFILE} \
-	    *.mtc *.mtc[0-9] *.mtc[0-9][0-9] *.bmt *.thlodef \
-	    *.thm \
-	    ${ADDITIONALAUXFILES} \
-	    ${PDFFILE} ${DVIFILE} ${PSFILE}
-
-# DESINTEGRABLEFILES = ${PRIVATE_IMAGES} ${PRIVATE_TMPIMAGES} ${BACKUPFILES} ${MAKEFILE_FILENAME}
 DESINTEGRABLEFILES = ${PRIVATE_IMAGES} ${PRIVATE_TMPIMAGES} ${BACKUPFILES} ${EMACSFILES}
 
-BACKUPFILES = $(shell find . -name "*~") \
-	      $(shell find . -name "*.bak") \
-	      $(shell find . -name "*.backup")
+BACKUPFILES = $(call launchShell, ${FIND_CMD} . -name "*~") \
+	      $(call launchShell, ${FIND_CMD} . -name "*.bak") \
+	      $(call launchShell, ${FIND_CMD} . -name "*.backup")
 
 ifeq ("-${AUTO_GENERATE_IMAGES}","-yes")
 PRIVATE_TMPIMAGES = ${TMPIMAGES}
@@ -165,3 +167,5 @@ LOADED_TRANSLATORS =
 # Replies if the specified translator is loaded
 isTranslatorLoaded = $(if $(filter $1,${LOADED_TRANSLATORS}),true,false)
 
+# Replies the mkfile of a translator.
+getTranslatorMkfile = $(if ${TRANSLATOR_MKFILE_$1}, ${TRANSLATOR_MKFILE_$1}, $1.mk)

@@ -37,15 +37,15 @@ XMI2SVG_OUTPUT_STDOUT = no
 #----------- DO NOT CHANGE BELOW
 #-----------------------------------
 
-# The commands to convert an SVG file into PDF is required
-ifeq ("$(call isTranslatorLoaded,svg2pdf)","false")
-include svg2pdf.mk
+# The commands to convert an EPS file into PDF are required
+ifeq ("$(call isTranslatorLoaded,eps2pdf)","false")
+include $(call getTranslatorMkfile,eps2pdf)
 endif
 
 # Notify of the loading of this module
 LOADED_TRANSLATORS += xmi2pdf
 
-XMI_FIG = $(shell find . -name "*.xmi" -o -name "*.uml")
+XMI_FIG = $(call launchShell, ${FIND_CMD} . -name "*.xmi" -o -name "*.uml")
 
 SVG_XMI = $(addsuffix .svg,          $(basename ${XMI_FIG}))
 EPS_XMI = $(addsuffix .eps,          $(basename ${XMI_FIG}))

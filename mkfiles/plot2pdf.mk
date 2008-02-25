@@ -37,15 +37,15 @@ PLOT2EPS_OUTPUT_STDOUT = yes
 #----------- DO NOT CHANGE BELOW
 #-----------------------------------
 
-# The commands to convert an EPS file into PDF is required
+# The commands to convert an EPS file into PDF are required
 ifeq ("$(call isTranslatorLoaded,eps2pdf)","false")
-include eps2pdf.mk
+include $(call getTranslatorMkfile,eps2pdf)
 endif
 
 # Notify of the loading of this module
 LOADED_TRANSLATORS += plot2pdf
 
-PLOT_FIG = $(shell find . -name "*.plot" -a ! -name "*.ltx.plot")
+PLOT_FIG = $(call launchShell, ${FIND_CMD} . -name "*.plot" -a -not -name "*.ltx.plot")
 
 EPS_PLOT = $(addsuffix .eps,          $(basename ${PLOT_FIG}))
 PDF_PLOT = $(addsuffix .pdf,          $(basename ${PLOT_FIG}))

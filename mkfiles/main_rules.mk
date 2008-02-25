@@ -1,5 +1,9 @@
 # main_rules.mk
 
+#-----------------------------------
+#----------- DO NOT CHANGE BELOW
+#-----------------------------------
+
 # Update the makeindex flags with the style file
 ifneq ("-${MAKEINDEX_STYLEFILE}","-")
 MAKEINDEX_FLAGS += -s "${MAKEINDEX_STYLEFILE}"

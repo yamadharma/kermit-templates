@@ -45,7 +45,7 @@ SUPPORTED_BITMAP_FORMATS = pdf eps png jpg bmp gif
 # Notify of the loading of this module
 LOADED_TRANSLATORS += imggz2img
 
-IMGGZ_FIG = $(for extension, ${SUPPORTED_BITMAP_FORMATS}, $(shell find . -name "*.${extension}.gz"))
+IMGGZ_FIG = $(for extension, ${SUPPORTED_BITMAP_FORMATS}, $(call launchShell, ${FIND_CMD} . -name "*.${extension}.gz"))
 
 IMG_IMGGZ = $(basename ${IMGGZ_FIG})
 

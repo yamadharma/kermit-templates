@@ -48,15 +48,15 @@ FIG2PSTEXT_OUTPUT_STDOUT = no
 #----------- DO NOT CHANGE BELOW
 #-----------------------------------
 
-# The commands to convert an EPS file into PDF is required
+# The commands to convert an EPS file into PDF are required
 ifeq ("$(call isTranslatorLoaded,eps2pdf)","false")
-include eps2pdf.mk
+include $(call getTranslatorMkfile,eps2pdf)
 endif
 
 # Notify of the loading of this module
 LOADED_TRANSLATORS += fig2pdf+tex
 
-PSTEX_FIG    = $(shell find . -name "*.ltx.fig")
+PSTEX_FIG    = $(call launchShell, ${FIND_CMD} . -name "*.ltx.fig")
 
 PSTEX_XFIG     = $(addsuffix .pstex,        $(basename $(basename ${PSTEX_FIG})))
 PSTEX_T_XFIG   = $(addsuffix .pstex_t,      $(basename $(basename ${PSTEX_FIG})))

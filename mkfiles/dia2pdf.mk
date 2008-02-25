@@ -37,15 +37,15 @@ DIA2EPS_OUTPUT_STDOUT = no
 #----------- DO NOT CHANGE BELOW
 #-----------------------------------
 
-# The commands to convert an EPS file into PDF is required
+# The commands to convert an EPS file into PDF are required
 ifeq ("$(call isTranslatorLoaded,eps2pdf)","false")
-include mkfiles/eps2pdf.mk
+include $(call getTranslatorMkfile,eps2pdf)
 endif
 
 # Notify of the loading of this module
 LOADED_TRANSLATORS += dia2pdf
 
-DIA_FIG = $(shell find . -name "*.dia")
+DIA_FIG = $(call launchShell, ${FIND_CMD} . -name "*.dia")
 
 EPS_DIA = $(addsuffix .eps,          $(basename ${DIA_FIG}))
 PDF_DIA = $(addsuffix .pdf,          $(basename ${DIA_FIG}))
