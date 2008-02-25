@@ -1,5 +1,5 @@
 # autolatex - svg2pdf.mk
-# Copyright (C) 1998-07  Stephane Galland <galland@arakhne.org>
+# Copyright (C) 1998-08  Stephane Galland <galland@arakhne.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -53,15 +53,15 @@ SVG2EPS_OUTPUT_STDOUT = no
 #----------- DO NOT CHANGE BELOW
 #-----------------------------------
 
-# The commands to convert an EPS file into PDF is required
+# The commands to convert an EPS file into PDF are required
 ifeq ("$(call isTranslatorLoaded,eps2pdf)","false")
-include eps2pdf.mk
+include $(call getTranslatorMkfile,eps2pdf)
 endif
 
 # Notify of the loading of this module
 LOADED_TRANSLATORS += svg2pdf
 
-SVG_FIG = $(shell find . -name "*.svg")
+SVG_FIG = $(call launchShell, ${FIND_CMD} . -name "*.svg")
 
 EPS_SVG = $(addsuffix .eps,          $(basename ${SVG_FIG}))
 PDF_SVG = $(addsuffix .pdf,          $(basename ${SVG_FIG}))

@@ -1,5 +1,5 @@
 # autolatex - Translator.pm
-# Copyright (C) 1998-07  Stephane Galland <galland@arakhne.org>
+# Copyright (C) 1998-08  Stephane Galland <galland@arakhne.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -40,7 +40,7 @@ package AutoLaTeX::Translator;
 $VERSION = '5.1';
 @ISA = ('Exporter');
 @EXPORT = qw( &getLoadableTranslatorList &getTranslatorList &detectConflicts @ALL_LEVELS 
-	      &makeTranslatorHumanReadable ) ;
+	      &makeTranslatorHumanReadable &extractTranslatorNameComponents ) ;
 @EXPORT_OK = qw();
 
 use strict;
@@ -55,7 +55,7 @@ use AutoLaTeX::Locale;
 # Sorted list of the levels
 our @ALL_LEVELS = ('system', 'user', 'project');
 
-sub extractNameComponents($) {
+sub extractTranslatorNameComponents($) {
 	my $name = shift;
 	if ($name =~ /^([a-zA-Z+-]+)2([a-zA-Z0-9-]+)(?:\+([a-zA-Z0-9+-]+))?(?:_(.*))?$/) {
 		my $source = $1;
@@ -63,6 +63,7 @@ sub extractNameComponents($) {
 		my $target2 = $3||'';
 		my $variante = $4||'';
 		my $osource = "$source";
+		my $basename = "${source}2${target}${target2}";
 		if ($target2) {
 			if ($target2 ne 'tex') {
 				$target .= "+$target2";
@@ -71,7 +72,7 @@ sub extractNameComponents($) {
 				$source = "ltx.$source";
 			}
 		}
-		return { 'name' => $name, 'full-source' => $source, 'source' => $osource, 'target' => $target, 'variante' => $variante };
+		return { 'name' => $name, 'full-source' => $source, 'source' => $osource, 'target' => $target, 'variante' => $variante, 'basename' => $basename };
 	}
 	return undef;
 }
@@ -125,7 +126,7 @@ sub getTranslatorFilesFrom(\%$\%$$$;$) {
 					elsif ($file =~ /^([a-zA-Z+-]+2[a-zA-Z0-9+-]+(?:_[a-zA-Z0-9_+-]+)?).*$/i) {
 						my $scriptname = "$1";
 						if ($_[5]) {
-							$_[2]->{"$scriptname"} = extractNameComponents($scriptname);
+							$_[2]->{"$scriptname"} = extractTranslatorNameComponents($scriptname);
 							$_[2]->{"$scriptname"}{'human-readable'} = makeTranslatorHumanReadable($_[2]->{"$scriptname"});
 							$_[2]->{"$scriptname"}{'file'} = "$fullname";
 							$_[2]->{"$scriptname"}{'level'} = $level;
@@ -154,7 +155,7 @@ sub resolveConflicts(\%) {
 	my %bysources = ();
 	# The targets with "*+tex" are translated into sources "ltx.*"
 	while (my ($trans,$transfile) = each (%{$_[0]})) {
-		my $components = extractNameComponents($trans);
+		my $components = extractTranslatorNameComponents($trans);
 		if ($components) {
 			if (!$bysources{$components->{'full-source'}}) {
 				$bysources{$components->{'full-source'}} = [];
@@ -390,7 +391,7 @@ sub getTranslatorList(\%;$) {
 		if (($file ne File::Spec->curdir())&&($file ne File::Spec->updir())&&
 		    ($file ne 'MainVars.mk')&&($file ne 'MainRules.mk')&&($file =~ /^(.*)\.mk$/i)) {
 			my $scriptname = "$1";
-			$translators{"$scriptname"} = extractNameComponents($scriptname);
+			$translators{"$scriptname"} = extractTranslatorNameComponents($scriptname);
 			$translators{"$scriptname"}{'human-readable'} = makeTranslatorHumanReadable($translators{"$scriptname"});
 			$translators{"$scriptname"}{'file'} = "$fullname";
 			$translators{"$scriptname"}{'level'} = 'system';

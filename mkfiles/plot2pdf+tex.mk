@@ -1,5 +1,5 @@
 # autolatex - plot2pdf+tex.mk
-# Copyright (C) 1998-07  Stephane Galland <galland@arakhne.org>
+# Copyright (C) 1998-08  Stephane Galland <galland@arakhne.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -64,15 +64,15 @@ PLOT2PSTEX_T_OUTPUT_STDOUT = no
 #----------- DO NOT CHANGE BELOW
 #-----------------------------------
 
-# The commands to convert an EPS file into PDF is required
+# The commands to convert an EPS file into PDF are required
 ifeq ("$(call isTranslatorLoaded,eps2pdf)","false")
-include eps2pdf.mk
+include $(call getTranslatorMkfile,eps2pdf)
 endif
 
 # Notify of the loading of this module
 LOADED_TRANSLATORS += plot2pdf+tex
 
-PSTEX_PLOT_FIG = $(shell find . -name "*.ltx.plot")
+PSTEX_PLOT_FIG = $(call launchShell, ${FIND_CMD} . -name "*.ltx.plot")
 
 PSTEX_PLOT     = $(addsuffix .pstex,        $(basename $(basename ${PSTEX_PLOT_FIG})))
 PSTEX_T_PLOT   = $(addsuffix .pstex_t,      $(basename $(basename ${PSTEX_PLOT_FIG})))

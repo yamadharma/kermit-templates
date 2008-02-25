@@ -269,7 +269,7 @@ AUTO GENERATION OF FIGURES
         translator is automatically included by AutoLaTeX even if you
         exclude it from the the command line.
 
-        Name: eps2pdf
+        Name: eps2pdf_epstopdf
         Use external converter: epstopdf
         Use internal converter:
         Input format: .eps
@@ -277,6 +277,20 @@ AUTO GENERATION OF FIGURES
         Provide make rules: no
         Provide makefile macros: $(EPS2PDF_SHELL_CMD)
         Command line, format: f)
+
+    Encapsuled PostScript (eps) to Portable Document Format (pdf)
+        based on ps2pdf tool. The input filename extension is '.eps'. This
+        translator is automatically included by AutoLaTeX even if you
+        exclude it from the the command line.
+
+        Name: eps2pdf_ps2pdf
+        Use external converter: ps2pdf
+        Use internal converter:
+        Input format: .eps
+        Output format: .pdf
+        Provide make rules: no
+        Provide makefile macros: $(EPS2PDF_SHELL_CMD)
+        Command line, format: a)
 
     XFig document (fig) to Portable Document Format (pdf)
         based on fig2dev and epstopdf tools. The input filename extension is
@@ -573,6 +587,8 @@ CONFIGURATION FILE
     Accepted value: any command line.
     *set echo_err* : specifies the command line for a "echo >&2" Unix-like
     command. Accepted value: any command line.
+    *set find* : specifies the command line for a "find" Unix-like command.
+    Accepted value: any
 
    [Clean] section
     This section permits to configure the cleaning features of AutoLaTeX
@@ -648,6 +664,12 @@ VARIABLES DEFINED BY AUTOLATEX
     default value.
     *TOUCH_CMD*: Shell command for the Unix-like command touch. Default
     value = autolatex_touch.
+    *ECHO_CMD*: Shell command for the Unix-like command echo. Default value
+    = autolatex_echo.
+    *ECHO_ERR_CMD*: Shell command for the Unix-like command echo >&2.
+    Default value = autolatex_echo_err.
+    *FIND_CMD*: Shell command for the Unix-like command find. Default value
+    = autolatex_find.
 
   Translator variables
     (Replace xxx_ by the name of the translator in upper case)

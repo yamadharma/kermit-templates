@@ -57,6 +57,7 @@ foreach my $bibFile (@bibFiles) {
 
 my @citation = ();
 my $bibdatastyle = undef;
+my $foundcitation = undef;
 
 local *FILE;
 open(*FILE, "< $auxFile") or die("$auxFile: $!\n");
@@ -67,9 +68,11 @@ while (my $line = <FILE>) {
 	}
 	elsif ($line =~ /\\citation\{(.*?)\}/) {
 		push @citation, "CI_$1";
+		$foundcitation = 1;
 	}
 	elsif ($line =~ /\\bibcite\{(.*?)\}/) {
 		push @citation, "BC_$1";
+		$foundcitation = 1;
 	}
 }
 
@@ -107,8 +110,13 @@ if ($changed) {
 #my $input = <STDIN>;
 #----------------------------FOR DEBUG ONLY
 
-if (($changed)||($bibFileTime>$bblFileTime)) {
+if (($foundcitation)&&(($changed)||($bibFileTime>$bblFileTime))) {
+	print STDERR "citation detected\n";
+	print STDERR "changed=$changed\n";
+	print STDERR "bib=$bibFileTime\n";
+	print STDERR "bbl=$bblFileTime\n";
 	exit(0);
 }
 
+print STDERR "no citation detected\n";
 exit(1);

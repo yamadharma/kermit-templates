@@ -187,6 +187,7 @@ else {
 		else {
 			locPrint("Launching compilation...\n");
 		}
+		#print join(' ',@commandLine)."\n";
 		exec @commandLine;
 		die(join(' ',@commandLine,": $!\n"));
 	}

@@ -303,7 +303,7 @@ you exclude it from the the command line.
 
 =over 12
 
-=item Name:                              eps2pdf
+=item Name:                              eps2pdf_epstopdf
 
 =item Use external converter:            epstopdf
 
@@ -318,6 +318,32 @@ you exclude it from the the command line.
 =item Provide makefile macros:           $(EPS2PDF_SHELL_CMD)
 
 =item Command line, format:              f)
+
+=back
+
+=item B<Encapsuled PostScript (eps) to Portable Document Format (pdf)>
+
+based on L<ps2pdf> tool. The input filename extension is '.eps'.
+This translator is automatically included by AutoLaTeX even if
+you exclude it from the the command line.
+
+=over 12
+
+=item Name:                              eps2pdf_ps2pdf
+
+=item Use external converter:            ps2pdf
+
+=item Use internal converter: 
+
+=item Input format:                      .eps
+
+=item Output format:                     .pdf
+
+=item Provide make rules:                no
+
+=item Provide makefile macros:           $(EPS2PDF_SHELL_CMD)
+
+=item Command line, format:              a)
 
 =back
 
@@ -770,7 +796,10 @@ If the list contains more than one value, AutoLaTeX will do the corresponding be
 
 =item I<set echo> : specifies the command line for a "echo" Unix-like command. Accepted value: any command line.
 
-=item I<set echo_err> : specifies the command line for a "echo >&2" Unix-like command. Accepted value: any command line.
+=item I<set echo_err> : specifies the command line for a "echo >&2" Unix-like command. Accepted value: any 
+command line.
+
+=item I<set find> : specifies the command line for a "find" Unix-like command. Accepted value: any 
 
 =back
 
@@ -857,6 +886,12 @@ The variables used by AutoLaTeX can be categorized roughly into two groups. The 
 =item I<PSPDF_FLAGS>: Parameters that must be passed to the ps2pdf command. No default value.
 
 =item I<TOUCH_CMD>: Shell command for the Unix-like command touch. Default value = autolatex_touch.
+
+=item I<ECHO_CMD>: Shell command for the Unix-like command echo. Default value = autolatex_echo.
+
+=item I<ECHO_ERR_CMD>: Shell command for the Unix-like command echo >&2. Default value = autolatex_echo_err.
+
+=item I<FIND_CMD>: Shell command for the Unix-like command find. Default value = autolatex_find.
 
 =back
 

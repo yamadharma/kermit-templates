@@ -278,7 +278,7 @@ avec l'option --exclude.
 
 =over 12
 
-=item Nom:                               eps2pdf
+=item Nom:                               eps2pdf_epstopdf
 
 =item Convertiseur externe utilisé:      epstopdf
 
@@ -293,6 +293,32 @@ avec l'option --exclude.
 =item Fournit des macros:                $(EPS2PDF_SHELL_CMD)
 
 =item Format de la ligne de commande:    f)
+
+=back
+
+=item B<Encapsuled PostScript (eps) vers Portable Document Format (pdf)>
+
+basé sur l'outil L<ps2pdf>. L'extension du fichier d'entrée est '.eps'.
+Ce convertisseur est automatiquement inclu par AutoLaTeX même si vous l'excluez
+avec l'option --exclude.
+
+=over 12
+
+=item Nom:                               eps2pdf_ps2pdf
+
+=item Convertiseur externe utilisé:      ps2pdf
+
+=item Convertisseur interne utilisé: 
+
+=item Format d'entrée:                   .eps
+
+=item Format de sortie:                  .pdf
+
+=item Fournit des règles:                non
+
+=item Fournit des macros:                $(EPS2PDF_SHELL_CMD)
+
+=item Format de la ligne de commande:    a)
 
 =back
 
@@ -742,6 +768,8 @@ Si cette liste contient plus d'une valeur, AutoLaTeX appliquera le comportement 
 
 =item I<set echo_err> : spécification de la ligne de commande Unix "echo >&2". Valeur acceptée: toute ligne de commande.
 
+=item I<set find> : spécification de la ligne de commande Unix "find". Valeur acceptée: toute ligne de commande.
+
 =back
 
 =head3 Section [Clean]
@@ -827,6 +855,12 @@ Les variables utilisées par by AutoLaTeX peuvent être classées dans deux groupes
 =item I<PSPDF_FLAGS>: Options à passer au convertisseur ps2pdf. Aucune valeur par défaut.
 
 =item I<TOUCH_CMD>: Ligne de commande à utiliser pour lancer une commande similaire à la commande Unix touch. Valeur par défaut : autolatex_touch.
+
+=item I<ECHO_CMD>: Ligne de commande à utiliser pour lancer une commande similaire à la commande Unix echo. Valeur par défaut : autolatex_echo.
+
+=item I<ECHO_ERR_CMD>: Ligne de commande à utiliser pour lancer une commande similaire à la commande Unix echo >&2. Valeur par défaut : autolatex_echo_err.
+
+=item I<FIND_CMD>: Ligne de commande à utiliser pour lancer une commande similaire à la commande Unix find. Valeur par défaut : autolatex_find.
 
 =back
 

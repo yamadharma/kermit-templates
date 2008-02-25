@@ -30,8 +30,8 @@ my $changed = undef;
 my $currentDefs = '';
 my $filename = File::Spec->catfile(dirname("$ARGV[0]"),"autolatex_makeindex.stamp");
 
-use Data::Dumper;
-die(Dumper(\@ARGV));
+#use Data::Dumper;
+#die(Dumper(\@ARGV));
 
 if ( -f "$ARGV[0]") {
 	local *FILE;
@@ -60,9 +60,9 @@ if ( -f "$ARGV[0]") {
 	}
 
 	if (-f "$ARGV[1]") {
-		(undef,undef,undef,undef,undef,undef,undef,
+		my (undef,undef,undef,undef,undef,undef,undef,
 		 undef,undef,$mtime1,$ctime1,undef,undef) = stat("$ARGV[0]");
-		(undef,undef,undef,undef,undef,undef,undef,
+		my (undef,undef,undef,undef,undef,undef,undef,
 		 undef,undef,$mtime2,$ctime2,undef,undef) = stat("$ARGV[1]");
 		my $min1 = ($mtime1>$ctime1) ? $mtime1 : $ctime1;
 		my $min2 = ($mtime2>$ctime2) ? $mtime2 : $ctime2;

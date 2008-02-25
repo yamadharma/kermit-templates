@@ -53,15 +53,15 @@ FIG2EPS_OUTPUT_STDOUT = no
 #----------- DO NOT CHANGE BELOW
 #-----------------------------------
 
-# The commands to convert an EPS file into PDF is required
+# The commands to convert an EPS file into PDF are required
 ifeq ("$(call isTranslatorLoaded,eps2pdf)","false")
-include eps2pdf.mk
+include $(call getTranslatorMkfile,eps2pdf)
 endif
 
 # Notify of the loading of this module
 LOADED_TRANSLATORS += fig2pdf
 
-XFIG_FIG = $(shell find . -name "*.fig" -a ! -name "*.ltx.fig")
+XFIG_FIG = $(call launchShell, ${FIND_CMD} . -name "*.fig" -a -not -name "*.ltx.fig")
 
 EPS_XFIG = $(addsuffix .eps,          $(basename ${XFIG_FIG}))
 PDF_XFIG = $(addsuffix .pdf,          $(basename ${XFIG_FIG}))

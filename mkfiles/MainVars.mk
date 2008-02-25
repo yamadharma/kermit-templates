@@ -16,7 +16,6 @@
 # the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
 
-
 # Name of the main TeX file (without extension and path)
 FILE = Main
 
@@ -95,9 +94,20 @@ ECHO_CMD = autolatex_echo
 # Program that permits to display a message in stderr
 ECHO_ERR_CMD = autolatex_echo_err
 
+# Program that permits to find a file
+FIND_CMD = autolatex_find
+
 #-----------------------------------
 #----------- DO NOT CHANGE BELOW
 #-----------------------------------
+
+#
+# External Script
+#
+# Launch a shell command
+launchShell = $(shell PATH="$$PATH:${PATH}" $1)
+
+
 
 TEXFILE=${FILE}.tex
 DVIFILE=${FILE}.dvi
@@ -108,11 +118,11 @@ AUXFILE=${FILE}.aux
 IDXFILE=${FILE}.idx
 INDFILE=${FILE}.ind
 
-ADDITIONALTEXFILES = $(shell find . -name "*.tex" -path "./*/*")
+ADDITIONALTEXFILES = $(call launchShell, ${FIND_CMD} . -name "*.tex" -path "./*/*")
 ADDITIONALAUXFILES = $(addsuffix .aux, $(basename ${ADDITIONALTEXFILES}))
 TEXFILES = ${TEXFILE} ${ADDITIONALTEXFILES}
-BIBFILES = $(shell find . -name "*.bib")
-STYFILES = $(shell find . -name "*.sty" -o -name "*.cls")
+BIBFILES = $(call launchShell, ${FIND_CMD} . -name "*.bib")
+STYFILES = $(call launchShell, ${FIND_CMD} . -name "*.sty" -o -name "*.cls")
 
 TMPIMAGES =
 IMAGES =
@@ -121,18 +131,18 @@ SOURCE_IMAGES =
 MAKEFILE_FILENAME = Makefile
 
 TMPFILES = autolatex_bibtex.stamp ${AUXFILE} *.log ${BBLFILE} *.blg \
-	   *.cb *.toc *.out *.lof *.lot *.los \
+	   *.cb *.toc *.out *.lof *.lot *.los *.maf \
            *.lom *.tmp *.loa ${IDXFILE} *.ilg ${INDFILE} \
            *.mtc *.mtc[0-9] *.mtc[0-9][0-9] *.bmt *.thlodef \
-	   $(shell find . -name "auto") \
+	   $(call launchShell, ${FIND_CMD} . -name "auto") \
            autolatex_makeindex.stamp ${ADDITIONALAUXFILES} \
            ${PDFFILE} ${DVIFILE} ${PSFILE}
 
 DESINTEGRABLEFILES = ${PRIVATE_IMAGES} ${PRIVATE_TMPIMAGES} ${BACKUPFILES} ${MAKEFILE_FILENAME}
 
-BACKUPFILES = $(shell find . -name "*~") \
-	      $(shell find . -name "*.bak") \
-	      $(shell find . -name "*.backup")
+BACKUPFILES = $(call launchShell, ${FIND_CMD} . -name "*~") \
+	      $(call launchShell, ${FIND_CMD} . -name "*.bak") \
+	      $(call launchShell, ${FIND_CMD} . -name "*.backup")
 
 ifeq ("-${AUTO_GENERATE_IMAGES}","-yes")
 PRIVATE_TMPIMAGES = ${TMPIMAGES}
@@ -166,3 +176,5 @@ LOADED_TRANSLATORS =
 # Replies if the specified translator is loaded
 isTranslatorLoaded = $(if $(filter $1,${LOADED_TRANSLATORS}),true,false)
 
+# Replies the mkfile of a translator.
+getTranslatorMkfile = $(if ${TRANSLATOR_MKFILE_$1}, ${TRANSLATOR_MKFILE_$1}, $1.mk)

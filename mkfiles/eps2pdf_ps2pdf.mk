@@ -1,5 +1,5 @@
-# autolatex - dia2pdf.mk
-# Copyright (C) 1998-07  Stephane Galland <galland@arakhne.org>
+# autolatex - eps2pdf_ps2pdf.mk
+# Copyright (C) 1998-08  Stephane Galland <galland@arakhne.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
 # the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
 
-ifeq ("$(call isTranslatorLoaded,dia2pdf)","false")
+ifeq ("$(call isTranslatorLoaded,eps2pdf)","false")
 
 # If the images must be auto-generated, the following lines
 # permits to change the generators
@@ -40,65 +40,43 @@ ifeq ("$(call isTranslatorLoaded,dia2pdf)","false")
 
 # Command definition.
 # Required synoptics of the command:
-# <binfile> <flags> <inputflags> <input.dia> <outputflags> <output.eps>
-DIA2EPS_BIN           = dia
-DIA2EPS_FLAGS         = --nosplash -t eps
-DIA2EPS_INPUT_FLAGS   =
-DIA2EPS_OUTPUT_FLAGS  = --export=
-DIA2EPS_POST_FLAGS    =
-DIA2EPS_OUTPUT_INPUT  = yes
-DIA2EPS_OUTPUT_STDOUT = no
+# <binfile> <flags> <inputflags> <input.eps> <outputflags> <output.pdf>
+EPS2PDF_BIN           = ps2pdf
+EPS2PDF_FLAGS         =
+EPS2PDF_INPUT_FLAGS   =
+EPS2PDF_OUTPUT_FLAGS  = 
+EPS2PDF_POST_FLAGS    =
+EPS2PDF_OUTPUT_INPUT  = no
+EPS2PDF_OUTPUT_STDOUT = no
 
 #-----------------------------------
 #----------- DO NOT CHANGE BELOW
 #-----------------------------------
 
-# The commands to convert an EPS file into PDF are required
-ifeq ("$(call isTranslatorLoaded,eps2pdf)","false")
-include $(call getTranslatorMkfile,eps2pdf)
-endif
-
 # Notify of the loading of this module
-LOADED_TRANSLATORS += dia2pdf
-
-DIA_FIG = $(call launchShell, ${FIND_CMD} . -name "*.dia")
-
-EPS_DIA = $(addsuffix .eps,          $(basename ${DIA_FIG}))
-PDF_DIA = $(addsuffix .pdf,          $(basename ${DIA_FIG}))
-
-SOURCE_IMAGES += ${DIA_FIG}
-TMPIMAGES     += ${EPS_DIA}
-IMAGES        += ${PDF_DIA}
+LOADED_TRANSLATORS += eps2pdf
 
 # Compile the convertion parameters
-ifeq ("-$(findstring =,$(DIA2EPS_INPUT_FLAGS))","-")
-DIA2EPS_INPUT_FLAGS_EX = $(DIA2EPS_INPUT_FLAGS) "$<"
+ifeq ("-$(findstring =,$(EPS2PDF_INPUT_FLAGS))","-")
+EPS2PDF_INPUT_FLAGS_EX = $(strip $(EPS2PDF_INPUT_FLAGS)) "$<"
 else
-DIA2EPS_INPUT_FLAGS_EX = "$(DIA2EPS_INPUT_FLAGS)$<"
+EPS2PDF_INPUT_FLAGS_EX = $(strip $(EPS2PDF_INPUT_FLAGS))"$<"
 endif
-ifeq ("-$(findstring =,$(DIA2EPS_OUTPUT_FLAGS))","-")
-DIA2EPS_OUTPUT_FLAGS_EX = $(DIA2EPS_OUTPUT_FLAGS) "$@"
+ifeq ("-$(findstring =,$(EPS2PDF_OUTPUT_FLAGS))","-")
+EPS2PDF_OUTPUT_FLAGS_EX = $(strip $(EPS2PDF_OUTPUT_FLAGS)) "$@"
 else
-DIA2EPS_OUTPUT_FLAGS_EX = "$(DIA2EPS_OUTPUT_FLAGS)$@"
+EPS2PDF_OUTPUT_FLAGS_EX = $(strip $(EPS2PDF_OUTPUT_FLAGS))"$@"
 endif
 
 # Compile the convertion commands
-ifeq ("${DIA2EPS_OUTPUT_STDOUT}","yes")
-DIA2EPS_SHELL_CMD = $(DIA2EPS_BIN) $(DIA2EPS_FLAGS) $(DIA2EPS_INPUT_FLAGS_EX) $(DIA2EPS_POST_FLAGS) > "$@"
+ifeq ("${EPS2PDF_OUTPUT_STDOUT}","yes")
+EPS2PDF_SHELL_CMD = $(EPS2PDF_BIN) $(EPS2PDF_FLAGS) $(EPS2PDF_INPUT_FLAGS_EX) $(EPS2PDF_POST_FLAGS) > "$@"
 else
-ifeq ("${DIA2EPS_OUTPUT_INPUT}","yes")
-DIA2EPS_SHELL_CMD = $(DIA2EPS_BIN) $(DIA2EPS_FLAGS) $(DIA2EPS_OUTPUT_FLAGS_EX) $(DIA2EPS_INPUT_FLAGS_EX) $(DIA2EPS_POST_FLAGS)
+ifeq ("${EPS2PDF_OUTPUT_INPUT}","yes")
+EPS2PDF_SHELL_CMD = $(EPS2PDF_BIN) $(EPS2PDF_FLAGS) $(EPS2PDF_OUTPUT_FLAGS_EX) $(EPS2PDF_INPUT_FLAGS_EX) $(EPS2PDF_POST_FLAGS)
 else
-DIA2EPS_SHELL_CMD = $(DIA2EPS_BIN) $(DIA2EPS_FLAGS) $(DIA2EPS_INPUT_FLAGS_EX) $(DIA2EPS_OUTPUT_FLAGS_EX) $(DIA2EPS_POST_FLAGS)
+EPS2PDF_SHELL_CMD = $(EPS2PDF_BIN) $(EPS2PDF_FLAGS) $(EPS2PDF_INPUT_FLAGS_EX) $(EPS2PDF_OUTPUT_FLAGS_EX) $(EPS2PDF_POST_FLAGS)
 endif
 endif
-
-
-
-$(EPS_DIA): %.eps: %.dia
-	@ ${ECHO_CMD} "$< -> $@" && $(DIA2EPS_SHELL_CMD)
-
-$(PDF_DIA): %.pdf: %.eps
-	@ ${ECHO_CMD} "$< -> $@" && $(EPS2PDF_SHELL_CMD)
 
 endif

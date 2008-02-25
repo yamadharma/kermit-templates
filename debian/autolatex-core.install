@@ -6,12 +6,14 @@ usr/lib/autolatex/AUTHORS
 usr/lib/autolatex/VERSION
 usr/lib/autolatex/mkfiles/MainVars.mk
 usr/lib/autolatex/mkfiles/MainRules.mk
-usr/lib/autolatex/mkfiles/eps2pdf.mk
-usr/lib/autolatex/scripts/autolatex_touch
+usr/lib/autolatex/mkfiles/eps2pdf_epstopdf.mk
+usr/lib/autolatex/mkfiles/eps2pdf_ps2pdf.mk
 usr/lib/autolatex/scripts/autolatex_echo
 usr/lib/autolatex/scripts/autolatex_echo_err
+usr/lib/autolatex/scripts/autolatex_find
 usr/lib/autolatex/scripts/autolatex_has_bibtex_citation
 usr/lib/autolatex/scripts/autolatex_has_index
+usr/lib/autolatex/scripts/autolatex_touch
 usr/lib/autolatex/pod/autolatex.pod
 usr/lib/autolatex/pod/autolatex_fr.pod
 usr/lib/autolatex/pm/AutoLaTeX/Config.pm

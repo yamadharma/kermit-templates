@@ -1,3 +1,24 @@
+autolatex (5.5-0arakhne1) feisty; urgency=low
+
+  * Fixing the Debian package which does not include the new script
+    autolatex_find
+
+ -- Stephane GALLAND <galland@arakhne.org>  Mon, 25 Feb 2008 11:02:20 +0100
+
+autolatex (5.5-0arakhne0) feisty; urgency=low
+
+  * Add translator variante: eps to pdf with ps2pdf tool, which is
+    the new standard on Ubuntu systems due to the replacement
+    of teTeX by TeXlive.
+  * Change the implementation of translator dependency to allow to
+    by dependent of a translator without specifying the variant.
+  * Add temp file support: *.maf
+  * Add platform-independent command autolatex_find
+  * Bug fix in autolatex_has_index
+  * Bug fix: make more robust the launch of shell commands
+
+ -- Stephane GALLAND <galland@arakhne.org>  Mon, 25 Feb 2008 09:58:01 +0100
+
 autolatex (5.4-0arakhne0) feisty; urgency=low
 
   * Bug fix: In the GTK translator panel, the function that
