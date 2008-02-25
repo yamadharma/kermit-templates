@@ -71,12 +71,13 @@ ${COMPILATION_TARGET_FILE}:: ${TEXFILES} ${PRIVATE_IMAGES} ${BIBFILES} ${MAKEIND
 	    COMPBIBTEX="yes"; \
 	  fi && \
 	  unset COMPMAKEINDEX && \
-	  if autolatex_has_index "${IDXFILE}" "${MAKEINDEX_STYLEFILE}"; then \
+	  if ${HAS_INDEX_CMD} "${IDXFILE}" "${MAKEINDEX_STYLEFILE}"; then \
 	    COMPMAKEINDEX="yes"; \
 	  fi && \
 	  if test -n "$$COMPBIBTEX" -o -n "$$CMPMAKEINDEX"; then \
 	    if test -n "$$COMPBIBTEX"; then \
 	      ${BIBTEX_CMD} ${BIBTEX_FLAGS} ${FILE} && \
+	      ${FIX_BBL_CMD} ${BBLFILE} && \
 	      ${TOUCH_CMD} ${BBLFILE}; \
 	    fi && \
 	    if test -n "$$COMPMAKEINDEX"; then \
@@ -91,7 +92,7 @@ ${COMPILATION_TARGET_FILE}:: ${TEXFILES} ${PRIVATE_IMAGES} ${BIBFILES} ${MAKEIND
 ${BBLFILE}: ${BIBFILES} ${TEXFILES} ${PRIVATE_IMAGES}
 	@ ${TOUCH_CMD} ${BBLFILE} && \
 	  ${LATEX_CMD} ${LATEX_DRAFT_FLAGS} ${LATEX_FLAGS} ${FILE} && \
-	  ${BIBTEX_CMD} ${BIBTEX_FLAGS} ${FILE} \
+	  ${BIBTEX_CMD} ${BIBTEX_FLAGS} ${FILE} && \
 	  ${FIX_BBL_CMD} ${BBLFILE}
 
 ${IDXFILE}: ${TEXFILES} ${PRIVATE_IMAGES}

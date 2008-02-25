@@ -54,6 +54,9 @@ FIX_BBL_CMD = mkfiles/scripts/fixbbl.py
 # Check if has bibtex citation
 HAS_BIBTEX_CITATION_CMD = mkfiles/scripts/has_bibtex_citation
 
+# Check if has index exist
+HAS_INDEX_CMD = mkfiles/scripts/has_index
+
 # Shell command used to translate DVI to PS
 DVIPS_CMD = dvips
 
