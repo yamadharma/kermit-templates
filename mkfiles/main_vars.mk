@@ -121,10 +121,11 @@ SOURCE_IMAGES =
 
 MAKEFILE_FILENAME = Makefile
 
-TMPFILES = autolatex_bibtex.stamp ${AUXFILE} *.log ${BBLFILE} *.blg \
+TMPFILES = bibtex.stamp ${AUXFILE} *.log ${BBLFILE} *.blg \
 	   *.cb *.toc *.out *.lof *.lot *.los *.maf *.fot \
            *.lom *.tmp *.loa ${IDXFILE} *.ilg ${INDFILE} \
            *.mtc *.mtc[0-9] *.mtc[0-9][0-9] *.bmt *.thlodef \
+           *.thm \
 	   $(call launchShell, ${FIND_CMD} . -name "auto") \
            autolatex_makeindex.stamp ${ADDITIONALAUXFILES} \
            ${PDFFILE} ${DVIFILE} ${PSFILE}
