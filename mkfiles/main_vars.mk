@@ -43,10 +43,16 @@ endif
 LATEX_FLAGS = 
 
 # Shell command used to launch BibTeX
-BIBTEX_CMD = bibtex
+BIBTEX_CMD = mkfiles/scripts/rubibtex.utf8
 
 # bibtex flags
 BIBTEX_FLAGS =
+
+# Shell command used to fix BibTeX files
+FIX_BBL_CMD = mkfiles/scripts/fixbbl.py
+
+# Check if has bibtex citation
+HAS_BIBTEX_CITATION_CMD = mkfiles/scripts/has_bibtex_citation
 
 # Shell command used to translate DVI to PS
 DVIPS_CMD = dvips
@@ -96,6 +102,7 @@ ADDITIONALAUXFILES = $(addsuffix .aux, $(basename ${ADDITIONALTEXFILES}))
 TEXFILES = ${TEXFILE} ${ADDITIONALTEXFILES}
 BIBFILES = $(shell find . -name "*.bib")
 STYFILES = $(shell find . -name "*.sty" -o -name "*.cls")
+EMACSFILES = $(shell find . -name "*.rel")
 
 TMPIMAGES =
 IMAGES =
@@ -103,15 +110,24 @@ SOURCE_IMAGES =
 
 MAKEFILE_FILENAME = Makefile
 
-TMPFILES = autolatex_bibtex.stamp ${AUXFILE} *.log ${BBLFILE} *.blg \
-	   *.cb *.toc *.out *.lof *.lot *.los \
-           *.lom *.tmp *.loa ${IDXFILE} *.ilg ${INDFILE} \
-           *.mtc *.mtc[0-9] *.mtc[0-9][0-9] *.bmt *.thlodef \
-	   $(shell find . -name "auto") \
-           autolatex_makeindex.stamp ${ADDITIONALAUXFILES} \
-           ${PDFFILE} ${DVIFILE} ${PSFILE}
+#TMPFILES = autolatex_bibtex.stamp ${AUXFILE} *.log ${BBLFILE} *.blg \
+#	   *.cb *.toc *.out *.lof *.lot *.los \
+#           *.lom *.tmp *.loa ${IDXFILE} *.ilg ${INDFILE} \
+#           *.mtc *.mtc[0-9] *.mtc[0-9][0-9] *.bmt *.thlodef \
+#	   $(shell find . -name "auto") \
+#           autolatex_makeindex.stamp ${ADDITIONALAUXFILES} \
+#           ${PDFFILE} ${DVIFILE} ${PSFILE}
 
-DESINTEGRABLEFILES = ${PRIVATE_IMAGES} ${PRIVATE_TMPIMAGES} ${BACKUPFILES} ${MAKEFILE_FILENAME}
+TMPFILES =  bibtex.stamp ${AUXFILE} *.log ${BBLFILE} *.blg \
+	    *.cb *.toc *.out *.lof *.lot *.los *.fot \
+	    *.lom *.tmp *.loa ${IDXFILE} *.ilg ${INDFILE} \
+	    *.mtc *.mtc[0-9] *.mtc[0-9][0-9] *.bmt *.thlodef \
+	    *.thm \
+	    ${ADDITIONALAUXFILES} \
+	    ${PDFFILE} ${DVIFILE} ${PSFILE}
+
+# DESINTEGRABLEFILES = ${PRIVATE_IMAGES} ${PRIVATE_TMPIMAGES} ${BACKUPFILES} ${MAKEFILE_FILENAME}
+DESINTEGRABLEFILES = ${PRIVATE_IMAGES} ${PRIVATE_TMPIMAGES} ${BACKUPFILES} ${EMACSFILES}
 
 BACKUPFILES = $(shell find . -name "*~") \
 	      $(shell find . -name "*.bak") \

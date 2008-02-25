@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 
-# autolatex - autolatex_has_bibtex_citation
+# has_bibtex_citation
 # Copyright (C) 1998-07  Stephane Galland <galland@arakhne.org>
 #
 # This program is free software; you can redistribute it and/or modify
@@ -78,7 +78,7 @@ close(*FILE);
 @citation = sort @citation;
 my $currentDefs = join('|',@citation);
 my $changed = undef;
-my $filename = File::Spec->catfile(dirname("$auxFile"),"autolatex_bibtex.stamp");
+my $filename = File::Spec->catfile(dirname("$auxFile"),"bibtex.stamp");
 
 if ($bibdatastyle) {
 

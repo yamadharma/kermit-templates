@@ -5,9 +5,9 @@ ifneq ("-${MAKEINDEX_STYLEFILE}","-")
 MAKEINDEX_FLAGS += -s "${MAKEINDEX_STYLEFILE}"
 endif
 
-.PHONY:: all view gen_doc bibtex makeindex clean cleanall images showimages showpath showvars update commit
+#.PHONY:: all view gen_doc bibtex makeindex clean cleanall images showimages showpath showvars update commit
 
-all:: gen_doc
+#all:: gen_doc
 
 ifeq ("-${LATEX_GENERATION_PROCEDURE}","-dvi")
 gen_doc:: ${DVIFILE}
@@ -63,7 +63,7 @@ endif
 ${COMPILATION_TARGET_FILE}:: ${TEXFILES} ${PRIVATE_IMAGES} ${BIBFILES} ${MAKEINDEX_STYLEFILE} ${STYFILES}
 	@ ${LATEX_CMD} ${LATEX_DRAFT_FLAGS} ${LATEX_FLAGS} ${FILE} && \
 	  unset COMPBIBTEX && \
-	  if autolatex_has_bibtex_citation "${TEXFILE}" "${AUXFILE}" "${BBLFILE}" ${BIBFILES}; then \
+	  if "${HAS_BIBTEX_CITATION_CMD}" "${TEXFILE}" "${AUXFILE}" "${BBLFILE}" ${BIBFILES}; then \
 	    COMPBIBTEX="yes"; \
 	  fi && \
 	  unset COMPMAKEINDEX && \
@@ -86,8 +86,9 @@ ${COMPILATION_TARGET_FILE}:: ${TEXFILES} ${PRIVATE_IMAGES} ${BIBFILES} ${MAKEIND
 
 ${BBLFILE}: ${BIBFILES} ${TEXFILES} ${PRIVATE_IMAGES}
 	@ ${TOUCH_CMD} ${BBLFILE} && \
-          ${LATEX_CMD} ${LATEX_DRAFT_FLAGS} ${LATEX_FLAGS} ${FILE} && \
-          ${BIBTEX_CMD} ${BIBTEX_FLAGS} ${FILE}
+	  ${LATEX_CMD} ${LATEX_DRAFT_FLAGS} ${LATEX_FLAGS} ${FILE} && \
+	  ${BIBTEX_CMD} ${BIBTEX_FLAGS} ${FILE} \
+	  ${FIX_BBL_CMD} ${BBLFILE}
 
 ${IDXFILE}: ${TEXFILES} ${PRIVATE_IMAGES}
 	@ ${TOUCH_CMD} ${IDXFILE} && \
