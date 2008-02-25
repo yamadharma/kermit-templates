@@ -85,7 +85,7 @@ ECHO_CMD = mkfiles/scripts/echo
 ECHO_ERR_CMD = mkfiles/scripts/echo_err
 
 # Program that permits to find a file
-FIND_CMD = autolatex_find
+FIND_CMD = mkfiles/scripts/script_find
 
 #-----------------------------------
 #----------- DO NOT CHANGE BELOW
@@ -168,4 +168,4 @@ LOADED_TRANSLATORS =
 isTranslatorLoaded = $(if $(filter $1,${LOADED_TRANSLATORS}),true,false)
 
 # Replies the mkfile of a translator.
-getTranslatorMkfile = $(if ${TRANSLATOR_MKFILE_$1}, ${TRANSLATOR_MKFILE_$1}, $1.mk)
+getTranslatorMkfile = $(if ${TRANSLATOR_MKFILE_$1}, ${TRANSLATOR_MKFILE_$1}, mkfiles/$1.mk)
