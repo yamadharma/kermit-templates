@@ -1,4 +1,20 @@
-# dia2pdf.mk
+# autolatex - dia2pdf.mk
+# Copyright (C) 1998-07  Stephane Galland <galland@arakhne.org>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; see the file COPYING.  If not, write to
+# the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+# Boston, MA 02111-1307, USA.
 
 ifeq ("$(call isTranslatorLoaded,dia2pdf)","false")
 
@@ -68,12 +84,12 @@ endif
 
 # Compile the convertion commands
 ifeq ("${DIA2EPS_OUTPUT_STDOUT}","yes")
-DIA2EPS_SHELL_CMD = LANG="C" $(DIA2EPS_BIN) $(DIA2EPS_FLAGS) $(DIA2EPS_INPUT_FLAGS_EX) $(DIA2EPS_POST_FLAGS) > "$@"
+DIA2EPS_SHELL_CMD = $(DIA2EPS_BIN) $(DIA2EPS_FLAGS) $(DIA2EPS_INPUT_FLAGS_EX) $(DIA2EPS_POST_FLAGS) > "$@"
 else
 ifeq ("${DIA2EPS_OUTPUT_INPUT}","yes")
-DIA2EPS_SHELL_CMD = LANG="C" $(DIA2EPS_BIN) $(DIA2EPS_FLAGS) $(DIA2EPS_OUTPUT_FLAGS_EX) $(DIA2EPS_INPUT_FLAGS_EX) $(DIA2EPS_POST_FLAGS)
+DIA2EPS_SHELL_CMD = $(DIA2EPS_BIN) $(DIA2EPS_FLAGS) $(DIA2EPS_OUTPUT_FLAGS_EX) $(DIA2EPS_INPUT_FLAGS_EX) $(DIA2EPS_POST_FLAGS)
 else
-DIA2EPS_SHELL_CMD = LANG="C" $(DIA2EPS_BIN) $(DIA2EPS_FLAGS) $(DIA2EPS_INPUT_FLAGS_EX) $(DIA2EPS_OUTPUT_FLAGS_EX) $(DIA2EPS_POST_FLAGS)
+DIA2EPS_SHELL_CMD = $(DIA2EPS_BIN) $(DIA2EPS_FLAGS) $(DIA2EPS_INPUT_FLAGS_EX) $(DIA2EPS_OUTPUT_FLAGS_EX) $(DIA2EPS_POST_FLAGS)
 endif
 endif
 
