@@ -5,8 +5,40 @@
 #-----------------------------------
 
 # Update the makeindex flags with the style file
+ifeq ("${MAKEINDEX_CMD}","makeindex")
 ifneq ("-${MAKEINDEX_STYLEFILE}","-")
-MAKEINDEX_FLAGS += -s "${MAKEINDEX_STYLEFILE}"
+    MAKEINDEX_FLAGS += -s "${MAKEINDEX_STYLEFILE}"
+endif
+else
+    MAKEINDEX_FLAGS += -o ${INDFILE} "${MAKEINDEX_STYLEFILE}"
+endif
+
+ifeq ("${MAKEINDEX_CMD}","makeindex")
+    MAKEINDEX_FULL_CMD = ${MAKEINDEX_CMD} ${MAKEINDEX_FLAGS} ${IDXFILE}
+else
+ifeq ("${MAKEINDEX_CMD}","xindy")
+    MAKEINDEX_FULL_CMD = ${TEX2XINDY} < ${IDXFILE} > index.raw ; ${MAKEINDEX_CMD} ${MAKEINDEX_FLAGS} index.raw
+endif
+endif
+
+TEX4HT_MAKEINDEX_FULL_CMD = tex '\def\filename{{default}{idx}{4dx}{ind}} \input  idxmake.4ht';	makeindex -o default.ind default.4dx
+
+
+# Update the glossary flags with the style file
+ifeq ("${MAKEGLOS_CMD}","makeindex")
+ifneq ("-${MAKEGLOS_STYLEFILE}","-")
+    MAKEGLOS_FLAGS += -s "${MAKEGLOS_STYLEFILE}"
+endif
+else
+    MAKEIGLOS_FLAGS += -o ${GLSFILE} "${MAKEGLOS_STYLEFILE}"
+endif
+
+ifeq ("${MAKEGLOS_CMD}","makeindex")
+    MAKEGLOS_FULL_CMD = ${MAKEGLOS_CMD} ${MAKEGLOS_FLAGS} -o ${GLSFILE}  -t ${GLGFILE} ${GLOFILE}
+else
+ifeq ("${MAKEGLOS_CMD}","xindy")
+    MAKEGLOS_FULL_CMD = ${TEX2XINDY} < ${GLOFILE} > glossary.raw ; ${MAKEGLOS_CMD} ${MAKEINDEX_FLAGS} -t ${GLGFILE} glossary.raw
+endif
 endif
 
 #.PHONY:: all view gen_doc bibtex makeindex clean cleanall images showimages showpath showvars update commit
@@ -29,6 +61,7 @@ makeindex:: ${INDFILE}
 
 clean::
 	@ ${RM} ${TMPFILES}
+	@ if [ -d "${TEX4HT_TEX_OUT_DIR}" ]; then ${RM} -rf ${TEX4HT_TEX_OUT_DIR} ; fi
 
 cleanall:: clean
 	@ ${RM} ${DESINTEGRABLEFILES}
@@ -64,6 +97,12 @@ else
 	@ ${SCM_COMMIT_CMD}
 endif
 
+VARIABLES::
+	if [ -f "VARIABLES" ]; then rm VARIABLES; fi
+	@ ${ECHO_CMD} "HTML_EXT="${HTML_EXT} >> VARIABLES
+	@ ${ECHO_CMD} "TEX4HT_TEX_OUT_DIR="${TEX4HT_TEX_OUT_DIR} >> VARIABLES
+	@ ${ECHO_CMD} "SRC_DIR="${SRC_DIR} >> VARIABLES
+
 ${COMPILATION_TARGET_FILE}:: ${TEXFILES} ${PRIVATE_IMAGES} ${BIBFILES} ${MAKEINDEX_STYLEFILE} ${STYFILES}
 	@ ${LATEX_CMD} ${LATEX_DRAFT_FLAGS} ${LATEX_FLAGS} ${FILE} && \
 	  unset COMPBIBTEX && \
@@ -74,26 +113,53 @@ ${COMPILATION_TARGET_FILE}:: ${TEXFILES} ${PRIVATE_IMAGES} ${BIBFILES} ${MAKEIND
 	  if ${HAS_INDEX_CMD} "${IDXFILE}" "${MAKEINDEX_STYLEFILE}"; then \
 	    COMPMAKEINDEX="yes"; \
 	  fi && \
-	  if test -n "$$COMPBIBTEX" -o -n "$$CMPMAKEINDEX"; then \
+	  unset COMPMAKEGLOS && \
+	  if ${HAS_GLOS_CMD} "${GLOFILE}" "${MAKEGLOS_STYLEFILE}"; then \
+	    COMPMAKEGLOS="yes"; \
+	  fi && \
+	  if test -n "$$COMPBIBTEX" -o -n "$$CMPMAKEINDEX" -o -n "$$CMPMAKEGLOS"; then \
 	    if test -n "$$COMPBIBTEX"; then \
-	      ${BIBTEX_CMD} ${BIBTEX_FLAGS} ${FILE} && \
-	      ${FIX_BBL_CMD} ${BBLFILE} && \
-	      ${TOUCH_CMD} ${BBLFILE}; \
+	      if test -n "${MULTIPLE_BIB}"; then \
+	    	for i in ${MULTIPLE_BIB_FILES}; do \
+	    	  ${BIBTEX_CMD} ${BIBTEX_FLAGS} $$i && \
+	          ${FIX_BBL_CMD}  $$i.bbl && \
+	          ${TOUCH_CMD} $$i.bbl; \
+	        done \
+	      else \
+	    	  ${BIBTEX_CMD} ${BIBTEX_FLAGS} ${FILE} && \
+	          ${FIX_BBL_CMD} ${BBLFILE} && \
+	          ${TOUCH_CMD} ${BBLFILE}; \
+	      fi ; \
 	    fi && \
 	    if test -n "$$COMPMAKEINDEX"; then \
-	      ${MAKEINDEX_CMD} ${MAKEINDEX_FLAGS} ${IDXFILE} && \
+	      ${MAKEINDEX_FULL_CMD} && \
 	      ${TOUCH_CMD} ${INDFILE}; \
 	    fi && \
 	    ${LATEX_CMD} ${LATEX_DRAFT_FLAGS} ${LATEX_FLAGS} ${FILE}; \
+	    if test -n "$$COMPMAKEGLOS"; then \
+	      ${MAKEGLOS_FULL_CMD} && \
+	      ${TOUCH_CMD} ${GLSFILE}; \
+	    fi ; \
 	  fi && \
 	  ${LATEX_CMD} ${LATEX_DRAFT_FLAGS} ${LATEX_FLAGS} ${FILE} && \
 	  ${LATEX_CMD} ${LATEX_FLAGS} ${FILE}
 
+
+ifdef HAS_MULTIPLE_BIB
+$(BBLFILE): ${BIBFILES} ${TEXFILES} ${PRIVATE_IMAGES}
+	${LATEX_CMD} ${LATEX_DRAFT_FLAGS} ${LATEX_FLAGS} ${FILE} && \
+	for i in ${MULTIPLE_BIB_FILES}; do \
+	  ${BIBTEX_CMD} ${BIBTEX_FLAGS} $$i && \
+	  ${FIX_BBL_CMD}  $$i.bbl && \
+	  ${TOUCH_CMD} $$i.bbl; \
+	done
+else
 ${BBLFILE}: ${BIBFILES} ${TEXFILES} ${PRIVATE_IMAGES}
 	@ ${TOUCH_CMD} ${BBLFILE} && \
 	  ${LATEX_CMD} ${LATEX_DRAFT_FLAGS} ${LATEX_FLAGS} ${FILE} && \
 	  ${BIBTEX_CMD} ${BIBTEX_FLAGS} ${FILE} && \
 	  ${FIX_BBL_CMD} ${BBLFILE}
+endif
 
 ${IDXFILE}: ${TEXFILES} ${PRIVATE_IMAGES}
 	@ ${TOUCH_CMD} ${IDXFILE} && \
@@ -101,7 +167,15 @@ ${IDXFILE}: ${TEXFILES} ${PRIVATE_IMAGES}
 
 ${INDFILE}: ${IDXFILE}
 	@ ${TOUCH_CMD} ${INDFILE} && \
-          ${MAKEINDEX_CMD} ${MAKEINDEX_FLAGS} ${IDXFILE}
+          ${MAKEINDEX_FULL_CMD}
+
+${GLOFILE}: ${TEXFILES} ${PRIVATE_IMAGES}
+	@ ${TOUCH_CMD} ${GLOFILE} && \
+          ${LATEX_CMD} ${LATEX_DRAFT_FLAGS} ${LATEX_FLAGS} ${FILE}
+
+${GLSFILE}: ${GLOFILE}
+	@ ${TOUCH_CMD} ${GLSFILE} && \
+          ${MAKEGLOS_FULL_CMD}
 
 # Additional rules for old LaTeX compilation procedure
 ifeq ("-${LATEX_GENERATION_PROCEDURE}","-ps")
@@ -117,3 +191,54 @@ ${PDFFILE}: ${PSFILE}
 endif
 endif
 
+html:: ${TEXFILES} ${PRIVATE_IMAGES} ${BIBFILES} ${MAKEINDEX_STYLEFILE} ${STYFILES} VARIABLES
+	if [ ! -d "${TEX4HT_TEX_OUT_DIR}" ] ; then mkdir -p ${TEX4HT_TEX_OUT_DIR} ; fi
+	@ ${TEX4HT_TEX_CMD} ${TEX4HT_TEX_ARG_4} '\makeatletter\def\HCode{\futurelet\HCode\HChar}\def\HChar{\ifx"\HCode\def\HCode"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.{\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname tex4ht\endcsname{#1,xhtml}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode '${TEX4HT_TEX_ARG_1}'.a.b.c.\input ' ${FILE}
+	${TEX4HT_TEX_POST_CMD}
+	  unset COMPBIBTEX && \
+	  if "${HAS_BIBTEX_CITATION_CMD}" "${TEXFILE}" "${AUXFILE}" "${BBLFILE}" ${BIBFILES}; then \
+	    COMPBIBTEX="yes"; \
+	  fi && \
+	  unset COMPMAKEINDEX && \
+	  if ${HAS_INDEX_CMD} "${IDXFILE}" "${MAKEINDEX_STYLEFILE}"; then \
+	    COMPMAKEINDEX="yes"; \
+	  fi && \
+	  unset COMPMAKEGLOS && \
+	  if ${HAS_GLOS_CMD} "${GLOFILE}" "${MAKEGLOS_STYLEFILE}"; then \
+	    COMPMAKEGLOS="yes"; \
+	  fi && \
+	  if test -n "$$COMPBIBTEX" -o -n "$$CMPMAKEINDEX" -o -n "$$CMPMAKEGLOS"; then \
+	    if test -n "$$COMPBIBTEX"; then \
+	      if test -n "${MULTIPLE_BIB}"; then \
+	    	for i in ${MULTIPLE_BIB_FILES}; do \
+	    	  ${BIBTEX_CMD} ${BIBTEX_FLAGS} $$i && \
+	          ${FIX_BBL_CMD}  $$i.bbl && \
+	          ${TOUCH_CMD} $$i.bbl; \
+	        done \
+	      else \
+	    	  ${BIBTEX_CMD} ${BIBTEX_FLAGS} ${FILE} && \
+	          ${FIX_BBL_CMD} ${BBLFILE} && \
+	          ${TOUCH_CMD} ${BBLFILE}; \
+	      fi ; \
+	    fi && \
+	    if test -n "$$COMPMAKEINDEX"; then \
+	      ${TEX4HT_MAKEINDEX_FULL_CMD} && \
+	      ${TOUCH_CMD} ${INDFILE}; \
+	    fi && \
+	    ${TEX4HT_TEX_CMD} ${TEX4HT_TEX_ARG_4} '\makeatletter\def\HCode{\futurelet\HCode\HChar}\def\HChar{\ifx"\HCode\def\HCode"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.{\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname tex4ht\endcsname{#1,xhtml}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode '${TEX4HT_TEX_ARG_1}'.a.b.c.\input ' ${FILE} ; \
+	    ${TEX4HT_TEX_POST_CMD} ; \
+	    if test -n "$$COMPMAKEGLOS"; then \
+	      ${MAKEGLOS_FULL_CMD} && \
+	      ${TOUCH_CMD} ${GLSFILE}; \
+	    fi ; \
+	  fi && \
+	${TEX4HT_TEX_CMD} ${TEX4HT_TEX_ARG_4} '\makeatletter\def\HCode{\futurelet\HCode\HChar}\def\HChar{\ifx"\HCode\def\HCode"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.{\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname tex4ht\endcsname{#1,xhtml}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode '${TEX4HT_TEX_ARG_1}'.a.b.c.\input ' ${FILE}
+	${TEX4HT_TEX_POST_CMD}
+	${TEX4HT_TEX_CMD} ${TEX4HT_TEX_ARG_4} '\makeatletter\def\HCode{\futurelet\HCode\HChar}\def\HChar{\ifx"\HCode\def\HCode"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.{\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname tex4ht\endcsname{#1,xhtml}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode '${TEX4HT_TEX_ARG_1}'.a.b.c.\input ' ${FILE}
+	${TEX4HT_TEX_POST_CMD} 
+	${TEX4HT_TEX_CMD} ${TEX4HT_TEX_ARG_4} '\makeatletter\def\HCode{\futurelet\HCode\HChar}\def\HChar{\ifx"\HCode\def\HCode"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.{\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname tex4ht\endcsname{#1,xhtml}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode '${TEX4HT_TEX_ARG_1}'.a.b.c.\input ' ${FILE}
+	${TEX4HT_TEX_POST_CMD} 
+	tex4ht -f/${FILE}  -i~/tex4ht.dir/texmf/tex4ht/ht-fonts/ ${TEX4HT_TEX_ARG_2}
+	t4ht -f/${FILE} ${TEX4HT_TEX_ARG_3} ${TEX4HT_TEX_ARG_5}
+	${TEX4HT_POST_CMD}
+	${TEX4HT_FINAL_POST_CMD}

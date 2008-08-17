@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 
-# has_index
+# has_glossary
 
 use strict;
 
@@ -9,10 +9,10 @@ use strict;
 use File::Basename;
 use File::Spec;
 
-my @indexes = ();
+my @gloses = ();
 my $changed = undef;
 my $currentDefs = '';
-my $filename = File::Spec->catfile(dirname("$ARGV[0]"),"makeindex.stamp");
+my $filename = File::Spec->catfile(dirname("$ARGV[0]"),"makeglossary.stamp");
 
 #use Data::Dumper;
 #die(Dumper(\@ARGV));
@@ -22,15 +22,15 @@ if ( -f "$ARGV[0]") {
 	open(*FILE, "< $ARGV[0]") or die("$ARGV[0]: $!\n");
 	while (my $line = <FILE>) {
 		$line =~ s/%.*$//;
-		if ($line =~ /\\indexentry/) {
+		if ($line =~ /\\glossaryentry/) {
 			$line =~ s/\s+//g;
-			push @indexes, "$line";
+			push @gloses, "$line";
 		}
 	}
 	close(*FILE);
 
-	@indexes = sort @indexes;
-	$currentDefs = join('|',@indexes);
+	@gloses = sort @gloses;
+	$currentDefs = join('|',@gloses);
 
 	if ( -f "$filename") {
 		open(*FILE,"< $filename") or die("$filename: $!\n");

@@ -1,13 +1,22 @@
-# Преамбула
+#{{{ Преамбула
+
 include mkfiles/preamble.mk
 
-# Основные переменные
+#}}}
+#{{{ Основные переменные
+
 include mkfiles/main_vars.mk
 
-# Правиала преобразований
+#}}}
+#{{{ Правила преобразований
+
 include mkfiles/dia2pdf.mk
 
-# Основные правила
+#}}}
+#{{{ Основные правила
+
 include mkfiles/main_rules.mk
+
+#}}}
 
 

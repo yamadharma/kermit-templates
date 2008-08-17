@@ -77,7 +77,7 @@ s/\\IeC {\\cyrya }/ÿ/g
 
 bibtex $1
 
-iconv -fcp1251 -tutf-8 default.bbl > default.bbl.tmp
-mv default.bbl.tmp default.bbl
+iconv -fcp1251 -tutf-8 $1.bbl > $1.bbl.tmp
+mv $1.bbl.tmp $1.bbl
 
 mv -f $TEMP/$1.aux .
