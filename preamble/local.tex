@@ -1,0 +1,172 @@
+%%%
+
+
+\iftexht
+\else
+
+\geometry{a4paper}
+\geometry{hmargin={25mm,25mm},vmargin={40mm,25mm}}
+% \geometry{hmargin={25mm,25mm},vmargin={25mm,25mm}}
+\geometry{twosideshift=0dd}
+\geometry{marginparwidth=0dd,marginparsep=0dd}
+% \geometry{headheight=4mm,headsep=28dd}
+% \geometry{footskip=1mm}
+
+% \fancyhead[CE]{\small \scshape Д.\,С. Кулябов, А.\,В. Королькова}%
+% \fancyhead[CO]{\small  \scshape Введение в формальные методы описания бизнес-процессов}%
+%\fancyhead[CE]{\small Д.\,С. Кулябов, А.\,В. Королькова Введение в формальные методы\ldots}%
+%\fancyhead[CO]{\small \rightmark }%
+% Введение в формальные методы описания бизнес-процессов
+
+\fi
+
+\iftexht
+\else
+
+\makeatletter
+
+\renewcommand{\@listI}{%
+%\leftmargin=\leftmargini
+\rightmargin=0pt
+\labelsep=5pt
+\labelwidth=20pt
+\itemindent=0pt
+\listparindent=0pt
+%\topsep=8pt plus 2pt minus 4pt
+\topsep=0pt plus 2pt 
+\partopsep=2pt plus 1pt minus 1pt
+\parsep=0pt plus 1pt
+\itemsep=\parsep}
+
+\makeatother
+
+\usepackage{ifthen}
+
+\ifthenelse{\isundefined{\chapterFontSize}}{}{\renewcommand{\chapterFontSize}{\Large}}
+\ifthenelse{\isundefined{\sectionFontSize}}{}{\renewcommand{\sectionFontSize}{\large}}
+\ifthenelse{\isundefined{\subsectionFontSize}}{}{\renewcommand{\subsectionFontSize}{\normalsize}}
+
+% \hypersetup{bookmarks=false,bookmarksopen=false}
+% \hypersetup{pdfhighlight=/I}
+% \hypersetup{pdftitle={Введение в формальные методы описания бизнес-процессов}}
+% \hypersetup{hyperfigures=true}
+
+\makeatletter
+\renewenvironment{theindex}{%
+%        \edef\indexname{\the\@nameuse{idxtitle@\@indextype}}%
+        \if@twocolumn
+            \@restonecolfalse
+        \else
+            \@restonecoltrue
+        \fi
+        \columnseprule \z@
+        \columnsep 35\p@
+        \twocolumn[%
+            \@makeschapterhead{\indexname}%
+            \ifx\index@prologue\@empty\else
+                \index@prologue
+                \bigskip
+            \fi
+        ]%
+        \@mkboth{\indexname}%
+                {\indexname}%
+%        \thispagestyle{plain}%
+	\addcontentsline{toc}{chapter}{\indexname}
+        \parindent\z@
+        \parskip\z@ \@plus .3\p@\relax
+        \let\item\@idxitem
+    }{%
+        \if@restonecol
+            \onecolumn
+        \else
+            \clearpage
+        \fi
+}
+
+\renewcommand\listoffigures{%
+    \addcontentsline{toc}{chapter}{\listfigurename}
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\listfigurename
+      \@mkboth{\listfigurename}%
+              {\listfigurename}}%
+    \@starttoc{lof}%
+    \if@restonecol\twocolumn\fi
+    }
+
+\renewcommand\listoftables{%
+    \addcontentsline{toc}{chapter}{\listtablename}
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\listtablename
+      \@mkboth{%
+          \listtablename}{\listtablename}}%
+    \@starttoc{lot}%
+    \if@restonecol\twocolumn\fi
+    }
+
+%    \def\chaptermark#1{%
+%      \markboth {%
+%        \ifnum \c@secnumdepth >\m@ne
+%            \@chapapp\ \thechapter. \ %
+%        \fi
+%        #1}{\ifnum \c@secnumdepth >\m@ne
+%            \@chapapp\ \thechapter. \ %
+%        \fi  #1}}%
+
+%    \def\chaptermark#1{%
+%      \markboth{\@chapapp\ \thechapter. \ #1}{}
+%      \markright{\@chapapp\ \thechapter. \ #1}}
+
+
+%    \def\sectionmark#1{%
+%      \markright {%
+%        \ifnum \c@secnumdepth >\z@
+%          \thesection. \ %
+%        \fi
+%        #1}}
+%    \def\sectionmark#1{\markboth{\leftmark}{\rightmark}}
+
+%    \def\sectionmark#1{%
+%      \markboth{\leftmark}{}%
+%         \markright{\thesection.\ #1}}
+
+\makeatother
+
+\fi
+
+\def\bibnamefont{\textit}
+
+\captionsetup{font={small}}
+% \captionsetup{textfont={bf}}
+
+%\renewpagestyle{plain}[\small]{
+%  \sethead [\textbf{\thepage}]
+%           [\textsl{\chaptertitle}]
+%           [[\toptitlemarks\thesection--\bottitlemarks\thesection]
+%           {\toptitlemarks\thesection--\bottitlemarks\thesection]}
+%           {\textsl{\sectiontitle}}
+%           {\textbf{\thepage}}}
+
+% for subfigure
+\makeatletter
+\renewcommand{\thesubfigure}{\@asbuk\c@subfigure}
+\makeatother
+
+\renewcommand{\glodelim}{\quad{}}
+
+% \pagestyle{empty}
+
+\newcommand{\booktitle}{Введение в формальные методы описания бизнес-процессов}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../default"
+%%% coding: utf-8-unix
+%%% End: 

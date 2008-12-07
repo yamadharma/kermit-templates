@@ -1,0 +1,26 @@
+%%%
+
+\input preamble/class
+
+\newif\iftexht\texhtfalse
+\makeatletter
+\@ifpackageloaded{tex4ht}{\texhttrue}{\texhtfalse}
+\makeatother
+
+\usepackage{ifxetex}
+
+\ifxetex
+    \input preamble/xelatex
+\else
+    \input preamble/latex
+\fi
+
+\input preamble/common
+
+\input preamble/local
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "default"
+%%% coding: utf-8-unix
+%%% End:

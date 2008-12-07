@@ -1,0 +1,80 @@
+(require "styles/makeindex.xdy")
+; (require "base/latex.xdy")
+
+(require "lang/russian/utf8-lang.xdy")
+(require "lang/english/utf8-lang.xdy")
+
+
+(use-rule-set :run 0
+	      :rule-set ("en-alphabetize" "en-ignore-special" "ru-alphabetize" "ru-ignore-special"))
+(use-rule-set :run 1
+	      :rule-set ("en-resolve-diacritics" "en-ignore-special" "ru-resolve-diacritics" "ru-ignore-special"))
+(use-rule-set :run 2
+	      :rule-set ("en-resolve-case" "en-ignore-special" "ru-resolve-case" "ru-ignore-special"))
+(use-rule-set :run 3
+	      :rule-set ("en-resolve-special" "ru-resolve-special"))
+
+(define-location-class "page-numbers" ("arabic-numbers"))
+(define-attributes (("definition" "usage")))
+
+(define-attributes ("default"))
+
+;(markup-index :open  "~n\begin{theindex}~n"
+;              :close "~n\end{theindex}~n"
+;              :tree)
+
+(markup-index :open
+"\begin{theindex}
+  \providecommand*\lettergroupDefault[1]{}
+  \providecommand*\lettergroup[1]{%
+      \par\textbf{#1}\par
+      \nopagebreak
+  }
+"
+	      :close "~n~n\end{theindex}~n"
+	      :tree)
+
+
+;(markup-locref :class "page-numbers" :attr "definition"
+;               :open  "{\bf " :close "}")
+
+
+(markup-locclass-list :open "\quad{}")
+(markup-locref-list :sep ", ")
+
+(markup-indexentry :open "~n  \item "           :depth 0)
+(markup-indexentry :open "~n    \subitem "      :depth 1)
+(markup-indexentry :open "~n      \subsubitem " :depth 2)
+
+
+;(define-letter-groups
+;  ("a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m"
+;   "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z"
+;   "к" "л" "м" "н" "о"
+;   )
+;)
+
+(markup-letter-group-list :sep "~n~n  \indexspace~n")
+
+;(markup-letter-group :open-head "~n~n  \textbf{" :close-head "}~n"
+;                     :capitalize)
+
+;(markup-letter-group :open-head "~n~n  \lettergroup" :close-head "~n"
+;                     :capitalize)
+
+(markup-letter-group :open-head "~n  \lettergroupDefault{" :close-head "}"
+		     :group "default")
+(markup-letter-group :open-head "~n  \lettergroup{" :close-head "}")
+
+
+;(markup-index :open  "\begin{description}"
+;              :close "~n\end{description}~n"
+;              :tree)
+;(markup-letter-group-list :sep "")
+;(markup-indexentry :open "~n  \item[" :depth 0)
+;(markup-indexentry :open "] "      :depth 1)
+;(markup-locclass-list :open " % " :sep ", ")
+
+;; Local Variables:
+;; mode: lisp
+;; End:

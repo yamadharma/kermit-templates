@@ -1,0 +1,42 @@
+\usepackage{amssymb}%
+\usepackage{amsmath}%
+\usepackage[amsmath,thmmarks]{ntheorem}
+
+{
+  \theoremstyle{definition}
+  % FIXME: dirty hack      
+  \theorembodyfont{\normalfont}
+  \def\ExampleName{Пример}
+  \newtheorem{Example}{Пример}
+  % FIXME: dirty hack    
+  \renewtheorem*{Example*}{Пример}
+%  \@addtoreset{Example}{title}
+}
+
+{
+  \theoremstyle{definition}
+  % FIXME: dirty hack    
+  \theorembodyfont{\normalfont}  
+  \def\DefName{Def}
+  \newtheorem{Def}{Определение}
+  % FIXME: dirty hack    
+  \renewtheorem*{Def*}{Определение}
+%  \@addtoreset{Def}{title}
+}
+
+%\makeatletter
+%\def\@@wrglossary{%
+%\protected@write\jobname-js1.tex{%
+%\string\glossaryentry{\@s@rt @{%
+% \string\glosslabel{\@glo@l@bel}{\@glo@n@me}}\@descr
+% \string\relax|\@f@rm@t[\@glo@num]}{\@@glo@num}}
+%}
+%\makeatother
+
+\setcounter{tocdepth}{5}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../default"
+%%% coding: utf-8-unix
+%%% End: 
