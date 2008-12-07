@@ -1,0 +1,57 @@
+
+% Третья глава работы 
+\chapter{Название главы}
+\label{chap3}
+
+\section{Название секции}
+\label{chap3:sec1}
+
+% Пример оформления листинга
+% 
+Для этого на сервере был запущен виртуальный сервер 
+\verb|xserv|, с IP-адресом \verb|10.130.64.15|:
+
+\begin{verbatim}
+  vzctl create 3006  --os template gentoo-x86
+  vzctl set 3006  --name /xserv  --save
+  vzctl set 3006  --nameserver 10.130.64.15
+  vzctl start 3006
+  vzctl enter 3006
+\end{verbatim}
+Запускаем ssh:
+\begin{verbatim}
+  /etc/init.d/sshd start 
+\end{verbatim}
+Добавим запуск демона ssh по умолчанию:
+\begin{verbatim}
+  rc-update add sshd default
+\end{verbatim}
+
+Далее запускаем NX-сервер:
+\begin{verbatim}
+  nxserver --start
+\end{verbatim}
+Если все в порядке, появляется сообщение:
+\begin{verbatim}
+  NX> 100 NXSERVER~--- Version 1.4.0-44 OS (GPL)
+        NX> 122 Service started
+        NX> 999 Bye
+\end{verbatim}
+
+ %%
+
+\section{Название секции}
+\label{chap3:sec2}
+
+Текст.
+
+\section{Название секции}
+\label{chap3:sec3}
+
+Текст.
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% TeX-master: "../default"
+%%% End:

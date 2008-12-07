@@ -1,0 +1,51 @@
+% Подключение файла с преамбулой
+\input preamble.tex
+
+% Путь к рисункам
+\graphicspath{{images/}}
+
+
+\begin{document}
+\renewcommand{\bibname}{Список источников}
+
+% Подключение файла с титульным листом
+\include{title/title} %
+
+% Отображение содержания работы
+\tableofcontents
+
+% Подключение файлов с текстом работы:
+   % Подключение файла со списком сокращений
+   \include{src/sokr}%
+
+   % Подключение файла с введением
+   \include{src/int}%
+
+   % Подключение файлов с главами
+   \include{src/ch01}%
+   \include{src/ch02}%
+   \include{src/ch03}%
+
+   % Подключение файла с заключением
+   \include{src/end}%
+
+   % Подключение файлов с приложениями
+   \appendix
+
+   \include{src/app01}%
+   \include{src/app02}%
+
+%%
+
+% Подключение файла с библиографией
+% \nocite{*}
+\bibliography{bib/lit-ref}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% TeX-master: t
+%%% End:
+
