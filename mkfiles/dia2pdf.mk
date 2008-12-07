@@ -43,9 +43,9 @@ include $(call getTranslatorMkfile,eps2pdf)
 endif
 
 # The commands to convert an PDF file into SVG are required
-ifeq ("$(call isTranslatorLoaded,pdf2svg)","false")
-include $(call getTranslatorMkfile,pdf2svg)
-endif
+#ifeq ("$(call isTranslatorLoaded,pdf2svg)","false")
+#include $(call getTranslatorMkfile,pdf2svg)
+#endif
 
 # Notify of the loading of this module
 LOADED_TRANSLATORS += dia2pdf
@@ -54,12 +54,12 @@ DIA_FIG = $(call launchShell, ${FIND_CMD} . -name "*.dia")
 
 EPS_DIA = $(addsuffix .eps,          $(basename ${DIA_FIG}))
 PDF_DIA = $(addsuffix .pdf,          $(basename ${DIA_FIG}))
-SVG_DIA = $(addsuffix .svg,          $(basename ${DIA_FIG}))
+# SVG_DIA = $(addsuffix .svg,          $(basename ${DIA_FIG}))
 
 SOURCE_IMAGES += ${DIA_FIG}
 TMPIMAGES     += ${EPS_DIA}
 IMAGES        += ${PDF_DIA}
-IMAGES        += ${SVG_DIA}
+# IMAGES        += ${SVG_DIA}
 
 # Compile the convertion parameters
 ifeq ("-$(findstring =,$(DIA2EPS_INPUT_FLAGS))","-")

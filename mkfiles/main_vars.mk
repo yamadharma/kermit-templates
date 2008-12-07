@@ -148,7 +148,9 @@ FIND_CMD = mkfiles/scripts/script_find
 # Convertion to HTML
 
 # HTML extenstiom
-HTML_EXT = xht
+ifeq ("${HTML_EXT}","")
+HTML_EXT = html
+endif
 
 # TeX to HTML command
 TEX4HT_TEX_CMD = latex
@@ -165,8 +167,13 @@ TEX4HT_TEX_ARG_4 =
 TEX4HT_TEX_ARG_5 = -d./${TEX4HT_TEX_OUT_DIR}/ -m644 
 
 # For MathML
+ifneq ("${HTML_MATHML}","")
+HTML_EXT = xht
 TEX4HT_TEX_ARG_1 += ,xhtml,mozilla,xht
 TEX4HT_TEX_ARG_2 += -cmozhtf
+endif
+
+
 
 ifndef TEX4HT_TEX_POST_CMD
 TEX4HT_TEX_POST_CMD = ./bin/t2_utf8.sh default.xref 

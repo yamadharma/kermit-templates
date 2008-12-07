@@ -193,7 +193,7 @@ endif
 
 html:: ${TEXFILES} ${PRIVATE_IMAGES} ${BIBFILES} ${MAKEINDEX_STYLEFILE} ${STYFILES} VARIABLES
 	if [ ! -d "${TEX4HT_TEX_OUT_DIR}" ] ; then mkdir -p ${TEX4HT_TEX_OUT_DIR} ; fi
-	@ ${TEX4HT_TEX_CMD} ${TEX4HT_TEX_ARG_4} '\makeatletter\def\HCode{\futurelet\HCode\HChar}\def\HChar{\ifx"\HCode\def\HCode"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.{\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname tex4ht\endcsname{#1,xhtml}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode '${TEX4HT_TEX_ARG_1}'.a.b.c.\input ' ${FILE}
+	@ ${TEX4HT_TEX_CMD} ${TEX4HT_TEX_ARG_4} '\makeatletter\def\HCode{\futurelet\HCode\HChar}\def\HChar{\ifx"\HCode\def\HCode"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.{\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname tex4ht\endcsname{#1,html}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode '${TEX4HT_TEX_ARG_1}'.a.b.c.\input ' ${FILE}
 	${TEX4HT_TEX_POST_CMD}
 	  unset COMPBIBTEX && \
 	  if "${HAS_BIBTEX_CITATION_CMD}" "${TEXFILE}" "${AUXFILE}" "${BBLFILE}" ${BIBFILES}; then \
@@ -225,18 +225,18 @@ html:: ${TEXFILES} ${PRIVATE_IMAGES} ${BIBFILES} ${MAKEINDEX_STYLEFILE} ${STYFIL
 	      ${TEX4HT_MAKEINDEX_FULL_CMD} && \
 	      ${TOUCH_CMD} ${INDFILE}; \
 	    fi && \
-	    ${TEX4HT_TEX_CMD} ${TEX4HT_TEX_ARG_4} '\makeatletter\def\HCode{\futurelet\HCode\HChar}\def\HChar{\ifx"\HCode\def\HCode"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.{\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname tex4ht\endcsname{#1,xhtml}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode '${TEX4HT_TEX_ARG_1}'.a.b.c.\input ' ${FILE} ; \
+	    ${TEX4HT_TEX_CMD} ${TEX4HT_TEX_ARG_4} '\makeatletter\def\HCode{\futurelet\HCode\HChar}\def\HChar{\ifx"\HCode\def\HCode"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.{\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname tex4ht\endcsname{#1,html}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode '${TEX4HT_TEX_ARG_1}'.a.b.c.\input ' ${FILE} ; \
 	    ${TEX4HT_TEX_POST_CMD} ; \
 	    if test -n "$$COMPMAKEGLOS"; then \
 	      ${MAKEGLOS_FULL_CMD} && \
 	      ${TOUCH_CMD} ${GLSFILE}; \
 	    fi ; \
 	  fi && \
-	${TEX4HT_TEX_CMD} ${TEX4HT_TEX_ARG_4} '\makeatletter\def\HCode{\futurelet\HCode\HChar}\def\HChar{\ifx"\HCode\def\HCode"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.{\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname tex4ht\endcsname{#1,xhtml}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode '${TEX4HT_TEX_ARG_1}'.a.b.c.\input ' ${FILE}
+	${TEX4HT_TEX_CMD} ${TEX4HT_TEX_ARG_4} '\makeatletter\def\HCode{\futurelet\HCode\HChar}\def\HChar{\ifx"\HCode\def\HCode"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.{\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname tex4ht\endcsname{#1,html}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode '${TEX4HT_TEX_ARG_1}'.a.b.c.\input ' ${FILE}
 	${TEX4HT_TEX_POST_CMD}
-	${TEX4HT_TEX_CMD} ${TEX4HT_TEX_ARG_4} '\makeatletter\def\HCode{\futurelet\HCode\HChar}\def\HChar{\ifx"\HCode\def\HCode"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.{\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname tex4ht\endcsname{#1,xhtml}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode '${TEX4HT_TEX_ARG_1}'.a.b.c.\input ' ${FILE}
+	${TEX4HT_TEX_CMD} ${TEX4HT_TEX_ARG_4} '\makeatletter\def\HCode{\futurelet\HCode\HChar}\def\HChar{\ifx"\HCode\def\HCode"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.{\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname tex4ht\endcsname{#1,html}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode '${TEX4HT_TEX_ARG_1}'.a.b.c.\input ' ${FILE}
 	${TEX4HT_TEX_POST_CMD} 
-	${TEX4HT_TEX_CMD} ${TEX4HT_TEX_ARG_4} '\makeatletter\def\HCode{\futurelet\HCode\HChar}\def\HChar{\ifx"\HCode\def\HCode"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.{\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname tex4ht\endcsname{#1,xhtml}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode '${TEX4HT_TEX_ARG_1}'.a.b.c.\input ' ${FILE}
+	${TEX4HT_TEX_CMD} ${TEX4HT_TEX_ARG_4} '\makeatletter\def\HCode{\futurelet\HCode\HChar}\def\HChar{\ifx"\HCode\def\HCode"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.{\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname tex4ht\endcsname{#1,html}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode '${TEX4HT_TEX_ARG_1}'.a.b.c.\input ' ${FILE}
 	${TEX4HT_TEX_POST_CMD} 
 	tex4ht -f/${FILE}  -i~/tex4ht.dir/texmf/tex4ht/ht-fonts/ ${TEX4HT_TEX_ARG_2}
 	t4ht -f/${FILE} ${TEX4HT_TEX_ARG_3} ${TEX4HT_TEX_ARG_5}

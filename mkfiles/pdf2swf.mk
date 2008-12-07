@@ -26,7 +26,7 @@ ifeq ("$(call isTranslatorLoaded,pdf2swf)","false")
 # Required synoptics of the command:
 # <binfile> <flags> <inputflags> <input.pdf> <outputflags> <output.svg>
 PDF2SWF_BIN           = pdf2swf
-PDF2SWF_FLAGS         = -z -f
+PDF2SWF_FLAGS         = --zlib 
 PDF2SWF_INPUT_FLAGS   =
 PDF2SWF_OUTPUT_FLAGS  = 
 PDF2SWF_POST_FLAGS    =
