@@ -10,10 +10,25 @@
 
 \usepackage[english,russian]{babel}
 
-% Fonts
+%{{{ Fonts
+
+%% Computer Modern Unicode fonts
+%% url: http://canopus.iacp.dvo.ru/~panov/cm-unicode/
+%% gentoo: emerge media-fonts/corefonts
+
+% setmainfont[Mapping=tex-text]{CMU Serif}
+% setsansfont{CMU Sans Serif}
+% setmonofont{CMU Typewriter Text}
+
+%% Microsoft Times + Helvetica + Courier
+%% url: http://corefonts.sourceforge.net/
+%% gentoo: emerge media-fonts/cm-unicode
+
 \setromanfont{Times New Roman}
 \setsansfont{Arial}
-\setmonofont[Scale=1]{Courier New}
+\setmonofont{Courier New}
+
+%}}}
 
 %%% Local Variables:
 %%% mode: latex
