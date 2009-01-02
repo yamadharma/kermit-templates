@@ -6,27 +6,21 @@
 \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
 \usepackage{xunicode}
 \usepackage{xltxtra}
-\usepackage{xecyr}
 
-\usepackage[english,russian]{babel}
+% \usepackage{xecyr}
+% \usepackage[english,russian]{babel}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{russian}
+\setotherlanguages{english}
 
 %{{{ Fonts
 
 %% Computer Modern Unicode fonts
-%% url: http://canopus.iacp.dvo.ru/~panov/cm-unicode/
-%% gentoo: emerge media-fonts/corefonts
-
-% setmainfont[Mapping=tex-text]{CMU Serif}
-% setsansfont{CMU Sans Serif}
-% setmonofont{CMU Typewriter Text}
+\input{preamble/font.d/cm-unicode}
 
 %% Microsoft Times + Helvetica + Courier
-%% url: http://corefonts.sourceforge.net/
-%% gentoo: emerge media-fonts/cm-unicode
-
-\setromanfont{Times New Roman}
-\setsansfont{Arial}
-\setmonofont{Courier New}
+% \input{preamble/font.d/ms-times}
 
 %}}}
 
