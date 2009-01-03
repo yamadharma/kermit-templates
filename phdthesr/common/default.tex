@@ -1,11 +1,7 @@
 % Подключение файла с преамбулой
 \input preamble.tex
 
-%% Путь к рисункам
-\graphicspath{{images/}}
-
 \begin{document}
-\renewcommand{\bibname}{Список источников}
 
 %% Подключение файла с титульным листом
 \include{title/title} %
@@ -34,6 +30,12 @@
 
 \include{src/app01}%
 \include{src/app02}%
+
+%% Список иллюстраций
+\listoffigures
+
+%% Список таблиц
+\listoftables
 
 %% Подключение файла с библиографией
 \nocite{*}
