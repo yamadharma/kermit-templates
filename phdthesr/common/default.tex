@@ -4,7 +4,7 @@
 \begin{document}
 
 %% Подключение файла с титульным листом
-\include{title/title} %
+\input{title/title} %
 
 %% Отображение содержания работы
 \tableofcontents
@@ -12,24 +12,24 @@
 %% Подключение файлов с текстом работы:
 
 %% Подключение файла со списком сокращений
-\include{src/sokr}%
+\input{src/sokr}%
 
 %% Подключение файла с введением
-\include{src/int}%
+\input{src/int}%
 
 %% Подключение файлов с главами
-\include{src/ch01}%
-\include{src/ch02}%
-\include{src/ch03}%
+\input{src/ch01}%
+\input{src/ch02}%
+\input{src/ch03}%
 
 %% Подключение файла с заключением
-\include{src/end}%
+\input{src/end}%
 
 %% Подключение файлов с приложениями
 \appendix
 
-\include{src/app01}%
-\include{src/app02}%
+\input{src/app01}%
+\input{src/app02}%
 
 %% Список иллюстраций
 \listoffigures
