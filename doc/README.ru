@@ -1,5 +1,7 @@
 project: Makefiles for LaTeX project
 url: https://launchpad.net/kermit-makefiles
+bzr: lp:kermit-makefiles
+
 
 Набор make-файлов и заготовок TeX-файлов для создания проектов.
 
