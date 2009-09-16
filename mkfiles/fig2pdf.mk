@@ -45,7 +45,7 @@ endif
 # Notify of the loading of this module
 LOADED_TRANSLATORS += fig2pdf
 
-XFIG_FIG = $(call launchShell, ${FIND_CMD} . -name "*.fig" -a -not -name "*.ltx.fig")
+XFIG_FIG = $(call launchShell, ${FIND_CMD} ${AUTO_GENERATE_IMAGE_DIRECTORY} -name "*.fig" -a -not -name "*.ltx.fig")
 
 EPS_XFIG = $(addsuffix .eps,          $(basename ${XFIG_FIG}))
 PDF_XFIG = $(addsuffix .pdf,          $(basename ${XFIG_FIG}))

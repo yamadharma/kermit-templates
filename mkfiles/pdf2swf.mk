@@ -40,7 +40,7 @@ PDF2SWF_OUTPUT_STDOUT = no
 # Notify of the loading of this module
 LOADED_TRANSLATORS += pdf2swf
 
-PDF_FIG = $(call launchShell, ${FIND_CMD} ${IMAGEDIR} -name "*.pdf")
+PDF_FIG = $(call launchShell, ${FIND_CMD} ${AUTO_GENERATE_IMAGE_DIRECTORY} -name "*.pdf")
 
 SWF_PDF = $(addsuffix .swf,          $(basename ${PDF_FIG}))
 

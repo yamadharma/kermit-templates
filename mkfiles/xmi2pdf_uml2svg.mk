@@ -45,7 +45,7 @@ endif
 # Notify of the loading of this module
 LOADED_TRANSLATORS += xmi2pdf
 
-XMI_FIG = $(call launchShell, ${FIND_CMD} . -name "*.xmi" -o -name "*.uml")
+XMI_FIG = $(call launchShell, ${FIND_CMD} ${AUTO_GENERATE_IMAGE_DIRECTORY} -name "*.xmi" -o -name "*.uml")
 
 SVG_XMI = $(addsuffix .svg,          $(basename ${XMI_FIG}))
 EPS_XMI = $(addsuffix .eps,          $(basename ${XMI_FIG}))

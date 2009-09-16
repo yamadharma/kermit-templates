@@ -1,4 +1,3 @@
-# main_vars.mk
 
 # Name of the main TeX file (without extension and path)
 FILE = default
@@ -8,6 +7,10 @@ OPEN_PDF = yes
 
 # Indicate if the images should be automatically generated
 AUTO_GENERATE_IMAGES = yes
+
+# Give the directory where to search for the images to
+# auto-generate. The path is relative to the project directory.
+AUTO_GENERATE_IMAGE_DIRECTORY = .
 
 # Indicate which generation procedure to use. One in:
 # pdf, dvi, ps, pspdf
