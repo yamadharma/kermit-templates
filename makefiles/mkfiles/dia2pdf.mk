@@ -50,7 +50,7 @@ endif
 # Notify of the loading of this module
 LOADED_TRANSLATORS += dia2pdf
 
-DIA_FIG = $(call launchShell, ${FIND_CMD} . -name "*.dia")
+DIA_FIG = $(call launchShell, ${FIND_CMD} ${AUTO_GENERATE_IMAGE_DIRECTORY} -name "*.dia")
 
 EPS_DIA = $(addsuffix .eps,          $(basename ${DIA_FIG}))
 PDF_DIA = $(addsuffix .pdf,          $(basename ${DIA_FIG}))

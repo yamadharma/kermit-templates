@@ -14,7 +14,7 @@ endif
 # Notify of the loading of this module
 LOADED_TRANSLATORS += eps2pdf_
 
-EPS_FIG = $(call launchShell, ${FIND_CMD} . -name "*.eps")
+EPS_FIG = $(call launchShell, ${FIND_CMD} ${AUTO_GENERATE_IMAGE_DIRECTORY} -name "*.eps")
 
 PDF_EPS = $(addsuffix .pdf,          $(basename ${EPS_FIG}))
 

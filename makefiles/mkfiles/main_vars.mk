@@ -1,4 +1,3 @@
-# main_vars.mk
 
 # Name of the main TeX file (without extension and path)
 FILE = default
@@ -8,6 +7,12 @@ OPEN_PDF = yes
 
 # Indicate if the images should be automatically generated
 AUTO_GENERATE_IMAGES = yes
+
+# Give the directory where to search for the images to
+# auto-generate. The path is relative to the project directory.
+ifndef AUTO_GENERATE_IMAGE_DIRECTORY
+AUTO_GENERATE_IMAGE_DIRECTORY = .
+endif
 
 # Indicate which generation procedure to use. One in:
 # pdf, dvi, ps, pspdf
@@ -24,10 +29,6 @@ SCM_UPDATE_CMD = bzr update
 
 # Shell command used to commit the document into a SCM (CVS or SVN)
 SCM_COMMIT_CMD = bzr commit
-
-ifndef IMAGEDIR
-IMAGEDIR = .
-endif
 
 # Macro format used
 # latex by default

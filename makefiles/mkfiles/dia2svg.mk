@@ -40,7 +40,7 @@ DIA2SVG_OUTPUT_STDOUT = no
 # Notify of the loading of this module
 LOADED_TRANSLATORS += dia2svg
 
-DIA_FIG = $(call launchShell, ${FIND_CMD} . -name "*.dia")
+DIA_FIG = $(call launchShell, ${FIND_CMD} ${AUTO_GENERATE_IMAGE_DIRECTORY} -name "*.dia")
 
 SVG_DIA = $(addsuffix .svg,          $(basename ${DIA_FIG}))
 

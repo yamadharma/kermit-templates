@@ -45,7 +45,7 @@ endif
 # Notify of the loading of this module
 LOADED_TRANSLATORS += svg2pdf
 
-SVG_FIG = $(call launchShell, ${FIND_CMD} . -name "*.svg")
+SVG_FIG = $(call launchShell, ${FIND_CMD} ${AUTO_GENERATE_IMAGE_DIRECTORY} -name "*.svg")
 
 EPS_SVG = $(addsuffix .eps,          $(basename ${SVG_FIG}))
 PDF_SVG = $(addsuffix .pdf,          $(basename ${SVG_FIG}))

@@ -40,7 +40,7 @@ PDF2SVG_OUTPUT_STDOUT = no
 # Notify of the loading of this module
 LOADED_TRANSLATORS += pdf2svg
 
-PDF_FIG = $(call launchShell, ${FIND_CMD} ${IMAGEDIR} -name "*.pdf")
+PDF_FIG = $(call launchShell, ${FIND_CMD} ${AUTO_GENERATE_IMAGE_DIRECTORY} -name "*.pdf")
 
 SVG_PDF = $(addsuffix .svg,          $(basename ${PDF_FIG}))
 

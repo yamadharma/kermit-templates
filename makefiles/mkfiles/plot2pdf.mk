@@ -45,7 +45,7 @@ endif
 # Notify of the loading of this module
 LOADED_TRANSLATORS += plot2pdf
 
-PLOT_FIG = $(call launchShell, ${FIND_CMD} . -name "*.plot" -a -not -name "*.ltx.plot")
+PLOT_FIG = $(call launchShell, ${FIND_CMD} ${AUTO_GENERATE_IMAGE_DIRECTORY} -name "*.plot" -a -not -name "*.ltx.plot")
 
 EPS_PLOT = $(addsuffix .eps,          $(basename ${PLOT_FIG}))
 PDF_PLOT = $(addsuffix .pdf,          $(basename ${PLOT_FIG}))

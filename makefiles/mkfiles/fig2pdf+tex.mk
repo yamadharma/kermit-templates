@@ -56,7 +56,7 @@ endif
 # Notify of the loading of this module
 LOADED_TRANSLATORS += fig2pdf+tex
 
-PSTEX_FIG    = $(call launchShell, ${FIND_CMD} . -name "*.ltx.fig")
+PSTEX_FIG    = $(call launchShell, ${FIND_CMD} ${AUTO_GENERATE_IMAGE_DIRECTORY} -name "*.ltx.fig")
 
 PSTEX_XFIG     = $(addsuffix .pstex,        $(basename $(basename ${PSTEX_FIG})))
 PSTEX_T_XFIG   = $(addsuffix .pstex_t,      $(basename $(basename ${PSTEX_FIG})))

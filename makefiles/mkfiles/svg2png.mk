@@ -40,7 +40,7 @@ SVG2PNG_OUTPUT_STDOUT = no
 # Notify of the loading of this module
 LOADED_TRANSLATORS += svg2png
 
-SVG_FIG = $(call launchShell, ${FIND_CMD} . -name "*.svg")
+SVG_FIG = $(call launchShell, ${FIND_CMD} ${AUTO_GENERATE_IMAGE_DIRECTORY} -name "*.svg")
 
 PNG_SVG = $(addsuffix .png,          $(basename ${SVG_FIG}))
 

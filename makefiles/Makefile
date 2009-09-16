@@ -18,6 +18,6 @@ MAKEINDEX_STYLEFILE = index.xdy
 
 # TEX4HT_FINAL_POST_CMD = scripts/html-fix
 
-IMAGEDIR = image
+AUTO_GENERATE_IMAGE_DIRECTORY = image
 
 include mkfiles/main.mk

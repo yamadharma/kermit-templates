@@ -45,7 +45,7 @@ PST2PDF_OUTPUT_STDOUT = yes
 # Notify of the loading of this module
 LOADED_TRANSLATORS += pst2pdf
 
-PST_FIG = $(call launchShell, ${FIND_CMD} . -name "*.pst")
+PST_FIG = $(call launchShell, ${FIND_CMD} ${AUTO_GENERATE_IMAGE_DIRECTORY} -name "*.pst")
 
 EPS_PST = $(addsuffix .eps,          $(basename ${PST_FIG}))
 PDF_PST = $(addsuffix .pdf,          $(basename ${PST_FIG}))

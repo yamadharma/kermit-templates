@@ -60,12 +60,18 @@ sub matchMotif($\@) {
 	my $filename = shift;
 	my $result;
 	my $or = 0;
+	my $neg = 0;
 	foreach my $motif (@{$_[0]}) {
 		if ($motif eq '&') {
 			$or = 0;
+			$neg = 0;
 		}
 		elsif ($motif eq '|') {
 			$or = 1;
+			$neg = 0;
+		}
+		elsif ($motif eq '!') {
+			$neg = 1;
 		}
 		else {
 			my $localresult = 0;
@@ -75,6 +81,9 @@ sub matchMotif($\@) {
 			}		
 			else {
 				$localresult = ($filename =~ /^$motif$/);
+			}
+			if ($neg) {
+				$localresult = !$localresult;
 			}
 			if (defined($result)) {
 				if ($or) {
@@ -88,6 +97,7 @@ sub matchMotif($\@) {
 				$result = $localresult;
 			}
 			$or = 0;
+			$neg = 0;
 		}
 	}
 	return $result;
