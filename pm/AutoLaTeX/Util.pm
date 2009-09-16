@@ -37,7 +37,7 @@ The provided functions are:
 =cut
 package AutoLaTeX::Util;
 
-$VERSION = '5.4';
+$VERSION = '6.1';
 @ISA = ('Exporter');
 @EXPORT = qw( &isHash &isArray &removeFromArray &arrayContains &getAutoLaTeXDir
               &getAutoLaTeXName &getAutoLaTeXLaunchingName &getAutoLaTeXVersion

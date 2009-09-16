@@ -1,5 +1,5 @@
 # autolatex - imggz2img.mk
-# Copyright (C) 1998-08  Stephane Galland <galland@arakhne.org>
+# Copyright (C) 1998-09  Stephane Galland <galland@arakhne.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -61,7 +61,7 @@ SUPPORTED_BITMAP_FORMATS = pdf eps png jpg bmp gif
 # Notify of the loading of this module
 LOADED_TRANSLATORS += imggz2img
 
-IMGGZ_FIG = $(for extension, ${SUPPORTED_BITMAP_FORMATS}, $(call launchShell, ${FIND_CMD} . -name "*.${extension}.gz"))
+IMGGZ_FIG = $(foreach extension, ${SUPPORTED_BITMAP_FORMATS}, $(call launchShell, ${FIND_CMD} ${AUTO_GENERATE_IMAGE_DIRECTORY} -name "*.${extension}.gz"))
 
 IMG_IMGGZ = $(basename ${IMGGZ_FIG})
 

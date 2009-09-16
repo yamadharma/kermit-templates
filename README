@@ -25,7 +25,7 @@ DESCRIPTION
          pdflatex mydoc.tex
          pdflatex mydoc.tex
          pdflatex mydoc.tex
-     
+
     The triple invocation of LaTeX is to ensure that all references have
     been properly resolved and any page layout changes due to inserting the
     references have been accounted for. The sequence of commands isn't
@@ -33,7 +33,7 @@ DESCRIPTION
     project, you would use the command line:
 
          autolatex -f mydoc.tex
-     
+
     Note that the Makefile file is automaticaly generated into the current
     directory. For larger projects which may need to run programs to export
     drawings to Postscript files for inclusion or run BibTeX to generate
@@ -167,6 +167,10 @@ OPTIONS
 
         The option --exclude permits to exclude a translator; and the option
         --include permits to exclude a translator.
+
+    --imgdirectory=directory
+        Force AutoLaTeX to restrict te auto-generation of the pictures which
+        are located in the given directory (or in one of its children).
 
     --include=name
         Force AutoLaTeX to load the translator called name. See bellow for
@@ -480,12 +484,15 @@ CONFIGURATION FILE
   Location of the Configuration Files
     The configuration files used by AutoLaTex could be a several places:
 
-    * System Configuration (for all users): inside the directory where
-    AutoLaTeX was installed (usually /usr/lib/autolatex on Unix systems).
-    * User Configuration: two cases: the configuration directory named
-    $HOME/.autolatex on Unix, or
-    C:\Documents and Settings\<user>\Local Settings\Application Data\autolat
-    ex on Windows exists; or not.
+    *   System Configuration (for all users): inside the directory where
+        AutoLaTeX was installed (usually /usr/lib/autolatex on Unix
+        systems).
+
+    *   User Configuration: two cases: the configuration directory named
+        $HOME/.autolatex on Unix, or
+        C:\Documents and Settings\<user>\Local Settings\Application Data\aut
+        olatex on Windows exists; or not.
+
         In the first case, the configuration file is stored inside the
         directory and is named autolatex.conf.
 
@@ -494,9 +501,9 @@ CONFIGURATION FILE
         C:\Documents and Settings\<user>\Local Settings\Application Data\aut
         olatex.conf on Windows.
 
-    * Project Configuration: the configuration file in the same directory as
-    the main TeX file of the project. It is named .autolatex_project.cfg on
-    Unix and autolatex_project.cfg on Windows.
+    *   Project Configuration: the configuration file in the same directory
+        as the main TeX file of the project. It is named
+        .autolatex_project.cfg on Unix and autolatex_project.cfg on Windows.
 
   Syntax of the Configuration Files
     The configuration files respect a syntax similar to the Windows .ini
@@ -743,7 +750,7 @@ INSTALLATION
 AUTOLATEX LICENSE
     GNU Public License (GPL)
 
-    Copyright (c) 1998-2007 Stéphane GALLAND <galland@arakhne.org>
+    Copyright (c) 1998-2009 Stéphane GALLAND <galland@arakhne.org>
 
     This program is free software; you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the
@@ -763,7 +770,7 @@ AUTOLATEX LICENSE
 MANUAL COPYRIGHT
     GNU Free Documentation License (FDL)
 
-    Copyright (c) 1998-2007 Stéphane Galland <galland@arakhne.org>.
+    Copyright (c) 1998-2009 Stéphane Galland <galland@arakhne.org>.
 
     Permission is granted to copy, distribute and/or modify this document
     under the terms of the GNU Free Documentation License, Version 1.2 or

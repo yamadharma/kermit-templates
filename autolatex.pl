@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 
 # autolatex - autolatex.pl
-# Copyright (C) 1998-07  Stephane Galland <galland@arakhne.org>
+# Copyright (C) 1998-09  Stephane Galland <galland@arakhne.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -164,7 +164,7 @@ elsif (defined $configuration{'__private__'}{'action.create config file'}) {
 	}
 	copy(getSystemConfigFilename(),"$filename") or printErr("$filename:", "$!");
 }
-# Create thedefault IST file
+# Create the default IST file
 elsif ($configuration{'__private__'}{'action.create ist file'}) {
 	locPrint("Creating default makeindex style file...\n");
 	my $filename = File::Spec->catfile($configuration{'__private__'}{'output.directory'},"default.ist");

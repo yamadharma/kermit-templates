@@ -1,5 +1,5 @@
 # autolatex - MainVars.mk
-# Copyright (C) 1998-07  Stephane Galland <galland@arakhne.org>
+# Copyright (C) 1998-09  Stephane Galland <galland@arakhne.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,6 +24,10 @@ OPEN_PDF = yes
 
 # Indicate if the images should be automatically generated
 AUTO_GENERATE_IMAGES = yes
+
+# Give the directory where to search for the images to
+# auto-generate. The path is relative to the project directory.
+AUTO_GENERATE_IMAGE_DIRECTORY = .
 
 # Indicate which generation procedure to use. One in:
 # pdf, dvi, ps, pspdf

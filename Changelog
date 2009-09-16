@@ -1,3 +1,11 @@
+autolatex 6.1 (2009/09/16) - Stéphane GALLAND <galland@arakhne.org>
+	* Bug fix: autolatex_find does treat the '-not' operator. Fixed.
+	* The imggz2eps plugin does not detect the source images. Fixed.
+
+autolatex 6.0 (2009/08/20) - Stéphane GALLAND <galland@arakhne.org>
+	* Add command line option --imgdirectory
+	* Add AUTO_GENERATE_IMAGE_DIRECTORY variable in Makefile scripts.
+
 autolatex 5.5 (2008/02/22) - Stéphane GALLAND <galland@arakhne.org>
 	* Add translator variante: eps to pdf with ps2pdf tool, which is
 	  the new standard on Ubuntu systems due to the replacement

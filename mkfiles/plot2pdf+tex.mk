@@ -1,5 +1,5 @@
 # autolatex - plot2pdf+tex.mk
-# Copyright (C) 1998-08  Stephane Galland <galland@arakhne.org>
+# Copyright (C) 1998-09  Stephane Galland <galland@arakhne.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -72,7 +72,7 @@ endif
 # Notify of the loading of this module
 LOADED_TRANSLATORS += plot2pdf+tex
 
-PSTEX_PLOT_FIG = $(call launchShell, ${FIND_CMD} . -name "*.ltx.plot")
+PSTEX_PLOT_FIG = $(call launchShell, ${FIND_CMD} ${AUTO_GENERATE_IMAGE_DIRECTORY} -name "*.ltx.plot")
 
 PSTEX_PLOT     = $(addsuffix .pstex,        $(basename $(basename ${PSTEX_PLOT_FIG})))
 PSTEX_T_PLOT   = $(addsuffix .pstex_t,      $(basename $(basename ${PSTEX_PLOT_FIG})))

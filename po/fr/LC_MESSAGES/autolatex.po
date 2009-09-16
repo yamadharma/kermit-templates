@@ -1,5 +1,5 @@
 # autolatex - fr/LC_MESSAGES/autolatex.po
-# Copyright (C) 2007  Stephane Galland <galland@arakhne.org>
+# Copyright (C) 2007-09  Stephane Galland <galland@arakhne.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,10 +19,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: autolatex 5.1 or higher\n"
+"Project-Id-Version: autolatex 6.0 or higher\n"
 "Report-Msgid-Bugs-To: Stéphane GALLAND <galland@arakhne.org>\n"
 "POT-Creation-Date: 2007-09-19 13:38+0200\n"
-"PO-Revision-Date: 2007-09-19 13:38+0200\n"
+"PO-Revision-Date: 2009-08-20 15:47+0200\n"
 "Last-Translator: Stéphane GALLAND <galland@arakhne.org>\n"
 "Language-Team: FRENCH <galland@arakhne.org>\n"
 "MIME-Version: 1.0\n"
@@ -87,12 +87,12 @@ msgid "Reading command line options"
 msgstr "Lecture des options de la ligne de commandes"
 
 #: ../../../pm/AutoLaTeX/Main.pm
-msgid "{} {} ({}) - {} plateform\n(c) 1998-2007 Stephane GALLAND <galland@arakhne.org> (under GPL)\n"
-msgstr "{} {} ({}) - plate-forme {}\n(c) 1998-2007 Stéphane GALLAND <galland@arakhne.org> (sous GPL)\n"
+msgid "{} {} ({}) - {} plateform\n(c) 1998-2009 Stephane GALLAND <galland@arakhne.org> (under GPL)\n"
+msgstr "{} {} ({}) - plate-forme {}\n(c) 1998-2009 Stéphane GALLAND <galland@arakhne.org> (sous GPL)\n"
 
 #: ../../../pm/AutoLaTeX/Main.pm
-msgid "{} {} - {} plateform\n(c) 1998-2007 Stephane GALLAND <galland@arakhne.org> (under GPL)\n"
-msgstr "{} {} - plate-forme {}\n(c) 1998-2007 Stéphane GALLAND <galland@arakhne.org> (sous GPL)\n"
+msgid "{} {} - {} plateform\n(c) 1998-2009 Stephane GALLAND <galland@arakhne.org> (under GPL)\n"
+msgstr "{} {} - plate-forme {}\n(c) 1998-2009 Stéphane GALLAND <galland@arakhne.org> (sous GPL)\n"
 
 #: ../../../pm/AutoLaTeX/Main.pm
 msgid "Detecting TeX file '{}'"

@@ -1,9 +1,9 @@
 Source: autolatex
 Section: devel
 Priority: optional
-Build-Depends: debhelper (>= 4.0), gettext, libcompress-zlib-perl, debconf, po-debconf
+Build-Depends: debhelper (>= 4.0), cdbs, gettext, libcompress-zlib-perl, debconf, po-debconf
 Maintainer: Stephane Galland <galland@arakhne.org>
-Standards-Version: 3.7.2
+Standards-Version: 3.7.3
 
 Package: autolatex
 Architecture: all
@@ -25,7 +25,7 @@ Description: LaTeX large project compiling helper
 Package: autolatex-core
 Architecture: all
 Pre-Depends: perl (>= 5.004), libconfig-simple-perl, liblocale-gettext-perl, debconf, po-debconf
-Depends: tetex-base, tetex-bin, tetex-extra
+Depends: texlive, texlive-extra-utils, texlive-latex-base
 Recommends: autolatex-sty, autolatex-gzimage, autolatex-xfig, autolatex-gnuplot, autolatex-svg-inkscape, autolatex-xmi-umbrello, autolatex-xmi-uml2svg, autolatex-xmi-xmi2svg, autolatex-dia, autolatex-gtk
 Description: LaTeX large project compiling helper
  AutoLaTeX is a tool for managing small to large sized LaTeX projects.
@@ -42,7 +42,7 @@ Description: LaTeX large project compiling helper
 
 Package: autolatex-sty
 Architecture: all
-Depends: tetex-base, tetex-bin, tetex-extra
+Depends:  texlive, texlive-extra-utils, texlive-latex-base
 Recommends: autolatex-core, autolatex-xfig, autolatex-gnuplot
 Description: LaTeX large project compiling helper
  AutoLaTeX is a tool for managing small to large sized LaTeX projects.

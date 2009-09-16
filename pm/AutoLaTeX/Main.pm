@@ -1,5 +1,5 @@
 # autolatex - Main.pm
-# Copyright (C) 1998-07  Stephane Galland <galland@arakhne.org>
+# Copyright (C) 1998-09  Stephane Galland <galland@arakhne.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ The provided functions are:
 =cut
 package AutoLaTeX::Main;
 
-$VERSION = '5.1';
+$VERSION = '6.0';
 @ISA = ('Exporter');
 @EXPORT = qw( &analyzeCommandLineOptions &mainProgram &detectMainTeXFile ) ;
 @EXPORT_OK = qw();
@@ -64,6 +64,8 @@ sub analyzeCommandLineOptions(\%) {
 	if (!GetOptions(
 
 		'auto!' => sub { $cfg->{'generation.generate images'} = ($_[1] ? 'yes' : 'no'); },
+
+		'imgdirectory=s' => sub { $cfg->{'generation.image directory'} = $_[1]; },
 
 		'createconfig:s' => \$realcfg->{'__private__'}{'action.create config file'},
 
@@ -136,14 +138,14 @@ sub analyzeCommandLineOptions(\%) {
 		'v+' => \$debugLevel,
 
 		'version' => sub { if (getAutoLaTeXLaunchingName() ne getAutoLaTeXName()) {
-					locPrint("{} {} ({}) - {} plateform\n(c) 1998-2007 Stephane GALLAND <galland\@arakhne.org> (under GPL)\n",
+					locPrint("{} {} ({}) - {} plateform\n(c) 1998-2009 Stephane GALLAND <galland\@arakhne.org> (under GPL)\n",
 						getAutoLaTeXLaunchingName(),
 						getAutoLaTeXVersion(),
 						getAutoLaTeXName(),
 						getOperatingSystem());
 				   }
 				   else {
-					locPrint("{} {} - {} plateform\n(c) 1998-2007 Stephane GALLAND <galland\@arakhne.org> (under GPL)\n",
+					locPrint("{} {} - {} plateform\n(c) 1998-2009 Stephane GALLAND <galland\@arakhne.org> (under GPL)\n",
 						getAutoLaTeXLaunchingName(),
 						getAutoLaTeXVersion(),
 						getOperatingSystem());

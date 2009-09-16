@@ -1,3 +1,35 @@
+autolatex (6.1-0arakhne0) jaunty; urgency=low
+
+  * Several bug are fixed.
+
+ -- Stephane GALLAND <galland@arakhne.org>  Wed, 16 Sep 2009 10:10:31 +0200
+
+autolatex (6.1-0arakhne0) jaunty; urgency=low
+
+  * Several bug are fixed.
+
+ -- Stephane GALLAND <galland@arakhne.org>  Wed, 16 Sep 2009 10:10:31 +0200
+
+autolatex (6.0-0arakhne1) jaunty; urgency=low
+
+  * Update autolatex-gtk.
+
+ -- Stephane GALLAND <galland@arakhne.org>  Thu, 20 Aug 2009 16:29:02 +0200
+
+autolatex (6.0-0arakhne0) jaunty; urgency=low
+
+  * hardy -> jaunty
+  * Add command line option --imgdirectory
+  * Add AUTO_GENERATE_IMAGE_DIRECTORY variable in Makefile scripts.
+
+ -- Stephane GALLAND <galland@arakhne.org>  Thu, 20 Aug 2009 15:28:08 +0200
+
+autolatex (5.5-0arakhne2) hardy; urgency=low
+
+  * autolatex is now depending on texlive instead of tetex.
+
+ -- Stephane GALLAND <galland@arakhne.org>  Thu, 01 May 2008 12:14:37 +0200
+
 autolatex (5.5-0arakhne1) feisty; urgency=low
 
   * Fixing the Debian package which does not include the new script

@@ -1,5 +1,5 @@
 # autolatex - MainRules.mk
-# Copyright (C) 1998-08  Stephane Galland <galland@arakhne.org>
+# Copyright (C) 1998-09  Stephane Galland <galland@arakhne.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

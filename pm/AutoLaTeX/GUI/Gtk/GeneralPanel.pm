@@ -1,4 +1,4 @@
-# Copyright (C) 2007  Stephane Galland <galland@arakhne.org>
+# Copyright (C) 2007-09  Stephane Galland <galland@arakhne.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,12 +19,12 @@
 
 =head1 NAME
 
-AutoLaTeX::GUI::Gtk::GeneralPanel - A GTK panel for translator management
+AutoLaTeX::GUI::Gtk::GeneralPanel - A GTK panel for general management
 
 =head1 DESCRIPTION
 
 AutoLaTeX::GUI::Gtk::GeneralPanel is a Perl module, which permits to
-display a Gtk panel that manages AutoLaTeX translators.
+display a Gtk panel that manages AutoLaTeX options.
 
 =head1 METHOD DESCRIPTIONS
 
@@ -59,7 +59,7 @@ use AutoLaTeX::GUI::Gtk::WidgetUtil;
 #------------------------------------------------------
 
 # Version number
-my $VERSION = "5.1" ;
+my $VERSION = "6.0" ;
 
 my %GENERATION_TYPES_ORIG = (
 	'01_Generate PDF document' => 'pdf',
@@ -141,7 +141,7 @@ sub initControls() : method {
 					['expand','fill'],['expand','fill'], # x and y options
 					5,2); # horizontal and vertical paddings
 		my $subtable = Gtk2::Table->new (
-						4, #rows
+						5, #rows
 						2, #columns
 						FALSE); #non uniform
 		$generationFrame->add ($subtable);
@@ -168,35 +168,49 @@ sub initControls() : method {
 					2,2); # horizontal and vertical paddings
 		$self->attr('EDITORS','AUTO_PICTURE_GENERATION') = $label2;
 
-		my $label3 = Gtk2::Label->new ($self->localeGet("Type of generation:"));
+		my $label3 = Gtk2::Label->new ($self->localeGet("Image search directory:"));
 		$subtable->attach ($label3, 
 					0,1,2,3, # left, right, top and bottom columns
 					'shrink','shrink', # x and y options
 					2,2); # horizontal and vertical paddings
 
-		my $edit2 = Gtk2::ComboBox->new_text ();
-		$self->fillComboBox('generationType',$edit2,\%GENERATION_TYPES);
-		$self->connectSignal($edit2,'changed','onGenerationTypeChanged');
+		my $edit2 = Gtk2::Entry->new ();
+		$self->connectSignal($edit2,'changed','onImageSearchDirectoryChanged');
 		$subtable->attach ($edit2, 
 					1,2,2,3, # left, right, top and bottom columns
-					['expand','fill'],'shrink', # x and y options
+					['expand','fill'],['expand','fill'], # x and y options
 					2,2); # horizontal and vertical paddings
-		$self->attr('EDITORS','GENERATION_TYPE') = $edit2;
+		$self->attr('EDITORS','AUTO_GENERATE_IMAGE_DIRECTORY') = $edit2;
 
-		my $label4 = Gtk2::Label->new ($self->localeGet("Type of MakeIndex style research:"));
+		my $label4 = Gtk2::Label->new ($self->localeGet("Type of generation:"));
 		$subtable->attach ($label4, 
 					0,1,3,4, # left, right, top and bottom columns
 					'shrink','shrink', # x and y options
 					2,2); # horizontal and vertical paddings
 
 		my $edit3 = Gtk2::ComboBox->new_text ();
-		$self->fillComboBox('makeindexStyleType',$edit3,\%MAKEINDEX_STYLE_TYPES);
-		$self->connectSignal($edit3,'changed','onMakeIndexStyleChanged');
+		$self->fillComboBox('generationType',$edit3,\%GENERATION_TYPES);
+		$self->connectSignal($edit3,'changed','onGenerationTypeChanged');
 		$subtable->attach ($edit3, 
 					1,2,3,4, # left, right, top and bottom columns
 					['expand','fill'],'shrink', # x and y options
 					2,2); # horizontal and vertical paddings
-		$self->attr('EDITORS','MAKEINDEX_STYLE') = $edit3;
+		$self->attr('EDITORS','GENERATION_TYPE') = $edit3;
+
+		my $label5 = Gtk2::Label->new ($self->localeGet("Type of MakeIndex style research:"));
+		$subtable->attach ($label5, 
+					0,1,4,5, # left, right, top and bottom columns
+					'shrink','shrink', # x and y options
+					2,2); # horizontal and vertical paddings
+
+		my $edit4 = Gtk2::ComboBox->new_text ();
+		$self->fillComboBox('makeindexStyleType',$edit4,\%MAKEINDEX_STYLE_TYPES);
+		$self->connectSignal($edit4,'changed','onMakeIndexStyleChanged');
+		$subtable->attach ($edit4, 
+					1,2,4,5, # left, right, top and bottom columns
+					['expand','fill'],'shrink', # x and y options
+					2,2); # horizontal and vertical paddings
+		$self->attr('EDITORS','MAKEINDEX_STYLE') = $edit4;
 	}
 
 	# VIEWER part
@@ -369,6 +383,12 @@ sub initializeGeneralPanel() : method {
 	else {
 		$self->attr('EDITORS','AUTO_PICTURE_GENERATION')->set_active (TRUE);
 	}
+	if ($self->hasattr('configuration','generation.image directory')) {
+		$self->attr('EDITORS','AUTO_GENERATE_IMAGE_DIRECTORY')->set_text ($self->attr('configuration','generation.image directory'));
+	}
+	else {
+		$self->attr('EDITORS','AUTO_GENERATE_IMAGE_DIRECTORY')->set_text ('.');
+	}
 	if ($self->hasattr('configuration','generation.generation type')) {
 		my $val = $self->attr('configuration','generation.generation type') || '';
 		if ($val eq 'pspdf') {
@@ -454,6 +474,11 @@ sub onMainTeXFileChanged(@) {
 	$self->attr('configuration','generation.main file') = $_[0]->get_text ();
 }
 
+sub onImageSearchDirectoryChanged(@) {
+	my $self = shift;
+	$self->attr('configuration','generation.image directory') = $_[0]->get_text ();
+}
+
 sub onPDFViewerChanged(@) {
 	my $self = shift;
 	$self->attr('configuration','viewer.viewer') = $_[0]->get_text ();
@@ -503,7 +528,7 @@ __END__
 
 =head1 COPYRIGHT
 
-(c) Copyright 2007 Stéphane Galland E<lt>galland@arakhne.orgE<gt>, under GPL.
+(c) Copyright 2007-09 Stéphane Galland E<lt>galland@arakhne.orgE<gt>, under GPL.
 
 =head1 AUTHORS
 

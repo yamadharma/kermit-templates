@@ -1,5 +1,5 @@
 # autolatex - fig2pdf.mk
-# Copyright (C) 1998-07  Stephane Galland <galland@arakhne.org>
+# Copyright (C) 1998-09  Stephane Galland <galland@arakhne.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -61,7 +61,7 @@ endif
 # Notify of the loading of this module
 LOADED_TRANSLATORS += fig2pdf
 
-XFIG_FIG = $(call launchShell, ${FIND_CMD} . -name "*.fig" -a -not -name "*.ltx.fig")
+XFIG_FIG = $(call launchShell, ${FIND_CMD} ${AUTO_GENERATE_IMAGE_DIRECTORY} -name "*.fig" -a -not -name "*.ltx.fig")
 
 EPS_XFIG = $(addsuffix .eps,          $(basename ${XFIG_FIG}))
 PDF_XFIG = $(addsuffix .pdf,          $(basename ${XFIG_FIG}))

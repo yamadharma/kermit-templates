@@ -1,5 +1,5 @@
 # autolatex - dia2pdf.mk
-# Copyright (C) 1998-07  Stephane Galland <galland@arakhne.org>
+# Copyright (C) 1998-09  Stephane Galland <galland@arakhne.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -61,7 +61,7 @@ endif
 # Notify of the loading of this module
 LOADED_TRANSLATORS += dia2pdf
 
-DIA_FIG = $(call launchShell, ${FIND_CMD} . -name "*.dia")
+DIA_FIG = $(call launchShell, ${FIND_CMD} ${AUTO_GENERATE_IMAGE_DIRECTORY} -name "*.dia")
 
 EPS_DIA = $(addsuffix .eps,          $(basename ${DIA_FIG}))
 PDF_DIA = $(addsuffix .pdf,          $(basename ${DIA_FIG}))

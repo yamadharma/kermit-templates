@@ -1,5 +1,5 @@
 # autolatex - svg2pdf.mk
-# Copyright (C) 1998-08  Stephane Galland <galland@arakhne.org>
+# Copyright (C) 1998-09  Stephane Galland <galland@arakhne.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -61,7 +61,7 @@ endif
 # Notify of the loading of this module
 LOADED_TRANSLATORS += svg2pdf
 
-SVG_FIG = $(call launchShell, ${FIND_CMD} . -name "*.svg")
+SVG_FIG = $(call launchShell, ${FIND_CMD} ${AUTO_GENERATE_IMAGE_DIRECTORY} -name "*.svg")
 
 EPS_SVG = $(addsuffix .eps,          $(basename ${SVG_FIG}))
 PDF_SVG = $(addsuffix .pdf,          $(basename ${SVG_FIG}))

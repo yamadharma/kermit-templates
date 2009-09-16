@@ -1,5 +1,5 @@
 # autolatex - Config.pm
-# Copyright (C) 1998-07  Stephane Galland <galland@arakhne.org>
+# Copyright (C) 1998-09  Stephane Galland <galland@arakhne.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ The provided functions are:
 =cut
 package AutoLaTeX::Config;
 
-$VERSION = '5.1';
+$VERSION = '6.0';
 @ISA = ('Exporter');
 @EXPORT = qw( &getProjectConfigFilename &getUserConfigFilename &getSystemConfigFilename
               &getSystemISTFilename &readConfiguration &readConfigFile &getUserConfigDirectory
@@ -477,6 +477,7 @@ sub writeConfigFile($\%) {
 		'viewer.viewer' => "Specify, if not commented,the command line of the viewer",
 		'generation.main file' => "Main filename (this option is only available in project's configuration files)",
 		'generation.generate images' => "Does the figures must be automatically generated?",
+		'generation.image directory' => "If specified, contains the directory where to searh for the images to automatically generate",
 		'generation.generation type' => "Type of generation.\n   pdf   : use pdflatex to create a PDF document\n   dvi   : use latex to create a DVI document\n   ps    : use latex and dvips to create a Postscript document\n   pspdf : use latex, dvips and ps2pdf to create a PDF document",
 		'makeindex style' => "Specify the style that must be used by makeindex.\nValid values are:\n   <filename>      if a filename was specified, AutoLaTeX assumes that it is the .ist file;\n   \@system         AutoLaTeX uses the system default .ist file (in AutoLaTeX distribution);\n   \@detect         AutoLaTeX will tries to find a .ist file in the project's directory. If none was found, AutoLaTeX will not pass a style to makeindex;\n   \@none           AutoLaTeX assumes that no .ist file must be passed to makeindex;\n   <empty>         AutoLaTeX assumes that no .ist file must be passed to makeindex.",
 		'clean.files to clean' => "List of additional files to remove when cleaning (shell wild cards are allowed). This list is used when the target 'clean' is invoked.",
