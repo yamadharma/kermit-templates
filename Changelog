@@ -1,3 +1,6 @@
+autolatex 7.0 (2009/09/17) - Stéphane GALLAND <galland@arakhne.org>
+	* Ad Graphviz converter for .dot files.
+
 autolatex 6.1 (2009/09/16) - Stéphane GALLAND <galland@arakhne.org>
 	* Bug fix: autolatex_find does treat the '-not' operator. Fixed.
 	* The imggz2eps plugin does not detect the source images. Fixed.

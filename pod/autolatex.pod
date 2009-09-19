@@ -672,6 +672,54 @@ based on L<dia> and L<epstopdf> tools. The input filename extension is '.dia'.
 
 =back
 
+=item B<Dot Graphviz (dot) to Portable Document Format (pdf)>
+
+based on L<Graphviz>. The input filename extension is '.dot'.
+
+=over 12
+
+=item Name:                              dot2pdf
+
+=item Use external converter:            dot
+
+=item Use internal converter:            dot2pdf
+
+=item Input format:                      .dot
+
+=item Output format:                     .pdf
+
+=item Provide make rules:                yes
+
+=item Provide makefile macros:           $(DOT2PDF_SHELL_CMD)
+
+=item Command line, format:              a)
+
+=back
+
+=item B<Dot Graphviz (dot) to Portable Network Graphic (png)>
+
+based on L<Graphviz>. The input filename extension is '.dot'.
+
+=over 12
+
+=item Name:                              dot2png
+
+=item Use external converter:            dot
+
+=item Use internal converter:            dot2png
+
+=item Input format:                      .dot
+
+=item Output format:                     .png
+
+=item Provide make rules:                yes
+
+=item Provide makefile macros:           $(DOT2PNG_SHELL_CMD)
+
+=item Command line, format:              a)
+
+=back
+
 =back
 
 =head1 LATEX STYLE PACKAGE

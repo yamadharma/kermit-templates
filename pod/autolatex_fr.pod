@@ -642,6 +642,54 @@ basé sur les outils L<dia> et L<epstopdf>. L'extension du fichier d'entrée est '
 
 =back
 
+=item B<Dot Graphviz (dot) vers Portable Document Format (pdf)>
+
+basé sur l'outil L<graphviz>. L'extension du fichier d'entrée est '.dot'.
+
+=over 12
+
+=item Nom:                               dot2pdf
+
+=item Convertisseur externe utilisé:     dot
+
+=item Convertisseur interne utilisé:     dot2pdf
+
+=item Format d'entrée:                   .dot
+
+=item Format de sortie:                  .pdf
+
+=item Fournit des règles:                oui
+
+=item Fournit des macros:                $(DOT2PDF_SHELL_CMD)
+
+=item Format de la ligne de commande:    a)
+
+=back
+
+=item B<Dot Graphviz (dot) vers Portable Network Graphic (png)>
+
+basé sur l'outil L<graphviz>. L'extension du fichier d'entrée est '.dot'.
+
+=over 12
+
+=item Nom:                               dot2png
+
+=item Convertisseur externe utilisé:     dot
+
+=item Convertisseur interne utilisé:     dot2png
+
+=item Format d'entrée:                   .dot
+
+=item Format de sortie:                  .png
+
+=item Fournit des règles:                oui
+
+=item Fournit des macros:                $(DOT2PNG_SHELL_CMD)
+
+=item Format de la ligne de commande:    a)
+
+=back
+
 =back
 
 =head1 STYLE LATEX

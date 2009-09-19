@@ -1,3 +1,15 @@
+autolatex (7.0-0arakhne0) jaunty; urgency=low
+
+  * Add '.dot' to '.pdf' converter.
+
+ -- Stephane GALLAND <galland@arakhne.org>  Fri, 18 Sep 2009 22:38:23 +0200
+
+autolatex (6.1-0arakhne1) jaunty; urgency=low
+
+  * Removing debugging messages.
+
+ -- Stephane GALLAND <galland@arakhne.org>  Wed, 16 Sep 2009 16:07:21 +0200
+
 autolatex (6.1-0arakhne0) jaunty; urgency=low
 
   * Several bug are fixed.

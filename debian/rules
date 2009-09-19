@@ -30,6 +30,10 @@ build-stamp: configure-stamp
 	cd ${top_dir}/debian && ./make_translator_script -i "_translator.preinst" -o "autolatex-dia.preinst" -d "dia2pdf;dia;pdf;"
 	cd ${top_dir}/debian && cp -f "_translator.templates" "autolatex-dia.templates"
 
+	cd ${top_dir}/debian && ./make_translator_script -i "_translator.postrm" -o "autolatex-dot.postrm" -d "dot2pdf;dot;pdf;"
+	cd ${top_dir}/debian && ./make_translator_script -i "_translator.preinst" -o "autolatex-dot.preinst" -d "dot2pdf;dot;pdf;"
+	cd ${top_dir}/debian && cp -f "_translator.templates" "autolatex-dot.templates"
+
 	cd ${top_dir}/debian && ./make_translator_script -i "_translator.postrm" -o "autolatex-gnuplot.postrm" -d "plot2pdf;plot;pdf;"
 	cd ${top_dir}/debian && ./make_translator_script -i "_translator.preinst" -o "autolatex-gnuplot.preinst" -d "plot2pdf;plot;pdf;"
 	cd ${top_dir}/debian && cp -f "_translator.templates" "autolatex-gnuplot.templates"
@@ -101,6 +105,7 @@ clean::
 	cd ${top_dir} && perl ./Makefile.PL clean
 	${RM} *-stamp
 	${RM} debian/autolatex-dia.postrm debian/autolatex-dia.preinst debian/autolatex-dia.templates
+	${RM} debian/autolatex-dot.postrm debian/autolatex-dot.preinst debian/autolatex-dot.templates
 	${RM} debian/autolatex-gnuplot.postrm debian/autolatex-gnuplot.preinst debian/autolatex-gnuplot.templates
 	${RM} debian/autolatex-gzimage.postrm debian/autolatex-gzimage.preinst debian/autolatex-gzimage.templates
 	${RM} debian/autolatex-svg-inkscape.postrm debian/autolatex-svg-inkscape.preinst debian/autolatex-svg-inkscape.templates
