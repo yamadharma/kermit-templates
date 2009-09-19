@@ -1,0 +1,28 @@
+#!/usr/bin/perl
+
+# dot2pdf
+
+my $INPUTFILE = $ARGV[0] || '';
+my $OUTPUTFILE = $ARGV[1] || '';
+
+if (!$INPUTFILE || ! -e "$INPUTFILE" ) {
+	print STDERR "usage: $0 <inputfile> [<outputfile>]\n";
+	exit(1);
+}
+
+if (!$OUTPUTFILE) {
+	my $dir = dirname("$INPUTFILE");
+	my $base = basename("$INPUTFILE");
+	$base =~ s/\.[^.]+$/.pdf/;
+	$OUTPUTFILE = File::Spec->catfile("$dir","$base");
+}
+
+my @CMD = ("dot",
+	   "-Tpdf",
+	   "$INPUTFILE",
+	   "-o", "$OUTPUTFILE"
+	   );
+
+unlink("$OUTPUTFILE");
+exec(@CMD);
+
