@@ -1,0 +1,1 @@
+../../common/preamble/class.d/
