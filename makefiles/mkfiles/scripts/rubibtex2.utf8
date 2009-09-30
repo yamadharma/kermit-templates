@@ -1,0 +1,5 @@
+#!/bin/sh
+
+TEMP=/tmp
+bibtex "$1"
+recode WINDOWS1251..UTF-8 $1.bbl
