@@ -63,7 +63,7 @@ endif
 LATEX_FLAGS = 
 
 # Shell command used to launch BibTeX
-BIBTEX_CMD = mkfiles/scripts/rubibtex.utf8
+BIBTEX_CMD = mkfiles/scripts/rubibtex2.utf8
 
 # bibtex flags
 BIBTEX_FLAGS =
