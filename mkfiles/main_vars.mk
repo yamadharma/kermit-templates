@@ -239,7 +239,7 @@ TMPFILES = bibtex.stamp ${AUXFILE} *.log ${BBLFILE} *.blg \
            makeindex.stamp ${ADDITIONALAUXFILES} \
            ${PDFFILE} ${DVIFILE} ${PSFILE} \
            VARIABLES \
-           *.css ${FILE}-js.* \
+           *.css ${FILE}-js.* *.pgf \
            *.4tc *.4ct *.idv *.${HTML_EXT} *.lg *.xref *.4dx *.4ix *.dvi
 
 DESINTEGRABLEFILES = ${PRIVATE_IMAGES} ${PRIVATE_TMPIMAGES} ${BACKUPFILES} ${EMACSFILES}
