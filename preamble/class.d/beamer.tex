@@ -1,12 +1,17 @@
 \documentclass[%
-% Поддержка русского языка
 russian,
+hyperref={unicode},
 % Использование шрифтов с засечками
 mathserif,
 serif,
 ]{beamer} 
 
 \input{preamble/class.d/beamer.d/common}
+
+\ifx\pstmode\undefined
+\else
+    \input{preamble/class.d/beamer.d/pst}
+\fi
 
 %%% Local Variables: 
 %%% mode: latex
