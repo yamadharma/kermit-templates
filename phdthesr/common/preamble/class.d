@@ -1,1 +1,0 @@
-../../../makefiles/preamble/class.d
