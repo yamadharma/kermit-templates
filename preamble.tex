@@ -7,12 +7,17 @@
 \@ifpackageloaded{tex4ht}{\texhttrue}{\texhtfalse}
 \makeatother
 
+% looks for pdfTEX in pdf mode
+\usepackage{ifpdf}
 \usepackage{ifxetex}
 
 \ifxetex
     \input preamble/xelatex
 \else
     \input preamble/latex
+    \ifpdf
+	\input preamble/pdflatex
+    \fi
 \fi
 
 \input preamble/common
