@@ -68,7 +68,12 @@ images:: ${PRIVATE_IMAGES}
 
 showimages::
 	@ ${ECHO_CMD} "DETECTED: ${SOURCE_IMAGES}"
+ifeq ("-${AUTO_GENERATE_IMAGES}","-yes")
+	@ ${ECHO_CMD} "TEMP: ${PRIVATE_TMPIMAGES}"
 	@ ${ECHO_CMD} "AUTO-GENERATED: ${PRIVATE_IMAGES}"
+else
+	@ ${ECHO_CMD} "WARNING: auto generation of the images is disabled"
+endif
 
 showpath::
 	@ ${ECHO_CMD} "$$PATH"
