@@ -1,6 +1,6 @@
 # MACRO_FORMAT
 # latex | xelatex
-MACRO_FORMAT = xelatex
+MACRO_FORMAT = latex
 
 # Indicate which generation procedure to use. One in:
 # pdf | dvi | ps | pspdf
