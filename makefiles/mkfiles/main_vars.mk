@@ -14,6 +14,10 @@ ifndef AUTO_GENERATE_IMAGE_DIRECTORY
 AUTO_GENERATE_IMAGE_DIRECTORY = .
 endif
 
+ifndef AUTO_GENERATE_LST_DIRECTORY
+AUTO_GENERATE_LST_DIRECTORY = lst
+endif
+
 # Indicate which generation procedure to use. One in:
 # pdf, dvi, ps, pspdf
 ifeq ("${LATEX_GENERATION_PROCEDURE}","")
@@ -144,7 +148,8 @@ ECHO_CMD = mkfiles/scripts/echo
 ECHO_ERR_CMD = mkfiles/scripts/echo_err
 
 # Program that permits to find a file
-FIND_CMD = mkfiles/scripts/script_find
+# FIND_CMD = mkfiles/scripts/script_find
+FIND_CMD = find
 
 # Convertion to HTML
 
@@ -239,7 +244,7 @@ TMPFILES = bibtex.stamp ${AUXFILE} *.log ${BBLFILE} *.blg \
            makeindex.stamp ${ADDITIONALAUXFILES} \
            ${PDFFILE} ${DVIFILE} ${PSFILE} \
            VARIABLES \
-           *.css ${FILE}-js.* *.pfg \
+           *.css ${FILE}-js.* *.pfg lst.tex \
            *.4tc *.4ct *.idv *.${HTML_EXT} *.lg *.xref *.4dx *.4ix *.dvi
 
 DESINTEGRABLEFILES = ${PRIVATE_IMAGES} ${PRIVATE_TMPIMAGES} ${BACKUPFILES} ${EMACSFILES}
