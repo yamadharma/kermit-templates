@@ -1,0 +1,83 @@
+#!/bin/sh
+
+TEMP=/tmp
+
+mv -f $1.aux $TEMP
+
+sed '
+/^\\citation/ {
+s/\\IeC {\\CYRA }/À/g
+s/\\IeC {\\CYRB }/Á/g
+s/\\IeC {\\CYRV }/Â/g
+s/\\IeC {\\CYRG }/Ã/g
+s/\\IeC {\\CYRD }/Ä/g
+s/\\IeC {\\CYRE }/Å/g
+s/\\IeC {\\CYRYO }/¨/g
+s/\\IeC {\\CYRZH }/Æ/g
+s/\\IeC {\\CYRZ }/Ç/g
+s/\\IeC {\\CYRI }/È/g
+s/\\IeC {\\CYRISHRT }/É/g
+s/\\IeC {\\CYRK }/Ê/g
+s/\\IeC {\\CYRL }/Ë/g
+s/\\IeC {\\CYRM }/Ì/g
+s/\\IeC {\\CYRN }/Í/g
+s/\\IeC {\\CYRO }/Î/g
+s/\\IeC {\\CYRP }/Ï/g
+s/\\IeC {\\CYRR }/Ð/g
+s/\\IeC {\\CYRS }/Ñ/g
+s/\\IeC {\\CYRT }/Ò/g
+s/\\IeC {\\CYRU }/Ó/g
+s/\\IeC {\\CYRF }/Ô/g
+s/\\IeC {\\CYRH }/Õ/g
+s/\\IeC {\\CYRC }/Ö/g
+s/\\IeC {\\CYRCH }/×/g
+s/\\IeC {\\CYRSH }/Ø/g
+s/\\IeC {\\CYRSHCH }/Ù/g
+s/\\IeC {\\CYRHRDSN }/Ú/g
+s/\\IeC {\\CYRERY }/Û/g
+s/\\IeC {\\CYRSFTSN }/Ü/g
+s/\\IeC {\\CYREREV }/Ý/g
+s/\\IeC {\\CYRYU }/Þ/g
+s/\\IeC {\\CYRYA }/ß/g
+s/\\IeC {\\cyra }/à/g
+s/\\IeC {\\cyrb }/á/g
+s/\\IeC {\\cyrv }/â/g
+s/\\IeC {\\cyrg }/ã/g
+s/\\IeC {\\cyrd }/ä/g
+s/\\IeC {\\cyre }/å/g
+s/\\IeC {\\cyryo }/¸/g
+s/\\IeC {\\cyrzh }/æ/g
+s/\\IeC {\\cyrz }/ç/g
+s/\\IeC {\\cyri }/è/g
+s/\\IeC {\\cyrishrt }/é/g
+s/\\IeC {\\cyrk }/ê/g
+s/\\IeC {\\cyrl }/ë/g
+s/\\IeC {\\cyrm }/ì/g
+s/\\IeC {\\cyrn }/í/g
+s/\\IeC {\\cyro }/î/g
+s/\\IeC {\\cyrp }/ï/g
+s/\\IeC {\\cyrr }/ð/g
+s/\\IeC {\\cyrs }/ñ/g
+s/\\IeC {\\cyrt }/ò/g
+s/\\IeC {\\cyru }/ó/g
+s/\\IeC {\\cyrf }/ô/g
+s/\\IeC {\\cyrh }/õ/g
+s/\\IeC {\\cyrc }/ö/g
+s/\\IeC {\\cyrch }/÷/g
+s/\\IeC {\\cyrsh }/ø/g
+s/\\IeC {\\cyrshch }/ù/g
+s/\\IeC {\\cyrhrdsn }/ú/g
+s/\\IeC {\\cyrery }/û/g
+s/\\IeC {\\cyrsftsn }/ü/g
+s/\\IeC {\\cyrerev }/ý/g
+s/\\IeC {\\cyryu }/þ/g
+s/\\IeC {\\cyrya }/ÿ/g
+}
+' $TEMP/$1.aux > $1.aux
+
+bibtex $1
+
+iconv -fcp1251 -tutf-8 $1.bbl > $1.bbl.tmp
+mv $1.bbl.tmp $1.bbl
+
+mv -f $TEMP/$1.aux .
