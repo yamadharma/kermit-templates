@@ -25,11 +25,12 @@ MAKEINDEX_STYLEFILE = index.xdy
 AUTO_GENERATE_IMAGE_DIRECTORY = image
 
 # BibTeX command
-BIBTEX_CMD = bibtex
+#BIBTEX_CMD = bibtex
 
 # Post LaTeX command
 #POST_LATEX_CMD = scripts/post_latex_cmd
 
-TMPFILES_LOCAL = *.tac
+# Additional temporary files
+#TMPFILES_LOCAL = *.tac
 
 include mkfiles/main.mk
