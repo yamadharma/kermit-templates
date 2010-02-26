@@ -1,0 +1,7 @@
+#!/bin/sh
+
+sed -i -e 's/\\T 2A/\\IeC/g' default.toc
+sed -i -e 's/\\T 2A/\\IeC/g' default.tac
+sed -i -e '/section/d' default.toc
+sed -i -e '/paragraph/d' default.toc
+

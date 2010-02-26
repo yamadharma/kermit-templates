@@ -1,0 +1,2292 @@
+{\selectlanguage{english}
+  
+\udc{514.763.23}
+
+\title{Complete Foliations with Transverse Rigid Geometries and Their
+  Basic Automorphisms}
+
+\thanks{This work was supported by the Russian Foundation for Basic
+  Research, project no.  06-01-00331-a.}
+
+\author{N. I. Zhukova}%
+
+\address{Department of Mathematics and Mechanics\\
+  Nizhny Novgorod State University\\
+  Gagarina ave., 23, korp. 6,  Nizhny Novgorod, Russia, 603950}
+
+
+\begin{abstract} 
+  The notion of rigid geometry is introduced. Rigid geometries include
+  Cartan geometries as well as rigid geometric structures in the sense
+  of Gromov. Foliations $(M,F)$ with transverse rigid geometries are
+  investigated. An invariant $\frak g_0$ of a foliation $(M,F)$ with
+  transverse rigid geometry, being a Lie algebra, is introduced. We
+  prove that if, for some foliation $(M,F)$ with transverse rigid
+  geometry, $\frak g_0$ is zero, then there exists a unique Lie group
+  structure on its full basic automorphism group. Some estimates of
+  the dimensions of this group depending on the transverse geometry
+  are obtained. Examples, illustrating the main results, are
+  constructed.
+\end{abstract}
+
+\keywords{rigid geometry, foliation, basic automorphism, holonomy
+  group}
+
+% \medskip {\bf Ключевые слова:} жесткая геометрия, слоение, базовый
+% автоморфизм, группа голономии
+
+
+
+\alttitle{Полные слоения с трансверсальными жесткими геометриями и их
+  базовые автоморфизмы}
+
+\altauthor{Н. И. Жукова}
+
+\altaddress{Кафедра математики и механики\\
+  Нижегородский государственный университет им. Н.И. Лобачевского\\
+  пр. Гагарина, д. 23, корп. 6, г. Нижний Новгород, Россия, 603950}
+
+\begin{altabstract}
+  Введено понятие жестких геометрий. Жесткие геометрии включают
+  картановы геометрии, а также жесткие геометрические структуры в
+  смысле Громова.  Исследуются слоения $(M,F)$ с трансверсальными
+  жесткими геометриями. Найден инвариант $\frak g_0(M,F)$ слоения
+  $(M,F),$ представляющий собой алгебру Ли.  Доказано, что при $\frak
+  g_0(M,F)=0$ группа базовых автоморфизмов слоения $(M,F)$ допускает
+  структуру группы Ли, причем эта структура единственна. Получены
+  оценки размерностей этих групп в зависимости от трансверсальных
+  геометрий. Построены примеры вычисления групп базовых автоморфизмов
+  слоений.
+\end{altabstract}
+
+\received{\formatdate{31}{10}{2008}}
+
+\maketitle
+
+%\begin{center}{\large\bf Introduction}\end{center}
+
+\section{Introduction}
+One of the basic objects associated with a geometric structure on a
+smooth manifold is its automorphism group. Among the central problems,
+there is the question whether the automorphism group can be endowed
+with a (finite-dimensional) Lie group structure~\cite{Kob}.
+
+In the theory of foliations with transverse geometries, automorphisms
+are understood as diffeomorphisms mapping leaves onto leaves and
+preserving transverse geometries. The group of all automorphisms of a
+foliation $(M,F)$ with transverse geometry is denoted by ${\cal
+  A}(M,F).$ Let ${\cal A}_L(M,F)$ be the normal subgroup of ${\cal
+  A}(M,F)$ formed by automorphisms mapping each leaf onto itself. The
+quotient group ${\cal A}(M,F)/{\cal A}_L(M,F)$ is called the full
+basic automorphism group and is denoted by ${\cal A}_B(M,F).$
+
+In the investigation of foliations $(M,F)$ with transverse geometry it
+is naturally to ask the above problem about the existence of a Lie
+group structure for the full group ${\cal A}_B(M,F)$ of basic
+automorphisms of $(M,F).$
+
+Leslie~\cite{Les} was first who solved a similar problem for smooth
+foliations on compact manifolds. For foliations with complete
+transversal projectable affine connection this problem was studied by
+Belko~\cite{Bel}.
+
+The leaf space $M/F$ of the foliation is a diffeological space, and
+the group ${\cal A}_B(M,F)$ can be considered as a subgroup of the
+diffeological Lie group $\mathrm{Diff}(M/F)$. For Lie foliations with
+dense leaves on a compact manifold, the diffeological Lie groups
+$\mathrm{Diff}(M/F)$ are computed by Hector and Macias-Virgos~\cite{HMV}.
+
+In this work we introduce a notion of a rigid structure. Cartan
+geometries~\cite{Kob} and rigid geometric structures in the sense of
+Gromov~\cite{AG,G} are rigid structures in our sense. At the same time
+almost complex and symplectic structures don't belong to rigid
+structures. A manifold equipped with a rigid structure is called a
+rigid geometry.
+
+We investigate foliations admitting rigid geometries as transverse
+structures and call them by foliations with transverse rigid
+geometries (TRG). Cartan foliations~\cite{Minsets,Bl} and $G$-foliations,
+where $G$ is a Lie group of finite type, are foliations with TRG.
+In particular, Riemannian, pseudo-Riemannian, Lorenz, projective
+and conformal foliations belong to the class of foliations under
+investigation. The category of foliations with TRG is denoted by
+${\frak F}_{TRG}.$ The group ${\cal A}_B(M,F)$ is an invariant of
+$(M,F)$ in the category ${\frak F}_{TRG}.$
+
+We assume that all the foliations under consideration are modelled
+on effective rigid geometries. We construct the foliated bundle
+for a foliation $(M,F)$ with TRG and reduce problems on the
+automorphism groups and the basic automorphism groups of $(M,F)$
+to the ana\-logous problems for $e$-foliations (Theorems~3 and
+Proposition~9). Emphasize that these statements are proved without
+assumption of completeness of $(M,F).$
+
+For any complete foliation $(M,F)$ with TRG we define the
+structure Lie algebra $\frak g_0(M,F)$ and show that $\frak
+g_0(M,F)$ is an invariant of this foliation in the category
+${\frak F}_{TRG}$ (Proposition~5). One of the main results of this
+work is the proof of the theorem asserting that if $\frak
+g_0(M,F)$ is zero, then there exists a unique Lie group structure
+on ${\cal A}_B(M,F).$ We also obtain some estimates of the
+dimensions of these Lie groups depending on the transverse
+geometry (Theorem~5).
+
+We give different interpretations of holonomy groups of complete
+foliations with TRG (Theorem~4) and find some other sufficient
+conditions for the existence of a Lie group structure on ${\cal
+A}_B(M,F)$ (Theorem~6). In particular, it is shown that the
+structure Lie algebra of any complete proper foliation with TRG is
+zero, and ${\cal A}_B(M,F)$ is a Lie group (Corollary~2).
+
+We demonstrate that, for a foliation with TRG covered by a
+fibration, the condition $\frak g_0(M,F)=0$ is equivalent to the
+discreteness of its global holonomy group (Theorem~7).
+
+Examples of computations of the full basic automorphism group of a
+foliation with TRG are constructed. Examples 1 and 2 also show
+that the group ${\cal A}_B(M,F)$ depends on the transverse rigid
+geometry of the foliation $(M,F).$
+
+%\begin{center}{\large\bf 1. Rigid geometries}\end{center}
+
+\section{Rigid geometries}
+
+{\bf Parallelizable manifolds.\,} Recall that a manifold
+admitted an $e$-structure is called {\it parallelizable.} In other
+words, a parallelizable manifold is a pair $(P,\omega),$ where $P$
+is a smooth manifold and $\omega$ is a smooth non-degenerate
+$\mathbb{R}^m$-valued 1-form $\omega$ on~$P,$ i.~e.,
+$\omega_u\colon T_uP\to{\Bbb R}^m$ is an isomorphism of the vector
+spaces for each $u\in P.$ Here $m=\dim P.$
+
+{\bf Rigid structures.\,} We will use notations from~\cite{KN1}.
+Denote by $P(N,H)$ a principal $H$-bundle with the projection
+$p\colon P\to N$. Suppose that the action of $H$ on $P$ is a right
+action and $R_a$ is the diffeomorphism of $P$, corresponding to an
+element $a\in H.$
+
+Two principal bundles $P(N,H)$ and $\tilde P(\tilde N,\tilde H)$
+are called {\it isomorphic} if $H=\tilde H$ and there exists a
+diffeomorphism $\Gamma\colon P\to\tilde P$ such that $\Gamma\circ
+R_a=\tilde R_a\circ\Gamma,$ $\forall a\in H,$ where $\tilde R_a$
+is the transformation of $\tilde P$, corresponding to an element
+$a.$
+
+
+%{\bf Definition 1.} 
+\begin{Def}
+Let $P(N,H)$ be a principal
+$H$-bundle and $(P,\omega)$ be a parallelizable manifold
+satisfying the following condition:
+\begin{itemize}
+\item[] (S) there is an inclusion $\frak h\subset\mathbb{R}^m$ of
+the vector space of the Lie algebra $\frak h$ of the Lie group $H$
+into vector space $\mathbb{R}^m$ such that
+$\omega(A^*)=A,\,\forall A\in\frak h,$ where $A^*$ is the
+fundamental vector field on $P$ corresponding to $A.$
+\end{itemize}
+
+Then $\xi=(P(N,H),\omega)$ is called a {\it rigid structure} on
+the manifold $N.$ A pair $(N,\xi)$ is called a {\it rigid
+geometry.}
+\end{Def}
+
+%{\bf Definition 2.} 
+\begin{Def}
+Let $\xi=(P(N,H),\omega)$ and
+$\tilde\xi=(\tilde P(\tilde N,\tilde H),\tilde\omega)$ be two
+rigid structures. An isomorphism $\Gamma\colon P\to\tilde P$ of
+the principal bundles $P(N,H)$ and $\tilde P(\tilde N,\tilde H)$
+satisfying the equality $\Gamma^*\tilde\omega=\omega$ is called an
+{\it isomorphism} of the rigid structures $\xi$ and $\tilde\xi.$
+\end{Def}
+
+Any isomorphism $\Gamma$ of rigid structures $\xi$ and $\tilde\xi$
+defines a map $\gamma\colon N\to\tilde N$ such that
+$p\circ\Gamma=\gamma\circ p,$ and $\gamma$ is a diffeomorphism
+from $N$ to $\tilde N.$ The projection $\gamma$ is called an {\it
+isomorphism} of the rigid geometries $(N,\xi)$ and $({\tilde
+N},{\tilde \xi}).$
+
+{\bf Induced rigid geometries.\,}
+Let $\xi=(P(N,H),\omega)$ be a rigid structure on a manifold $N$
+with the projection $p\colon P\to N.$ Let $V$ be an arbitrary open
+subset of the manifold $N,$ let $P_V:=p^{-1}(V)$ and
+$\omega_V:=\omega|_{P_V}.$ Then $\xi_V:=(P_V(V,H),\omega_V)$ is
+also a rigid structure.
+
+
+%{\bf Definition 3.} 
+\begin{Def}
+The pair $(V,\xi_V)$ defined above is
+called an {\it induced rigid geometry on the open subset} $V$ of
+$N.$
+\end{Def}
+
+{\bf Gauge transformations.\,}
+Let ${\cal A}(\xi)$ be the group of all automorphisms of a rigid
+structure $\xi=(P(N,H),\omega).$ It is a Lie group as a closed
+subgroup of the group ${\cal A}(P,\omega)$ of all automorphism of
+a parallelizable manifold $(P,\omega).$ Denote by ${\cal
+A}(N,\xi)$ the group of all automorphisms of the geometry
+$(N,\xi),$ i.~e., ${\cal A}(N,\xi):=\{\gamma\in \mathrm{Diff}(
+N)\mid\exists\,\Gamma\in{\cal A}(\xi) : p\circ\Gamma=\gamma\circ
+p\}.$ Consider the natural group epimorphism $\chi\colon{\cal
+A}(\xi)\to {\cal A}(N,\xi)\colon\Gamma\mapsto\gamma,$ where
+$\gamma$ is the projection of $\Gamma$ with respect to $p\colon
+P\to N.$
+
+
+%{\bf Definition 4.} 
+\begin{Def}
+Let $\xi=(P(N,H),\omega)$ be a rigid
+structure on a manifold $N$ with the projection $p\colon P\to N.$
+The group $\mathrm{Gauge}(\xi):=\{\Gamma\in{\cal A}(\xi)\mid
+p\circ\Gamma=p\}$ is called a {\it group of gauge transformations
+of the rigid structure} $\xi.$
+\end{Def}
+
+Remark that $\mathrm{Gauge}(\xi)$ is a closed normal Lie subgroup
+of the group ${\cal A}(\xi)$, because it is the kernel of the
+natural group epimorphism $\chi\colon{\cal A}(\xi)\to{\cal
+A}(N,\xi).$
+
+{\bf Effectiveness of rigid geometries.}
+
+
+%{\bf Definition 5.} 
+\begin{Def}
+A rigid structure
+$\xi=(P(N,H),\omega)$ is called {\it effective} if for an
+arbitrary open subset $V$ in $N$ the induced rigid structure
+$\xi_V=(P_V(V,H),\omega_V)$ has the trivial group of gauge
+transformations, i.~e.,
+$\mathrm{Gauge}(\xi_V)=\{\mathrm{id}_{P_V}\}.$ A rigid geometry
+$(N,\xi)$ is said {\it to be effective} if $\xi$ is an effective
+structure.
+\end{Def}
+
+{\bf Pseudogroup of local automorphisms.\,} Let $(N,\xi)$ be
+a rigid geometry. For arbitrary open subsets $V,$ $V'\subset N$ an
+isomorphism $V\to V'$ of the induced rigid geometries $(V,\xi_V)$
+and $(V',\xi_{V'})$ is called a {\it local automorphism} of
+$(N,\xi).$ The family ${\cal H}$ of all local automorphisms of a
+rigid geometry $(N,\xi)$ forms a pseudogroup of local
+automorphisms. Denote it by ${\cal H}={\cal H}(N,\xi).$ Recall
+that a pseudogroup ${\cal H}$ of local diffeomorphisms of manifold
+$N$ is called {\it quasi-analytic} if the existence of an open
+subset $V\subset N$ and an element $\gamma\in{\cal H}$ such that
+$\gamma|_V=\mathrm{id}_V$ implies that
+$\gamma|_{D(\gamma)}=\mathrm{id}_{D(\gamma)}$ in the entire
+(connected) domain ${D(\gamma)}$ on which $\gamma$ is defined.
+
+
+%{\bf Proposition 1.} 
+\begin{Proposition}
+{The pseudogroup ${\cal H}={\cal
+H}(N,\xi)$ of all local automorphisms of an effective rigid
+geometry $(N,\xi)$ is quasi-analytic.}
+\end{Proposition}
+
+%{\bf Proof.} 
+\begin{proof}
+  Let $\gamma$ be an element of ${\cal H}={\cal H}(N,\xi)$ such that
+  $\gamma|_V=\mathrm{id}_V$ for some open subset $V$ in $N.$ The
+  effectiveness of the rigid geometry $(N,\xi)$ implies
+  $\Gamma=\mathrm{id}_{P_V},$ where $\Gamma$ is a local automorphism
+  of $\xi$ having the projection~$\gamma|_V$ with respect to $p\colon
+  P\to N.$ Let the domain $D=D(\gamma)$ of~$\gamma$ be an open
+  connected subset of $N$ such that $D\setminus V\neq\emptyset.$
+  Consider an automorphism $\tilde\Gamma$ of the induced rigid
+  structure $\xi_D$ with the projection~$\gamma.$ Since
+  $\tilde\Gamma^*\omega_D=\omega_D,$ $\tilde\Gamma$ is an isomorphism
+  of the parallelizable manifold $(P_D,\omega_D).$ It is known that
+  two automorphisms of a connected parallelizable manifold, which
+  coincide at one point, coincide at any point.  Therefore it follows
+  from the equality $\tilde\Gamma|_{P_V}=\Gamma=\mathrm{id}_{P_V}$
+  that $\tilde\Gamma|_{CP_D}=\mathrm{id}_{CP_D}$ for each connected
+  component $CP_D$ of $P_D.$ Thus, $\tilde\Gamma=\mathrm{id}_{P_D},$
+  hence $\gamma=\mathrm{id}_D.$ %\qed
+\end{proof}
+
+%\begin{center}{\large\bf 2. Foliations with transverse rigid geometries. Foliated bundles}\end{center}
+\section{Foliations with transverse rigid geometries. Foliated bundles}
+
+{\bf Foliations with transverse rigid geometries (TRG).\,} A foliation
+$(M,F)$ of codimension $q$ on an $n$-manifold $M$ has a transverse
+rigid geometry $(N,\xi),$ where $N$ is a $q$-manifold, if $(M,F)$ is
+defined by a cocycle $\eta=\{U_i,f_i,\{\gamma_{ij}\}\}$ modeled on
+$(N,\xi),$ i.~e.,
+\begin{itemize} 
+\item[1)] $\{U_i\}$ is an open covering of $M;$
+\item[2)] $f_i\colon U_i\to N$ are submersions with connected fibres;
+\item[3)] $\gamma_{ij}\circ f_j=f_i$ on $U_i\cap U_j,$
+\end{itemize} with $\gamma_{ij}$ is a local automorphism of $(N,\xi).$
+The topological space $N$ is not assumed to be connected. Without loss
+of generality, we will suppose that $N=\cup_{i\in J}f_i(U_i)$ and the
+family $\{(U_i,f_i)\}$ is maximal as it is generally used in manifold
+theory.
+
+Let $\Sigma$ be the set of fibres of the submersions $f_i$ belonging
+to the cocycle $\eta.$ One can easily check that $\Sigma$ is a base of
+a certain topology $\tau$ in $M.$ The connected components of the
+topological space $(M,\tau)$ form a partition $F=\{ L_\alpha |~ \alpha
+\in A\}.$
+
+
+%{\bf Definition 6.} 
+\begin{Def}
+We call $(M,F),$ where $F$ is the
+partition mentioned above, a {\it foliation with transverse rigid
+geometry} $(N,\xi),$ and $L_\alpha$ are called its {\it leaves.}
+The cocycle $\eta$ modelled on $(N,\xi)$ is said to be an {\it
+$(N,\xi)$-cocycle.}
+\end{Def}
+
+Let $(M,F)$ be a foliation defined by an $(N,\xi)$-cocycle
+$\eta=\{U_i,f_i,\{\gamma_{ij}\}\},$ where $(N,\xi)$ is an
+effective rigid geometry. Effectiveness of $\xi$ guarantees the
+existence of a unique isomorphism $\Gamma_{ij}$ of the induced
+rigid structures $\xi_{f_j(U_i\cap U_j)}$ and $\xi_{f_i(U_i\cap
+U_j)}$, whose projection  coincides with $\gamma_{ij}$. Hence, in
+the case $U_i\cap U_j\cap U_k\neq\emptyset,$ the equality
+$\gamma_{ij}\circ\gamma_{jk}=\gamma_{ik}$ implies the equality
+\begin{itemize} 
+\item[$(\Gamma_1)$] $\Gamma_{ij}\circ\Gamma_{jk}=\Gamma_{ik}.$
+\end{itemize}
+
+The following two equalities are direct corollaries of the
+effectiveness of $\eta$ and~$(\Gamma_1):$
+\begin{itemize} \item[$(\Gamma_2)$] $\Gamma_{ii}=\mathrm{id}_{P_i}$
+  \quad and \quad $(\Gamma_3)$ $\Gamma_{ij}=(\Gamma_{ji})^{-1}.$
+\end{itemize}
+
+{\bf Assumptions.\,} {\it In this work we will assume
+that each rigid geometry is effective and all the foliations under
+consideration are modeled on effective rigid geometries.}
+
+{\bf Notations.\,} We denote by $\frak X(N)$ the Lie algebra of
+smooth vector fields on a manifold $N.$ If $Q$ is a smooth
+distribution on $M,$ then $\frak X_Q(M):=\{X\in\frak X(M)\mid
+X_u\in Q_u,\,\forall u\in M\}.$ If $Q$ is an integrable
+distribution and defines a foliation $F,$ where $Q=TF,$ we also
+use notation $\frak X_F(M)$ for $\frak X_Q(M).$
+
+{\bf Foliated bundles.} Now we construct the
+foliated bundle for a foliation with TRG.
+
+
+%{\bf Theorem 1.} 
+\begin{Theorem}
+{Let $(M,F)$ be a foliation with a
+transverse rigid geometry $(N,\xi),$ where $\xi=(P(N,H),\omega).$
+Then there exist a principal $H$-bundle $\pi\colon{\cal R}\to M,$
+an $H$-invariant foliation $({\cal R},{\cal F})$ whose leaves are
+projected by $\pi$ onto the leaves of $(M,F)$ and an
+$\mathbb{R}^m$-valued 1-form $\tilde\omega$ on $\cal R,$ where
+$m=\dim P,$ that satisfy the following conditions:
+\begin{itemize} 
+%\item[(i)] 
+\item[] (i) the map $\tilde\omega_u\colon T_u({\cal
+    R})\to\mathbb{R}^m,$ $\forall u\in\cal R,$ is surjective;
+  moreover, $\ker\tilde\omega_u= T_u\cal F;$ 
+%\item[(ii)] 
+\item[] (ii) there is an inclusion $\frak h\subset \mathbb{R}^m$ of the
+  vector space of the Lie algebra $\frak h$ of the Lie group $H$ into
+  $\mathbb{R}^m$ such that $\tilde\omega(A^*)=A,$ $\forall A\in\frak
+  h,$ where $A^*$ is the fundamental vector field on ${\cal R}$
+  corresponding to $A;$ 
+%\item[(iii)] 
+\item[] (iii) the foliation $({\cal R},{\cal F})$ is an
+  $e$-foliation; 
+%\item[(iv)] 
+\item[] (iv) the restriction $\pi_{\cal L}$ on an arbitrary leaf ${\cal
+    L}$ of the foliation $({\cal R},{\cal F})$ is a regular covering
+  map onto a leaf of $(M,F),$ and the subgroup $H({\cal L}):=\{a\in
+  H\mid R_a({\cal L})={\cal L}\}$ of the Lie group $H$ is the group of
+  deck transformations.
+\end{itemize} 
+}
+\end{Theorem}
+
+%{\bf Proof.} 
+\begin{proof}
+Supppose that the foliation $(M,F)$ with
+transverse rigid geometry is defined by a $(N,\xi)$-cocycle
+$\{U_i,f_i,\{\gamma_{ij}\}\},$ where $\xi=(P(N,H),\omega),$ and
+let $p\colon P\to N$ be  the projection of the principal
+$H$-bundle $P(N,H).$ Denote $V_i:=f_i(U_i),$ $P_i:=p^{-1}(V_i)$
+and $p_i:=p|_{P_i}.$ Without loss of generality, we can assume
+that $U_i$ and $V_i$ are contractible open sets. Let ${\cal
+R}_i:=f_i^*P_i:=\{(x,z)\in U_i\times P_i\mid f_i(x)=p_i(z)\},$
+$\bar f_i\colon {\cal R}_i\to P_i\colon (x,z)\mapsto z$ and
+$\pi_i\colon {\cal R}_i\to U_i\colon (x,z)\mapsto x,$ $\forall
+(x,z)\in {\cal R}_i.$ We have $p_i\circ\bar f_i=f_i\circ\pi_i.$
+The formula $(x,z)\cdot a:=(x,z\cdot a),$ $\forall (x,z)\in {\cal
+R}_i,$ $\forall a\in H,$ defines a right action of the group $H$
+on ${\cal R}_i.$ Thus we have the principal $H$-bundle
+$\pi_i\colon {\cal R}_i\to U_i$ with the simple $H$-invariant
+foliation ${\cal F}_i=\{\bar f_i^{-1}(z)\mid z\in P_i\}.$ Let
+$\omega_i:=\omega|_{P_i}.$ We have the $\mathbb{R}^m$-valued
+1-form $\bar\omega_i:=\bar f_i^*\omega_i$ defined on ${\cal R}_i$.
+Moreover, $\bar\omega_i(X)=0$ for $X\in\frak X({\cal R}_i)$ if and
+only if $X\in {\frak X}_{{\cal F}_i}({\cal R}_i).$
+
+Let $Y:=\bigsqcup_{i\in J} {\cal R}_i$ be the disjunct union of
+the manifolds ${\cal R}_i.$ Let us introduce an equivalence
+relation $\rho$ in $Y.$ Denote a point $u\in Y\cap {\cal R}_i$ by
+the pair $(i,u).$ Two points $(i,u)$ and $(j,w)$ in $Y$ are said
+to be $\rho$-equivalent if 
+\begin{itemize} 
+\item[](1)
+$\pi_i(u)=\pi_j(w)\in U_i\cap U_j;$ 
+\item[](2) 
+$\bar
+f_i(u)=(\Gamma_{ij}\circ\bar f_j)(w),$ 
+\end{itemize}
+where $\Gamma_{ij}$ is the
+isomorphism of the rigid structures $\xi_{f_j(U_i\cap U_j)}$ and
+$\xi_{f_i(U_i\cap U_j)}$ whose projection $\gamma_{ij}$ belongs to
+the $(N,\xi)$-cocycle $\{U_i,f_i,\{\gamma_{ij}\}\}.$
+
+The above equality $(\Gamma_2)$ implies that $\rho$ is reflexive.
+The relation $(\Gamma_3)$ guarantees the symmetry of $\rho,$ while
+the relation $(\Gamma_1)$ implies the transitivity of $\rho.$ Thus
+$\rho$ is indeed an equivalence relation in $Y.$ Hence we have the
+quotient space ${\cal R}:=Y/\rho,$ the quotient mapping
+$\varphi\colon Y\to{\cal R}$ and the surjective projection
+$\pi\colon{\cal R}\to M$, where $\pi$ maps the equivalence class
+$[(i,u)]\in{\cal R}$ of a point $(i,u)\in Y$ to the point
+$\pi_i(u)\in M.$ The restriction $\varphi_i:=\varphi|_{{\cal
+R}_i}\colon{\cal R}_i\to{\cal R}$ is injective. Therefore
+$\varphi_i$ is a bijective map onto image $\tilde
+U_i:=\varphi({\cal R}_i);$ it will be denoted by
+$\varphi_i\colon{\cal R}_i\to\tilde U_i.$ A smooth structure in
+${\cal R}$ is well defined by assuming that each bijection
+$\varphi_i$ is a diffeomorphism of ${\cal R}_i$ and~$\tilde U_i.$
+
+Let $x$ be any point in ${\cal R}$ and $\tilde U_i\ni x.$ Set
+$x\cdot a:=\varphi_i^{-1}(x)\cdot a,$ $\forall a\in H.$ This
+definition does not depend on the choice of $\tilde U_i$
+containing $x$ because all $\Gamma_{ij}$ are isomorphisms of the
+corresponding principal $H$-bundles. Thus ${\cal R}$ becomes the
+total space of the principal $H$-bundle. The quotient manifold
+${\cal R}/H$ can be identified with the manifold $M,$ while the
+projection onto the quotient can be identified with
+$\pi\colon{\cal R}\to M.$
+
+Define an 1-form $\tilde\omega$ on ${\cal R}$ by the formula
+$\tilde\omega|_{\tilde U_i}:=(\varphi_i^{-1})^*\bar\omega_i.$ If
+$U_i\cap U_j\neq\emptyset,$ then $\tilde U_i\cap \tilde
+U_j\neq\emptyset$ and $\Gamma^*_{ij}\omega_i=\omega_j$ because
+$\Gamma_{ij}$ is an isomorphism of the respective rigid
+structures, which lies over the local automorphism $\gamma_{ij}$
+of $(N,\xi).$ Since $\bar\omega_i=\bar f_i^*\omega_i,$ we have the
+equality
+$(\varphi_i^{-1})^*\bar\omega_i=(\varphi_j^{-1})^*\bar\omega_j$ on
+$\tilde U_i\cap\tilde U_j.$  Thus the 1-form $\tilde\omega$ is
+well defined.
+
+The foliations ${\cal F}_i$ on ${\cal R}_i$ and hence the
+foliations $(\varphi_i)_*{\cal F}_i$ on $\tilde U_i$ are glued
+together by $\rho$ into a foliation ${\cal F}$ on the manifold
+${\cal R}$ such that ${\cal F}|_{\tilde U_i}=(\varphi_i)_*{\cal
+F}_i.$ It follows from the definition of $\tilde\omega$ that
+$\tilde\omega(X)=0$ for $X\in\frak X({\cal R})$ if and only if
+$X\in {\frak X}_{\cal F}({\cal R}).$
+
+The invariance of the foliations ${\cal F}_i,$ $i\in J,$ with
+respect to the action of the group~$H$ implies the $H$-invariance
+of the foliation ${\cal F}$ on ${\cal R}.$
+
+The equality $\tilde\omega(A^*)=A,$ $\forall A\in\frak h,$ is a
+consequence of the equality $(S)$ for $\omega$ and the definitions
+of the principal $H$-bundle $\pi\colon{\cal R}\to M$ with the
+1-form $\tilde\omega.$
+
+We emphasize that the $(P,\omega)$-cocycle $\{\tilde U_i,\tilde
+f_i,\{\Gamma_{ij}\}\}$ defines the foliation $({\cal R},{\cal
+F}).$ Thus $({\cal R},{\cal F})$ is an $e$-foliation.
+
+From the construction of the foliation $({\cal R},{\cal F})$ it
+follows that the restriction $\pi|_{\cal L}$ onto an arbitrary
+leaf ${\cal L}$ of $({\cal R},{\cal F})$ is a covering mapping
+onto some leaf $L$ of the foliation $(M,F).$ Fix a point $x\in L$
+and a point $u\in{\cal L}\cap\pi^{-1}(x).$ For any point
+$u'\in{\cal L}\cap\pi^{-1}(x)$ there exists a unique element $b\in
+H$ such that $u'=u\cdot b.$ Invariance of the lifted foliation
+$({\cal R},{\cal F})$ with respect to the action of the Lie group
+$H$ implies that $R_b({\cal L})={\cal L},$ hence $b\in H({\cal
+L}):=\{a\in H\mid R_a({\cal L})={\cal L}\}.$ Thus the subgroup
+$H({\cal L})$ of the group $H$ acts transitively on the set ${\cal
+L}\cap\pi^{-1}(x),$ with $L={\cal L}/H({\cal L}).$ Therefore the
+covering mapping $\pi|_{\cal L}\colon{\cal L}\to L$ is regular,
+and $H({\cal L})$ is its deck transformation group. 
+%\qed
+\end{proof}
+
+%{\bf Definition 7.} 
+\begin{Def}
+The principal $H$-bundle ${\cal
+R}(M,H)$ with the $H$-invariant foliation $({\cal R},{\cal F})$
+constructed in the proof of Theorem~1 is called {\it the foliated
+bundle for the foliation $(M,F)$ with transverse rigid geometry}
+$(N,\xi)$ and $({\cal R},{\cal F})$ is called {\it the lifted
+foliation.}
+\end{Def}
+
+%{\bf Remark 1.} 
+\begin{Remark}
+The lifted $e$-foliation $({\cal R},{\cal
+F})$ is defined by $(P,\omega)$-cocycle $\{\tilde U_i,\tilde
+f_i,\{\Gamma_{ij}\}\}.$
+\end{Remark}
+
+%{\bf Remark 2.} 
+\begin{Remark}
+If $H$ is disconnected, ${\cal R}$ may be
+also disconnected. In this case  all the connected components of
+${\cal R}$ are mutually diffeomorphic, and we will consider one of
+them. Thus, we assume that the space of the foliated bundle ${\cal
+R}$ is connected.
+\end{Remark}
+
+% \begin{center}{\large\bf 3. Completeness and a structure Lie algebra\\
+
+%  of a foliation with TRG}\end{center}
+
+\section{Completeness and a structure Lie algebra  of a foliation with TRG}
+
+{\bf Completeness of foliations with TRG.\,} Let $(M,F)$
+be an arbitrary smooth foliation on a manifold $M$ and $TF$ be the
+distribution on $M$ formed by the vector spaces tangent to the
+leaves of the foliation $F.$ The vector quotient bundle $TM/TF$ is
+called the transverse vector bundle of the foliation $(M,F).$ Let
+us identify $TM/TF$ with an arbitrary smooth distribution $\frak
+M$ on $M$ that is transverse to the foliation $(M,F),$ i.~e., $TM
+= TF\oplus\frak M.$
+
+Let $(M,F)$ be a foliation with TRG and $({\cal R},{\cal F})$ be
+the lifted foliation. It is natural to identify the transverse
+vector bundle $T{\cal R}/T{\cal F}$ with a distribution
+$\overline{\frak M}:=\pi^*\frak M$ on ${\cal R},$ i.~e., with a
+distribution defined by the equality $\overline{{\frak M}}_u:=
+\{X_u\in T_u{\cal R} \mid$ $\pi_*X_u\in{\frak M}_x\},$ where $x =
+\pi(u)$ and $u\in\cal R.$
+
+
+%{\bf Definition 8.} 
+\begin{Def}
+A foliation $(M,F)$ with transverse
+rigid geometry is said to be {\it $\frak M$-complete} if any
+transverse vector field $X\in {\frak X}_{\overline{\frak M}}({\cal
+R})$ such that $\tilde\omega(X) = \mathrm{const}$ is complete. A
+foliation $(M,F)$ with TRG of arbitrary codimension $q$ is said to
+be {\it complete} if there exists a smooth $q$-dimensional
+transverse distribution $\frak M$ on  $M$ such that $(M,F)$ is
+$\frak M$-complete.
+\end{Def}
+
+
+%{\bf Remark 3.} 
+\begin{Remark}
+In other words, $(M,F)$ is an $\frak
+M$-complete foliation iff the lifted $e$-foliation $({\cal
+R},{\cal F})$ is complete with respect to the distribution
+$\overline{\frak M}$ in the sense of Conlon~\cite{Con}. Remark that a
+complete $e$-foliation in the sense of Conlon is also complete in
+the sense of Molino~\cite{Mol_book}.
+\end{Remark}
+
+{\bf Ehresmann connections for foliations.\,}
+Let $(M,F)$ be a foliation of codimension $q$ and $\frak M$ be a
+smooth $q$-dimensional distribution on $M$ that is transverse to
+the foliation $F.$ The piecewise smooth integral curves of the
+distribution $\frak M$ are said to be {\it horizontal,} and the
+piecewise smooth curves in the leaves are said to be vertical. A
+piecewise smooth mapping $H$ of the square $I_1\times I_2$ to $M$
+is called a {\it vertical-horizontal homotopy} if the curve
+$H|_{{s}\times I_2}$ is vertical for any $s\in I_1$ and the curve
+$H|_{I_1\times{t}}$ is horizontal for any $t\in I_2.$ In this
+case, the pair of paths $(H|_{I_1\times \{0\}},H|_{\{0\}\times
+I_2})$  is called the {\it base} of $H.$ It is well known that
+there exists at most one vertical-horizontal homotopy with a given
+base. A distribution $\frak M$ is called an {\it Ehresmann
+connection for a foliation} $(M,F)$ (in the sense of Blumenthal
+and Hebda~\cite{BH}) if, for any pair of paths $(\sigma, h)$ in $M$ with
+a common starting point $\sigma(0) = h(0),$ where $\sigma$ is a
+horizontal curve and $h$ is a vertical curve, there exists a
+vertical-horizontal homotopy $H$ with the base $(\sigma, h).$ If
+the distribution $\frak M$ is integrable, then the connection is
+said to be {\it integrable.} For a simple foliation $F,$ i.~e.,
+such that it is formed by the fibers of a submersion $r\colon M\to
+B,$ a distribution $\frak M$ is an Ehresmann connection for $F$ if
+and only if $\frak M$ is an Ehresmann connection for the
+submersion $r,$ i.~e., if and only if any smooth curve in $B$
+possesses horizontal lifts.
+
+
+%{\bf Proposition 2.} 
+\begin{Proposition}
+{ If $(M,F)$ is an $\frak
+M$-complete foliation with TRG, then $\frak M$ is an Ehresmann
+connection for this foliation. }
+\end{Proposition}
+
+%{\bf Proof.} 
+\begin{proof}
+The distribution $\overline{\frak
+M}:=\pi^*\frak M$ is an Ehresmann connection for the lifted
+foliation $({\cal R,F}),$ because $(M,F)$ is $\frak M$-complete.
+So in view of $F=\pi_*{\cal F}$ and $\frak M=\pi_*\overline{\frak
+M},$ we see that $\frak M$ is an Ehresmann connection for
+$(M,F).$
+%\qed
+\end{proof}
+
+{\bf Structure Lie algebra.\,}
+Applying of the relevant results of Molino~\cite{Mol_book} on complete
+$e$-foliations, we obtain the following theorem.
+
+
+%{\bf Theorem 2.} 
+\begin{Theorem}
+{Let $(M,F)$ be a complete foliation
+with TRG and $({\cal R},{\cal F})$ be its lifted $e$-foliation.
+Then:
+\begin{itemize}
+\item[] (i) the closure of the leaves of the foliation
+$\cal F$ are fibers of a certain locally trivial fibration
+$\pi_b\colon{\cal R}\to W;$ 
+\item[] (ii) the foliation
+$(\overline{\cal L},{\cal F}|_{\overline{\cal L}})$ induced on the
+closure $\overline{\cal L}$ is a Lie foliation with dense leaves
+with the structure Lie algebra $\frak g_0$, that is the same for
+any $\cal L\in\cal F.$
+\end{itemize} }
+\end{Theorem}
+
+%{\bf Definition 9.} 
+\begin{Def}
+The structure Lie algebra $\frak g_0$
+of the Lie foliation $(\overline{\cal L},{\cal F}|_{\overline{\cal
+L}})$ is called {\it the structure Lie algebra} of the complete
+foliation $(M,F)$ and is denoted by $\frak g_0=\frak g_0(M,F).$
+\end{Def}
+
+
+%{\bf Remark 4.} 
+\begin{Remark}
+If $(M,F)$ is a Riemannian foliation on a
+compact manifold, this notion coincides with the notion of a
+structure Lie algebra in the sense of Molino~\cite{Mol_book}.
+\end{Remark}
+
+
+%{\bf Definition 10.} 
+\begin{Def}
+The fibration $\pi_b\colon{\cal
+R}\to W$ satisfying Theorem 2 is called a {\it basic fibration}
+for $(M,F).$
+\end{Def}
+
+%\begin{center}{\large\bf 4. Category of foliations with TRG}\end{center}
+
+\section{Category of foliations with TRG}
+
+{\bf Category of foliations.\,} Denote by ${\frak F\frak
+o\frak l}$ the category of foliations, objects of which are
+foliations, morphisms of two arbitrary foliations $(M,F)$ and
+$(M',F')$ are smooth maps $M \to M'$ mapping leaves of the
+foliation $(M,F)$ into leaves of the foliation $(M',F');$ a
+composition of morphisms coincides with the composition of maps.
+
+{\bf Category of foliations with TRG.\,}
+Let $(M,F)$ and $(M',F')$ are foliations with transverse rigid
+geometries $(N,\xi)$ and $(N',\xi')$ defined by an
+$(N,\xi)$-cocycle $\eta=\{U_i,f_i, \{\gamma _{ij}\}\}$ and an
+$(N',\xi')$-cocycle $\eta'=\{U'_r,f'_r, \{\gamma'_{rs}\}\},$
+respectively. Let $f\colon M\to M'$ be a morphism which is a local
+isomorphism in the category ${\frak F\frak o\frak l}.$
+
+Hence for any $x\in M$ and $y:=f(x)$ there exist neighborhoods $U_k\ni
+x$ and $U'_k\ni y$ from $\eta$ and $\eta'$ respectively and a
+diffeomorphism $\lambda\colon V_k\to V'_s,$ where $V_k:=f_k(U_k)$ and
+$V'_s:=f'_s(U'_s),$ satisfying the relations $f(U_k)=U'_s$ and
+$\lambda\circ f_k=f'_s\circ f|_{U_k}.$ We will say that $f$ preserves
+{\it transverse rigid structure} if the diffeomorphism $\lambda\colon
+V_k\to V'_s$ is an isomorphism of the induced rigid geometries
+$(V_k,\xi_{V_k})$ and $(V'_s,\xi'_{V'_s}).$
+
+This notion is well defined, i.~e., it does not depend of the
+choice of neighborhoods~$U_k$ and $U'_k$ from the cocycles $\eta$
+and $\eta'.$
+
+By a {\it TRG-morphism of two foliations $(M,F)$ and $(M',F')$
+with transverse rigid geometries} we mean a morphism $f\colon M\to
+M'$ in the category ${\frak F\frak o\frak l}$ which preserves
+transverse rigid structure. The category $\mathfrak{F}_{TRG}$
+objects of which are foliations with TRG, morphisms are
+TRG-morphisms, is called {\it the category of foliations with
+transverse rigid geometries.}
+
+{\bf Isomorphisms in the category ${\frak F}_{TRG}$.\,}
+Remark that for any $e$-foliation $({\cal R,F})$ the lifted
+foliation coincides with $({\cal R,F}).$ Using this we easily get
+the following lemma.
+
+
+%{\bf Lemma 1.} 
+\begin{Lemma}
+{Let $({\cal R,F})$ and $({\cal
+R',F'})$  be  two $e$-foliations with transverse rigid geometries
+ $(P,\omega)$ and $(P',\omega')$ respectively, where
+  $(P,\omega)$ and $(P',\omega')$ are parallelizable manifolds.
+  Let $\tilde\omega$ and $\tilde\omega'$ be the basic 1-forms on $\cal R$ and
+  $\cal R'$ defined according to Theorem 1. Then a diffeomorphism
+  $f\colon{\cal R}\to{\cal R'}$ is an isomorphism in the category
+${\frak F}_{TRG}$ if and only if $f$ is an isomorphism in the
+category $\frak F\frak o\frak l$ and
+$f^*\tilde\omega'=\tilde\omega.$ }
+\end{Lemma}
+
+%{\bf Proposition 3.} 
+\begin{Proposition}
+{ Let $(M,F)$ and $(M',F')$ be
+two foliations with TRG, let $({\cal R,F})$ and $({\cal R',F'})$
+be the corresponding lifted foliations. Then a diffeomorphism
+$f\colon M\to M'$ is an isomorphism in the category ${\frak
+F}_{TRG}$ if and only if there exists an isomorphism $\hat
+f\colon{\cal R}\to{\cal R'}$ of the lifted foliations in the
+category ${\frak F}_{TRG}$ such that $R'_a\circ\hat f=\hat f\circ
+R_a,$ $\forall a\in H,$ where $R_a,$ $R'_a$ are the right
+translations by an element $a\in H$ on $\cal R$ and $\cal R'$
+accordingly. }
+\end{Proposition}
+
+%{\bf Proof.} 
+\begin{proof}
+We will use the notations introduced in the
+proof of Theorem 1. Let the foliation with TRG $(M,F)$ is defined
+by an $(N,\xi)$-cocycle $\eta=\{U_i,f_i,\{\gamma_{ij}\}\}.$ Recall
+that the lifted foliation $({\cal R,F})$ is defined by a
+$(P,\omega)$-cocycle $\tilde\eta=\{\tilde U_i,\tilde
+f_i,\{\Gamma_{ij}\}\},$ where $\tilde U_i:=\pi^{-1}(U_i),$ and the
+local isomorphisms $\Gamma_{ij}$ of the rigid structure $\xi$ lie
+over the local isomorphisms $\gamma_{ij}$ of the rigid geometry
+$(N,\xi).$ For the objects, concerning to the foliation $(M',F')$,
+we will use primes.
+
+At first, suppose that $\hat f\colon{\cal R}\to{\cal R'}$ is an
+isomorphism of the $e$-foliations $({\cal R,F})$ and $({\cal
+R',F'})$ satisfying the condition $R'_a\circ\hat f=\hat f\circ
+R_a,$ $\forall a\in H.$ Then the projection $f\colon M\to M'$ of
+$\hat f$ is well defined by the equality $\pi'\circ\hat f=
+f\circ\pi,$ where $\pi\colon{\cal R}\to M$ and $\pi'\colon{\cal
+R'}\to M'$ are the projections of the foliated bundles.
+
+Consider an arbitrary point $x\in M$ and $y:=f(x)\in M'.$ There
+are neighborhoods $U_k\ni x$ and $U'_s\ni y$ from the
+$(N,\xi)$-cocycle and the $(N',\xi')$-cocycle defining the
+foliations $(M,F)$ and $(M',F')$ respectively, with $f(U_k)=U'_s.$
+Then $\hat f(\tilde U_k)=\tilde U'_s$.  The lifted $e$-foliations
+$(\tilde U_k,{\cal F}|_{\tilde U_k})$ and $(\tilde U'_s,{\cal
+F'}|_{\tilde U'_s})$ are defined by the submersions $\tilde
+f_k\colon\tilde U_k\to P_k$ and $\tilde f'_s\colon\tilde U'_s\to
+P'_s$ accordingly. Besides, $R'_a\circ\hat f=\hat f\circ R_a,$
+$\forall a \in H.$ Hence, according to Lemma~1, a diffeomorphism
+$\Gamma\colon P_k\to P'_s$ defined by the relation
+$\Gamma\circ\tilde f_k=\tilde f'_s\circ\hat f|_{\tilde U'_s}$ is a
+local isomorphism of the rigid structures $\xi$ and $\xi'.$ Put
+$V_k=f_k(U_k)$ and $V'_s=f'_s(U'_s).$ Let $\gamma\colon V_k\to
+V'_s$ be the projection of $\Gamma,$ then $\gamma$ is an
+isomorphism of the rigid geometries induced on $V_k$ and $V'_s.$
+Thus, $f$ is an isomorphism of the foliations $(M,F)$ and
+$(M',F')$ in the category~${\frak F}_{TRG}.$
+
+Converse, suppose that $f\colon M\to M'$ is an isomorphism of the
+foliations $(M,F)$ and $(M',F')$ in the category ${\frak
+F}_{TRG}.$ Construct $\hat f\colon{\cal R}\to{\cal R'}$ in the
+following way. Let $x$ be any point in $M$ and $y:=f(x)\in M'.$
+Let $U_k\ni x$ and $U'_s\ni y$ be neighborhoods from the cocycles
+$\eta$ and $\eta'$ respectively, with $f(U_k)=U'_s.$ Consider
+${\cal R}_k:=f_k^*(P_k),$ where $P_k=\tilde f_k(\tilde U_k).$ Then
+${\cal R}_k=\{(x,z)\in U_k\times P_k\mid f_k(x)=p_k(z)\},$ ${\cal
+R'}_s$ is defined similarly. Since $f$ is an isomorphism in the
+category ${\frak F}_{TRG},$ by definition, there exists a
+diffeomorphism $\gamma\colon V_k\to V'_s$ which is an isomorphism
+of the induced rigid geometries $(V_k,\xi_{V_k})$ and
+$(V'_s,\xi'_{V'_s}),$ and $\gamma\circ f_k=f'_s\circ f|_{U_k}.$
+
+Since the rigid geometries $(N,\xi)$ and $(N',\xi')$ are
+effective, there is a unique isomorphism $\Gamma\colon P_k\to
+P'_s$ of the induced rigid structures $\xi_{V_k}$ and
+$\xi'_{V'_s}$ with the projection~$\gamma.$ Then
+$\Gamma^*\omega'=\omega$ and $\Gamma\circ R_a=R'_a\circ\Gamma,$
+$\forall a\in H.$ Define a map $h\colon{\cal R}_k\to{\cal R'}_s$
+by the equality $$h(x,z):=(f(x),\Gamma(z)),\quad\forall
+(x,z)\in{\cal R}_k.$$
+
+According to the definition of the foliated bundle for $(M,F),$
+the bijections $\varphi_i\colon{\cal R}_i\to\tilde U_i$ are
+isomorphisms of the simple foliations with TRG defined by the
+submersions $\bar f_i\colon {\cal R}_i\to P_i$ and $\tilde
+f_i\colon\tilde U_i\to P_i$ respectively. An analogous assertion
+holds for the foliation $(M',F')$. Hence $h\colon{\cal
+R}_k\to{\cal R'}_s$ is an isomorphism of the foliations mentioned
+above in the category~${\frak F}_{TRG}.$
+
+Put, by definition, $\hat f|_{\tilde U_k}:=\varphi'_s\circ
+h\circ\varphi^{-1}_k$ for any neighborhood $\tilde U_k$ from the
+cocycle~$\eta.$ It is not difficult to check that this equality
+defines the map $\hat f\colon{\cal R}\to{\cal R'},$ where $\hat f$
+satisfies the following conditions: $(i)\; \hat
+f^*\tilde\omega'=\tilde\omega$ and $(ii)\; R'_a\circ\hat f=\hat
+f\circ R_a,$ $\forall a\in H.$ Therefore, by Lemma 1, $\hat f$ is
+an isomorphism of the lifted $e$-foliations satisfying~(ii). 
+%\qed
+\end{proof}
+
+%{\bf Proposition 4.} 
+\begin{Proposition}
+{Let $(M,F)$ and $(M',F')$ be
+two foliations with transverse rigid geometries $(N,\xi)$ and
+$(N'\xi')$ accordingly. Let $\hat f_1$ and $\hat f_2\colon{\cal
+R}\to{\cal R'}$ be two isomorphisms of $({\cal R,F})$ and  $({\cal
+R',F'})$ satisfying the equalities $R'_a\circ\hat f_i=\hat
+f_i\circ R_a,$ $i=1,2,$ $\forall a\in H.$ If their projections
+$h_i\colon M\to M'$ coincide:  $h_1=h_2,$ then  $\hat f_1=\hat
+f_2.$ }
+\end{Proposition}
+
+%{\bf Proof.} 
+\begin{proof}
+The map $\hat f:=\hat f_2^{-1}\circ\hat
+f_1\colon{\cal R}\to{\cal R}$ is an isomorphism of $({\cal R,F})$
+satisfying the relation $R'_a\circ\hat f=\hat f\circ R_a,$
+$\forall a\in H,$ where the projection of $\hat f$ is
+$f=h_2^{-1}\circ h_1=\mathrm{id}_M.$ For any $x\in M$ we have
+$y=f(x)=x$. Therefore, we can take $U_s=U_k\ni x$ in the
+definition of morphisms of the category ${\frak F}_{TRG}$. Then we
+have $\tilde U_k=\tilde U_s.$ As above, let $f_k\colon U_k\to V_k$
+be a submersion from the cocycle defining $(M,F)$ and
+$p_k:=p|_{P_k}$. Then $\gamma=\mathrm{id}_{V_k}$ and $\Gamma\circ
+p_k=p_k,$ where $\Gamma\colon P_k\to P_k$ is an automorphism of
+the induced rigid structure $\xi_{V_k}=(P_k(H,V_k),\omega_k).$
+Therefore $\Gamma\in\mathrm{Gauge}(\xi_{V_k}).$ Due to the
+effectiveness of the transverse rigid geometry $(N,\xi),$ we
+necessarily have $\Gamma=\mathrm{id}_{P_k}.$ The equality
+$\Gamma\circ\tilde f_k=\tilde f_k\circ\hat f|_{\tilde U_k}$
+implies $\tilde f_k=\tilde f_k\circ\hat f|_{\tilde U_k},$ i.~e.,
+$\hat f|_{\tilde U_k}\in{\cal A}^H_L(\tilde U_k,{\cal F}|_{\tilde
+U_k}).$ For any $x\in M$, the neighborhoods $\{U_k\mid x\in U_k\}$
+from the $(N,\xi)$-cocycle $\eta=\{U_i,f_i,\{\gamma_{ij}\}\}$ form
+a base of the topology of the manifold $M$ at $x.$ Hence $\hat
+f(u)=u,$ $\forall u\in\pi^{-1}(x).$ Since $x$ is an arbitrary
+point in $M,$ we have $\hat f=\mathrm{id}_{\cal R}.$ Thus, $\hat
+f_1=\hat f_2.$ 
+%\qed
+\end{proof}
+
+{\bf A foliated natural functor.\,} By analogy to
+Proposition~3 and~4 it is not difficult to prove that for any
+morphism $f\colon M\to M'$ of foliations $(M,F)$ and $(M,F')$ in
+the category ${\frak F}_{TRG}$ there exists a unique morphism
+$\hat f\colon{\cal R}\to{\cal R'}$ of the lifted foliations
+$({\cal R,F})$ and $({\cal R',F'})$ satisfying the equality
+$R'_a\circ\hat f=\hat f\circ R_a$ $\forall a\in H.$ Set
+$\Phi(M,F):=({\cal R,F})$ and $\Phi(f):=\hat f,$ then we get a
+covariant functor $\Phi$ from the category ${\frak F}_{TRG}$ to
+the category of foliated bundles. This functor is a foliated
+natural bundle in sense of Wolak~\cite{Wol},~\cite[Chapter II]{Wol_book}.
+
+{\bf Automorphism groups of foliations with TRG.\,}
+Let $(M,F)$ be a foliation with a fixed transverse rigid structure
+$(N,\xi).$ Denote by ${\cal A}(M,F)$ the group of all
+automorphisms of $(M,F)$ in the category $\mathfrak{F}_{TRG}.$ We
+say also that ${\cal A}(M,F)$ is the {\it full group of
+automorphisms.}
+
+
+%{\bf Theorem 3.} 
+\begin{Theorem}
+{Let $(M,F)$ be a foliation with
+TRG. Let $(\cal R,F)$ be the lifted foliation and ${\cal
+A}^H({\cal R,F})=\{f\in{\cal A}({\cal R,F})\mid f\circ
+R_a=R_a\circ f,\quad\forall a\in H\}.$ Then the map
+$\mu\colon{\cal A}^H({\cal R,F})\to{\cal A}(M,F)\colon\hat
+f\mapsto f,$ where $f$ is the projection of $\hat f\in{\cal
+A}^H({\cal R,F})$ with respect to $\pi\colon{\cal R}\to M,$ is a
+natural group isomorphism. }
+\end{Theorem}
+
+%{\bf Proof.} 
+\begin{proof}
+By Proposition~3, the map $\mu$ is well
+defined and surjective. It is clear that $\mu$ is a group
+homomorphism. According to Proposition~4, $\mu$ is injective.
+Thus, $\mu$ is a group isomorphism. 
+%\qed
+\end{proof}
+
+%{\bf Remark 5.} 
+\begin{Remark}
+Due to Theorem 3, problems concerning to
+automorphism groups of foliations with TRG are reduced to the
+analogous problems for automorphism groups of the lifted
+$e$-foliations.
+\end{Remark}
+
+{\bf Invariance of the structure Lie algebra.\,}
+The following statement shows that the structure Lie algebra
+$\frak g_0(M,F)$ of a foliation $(M,F)$ with TRG is an invariant
+in the category~${\frak F}_{TRG}.$
+
+
+%{\bf Proposition 5.} 
+\begin{Proposition}
+{Let $(M,F)$ and $(M',F')$ be
+two foliations with TRG isomorphic in the category ${\frak
+F}_{TRG}.$ Then their structure Lie algebras $\frak g_0(M,F)$ and
+$\frak g_0(M',F')$ are isomorphic.}
+\end{Proposition}
+
+%{\bf Proof.} 
+\begin{proof}
+Let $({\cal R,F})$ and $({\cal R',F'})$ be
+the lifted foliations for  $(M,F)$ and $(M',F')$ respectively.
+Suppose that there exists an isomorphism $f\colon M\to M'$ of the
+foliations  $(M,F)$ and $(M',F')$ in ${\frak F}_{TRG}.$ Then by
+Proposition~3 there exists a map $\hat f\colon{\cal R}\to{\cal
+R'}$ which is an isomorphism of $({\cal R,F})$ and $({\cal
+R',F'}).$ Let $\cal L$ be an arbitrary leaf of $({\cal R,F}),$
+then ${\cal L'}=\hat f({\cal L})$ is a leaf of $({\cal R',F'}).$
+Since $\hat f$ is a homeomorphism, $\hat f$ maps the closure
+$\overline{\cal L}$ of $\cal L$ onto the closure $\overline{\cal
+L'}$ of $\cal L'$, i.~e., $\hat f(\overline{\cal
+L})=\overline{\cal L'}.$ Thus, $\hat f|_{\overline{\cal
+L}}\colon\overline{\cal L}\to\overline{\cal L'}$ is an isomorphism
+of the induced Lie foliations $(\overline{\cal L},{\cal
+F}|_{\overline{\cal L}})$ and $(\overline{\cal L'},{\cal
+F'}|_{\overline{\cal L'}})$ with dense leaves. It is known~\cite{Mol_book}
+that the structure Lie algebra of a Lie foliation with dense
+leaves is an invariant in the category of foliations $\frak F\frak
+o\frak l.$ Therefore the Lie algebras $\frak g_0(\overline{\cal
+L},{\cal F}|_{\overline{\cal L}})$ and $\frak g_0(\overline{\cal
+L'},{\cal F'}|_{\overline{\cal L'}})$ are isomorphic. By
+definition $\frak g_0(M,F)=\frak g_0(\overline{\cal L},{\cal
+F}|_{\overline{\cal L}})$ and $\frak g_0(M',F')=\frak
+g_0(\overline{\cal L'},{\cal F'}|_{\overline{\cal L'}}),$ hence
+the Lie algebras $\frak g_0(M,F)$ and $\frak g_0(M',F')$ are
+isomorphic. 
+%\qed
+\end{proof}
+
+%\begin{center}{\large\bf 5. Different interpretations of holonomy groups}\end{center}
+
+\section{Different interpretations of holonomy groups}
+
+{\bf Holonomy groups of foliations with Ehresmann
+connections.\,} Let $(M,F)$ be a foliation with an Ehresmann
+connection $\frak M$ (see Section~3). Let $\Omega_x$ be the set of
+horizontal curves with an initial point $x.$ It is not difficult
+to prove that the map $\Phi_x\colon\Omega_x\times\pi_1(L,x)\to
+\Omega_x\colon(\sigma,[h])\mapsto\tilde\sigma,$ where
+$[h]\in\pi_1(L,x),$ $H$ is a vertical-horizontal homotopy with the
+base $(\sigma,h),$ and $\tilde\sigma(s):=H(s,1),$ $s\in I_1,$
+defines a right action of the fundamental group $\pi_1(L,x)$ of
+the leaf $L=L(x)$ on the set $\Omega_x.$
+
+
+%{\bf Definition 11.} 
+\begin{Def}
+Since $K_{\frak
+M}(L,x):=\{[h]\in\pi_1(l,x)\mid\Phi_x(\sigma,[h])
+=\sigma,\,\forall\sigma\in\Omega_x\}=\ker\Phi_x$ is a normal
+subgroup in $\pi_1(L,x),$ the quotient group $H_{\frak
+M}(L,x):=\pi_1(L,x)/\ker\Phi_x$ is well defined~\cite{BH}. The group
+$H_{\frak M}(L,x)$ is called the {\it $\frak M$-holonomy group of
+the leaf $L$ of the foliation $(M,F)$ with the Ehresmann
+connection} $\frak M.$
+\end{Def}
+
+It is known that there is a natural group epimorphism
+$\delta\colon H_{\frak M}(L,x)\to\Gamma(L,x)$ onto the germ
+holonomy group $\Gamma(L,x)$ of the leaf $L=L(x)$ such that
+$$\beta=\delta\circ\alpha,\eqno{(*)}$$ where
+$\alpha\colon\pi_1(L,x)\to H_{\frak M}(L,x)$ and
+$\beta\colon\pi_1(L,x)\to\Gamma(L,x)$ are the natural projections
+onto the corresponding quotient groups.
+
+The following assertion is a consequence of Theorem~7 proved by
+the author in~\cite{ZhNNGU04}.
+
+
+%{\bf Proposition 6.} 
+\begin{Proposition}
+{Let $(M,F)$ be a foliation with
+an Ehresmann connection $\frak M.$ The natural group epimorphism
+$\delta\colon H_{\frak M}(L,x)\to\Gamma(L,x)$ satisfying the
+relation $(*)$ is an isomorphism if and only if the holonomy
+pseudogroup of the foliation $(M,F)$ is quasi-analytic. }
+\end{Proposition}
+
+{\bf Equivalent approaches to the notion of holonomy groups.}
+
+
+%{\bf Theorem 4.} 
+\begin{Theorem}
+{Let $(M,F)$ be an $\frak
+M$-complete foliation with TRG defined by an $(N,\xi)$-cocycle
+$\{U_i,f_i,\{\gamma_{ij}\}\}.$ Let $L=L(x),$ $x\in M,$ be an
+arbitrary leaf of this foliation and ${\cal L}={\cal L}(u),$
+$u\in\pi^{-1}(x),$ be the corresponding leaf of the lifted
+foliation $({\cal R},{\cal F}).$ Then the germ holonomy group
+$\Gamma(L,x)$ of the leaf $L$ is isomorphic to each of the
+following five groups:
+\begin{itemize} 
+\item[] (i) the $\frak M$-holonomy group $H_{\frak M}(L,x);$
+\item[] (ii) the group ${\cal H}_v$ formed by germs of local
+diffeomorphisms belonging to the isotropy subpseudogroup of the
+holonomy pseudogroup ${\cal H}$ of local automorphisms of the
+transverse rigid geometry $(N,\xi)$ at point $v=f_i(x),$ where
+$x\in U_i;$ 
+\item[] (iii) the group of deck transformations of the
+regular covering map $\pi|_{\cal L}\colon{\cal L}\to L;$
+\item[] (iv) the subgroup $H({\cal L})=\{a\in H\mid R_a({\cal
+L})={\cal L}\}$ of the Lie group $H;$ 
+\item[] (v) the holonomy
+group $\Phi(u)$ of the integrable connection $T({\cal
+F}|_{\pi^{-1}(L)})$ in the principal $H$-bundle with the
+projection $\pi|_{\pi^{-1}(L)}\colon\pi^{-1}(L)\to L.$
+\end{itemize}
+}
+\end{Theorem}
+
+%{\bf Proof.} 
+\begin{proof}
+According to Proposition~2, an $\frak
+M$-complete foliation $(M,F)$ with TRG has an Ehresmann connection
+$\frak M.$ Recall that the holonomy pseudogroup ${\cal H}$ is a
+subpseudogroup of the pseudogroup ${\cal H}(N,\xi)$ of all local
+automorphisms of the transverse rigid geometry $(N,\xi).$
+According to Proposition~1 ${\cal H}$ is a quasi-analytic
+pseudogroup. Therefore applying Proposition~6 we see that
+$\nu\colon H_{\frak M}(L,x)\to\Gamma(L,x)$ is a natural group
+isomorphism.
+
+Recall that according to Theorem~1 the restriction $\pi|_{\cal
+L}\colon{\cal L}\to L$ is a regular covering with the deck
+transformations group $H({\cal L}).$ Then there is a normal
+subgroup $\rho_*(u)$ of the fundamental group $\pi_1(L,x)$ and a
+group isomorphism $\mu_u\colon\pi_1(L,x)/\rho_*(u)\to H({\cal
+L}).$
+
+Denote by $\alpha\colon\pi_1(L,x)\to\Gamma(L,x)$ and
+$\beta\colon\pi_1(L,x)\to\Phi(u)$ the natural group epimorphisms.
+It is enough to show that $\ker\alpha=\ker\beta=\rho_*(u).$ Let
+$[h]\in\ker\alpha,$ then $h$ is a loop at $x.$ Consider a chain
+$U_1,\ldots,U_k,$ $U_i\cap U_{i+1}\neq\emptyset,$ $\forall
+i\in\{1,\ldots,k-1\},$ of neighborhoods from the $(N,\xi)$-cocycle
+$\eta$ that covers the set $h([0,1]).$ Let $f_i\colon U_i\to V_i$
+be submersions and $\gamma_{js}$ be the corresponding local
+automorphisms of the rigid geometry $(N,\xi)$ from $\eta.$
+According to Proposition~4  for each $\gamma_{js}$ there is a
+unique local automorphism $\Gamma_{js}$ of $\xi$ lying over
+$\gamma_{js}.$
+
+The composition of projections $\gamma:=
+\gamma_{1k}\circ\gamma_{kk-1}\circ\ldots\circ\gamma_{21}$ is
+defined in a neighborhood of the point $v := f_1(x)$ of the
+manifold $N$. The triviality of the germ of $\gamma$ at $v$ is a
+consequence of the choice of $[h]\in\ker\alpha.$ Therefore there
+exists a neighborhood $V\ni v$ in $N$ such that $\gamma|_V =
+\mathrm{id}_V.$ Due to the effectiveness of $\xi$, the
+automorphism
+$\Gamma:=\Gamma_{1k}\circ\Gamma_{kk-1}\circ\ldots\circ\Gamma_{21}$
+satisfies the equality $\Gamma|_{P_V}=\mathrm{id}_{P_V}.$
+
+Denote by $\tilde h$ the path in the leaf ${\cal L}$ with the
+origin $u=\tilde h(0)$ covering the loop~$h.$ In the sequel, we
+will use notations of the proof of Theorem~1. From the definition
+of the lifted foliation $({\cal R},{\cal F})$ it is follows that
+the chain $\tilde{U}_1,\ldots,\tilde{U}_k,$ where
+$\tilde{U}_i=\pi^{-1}(U_i),$ covers the set $\tilde h([0,1]).$ As
+$\tilde f_1(u)\in P_V,$ the equality
+$\Gamma|_{P_V}=\mathrm{id}_{P_V}$ implies ${\Gamma(\tilde
+f_1(u))=\tilde f_1(u)}$. Hence $\tilde f_1(\tilde h(1))=\tilde
+f_1(\tilde h(0)).$ Therefore $\tilde h(1)=\tilde h(0)=u$ and
+$h\in\ker\beta.$ Thus, $\ker\alpha\subset\ker\beta.$
+
+The equality $\ker\beta=\rho_*(u)$ follows directly from the
+definition of $\Phi(u)$~\cite{Minsets}. To complete the proof, we have to
+show the implication $\rho_*(u)\subset\ker\alpha.$ Take any
+${[h]\in\rho_*(u)}$. Let $\tilde h$ be the loop in ${\cal L}$
+covering $h$ with the origin at $u=\tilde h(0).$ Then $\tilde
+h(1)=\tilde h(0)=u.$ Consider an arbitrary  chain $U_1,\ldots,
+U_r,$ $U_i\cap U_{i+1}\neq\emptyset,$ $\forall
+i\in\{1,\ldots,r-1\},$ of neighborhoods belonging to the
+$(N,\xi)$-cocycle $\eta$ that covers the set $h([0,1]).$ Let
+$\gamma_{js}$ be the corresponding local automorphisms of
+$(N,\xi)$ from $\eta.$ Let $\Gamma_{js}$ be the unique local
+automorphism of $\xi$ with the projection $\gamma_{js}.$ It is
+well known that any $e$-foliation has no holonomy. Then the
+holonomy diffeomorphism
+$\Gamma:=\Gamma_{1r}\circ\Gamma_{rr-1}\circ\ldots\circ\Gamma_{21}$
+has the trivial germ at the point $\tilde f_1(u).$ Therefore its
+projection
+$\gamma:=\gamma_{1r}\circ\gamma_{rr-1}\circ\ldots\circ\gamma_{21}$
+has the trivial germ at point $v=f_1(x).$ Since $\gamma$ is a
+local holonomy diffeomorphism along the loop $h,$ we have
+$[h]\in\ker\alpha.$ 
+%\qed
+\end{proof}
+
+%\begin{center}{\large\bf 6. Foliations with the zero structure Lie algebra}\end{center}
+
+\section{Foliations with the zero structure Lie algebra}
+
+%{\bf Proposition 7.} 
+\begin{Proposition}
+{Let $(M,F)$ be a complete
+foliation with TRG. Suppose that $\frak g_0(M,F)=0.$ Let
+$\pi_b\colon{\cal R}\to W$ be the basic fibration. Then:
+\begin{itemize} 
+\item[] (i) the formula $$\Phi^W\colon W\times H\to W\colon
+  (w,a)\mapsto\pi_{\rm b} (R_a(u))\;\; \forall(w,a)\in W\times
+  H,\;\;\forall u\in\pi_{\rm b} ^{-1}(w)$$ defines a smooth locally
+  free action of the Lie group $H$ on the basic manifold $W;$
+\item[] (ii) there is a homeomorphism $s\colon M/F\to W/H$ between the
+  leaf space $M/F$ and the orbit space $W/H$ satisfying the equality
+  $k\circ \pi_b=s\circ q\circ\pi,$ where $k\colon W\to W/H$ is the
+  quotient map onto $W/H,$ $q\colon M\to M/F$ is the quotient map onto
+  $M/F;$
+\item[] (iii) the equality $\pi_b^*\bar\omega=\tilde\omega$ defines an
+  $\mathbb{R}^m$-valued non-degenerate 1-form $\bar\omega$ on $W$ such
+  that $\bar\omega(A^*_W)=A$, where $A^*_W$ is the fundamental vector
+  field on $W$ defined by an element $A\in\frak h\subset\mathbb{R}^m.$
+\end{itemize} }
+\end{Proposition}
+
+%{\bf Proof.} 
+\begin{proof}
+(i) Since $\frak g_0(M,F)=0,$ by Theorem 2
+the lifted foliation $({\cal R,F})$ is formed by the fibres of the
+basic fibration  $\pi_b\colon{\cal R}\to W.$ The action $\Phi^W$
+is well defined, because the lifted foliation $({\cal R,F})$ is
+$H$-invariant. Smoothness of the action of $H$ on $\cal R$ and
+smoothness of $\pi_b$ imply smoothness of $\Phi^W.$ Take any point
+$w\in W$ and $u\in\pi_b^{-1}(w).$ Let ${\cal L}={\cal L}(u)$ and
+$L:=\pi(\cal L),$ then $x=\pi(u)\in L.$ Recall that $H({\cal
+L})=\{a\in H\mid R_a({\cal L})={\cal L}\}.$ Let $H_w$ be the
+isotropy subgroup of $H$ at $w.$ From the definition of the action
+$\Phi^W$ of the Lie group $H$ on $W$ it follows that $H({\cal
+L})=H_w.$ The condition $\frak g_0(M,F)=0$ implies that the lifted
+foliation $({\cal R,F})$ is proper, hence the induced foliation
+$(\pi^{-1}(L),{\cal F}|_{\pi^{-1}(L)})$ is also proper. Therefore
+the orbit $u\cdot H({\cal L})={\cal L}\cap \pi^{-1}(x)$ is a
+discrete subset of the orbit $u\cdot H.$ So $H({\cal L})$ is a
+discrete subgroup of the Lie group~$H.$
+
+Thus, each isotropy group of the action $\Phi^W$ is discrete,
+i.~e., $\Phi^W$ is a locally free action.
+
+(ii) Consider an arbitrary point $x\in M,$ $u\in\pi^{-1}(x)$ and
+$w=\pi_b(u).$ From (i) it is follows that
+$\pi_b(\pi^{-1}(L(x))=w\cdot H.$ Hence the map $s\colon M/F\to
+W/H\colon [L]\mapsto [w\cdot H],$ where $[L]$ is the leaf $L$
+considered as a point of $M/F$ and $[w\cdot H]$ is the orbit of
+$H$ considered as a point of $W/H,$ is well defined and satisfies
+the equality $k\circ\pi_b=s\circ q\circ\pi$ stated in (ii). Since
+$k$ and $q$ are open and continuous maps, this relation implies
+that the bijection $s$ is a homeomorphism.
+
+(iii) This statement is a consequence of the assertion~(ii) of
+Theorem~1 and of the definition of the 1-form $\bar\omega.$ 
+%\qed
+\end{proof}
+
+{\bf Corollary 1.} {\it If $\frak g_0(M,F)=0,$ then the
+holonomy group $\Gamma(L,x)$ is isomorphic to the isotropy group
+$H_w,$ where $w\in\pi_b(\pi^{-1}(x)),$ of the induced action
+$\Phi^W$ of the Lie group $H$ on the basic manifold $W.$ }
+
+
+%{\bf Proof.} 
+\begin{proof}
+As shown in the proof of Proposition~7,
+$H({\cal L})=H_w$. Therefore, according to Theorem~4, the holonomy
+group $\Gamma(L,x)$ of a leaf $L$ of this foliation is isomorphic
+to the isotropy group $H_w.$ 
+%\qed
+\end{proof}
+
+%\begin{center}{\large\bf 7. The groups of basic automorphisms of foliations with TRG}\end{center}
+
+\section{The groups of basic automorphisms of foliations with TRG}
+
+Let ${\cal A}(M,F)$ be the full automorphism group of a foliation
+$(M,F)$ with TRG. We denote by $\mu\colon{\cal A}^H({\cal
+R,F})\to{\cal A}(M,F)$ the group isomorphism defined in Theorem~3.
+
+
+{\bf Leaf automorphisms.\,}  The group
+$${\cal A}_L(M,F):=\{f\in{\cal A}(M,F)\mid
+f(L_\alpha)=L_\alpha,\,\forall L_\alpha\in F\}$$ is a normal
+subgroup of ${\cal A}(M,F)$ which is called the {\it leaf
+automorphism group} of~$(M,F).$
+
+
+%{\bf Proposition 8.} 
+\begin{Proposition}
+{Consider the subgroup of leaf
+automorphisms ${\cal A}^H_L({\cal R,F}):=\{f\in{\cal A}^H({\cal
+R,F})\mid \hat f({\cal L}_\alpha)={\cal L}_\alpha,\,\forall{\cal
+L}_\alpha\in{\cal F}\}$ of the group ${\cal A}^H({\cal R,F}).$
+Then the restriction $$\mu_L:=\mu|_{{\cal A}^H_L({\cal
+R,F})}\colon{\cal A}^H_L({\cal R,F})\to {\cal A}_L(M,F)$$ is a
+group isomorphism. }
+\end{Proposition}
+
+%{\bf Proof.} 
+\begin{proof}
+Let $\hat f\in{\cal A}^H_L({\cal R,F})$ and
+$f:=\mu(\hat f).$ Consider an arbitrary leaf $L\in F.$ There
+exists a leaf ${\cal L}\in\cal F$ such that $\pi|_{\cal
+L}\colon{\cal L}\to L$ is a covering map. As $\hat f({\cal
+L})={\cal L}$ and $\pi\circ\hat f=f\circ\pi$ then $f(L)=L,$ hence
+$f\in{\cal A}_L(M,F).$ Thus we have an inclusion $\mu({\cal
+A}^H_L({\cal R,F}))\subset{\cal A}_L(M,F).$
+
+Let us show that the map $\mu_L$ is surjective. Take an arbitrary
+element $g\in{\cal A}_L(M,F).$ According to Theorem~3 there is a
+unique element $\hat g\in{\cal A}^H({\cal R,F})$ lying over $g.$
+Let $u$ be an arbitrary point in $\cal R,$ $u':=\hat g(u),$
+$x=\pi(u),$ $L=L(x).$ There are neighborhoods $U_j\ni x$ and
+$U_i\ni y=g(x)$ from the $(N,\xi)$-cocycle
+$\eta=\{U_i,f_i,\{\gamma_{ij}\}\}$ defining the foliation $(M,F).$
+Remark that the points $v:=f_j(x)$ and $v':=f_i(y)$ belong to the
+same orbit of the holonomy pseudogroup ${\cal H}(M,F)$ of the
+foliation $(M,F).$ Recall that each element of ${\cal H}(M,F)$ is
+a local automorphism of the transverse rigid geometry $(N,\xi).$
+Therefore there exists a local automorphism $\gamma_{ij}\in{\cal
+H}(M,F)$ such that $\gamma_{ij}(v)=v'.$ Effectiveness of the
+transverse rigid geometry $(N,\xi)$ implies the existence of a
+unique local automorphism $\Gamma_{ij}$ of the rigid structure
+$\xi$ from the holonomy pseudogroup ${\cal H}({\cal R,F})$ with
+the projection $\gamma_{ij}.$ In the notations of the proof of
+Theorem~1 $\tilde\eta=\{\tilde U_i,\tilde f_i,\{\Gamma_{ij}\}\}$
+is a $(P,\omega)$-cocycle defining the $e$-foliation $({\cal
+R,F}).$ Let $w=\tilde f_j(u),$ $w'=\tilde f_i(u')$ then
+$w'=\Gamma_{ij}(w),$ i.~e., the points $w$ and $w'$ belong to the
+same orbit of the holonomy pseudogroup ${\cal H}({\cal R,F}).$
+Therefore the points $u$ and $u'$ belong to the same leaf ${\cal
+L}$ of $(\cal R,F),$ i.~e., $\hat g({\cal L})=\cal L.$ Hence $\hat
+g\in {\cal A}^H_L({\cal R,F}).$
+
+Thus $\mu_L$ is an isomorphism of the groups ${\cal A}^H_L({\cal
+R,F})$ and ${\cal A}_L(M,F).$ 
+%\qed
+\end{proof}
+
+{\bf Basic automorphisms of foliations with TRG.\,}
+Remark that the quotient group ${\cal A}^H_B({\cal R,F}):={\cal
+A}^H({\cal R,F})/{\cal A}^H_L({\cal R,F})$ is well defined.
+
+
+%{\bf Definition 12.} 
+\begin{Def}
+The quotient group $${\cal
+A}_B(M,F):={\cal A}(M,F)/{\cal A}_L(M,F)$$ is called the {\it
+basic automorphism group} of the foliation $(M,F)$ with TRG.
+\end{Def}
+
+Let $(M,F)$ be a foliation with TRG. Let $M/F$ be the leaf space
+of $(M,F),$ and $q\colon M\to M/F$ be the natural projection onto
+the leaf space which maps any $x\in M$ to the leaf $L(x)$
+considered as a point $[L(x)]$ in $M/F.$ Each $f\in{\cal A}(M,F)$
+maps an arbitrary leaf $L$ of $F$ onto some leaf of this
+foliation. Hence the equality $\tilde f([L])=[f(L)]$ defines a
+mapping $\tilde f$ of the leaf space $M/F$ onto itself such that
+the following diagram
+\begin{equation}\label{M/F}\begin{CD}
+M          @>{q}>> M/F \\
+@V{f}VV           @VV{\tilde f}V\\
+M          @>{q}>> M/F.\\
+\end{CD}
+\end{equation}
+is commutative. Since $q$ is an open and continuous mapping,
+(\ref{M/F}) implies that $\tilde f$ is a homeomorphism of the leaf
+space $M/F$. Denote by ${\cal A}(M/F)$ the set of all such
+homeomorphisms of $M/F.$ Then $$\tilde q\colon{\cal
+A}(M,F)\to{\cal A}(M/F)\colon f\mapsto\tilde f$$ is a group
+epimorphism with the kernel $\ker\tilde q={\cal A}_L(M,F).$
+Therefore the basic automorphism group  ${\cal A}_B(M,F)$ is
+canonically isomorphic to the group ${\cal A}(M/F).$ Thus the
+basic automorphism group ${\cal A}_B(M,F)$ can be considered as a
+group, ${\cal A}(M/F)$, of homeomorphisms of the leaf space $M/F$
+of this foliation.
+
+Let us emphasize that the basic automorphism group ${\cal
+A}_B(M,F)$ of a foliation $(M,F)$ with TRG is an invariant of this
+foliation in the category ${\frak F}_{TRG}.$
+
+%{\bf Proposition 9.} 
+\begin{Proposition}
+{Let $(M,F)$ be a
+foliation with TRG and $({\cal R,F})$ be the lifted foliation.
+Denote by ${\cal A}^H_B({\cal R,F})$ the quotient group ${\cal
+A}^H({\cal R,F})/{\cal A}^H_L({\cal R,F}).$ There exists a natural
+group isomorphism $\chi\colon{\cal A}^H_B({\cal R,F})\to{\cal
+A}_B(M,F)$ satisfying the commutative diagram
+\begin{equation}\label{HBRF}\begin{CD}
+{\cal A}^H({\cal R,F})          @>{\mu}>> {\cal A}(M,F) \\
+@V{r}VV           @VV{s}V\\
+{\cal A}^H_B({\cal R,F})          @>{\chi}>> {\cal A}_B(M,F),\\
+\end{CD}
+\end{equation} where $r$ and $s$ are the associated group
+epimorphisms onto the quotient groups. }
+\end{Proposition}
+
+%{\bf Proof.} 
+\begin{proof}
+By Theorem~3, the map $\chi\colon{\cal
+A}^H_B({\cal R,F})\to{\cal A}_B(M,F)\colon\hat h\cdot{\cal
+A}^H_L({\cal R,F})\mapsto h\cdot{\cal A}_L(M,F),$ where $h$ is the
+projection of $\hat h\in{\cal A}^H({\cal R,F})$ with respect to
+$\pi\colon{\cal R}\to M,$ is well defined. According to
+Proposition~8, $\mu(\ker r)=\ker s,$ where $\ker r$ and $\ker s$
+are the kernels of the epimorphisms $r$ and $s,$ respectively.
+Hence there exists an isomorphisms of the quotient groups ${\cal
+A}^H_B({\cal R,F})$ and ${\cal A}_B(M,F)$ satisfying the
+diagram~(\ref{HBRF}). 
+%\qed
+\end{proof}
+
+
+%\begin{center}{\large\bf 8. Conditions guarantee
+%that ${\cal A}_B(M,F)$ is a Lie group}\end{center}
+
+\section{Conditions guarantee that ${\cal A}_B(M,F)$ is a Lie group}
+
+{\bf Uniqueness of a Lie group structure.\,} The next
+proposition follows from Proposition~1 proved by Bagaev and the
+author in~\cite{BZ}.
+
+
+%{\bf Proposition 10.} 
+\begin{Proposition}
+{Let ${\cal A}(P,\omega)$ be
+the Lie group of all automorphisms of a parallelizable manifold
+$(P,\omega).$ If a group $G$ is realized as a closed subgroup of
+${\cal A}(P,\omega),$ then $G$ admits a unique topology and a
+unique smooth structure that make it into a Lie group. This
+topology coincides with the compact-open topology. }
+\end{Proposition}
+
+{\bf The case $\frak g_0(M,F)=0$.\,} A leaf $L$ of a
+foliation $(M,F)$ is called {\it closed} if $L$ is a closed subset
+in the topology of the manifold $M.$ Further we use the term ``a
+closed leaf'' only in this sense.
+
+Let $(M,F)$ be a complete foliation with TRG and $\pi_b\colon M\to
+W$ be the basic fibration. Suppose that $\frak g_0(M,F)=0,$ then
+according to Theorem~2 the leaves of the lifted foliation $({\cal
+R},{\cal F})$ coincide with the fibres of the basic fibration
+$\pi_b\colon{\cal R}\to W.$ Hence the basic manifold $W$ can be
+identified with the leaf space ${\cal R}/{\cal F}$ of the
+foliation $({\cal R},{\cal F}),$ and $\pi_b$ can be identified
+with the projection $\tilde q\colon{\cal R}\to{\cal R}/{\cal F}.$
+
+Applying the commutative diagram~(\ref{M/F}) to the foliation
+$({\cal R},{\cal F})$ we see that each automorphism $h\in{\cal
+A}^H({\cal R},{\cal F})$ induces a diffeomorphism $\tilde h$ of
+the manifold $W$ such that $\pi_b\circ h=\tilde h\circ\pi_b.$
+Since $h^*\tilde\omega=\tilde\omega,$ then, from the definition of
+the non-degenerate $\mathbb{R}^m$-valued 1-form $\bar\omega$ on
+$W$ satisfying Proposition~7, it is follows that $\tilde
+h^*\bar\omega=\bar\omega.$ From the definition of the action $H$
+on $W$ it is follows that $h\circ R_a=R_a\circ h,$ $\forall a\in
+H.$
+
+As above, we denote by ${\cal A}(W,\bar\omega)$ the group of all
+automorphisms of the parallelizable manifold $(W,\bar\omega),$
+i.~e., ${\cal A}(W,\bar\omega):=\{f\in \mathrm{Diff} W\mid
+f^*\bar\omega=\bar\omega\}.$ It is well known that ${\cal
+A}(W,\bar\omega)$ admits a unique Lie group structure. There is a
+natural bijection between the identity component ${\cal
+A}_e(W,\bar\omega)$ of ${\cal A}(W,\bar\omega)$ and the orbit
+${\cal A}_e(W,\bar\omega)\cdot v$ of a point $v\in W,$ being a
+closed submanifold of $W.$ This bijection induces a smooth
+structure on ${\cal A}_e(W,\bar\omega)$~\cite{KN1}. According to
+Proposition~10, the topology of ${\cal A}(W,\bar\omega)$ is the
+compact-open topology.
+
+Let ${\cal A}^H(W):=\{f\in{\cal A}(W,\bar\omega)\mid f\circ
+R_a=R_a\circ f\}$ and let ${\cal A}^H_e(W)$ be the identity
+component of ${\cal A}^H(W).$ Then ${\cal A}^H(W)$ and ${\cal
+A}^H_e(W)$ are closed Lie subgroups of ${\cal A}(W,\bar\omega).$
+
+
+%{\bf Proposition 11.} 
+\begin{Proposition}
+{Let $(M,F)$ be a complete
+foliation with TRG and $\frak g_0(M,F)=0.$ Then the map
+$$\nu\colon{\cal A}^H_B({\cal R,F})\to{\cal A}^H(W)\colon
+h\cdot{\cal A}^H_L({\cal R,F})\mapsto\tilde h$$ where $h\in{\cal
+A}^H({\cal R,F})$ and $\tilde h$ is the projection of $h$ with
+respect to $\pi_b\colon{\cal R}\to W$ is a group isomorphism onto
+an open-closed Lie subgroup of the Lie group ${\cal A}^H(W).$ }
+\end{Proposition}
+
+%{\bf Proof.} 
+\begin{proof}
+At first, consider the map
+$\alpha\colon{\cal A}^H({\cal R,F})\to{\cal A}^H(W)\colon
+h\mapsto\tilde h,$ where $\tilde h$ is the projection of $h$ with
+respect to $\pi_b\colon M\to W.$ As shown above, $\tilde h\in{\cal
+A}^H(W).$ It is clear that $\alpha$ is a group homomorphism with
+the kernel $\ker\alpha$, being equal to the normal subgroup ${\cal
+A}^H_L({\cal R,F}).$ Therefore, there exists a group isomorphism
+$\nu\colon{\cal A}^H_B({\cal R,F})\to{\cal A}^H(W),$ satisfying
+the equality $\alpha=\nu\circ r,$ where $r\colon{\cal A}^H({\cal
+R,F})\to{\cal A}^H_B({\cal R,F})$ is the natural projection onto
+the quotient group ${\cal A}^H_B({\cal R,F})={\cal A}^H({\cal
+R,F})/{\cal A}^H_L({\cal R,F}).$
+
+It is enough to prove that $\mathrm{im}\alpha$ is an open-closed
+subgroup in ${\cal A}^H(W).$
+
+If ${\cal A}^H(W)$ is a discrete Lie group, then
+$\mathrm{im}\nu=\mathrm{im}\alpha$ is also a discrete Lie group.
+
+Now suppose that $\dim{\cal A}^H(W)\geqslant  1.$ Let $\frak a$ be the
+Lie algebra of the Lie group ${\cal A}^H(W)$ and $B$ be any
+element of $\frak a.$ Denote by $B^*$ the fundamental vector field
+defined by $B.$ Then $X:=B^*$ is a complete vector field and it
+defines a 1-parameter group $\varphi^X_t,$ $t\in(-\infty,\infty),$
+of diffeomorphisms of $W.$ The condition $\varphi^X_t\in{\cal
+A}^H(W),$ $\forall t\in(-\infty,\infty)$ is equivalent to the
+following relations: 1)~$L_XA^*_W=0,$ $\forall A\in\frak h;$
+2)~$L_X\bar\omega=0.$
+
+Since $\pi_b\colon{\cal R}\to W$ is a submersion with an Ehresmann
+connection $\overline{\frak M},$ there exists a unique vector
+field $Y\in\frak X_{\overline{\frak M}}({\cal R})$ such that
+$\pi_{b*}Y=X.$ Remark that completeness of the vector field $X$
+implies completeness of the vector field $Y.$ Hence $Y$ defines a
+1-parameter group $\psi^Y_t,$ $t\in(-\infty,\infty),$ of
+diffeomorphisms of the manifold $\cal R.$ Let us show that
+$\psi^Y_t\in{\cal A}^H({\cal R,F}),$ $\forall
+t\in(-\infty,\infty),$ i.~e., we have to check the validity of the
+following facts: 1)~the map $\psi^Y_t,$ $t\in(-\infty,\infty),$ is
+an isomorphism of $({\cal R,F})$ in the category $\frak Fol;$
+2)~$L_Y\tilde\omega=0;$ 3)~$L_YA^*=0,$ $\forall A\in\frak h.$
+
+1) The equality $\pi_{b*}Y=X$ implies the relation
+$\pi_b\circ\psi^Y_t=\phi^X_t\circ\pi_b$ for any fixed
+$t\in(-\infty,\infty),$ hence
+$\psi^Y_t(\pi_b^{-1}(v))=\pi_b^{-1}(\phi^X_t(v)),$ $\forall v\in
+W,$ and $\psi^Y_t$ is an isomorphism of the lifted foliation
+$({\cal R,F})$ in the category $\frak F\frak o\frak l.$
+
+2) Take arbitrary $u\in\cal R$ and $Z_0\in\overline{\frak M}_u.$
+There is a unique vector field $Z\in\frak X_{\overline{\frak
+M}}({\cal R})$ such that $Z|_{u}=Z_0$ and
+$\tilde\omega(Z)=\tilde\omega(Z_0)=\mathrm{const}.$ Put
+$Z_W:=\pi_{b*}Z$ and apply the following formula~\cite{KN1}:
+\begin{equation}\label{formKN1}
+(L_X\bar\omega)(Z_W)=X(\bar\omega(Z_W))-\bar\omega([X,Z_W]).
+\end{equation}
+The relation $\tilde\omega=\bar\omega\circ\pi_{b*}$ implies that
+$\bar\omega(Z_W)=\tilde\omega(Z_0)=\mathrm{const},$ so
+$X(\bar\omega(Z_W))=0.$ By the choice of $X$ we have
+$L_X\bar\omega=0.$ Hence the equality~(\ref{formKN1}) gives
+\begin{equation}\label{formKN2}
+\bar\omega([X,Z_W])=0.
+\end{equation}
+In the formula
+\begin{equation}\label{formKN3}
+(L_Y\tilde\omega)(Z)=Y(\tilde\omega(Z))-\tilde\omega([Y,Z])
+\end{equation}
+the first term $Y(\tilde\omega(Z))=0,$ because
+$\tilde\omega(Z)=\mathrm{const}.$ The relations
+$\tilde\omega=\bar\omega\circ\pi_{b*}$ and~(\ref{formKN2}) imply
+the following chain of equalities:
+$$\tilde\omega([Y,Z])=\bar\omega(\pi_{b*}[Y,Z])=\bar\omega([\pi_{b*}Y,\pi_{b*}Z])=\bar\omega([X,Z_W])=0.$$
+Therefore ~(\ref{formKN3}) implies that $(L_Y\tilde\omega)(Z)=0$
+and $(L_Y\tilde\omega)(Z_0)=0.$ Thus, $L_Y\tilde\omega=0.$
+
+3) Denote by $(W,F^H)$ the foliation formed by the connected
+components of orbits of the action $\Phi^W$ of $H$ on $W.$ Let
+$({\cal R},{\cal F}^H)$ be the foliation formed by the connected
+components of orbits of the Lie group $H$ on $\cal R.$
+
+At any point $u\in\cal R$ there is an neighborhood $\cal W$
+foliated with respect to both foliations $({\cal R,F})$ and
+$({\cal R},{\cal F}^H)$ which meets each leaf of these foliations
+in at most one connected subset. We can suppose that the basic
+fibration $\pi_b\colon{\cal R}\to W$ is trivial in the
+neighborhood $\pi_b^{-1}({\cal V}),$ where ${\cal V}:=\pi_b({\cal
+W}).$ Put $U=\pi({\cal W}).$ Let $r\colon U\to U/(F|_U)$ and
+$s\colon{\cal V}\to{\cal V}/({\cal F}^H|_{\cal V})$ be the
+quotient maps. We can identify $U/(F|_U)$ and ${\cal V}/({\cal
+F}^H|_{\cal V})$ with the manifold $V$ such that the diagram
+\begin{equation}\label{I}\begin{CD}
+{\cal W}          @>{\pi_b}>> {\cal V} \\
+@V{\pi}VV           @VV{s}V\\
+U          @>{r}>> V,\\
+\end{CD}
+\end{equation}
+where the restrictions of $\pi$ and $\pi_b$ onto ${\cal W}$ are
+denoted by the same letters, is commutative. Without loss of
+generality, we can assume that $\frak M|_U$ is an Ehresmann
+connection for the submersion $r$ and $\overline{\frak M}|_{\cal
+W}$ is an Ehresmann connection for the submersion $\pi_b.$
+
+By the choice of $X,$ for any $A\in\frak h$ we have the equality
+$L_XA^*_W=0$, i.~e., ${[A^*_W,X]=0}$. Since the fundamental vector
+fields span the tangent spaces to the leaves of the foliation
+$(W,F^H),$ it is not difficult to check that $X$ is a foliated
+vector field for this foliation. Hence the vector field
+$X_V:=s_*X|_{\cal V}$ is well defined. There is a unique vector
+field $Y_U\in\frak X_{\frak M}(U)$ such that $r_*Y_U=X_V.$ In
+other words, $Y_U$ is the $\frak M$-horizontal lift of $X_V.$ The
+commutative diagram~(\ref{I}) implies the relation
+$\pi_{b*}Y_{\cal W}=Y_U,$ hence $Y$ is a foliated vector field
+with respect to the foliation $({\cal R},{\cal F}^H).$ Therefore,
+\begin{equation}\label{1}[A^*,Y]\in\frak X_{{\cal F}^H}({\cal
+R}).\end{equation} According to Theorem~1, we have the equalities
+$\tilde\omega(A^*)=\bar\omega(A^*_W)=A,$ hence $A^*$ is a vector
+field foliated with respect to $({\cal R,F}).$ So we have the
+following chain of equalities
+$$\pi_{b*}[A^*,Y]=[\pi_{b*}A^*,\pi_{b*}Y]=[A^*_W,X]=0,$$ hence,
+\begin{equation}\label{2}[A^*,Y]\in\frak X_{\cal F}({\cal
+R}).\end{equation} The relations~(\ref{1}) and~(\ref{2}) imply the
+equality $[A^*,Y]=0,$ $\forall A\in\frak h.$
+
+Thus, we proved the inclusion ${\cal
+A}^H_e(W)\subset\mathrm{im}\alpha=\mathrm{im}\nu.$ Therefore
+$\mathrm{im}\nu$ is an open-closed Lie subgroup of the Lie group
+${\cal A}^H(W).$ 
+%\qed
+\end{proof}
+
+%{\bf Theorem 5.} 
+\begin{Theorem}
+{ Let $(M,F)$ be a complete
+foliation with a transverse rigid geometry $(N,\xi),$ where
+$\xi=(P(N,H),\omega).$ Suppose that the structure Lie algebra
+$\frak g_0(M,F)$ is zero. Then:
+\begin{itemize}
+\item[] (i) the full basic automorphism group ${\cal A}_B(M,F)$ is
+  realized as an open-closed subgroup of the Lie group ${\cal A}^H(W)$
+  and admits a Lie group structure with the following estimate of its
+  dimension:
+  \begin{equation}
+    \label{oz1}
+    \dim{\cal A}_B(M,F)\leqslant \dim P;
+  \end{equation}
+\item[] (ii) if either there exists an isolated closed leaf $L$ or the
+  set of closed leaves of the foliation $(M,F)$ is countable, then
+  \begin{equation}
+    \label{oz2}
+    \dim{\cal A}_B(M,F)\leqslant \dim H;
+  \end{equation}
+\item[] (iii) there exists a unique topology and a unique smooth
+  structure on the full group ${\cal A}_B(M,F)$ of basic automorphisms
+  of the foliation $(M,F)$, making ${\cal A}_B(M,F)$ into a Lie
+  group. This topology coincides with the compact-open topology, when
+  ${\cal A}_B(M,F)$ is realized as a subgroup of the group ${\cal
+    A}^H(W)$.
+\end{itemize} }
+\end{Theorem}
+
+%{\bf Proof.} 
+\begin{proof}
+(i) Applying Propositions~9 and~11, we get
+that the map $\beta:=\nu\circ\chi^{-1}\colon {\cal
+A}_B(M,F)\to{\cal A}^H(W)$ is a group isomorphism of the full
+group of basic automorphisms ${\cal A}_B(M,F)$ onto an open-closed
+subgroup $\mathrm{im}\beta$ of the Lie group ${\cal A}^H(W)$. We
+identity ${\cal A}_B(M,F)$ with $\mathrm{im}\beta$ and consider
+${\cal A}_B(M,F)$ as an open-closed subgroup of the Lie group
+${\cal A}^H(W)$. Hence ${\cal A}_B(M,F)$ admits a Lie group
+structure, and the following estimates of dimensions hold:
+$$\dim{\cal A}_B(M,F)\leqslant \dim{\cal A}^H(W)\leqslant \dim{\cal
+A}(W,\bar\omega)\leqslant \dim W=\dim P=m.$$
+
+(ii) Suppose that there exists a closed leaf $L$ of the foliation
+$(M,F).$ Then $\pi_b(\pi^{-1}(L))$ is a closed orbit of the action
+$\Phi^W$ of the Lie group $H$ on $W.$ Let us to fix an arbitrary
+point $v$ in this orbit. Let $L^W=L^W(v)$ be a leaf of the
+foliation $(W,F^W).$ Then the leaf $L^W$ is a closed subset in
+$W.$ It is known~\cite{Kob} that the smooth structure of the Lie group
+${\cal A}^H_e(W)$ coincides with the smooth structure induced by
+the bijection of the identity component ${\cal A}^H_e(W)$ of the
+Lie group ${\cal A}^H(W)$ onto the closed submanifold ${\cal
+A}^H_e(W)\cdot v$ of $W,$ where ${\cal A}^H_e(W)\cdot v$ is the
+orbit of the point $v.$ Any $g\in{\cal A}^H_e(W)$ maps each closed
+orbit of the Lie group $H$ onto some closed orbit of $H.$ Since
+${\cal A}^H_e(W)\cdot v$ is connected and either the orbit $v\cdot
+H$ is isolated or if the set of closed orbits of $H$  is
+countable, so ${\cal A}^H_e(W)\cdot v\subset L^W.$ Therefore
+$\dim{\cal A}_B(M,F)\leqslant \dim{\cal A}^H_e(W)\cdot v\leqslant \dim F^H=\dim
+H.$
+
+(iii) Applying the statement (i) proved above and Proposition~10
+to the group ${\cal A}_B(M,F)$ we get the statement (iii).
+ %\qed
+\end{proof}
+
+%{\bf Remark 6.} 
+\begin{Remark}
+Theorem 5 does not exclude the triviality
+of the full group ${\cal A}_B(M,F).$
+\end{Remark}
+
+%{\bf Remark 7.} 
+\begin{Remark}
+The main result of the work~\cite{Bel} by Belko
+is the theorem asserting that if there exists a closed leaf of a
+foliation $(M,F)$ with complete transversally projectable affine
+connection, then the group ${\cal A}_B(M,F)$ is a Lie group. This
+statement is not correct. It's proof essentially uses the fact
+that existence of a closed leaf of this foliation implies that the
+lifted foliation is simple. It is not true, in general. Let us
+consider a foliation $(M,F)$ from Example~3  (in Section~10), when
+$r=1/\pi$, as affine foliation. It has a compact leaf, but $\frak
+g_0(M,F)=\mathbb{R}^1\neq 0,$ hence the lifted foliation is not
+simple. Thus the foliation $(M,F)$ is a Lie foliation with
+non-zero structure Lie algebra $\frak g_0(M,F),$ and the group
+${\cal A}_B(M,F)$ is not a Lie group.
+\end{Remark}
+
+{\bf Discrete holonomy groups of leaves.\,}
+Let $(M,F)$ be a complete foliation with TRG. Let $\pi\colon{\cal
+R}\to M$ be the projection of the foliated bundle over $(M,F)$.
+
+
+%{\bf Definition 13.} 
+\begin{Def}
+We say that the holonomy group of a
+leaf $L\ni x$ of the foliation $(M,F)$ is {\it discrete} if there
+exists a point $u\in\pi^{-1}(x)$ such that the group $H({\cal
+L}):=\{a\in H\mid R_a({\cal L})={\cal L},\,{\cal L}={\cal
+L}(u)\in{\cal F}\}$ is a discrete subgroup of the Lie group $H.$
+\end{Def}
+
+Let $u'\in\pi^{-1}(x)$ and $u'\neq\in {\cal L}={\cal L}(u).$ In
+this case the subgroup $H({\cal L'})$ is conjugate to the subgroup
+$H({\cal L})$ in the Lie group $H.$ Hence $H({\cal L})$ is a
+discrete subgroup of $H$ iff $H({\cal L'})$ is a discrete subgroup
+of $H.$ Thus, by Theorem~4 the notion of discrete holonomy group
+of leaf $L$ is well defined.
+
+Recall that a leaf $L$ of a foliation $(M,F)$ is said to be {\it
+proper} if $L$ is an embedded submanifold  in $M.$ A foliation
+$(M,F)$ is called {\it proper} if each its leaf is proper.
+
+
+%{\bf Proposition 12.} 
+\begin{Proposition}
+{Let $(M,F)$ be a complete
+foliation with TRG. If there exists proper leaf $L$ with discrete
+holonomy group then the structure Lie algebra $\frak g_0(M,F)$ is
+zero. }
+\end{Proposition}
+
+%{\bf Proof.} 
+\begin{proof}
+Let $L$ be a proper leaf with discrete
+holonomy group. Let $x\in L,$ $u\in\pi^{-1}(x),$ and ${\cal
+L}={\cal L}(u).$ Since $L$ is proper, there exists a foliated
+neighborhood $U$ of the point $x$ such that $L$ meets $U$ in a
+connected subset $L\cap U.$ Then there is a neighborhood $\cal U$
+of $u$ foliated with respect to $({\cal R},{\cal F})$ such that an
+embedded submanifold $\pi^{-1}(L)$ of $\cal R$ meets $\cal U$ in a
+connected subset. Since the subgroup $H({\cal L})$ of $H$ is
+discrete, ${\cal L}\cap\pi^{-1}(x)=u\cdot H({\cal L})$ is a
+discrete subset of the fiber $\pi^{-1}(x).$ Therefore, there
+exists a neighborhood ${\cal V}\subset\cal U$ of $u$ foliated with
+respect to the foliation $(\cal R,F)$ such that $\cal L\cap{\cal
+V}$ is connected. By~\cite[Theorem~4.11]{Tam}, it follows that the leaf
+$\cal L$ is proper. Thus the complete $e$-foliation $(\cal R,F)$
+has a proper leaf $\cal L.$ It is known~\cite{Con} that such a foliation
+is formed by the fibers of a locally trivial fibration. Hence all
+leaves of the lifted foliation $(\cal R,F)$ are closed and the
+structure Lie algebra $\frak g_0(M,F)$ is zero. 
+%\qed
+\end{proof}
+
+%{\bf Theorem 6.} 
+\begin{Theorem}
+{  Let $(M,F)$ be a complete
+foliation with transverse rigid geometry $(N,\xi),$ where
+$\xi=(P(N,H),\omega).$ If at least one of the following conditions
+holds:
+\begin{itemize} 
+\item[] (i) there exists a proper leaf $L$ with discrete holonomy group;
+ \item[] (ii) there is a closed leaf $L$ with discrete holonomy group;
+ \item[] (iii) there exists a proper leaf $L$ with finite holonomy group;
+ \item[] (iv) there is a closed leaf $L$ with finite holonomy group,
+\end{itemize}
+then the basic automorphism group ${\cal A}_B(M,F)$ admits a Lie
+group structure of dimension at most $\dim P,$ and this structure
+is unique. }
+\end{Theorem}
+
+
+%{\bf Proof.} 
+\begin{proof}
+Remark that any closed leaf of a
+foliation is proper and each finite holonomy group is a discrete
+one. Hence we have implications $(iv)\Rightarrow (iii) \Rightarrow
+(ii) \Rightarrow (i).$ According to Proposition~12 the existence
+of a proper leaf $L$ with discrete holonomy group guarantees the
+equality $\frak g_0(M,F)=0.$ Thus, applying Theorem~5 we get the
+required assertion. 
+%\qed
+\end{proof}
+
+It is well known that any foliation has leaves without holonomy.
+Therefore, the following statement is a consequence of the
+assertion (iii) of Theorem~6.
+
+
+{\bf Corollary 2.} {\it  For any proper complete
+foliation $(M,F)$ with TRG the basic automorphism group ${\cal
+A}_B(M,F)$ admits a unique Lie group structure. }
+
+%\begin{center}{\large\bf 9. Foliations covered by fibrations}\end{center}
+
+\section{Foliations covered by fibrations}
+
+{\bf $(G,X)$-foliations.\,} It is said that a group of
+diffeomorphisms of a manifold $X$ {\it acts quasi-analytically,}
+if existence of an element $g\in G$ and an open subset $U$ in $X$
+such that $g|_U=\mathrm{id}_U$ implies $g=\mathrm{id}_X.$
+
+Let $G$ be a Lie group of diffeomorphisms of a manifold $X$, which
+acts quasi-analytically on $X.$ Recall that $(M,F)$ is a
+$(G,X)$-foliation if $(M,F)$ is defined by an $\eta$-cocycle
+$\{U_i,f_i,\{\gamma_{ij}\}\},$ where $f_i\colon U_i\to V_i$ is a
+submersion onto an open subset of $X$, for each $\gamma_{ij}$
+there is $g\in G$  such that $\gamma_{ij}=g|_{f_j(U_i\cap U_j)}$
+and $\{V_i\}$ is a covering of $X.$ Uniqueness of such a $g\in G$
+is a consequence of quasi-analyticity of the action of $G.$
+
+
+%{\bf Definition 14.} 
+\begin{Def}
+Let $(X,\xi)$ be a rigid geometry,
+where $\xi=(P(H,X),\omega),$ let $G$ be an automorphism group of
+$(X,\xi).$ A $(G,X)$-foliation $(M,F)$ is called a {\it
+$(G,X)$-foliation with transverse rigid structure.}
+\end{Def}
+
+{\bf Foliations covered by fibrations.\,} Let
+$f\colon\tilde M\to M$ be the universal covering map.
+
+
+%{\bf Definition 15.} 
+\begin{Def}
+We say that a foliation $(M,F)$ {\it
+is covered by a fibration} if the induced foliation $\tilde
+F:=f^*F$ on $\tilde M$ is formed by the leaves of a submersion
+$r\colon\tilde M\to B$ onto a $q$-dimensional manifold $B,$ where
+$q$ is codimension of the foliation $(M,F).$
+\end{Def}
+
+%{\bf Proposition 13.} 
+\begin{Proposition}
+{ Let $(M,F)$ be a foliation
+with TRG, which admits an Ehresmann connection $\frak M$ and is
+covered by a fibration $r\colon\tilde M\to B,$ where
+$f\colon\tilde M\to M$ is the universal covering map. Then:
+\begin{itemize} 
+\item[] (i) $B$ is simply connected, the submersion
+$r\colon\tilde M\to B$ is a locally trivial fibration; 
+\item[] (ii) the manifold $B$ admits a rigid geometry $\zeta$ locally
+  isomorphic to $(N,\xi);$ 
+\item[] (iii) there is a group epimorphism
+  $\alpha\colon\pi_1(M)\to\Psi$ onto some subgroup $\Psi$ of
+  automorphisms of the rigid geometry $(B,\zeta)$: the group $\Psi$ is
+  called the global holonomy group of the foliation covered by a
+  fibration; the foliation $(M,F)$ is a $(\Psi,B)$-foliation with
+  TRG; 
+\item[] (iv) for any $x\in M$, the holonomy group $\Gamma(L,x)$
+  of the leaf $L=L(x)$ is isomorphic to the isotropy subgroup
+  $\Psi_y,$ where $y\in r(f^{-1}(x)).$
+\end{itemize}
+}
+\end{Proposition}
+
+% {\bf Proof.} 
+\begin{proof}
+(i) By Proposition~2, the
+distribution $\frak M$ is an Ehresmann connection for foliation
+$(M,F).$ It is not difficult to check that the distribution
+$\tilde{\frak M}=f^*\frak M$  is an Ehresmann connection for the
+foliation $(\tilde M,\tilde F),$ hence $\tilde{\frak M}$ is an
+Ehresmann connection for the submersion $r\colon\tilde M\to B.$ It
+is well known that a submersion admitting an Ehresmann connection
+is a locally trivial fibration. Thus, the foliation  $(\tilde
+M,\tilde F)$ is formed by the fibres of the locally trivial
+fibration $r\colon\tilde M\to B.$ Hence $r\colon\tilde M\to B$ is
+a fibration with the covering homotopy property. Applying the
+exact homotopy sequence and the fact that the leaves of $r$ are
+arcwise connected and the manifold $\tilde M$ is simply connected,
+we see that the basic manifold $B$ is also simply connected.
+
+(ii) Let $f_i\colon U_i\to V_i$ be a submersion from the
+$(N,\xi)$-cocycle $\eta$, defining $(M,F).$ Without loss of
+generality, we can assume that $U_i$ is a regularly covered
+neighborhood, i.~e., $f^{-1}(U_i)=\sqcup {\cal W}_\alpha$ is a
+disjunct sum of neighborhoods ${\cal W}_\alpha$ such that
+$f|_{{\cal W}_\alpha}\colon{\cal W}_\alpha\to U_i$ is a
+diffeomorphism. Therefore there exists a diffeomorphism
+$\gamma_\alpha\colon {\cal V}_\alpha=r({\cal W}_\alpha)\to V_i$
+satisfying the equality $\gamma_\alpha\circ r=f_i\circ f$ on
+${\cal W}_\alpha.$ The diffeomorphism $\gamma_\alpha$ induces a
+rigid geometry $\zeta_\alpha=(\tilde P_\alpha({\cal
+V}_\alpha,H),\omega_\alpha),$ where $\tilde
+P_\alpha:=\gamma_\alpha^*P_\alpha$ on ${\cal V}_\alpha$, such that
+$\gamma_\alpha\colon{\cal V}_\alpha\to V_i$ is an isomorphism of
+$({\cal V}_\alpha,\zeta_\alpha)$ and $(V_i,\xi_{V_i}).$ By a
+straightforward verification, one can show that there exists a
+unique rigid structure $\zeta=(\tilde P(H,B),\beta)$ on $B$ such
+that $\zeta|_{{\cal V}_\alpha}=\zeta_\alpha.$
+
+(iii) Let us consider the fundamental group $\pi_1(M,x),$ $x\in
+M,$ as the group $G$ of deck transformations of the universal
+covering map $f\colon\tilde M\to M.$ Since each $g\in G$ is an
+isomorphism of the induced foliation $(\tilde M,\tilde F)$ and the
+basic manifold $B$ of the fibration $r\colon\tilde M\to B$ can be
+considered as the leaf space $\tilde M/\tilde F,$ $g$ defines a
+map $\psi\colon B\to B$ satisfying the relation $r\circ
+g=\psi\circ r.$ Hence $\psi$ is a diffeomorphism of $B.$ Moreover,
+from the definition of the rigid geometry  $\zeta$ on $B$ it
+follows that $\psi\in{\cal A}(B,\zeta).$ Denote by $\Psi$ the
+group of all such $\psi.$ Then there is a group epimorphism
+$\chi\colon\pi_1(M,x)\to \Psi\colon g\mapsto \psi,$ where $r\circ
+g=\psi\circ r.$
+
+(iv) As $f\colon\tilde M\to M$ is the covering map, we can consider
+$(M,F)$ as a $(\Psi,B)$-foliation. Then the holonomy pseudogroup
+${\cal H}$ of $(M,F)$ is determined by the group~$\Psi.$ Since $\Psi$
+acts quasi-analytically on $B$, for each $y\in B$ the group ${\cal
+  H}_y$, which consists of germs at $y$ of transformations from the
+isotropy subpseudogroup of the holonomy pseudogroup $\cal H$, is
+isomorphic to the isotropy subgroup $\Psi_y.$ According to Theorem~4,
+the holonomy group $\Gamma(L,x)$ is isomorphic to ${\cal H}_y,$ where
+$y\in r(f^{-1}(x)),$ and hence the group $\Gamma(L,x)$ is isomorphic
+to $\Psi_y.$
+ %\qed
+\end{proof}
+
+According to Proposition~2 a complete foliation $(M,F)$ with TRG
+admits an Ehresmann connection, hence the following assertion is
+true.
+
+
+{\bf Corollary 3.} {\it If $(M,F)$ is a complete
+foliation with TRG, then the statements of Proposition~13 are
+valid for $(M,F).$ }
+
+
+{\bf Basic automorphism groups of foliations with TRG covered by fibrations.\,}
+In the following theorem we give and apply another interpretation
+of the structure Lie algebra of a foliation $(M,F)$ with TRG
+covered by a fibration.
+
+
+%{\bf Theorem 7.} 
+\begin{Theorem}
+{Let $(M,F)$ be a complete foliation
+with TRG covered by a fibration $r\colon\tilde M\to B,$ where
+$f\colon\tilde M\to M$ is the universal covering map. Let $\Psi$
+be the global holonomy group of $(M,F)$ considered as a subgroup
+of the Lie group ${\cal A}(B,\zeta)$ of all automorphisms of the
+rigid geometry $(B,\zeta)$, which was introduced in
+Proposition~13. Then:
+\begin{itemize} 
+\item[] (i) the structure Lie algebra $\frak
+g_0(M,F)$ is isomorphic to the Lie algebra of the Lie group
+$\overline{\Psi},$ where $\overline{\Psi}$ is the closure of
+$\Psi$ in the full Lie group of automorphisms ${\cal A}(B,\zeta)$
+which is a Lie group; 
+\item[] (ii) the equality $\frak g_0(M,F)=0$
+is equivalent to the condition that $\Psi$ is a discrete subgroup
+of the Lie group ${\cal A}(B,\zeta);$ 
+\item[] (iii) if $\Psi$ is a
+discrete subgroup of the Lie group ${\cal A}(B,\zeta),$ then the
+full group of basic automorphisms ${\cal A}_B(M,F)$ admits a Lie
+group structure, and this structure is unique.
+\end{itemize}
+}
+\end{Theorem}
+
+%{\bf Proof.} 
+\begin{proof}
+As above, let $\pi\colon{\cal R}\to M$ be
+the projection of the foliated bundle over $(M,F)$ and
+$f\colon\tilde M\to M$ be the universal covering map. Put
+$\tilde{\cal R}:=f^*{\cal R}=\{(y,u)\in\tilde M\times{\cal R}\mid
+f(y)=\pi(u)\},$ $\tilde\pi\colon\tilde{\cal R}\to\tilde
+M\colon(y,u)\mapsto y,$ $\varphi\colon\tilde{\cal R}\to{\cal
+R}\colon(y,u)\mapsto u.$ A right action of $H$ on $\tilde{\cal R}$
+is defined by the equality $(y,u)\cdot a = (y,u\cdot a),$ $\forall
+a\in H.$ It is easy to see that a principal $H$-bundle
+$\tilde\pi\colon\tilde{\cal R}\to\tilde M$  equipped with a
+foliation $(\tilde{\cal R},\tilde{\cal F}),$ where $\tilde{\cal
+F}=\varphi^*\tilde{\cal F},$ is the foliated bundle for the
+foliation $(\tilde M,\tilde F).$ Since $(\tilde M,\tilde F)$ is a
+simple foliation defined by submersion $r\colon\tilde M\to B,$ so
+$(\tilde{\cal R},\tilde{\cal F})$ is also simple foliation defined
+by the projection of the basic fibration
+$\tilde\pi_b\colon\tilde{\cal R}\to\tilde W.$ In general, when the
+Lie group $H$ is not connected, the manifold $\tilde{\cal R}$ is
+not simply connected. Remark that the lifted $e$-foliation $(\cal
+R,F)$ is covered by fibration $\tilde\pi_b\colon\tilde{\cal
+R}\to\tilde W.$ The fundamental group $G=\pi _1(M,x)$ acts on
+$\tilde{\cal R}$ by the formula $g(y,u):=(g(y),u), \forall(y,u)\in
+\tilde{\cal R}, \forall g\in G.$ Hence $g\circ R_a = R_a\circ g,
+\forall a\in H, \forall g\in G.$ Moreover, each $g$ is an
+automorphism of the foliation $(\tilde{\cal R},\tilde{\cal F})$ in
+the category $\frak F\frak o\frak l.$ Therefore $G$ induces a
+group $\tilde\Psi\subset Diff (\tilde W).$ Let $s\colon\tilde W\to
+B$ be a map defined by the equality
+$s\circ\tilde\pi_b=\widetilde{\pi}\circ r.$ Analogously to proof
+of Proposition~13, a rigid structure $\zeta=(\tilde
+W(H,B),\theta)$ with the projection $s\colon\tilde W\to B$ is
+defined, and $(B,\zeta)$ is a rigid geometry, $\tilde\Psi\subset
+\cal {A}(\zeta).$ Furthermore the group isomorphism $\cal
+{A}(\zeta)\to \cal {A}(B,\zeta)$ maps $\tilde\Psi$ onto $\Psi.$
+
+Consider any leaf ${\cal L}={\cal L}(u),$ $u\in\cal R,$ of $(\cal
+R,F).$ Let $z\in\varphi^{-1}(u)$ and $d=\tilde\pi_b(z).$ Since
+$\tilde\Psi\subset \cal {A}(\zeta)\subset \cal {A}(\tilde
+W,\theta),$ so $\overline{\tilde\Psi\cdot d}=(cl\tilde\Psi)\cdot
+d,$ where $\overline{\tilde\Psi\cdot d}$ is the closure of the
+orbit $\tilde\Psi\cdot d$ in $\tilde W,$  and $cl\tilde\Psi$ is a
+closure of $\tilde\Psi$ in the Lie group ${\cal A}(\zeta).$ Hence
+the closure $\overline{\cal L}$ of $\cal L$ in $\cal R$ satisfies
+the equality $\overline{\cal
+L}=\varphi(\tilde\pi_b^{-1}((cl\tilde\Psi)\cdot d)).$
+ Denote by $(cl\tilde\Psi)_e$ the identity
+component of the Lie group $cl\tilde\Psi,$ then
+$(cl\tilde\Psi)_e\cdot d$ and
+$\mathbb{L}:=\tilde\pi_b^{-1}((cl\tilde\Psi)_e\cdot d)$ are
+connected smooth manifolds, with
+$\varphi|_\mathbb{L}\colon\mathbb{L}\to\overline{\cal L}$ is a
+regular covering map. The induced foliation
+$(\varphi|_{\mathbb{L}})^*({\cal F}|_{\overline{\cal L}})$ is
+simple and is defined by a submersion
+$\tilde\pi_b|_\mathbb{L}\colon\mathbb{L}\to (cl\tilde\Psi)_e\cdot
+d\cong (cl\tilde\Psi)_e.$ It is known~\cite{Mol_book} that this implies that
+the structure Lie algebra of the Lie foliation $(\overline{\cal
+L},{\cal F}|_{\overline{\cal L}})$ with dense leaves is isomorphic
+to the Lie algebra of the Lie group $(cl\tilde\Psi)_e.$ Since
+$\Psi$ is the projection of $\tilde\Psi$ with respect to
+$s\colon\tilde W\to B,$ so effectiveness of $\zeta$ implies that
+the Lie groups $\overline{\Psi}$ and $cl\tilde\Psi$ are
+isomorphic.
+
+The statement (ii) is a direct consequence of the statement~(i).
+Therefore the assertion~(iii) follows from Theorem~5. 
+%\qed
+\end{proof}
+
+
+{\bf Basic automorphisms of foliations with integrable Ehresmann
+connections.}
+
+
+% {\bf Proposition 14.} 
+\begin{Proposition}
+{Let $(M,F)$ be an $\frak
+M$-complete foliation with TRG. Suppose that the distribution
+$\frak M$ is integrable and, therefore, defines a foliation
+$(M,F^t),$ where $TF^t=\frak M.$ Then:
+\begin{itemize} 
+\item[] (i) the
+universal covering manifold $\tilde M$ can be identified with the
+product $L\times B$ of some manifolds $L$ and $B$, and $(M,F)$ is
+covered by the trivial fibration $r\colon L\times B\to B,$ where
+$r$ is the canonical projection onto the second factor;
+\item[] (ii) if the global holonomy group $\Psi$ is a discrete
+subgroup of the Lie group ${\cal A}(B,\zeta)$ of all automorphisms
+of the induced rigid geometry $(B,\zeta),$ then the full group of
+basic automorphisms ${\cal A}_B(M,F)$ admits a unique Lie group
+structure.
+\end{itemize}
+}
+\end{Proposition}
+
+%{\bf Proof.} 
+\begin{proof}
+By assumption, $M$ is endowed with two
+transverse foliations $(F,F^t)$ of dimensions $p$ and $q,$
+respectively, where $p+q=\dim M.$ According to Proposition~2, the
+distribution $\frak M=TF^t$ is an Ehresmann connection for the
+foliation $(M,F).$
+
+Let $f\colon\tilde M\to M$ be the universal covering map. Let
+$\tilde F:=f^*F,$ $\tilde F^t:=f^*F^t$ be the induced foliations
+on $\tilde M$ and $\tilde{\frak M}:=T\tilde F^t.$ Remark that
+$\tilde{\frak M}=f^*\frak M$ is an integrable Ehresmann connection
+for the foliation $(\tilde M,\tilde F).$ In the terminology of
+Section~3, the simply connected manifold $\tilde M$ is endowed
+with two transverse foliations $(\tilde F,\tilde F^t)$ such that
+for any pair of curves $(\sigma,h)$  with a common initial point
+$\sigma(0)=h(0),$ where $\sigma$ is a horizontal curve and $h$ is
+a vertical curve, there exists a vertical-horizontal homotopy~$H$
+with the base $(\sigma,h).$ In other words, the conditions of the
+famous Kashiwabara's theorem about the decomposition of
+manifolds~\cite{Kash} (rediscovered by Blumenthal and Hebda~\cite{BH}) are
+satisfied. According to this theorem there exists a diffeomorphism
+$\Phi$ of $\tilde M$ onto a product of manifolds $L\times B$ which
+is an isomorphism in the category $\frak F\frak o\frak l$ of two
+pairs of foliations: first, of $(\tilde M,\tilde F)$ and $(L\times
+B,F_1),$ where $F_1=\{L\times\{z\}\mid z\in B\},$ second, of
+$(\tilde M,\tilde F^t)$ and $(L\times B,F_2),$ where
+$F_2=\{\{y\}\times B\mid y\in L\}.$ We identify $\tilde M$ with
+$L\times B$ by means of $\Phi,$ while the foliation $(\tilde
+M,\tilde F)$ is identified with the trivial foliation $(L\times
+B,F_1).$ Therefore the foliation $(M,F)$ is covered by the trivial
+fibration $r\colon L\times B\to B.$ Thus, $(M,F)$ satisfies
+Theorem~7.
+% \qed
+\end{proof}
+
+
+%\begin{center}{\large\bf 10. Examples}\end{center}
+
+\section{Examples}
+
+{\bf Foliations obtained by suspension of a
+homomorphism.\,} Let $\rho\colon\pi_1(B,b_0)\to{\rm Diff}(T)$ be a
+homomorphism of the fundamental group of a manifold $B\ni b_0$
+into the group of diffeomorphisms of a $q$-dimensional manifold
+$T,$ and let $p\colon\hat B\to B$ be the universal covering
+mapping. Then we have a right action of the group
+$\Pi:=\pi_1(B,b_0)$ on $\hat B$ by deck transformations. The
+equality $$(x,t)\cdot g:=(x\cdot g,\rho(g^{-1})(t)),\quad \forall
+(x,t)\in\hat B\times T,\quad\forall g\in\Pi,$$ defines a free
+right properly discontinuous smooth action of the group $\Pi$ on
+the product of manifolds $\hat B\times T$; therefore the quotient
+manifold $M:=\hat B\times_\Pi T$ is defined. Let $\kappa\colon\hat
+B\times T\to M$ be the natural projection. Then $F:=\{\kappa(\hat
+B\times\{t\})\mid t\in T\}$ is a foliation of codimension $q$ on
+$M;$ in this case, it is said that the {\it foliation $(M,F)$ is
+obtained by suspension of the homomorphism} $\rho.$ For this
+foliation we will use the notation $(M,F) := \mathrm{Sus}(T,B,
+\rho)$ suggested in~\cite{CZ}. The image $\Psi:=\mathrm{im}\rho$ is the
+global holonomy group of $(M,F).$
+
+{\bf Transversally similar and transversally homothetic foliations.\,}
+Let $G$ be the similarity group of the Euclidean space
+$\mathbb{E}^q,$ $q\geqslant  1,$ and $\mathbb{R}^+$ be the multiplicative
+group of positive real numbers. Then $G =
+CO(q)\rightthreetimes\mathbb{R}^q$ is the semidirect product of
+the conformal group $CO(q) = \mathbb{R}^+\cdot O(q)$ and the group
+$\mathbb{R}^q.$ Let $H = CO(q)$ and $p\colon G\to
+G/H=\mathbb{E}^q$ be the canonical principal $H$-bundle. Let
+$\frak g$ be the Lie algebra of the Lie group $G,$ and $\omega$ be
+the Maurer-Cartan $\frak g$-valued 1-form on $G.$ Then
+$\xi=(G(\mathbb{E}^q,H),\omega)$ is an effective rigid geometry.
+Foliations with this transverse geometry $(\mathbb{E}^q,\xi)$ are
+called {\it transversally similarity foliations}~\cite{Minsets}.
+
+Denote by $E$ the neutral element of the group $O(q).$ If
+$G=(\mathbb{R}^+\cdot E)\rightthreetimes\mathbb{R}^q,$
+$H=\mathbb{R}^+\cdot E,$ and $\omega$ is the Maurer-Cartan $\frak
+g$-valued 1-form on the Lie group $G,$ then foliations with the
+transverse effective rigid geometry $(\mathbb{E}^q,\xi),$ where
+$\xi=(G(\mathbb{E}^q,\mathbb{R}^+\cdot E),\omega),$ are called
+{\it transversally homothetic foliations}~\cite{Minsets}.
+
+%{\bf Example 1.} 
+\begin{Example}
+Let $B$ be a smooth
+$p$-dimensional manifold whose fundamental group $\pi_1(B,b)$
+contains an element $\alpha$ of infinite order. For an arbitrary
+natural number $q\geqslant  1,$ denote
+ by $\mathbb{E}^q$ a $q$-dimensional Euclidean space. Define a
+homomorphism $\rho\colon\Pi:=\pi_1(B,b)\to{\rm
+Diff}(\mathbb{E}^q)$ by setting $\rho(\alpha)=\psi,$ where $\psi$
+is the homothetic transformation of the Euclidean space
+$\mathbb{E}^q$ with the coefficient $\lambda\neq 1,$ i.~e.
+$\psi(x)=\lambda x,$ $\forall x\in\mathbb{E}^q,$ and
+$\rho(\beta)=\mathrm{id}_{\mathbb{E}^q}$ for any element
+$\beta\in\pi_1(B,b)$ such that $\beta\neq \alpha^k$ with some
+integer $k.$ Then $(M,F)=\mathrm{Sus}({\Bbb E}^q,B,\rho)$ is a
+proper transversally similar foliation with a unique closed leaf
+diffeomorphic to $B.$
+
+According to Corollary~2, the full basic automorphism group ${\cal
+A}_B(M,F)$ of this foliation $(M,F)$ admits a Lie group structure.
+Let us compute the group ${\cal A}_B(M,F)$ and show that this fact
+is indeed true.
+
+The group $\Pi_0:=\ker\rho$ acts on $\hat B\times\mathbb{E}^q$
+properly discontinuously, hence the quotient manifold $\hat
+B\times_{\Pi_0}\mathbb{E}^q=B_0\times\mathbb{E}^q,$ where
+$B_0:=\hat B/\Pi_0,$ is defined. The quotient group
+$\Psi_0:=\Pi/\Pi_0\cong\mathbb{Z}$ acts from the right on the
+product of manifolds $B_0\times\mathbb{E}^q$ such that
+$M=B_0\times_{\Psi_0}\mathbb{E}^q$ and the quotient map
+$\kappa\colon M_0:=B_0\times\mathbb{E}^q\to M$ is a regular
+covering map with the deck transformation group $\Psi_0.$ The
+foliation $(M_0,F_0),$ where $F_0:=\kappa^*F,$ is formed by the
+fibres of the projection $\mathrm{pr}_2\colon
+M_0=B_0\times\mathbb{E}^q\to\mathbb{E}^q$ onto the second factor.
+
+The group ${\cal A}(\xi)$ is equal to the group of left
+translations of the Lie group
+$G=CO(q)\rightthreetimes\mathbb{R}^q,$ hence we can identify
+${\cal A}(\mathbb{E}^q,\xi)\cong{\cal A}(\xi)$ with $G.$ For any
+$h\in G$ the transformation $h'=(\mathrm{id}_{B_0},h)$ of
+$B_0\times\mathbb{E}^q$ belongs to ${\cal A}(M_0,F_0)$. Therefore,
+the map $\alpha\colon{\cal A}(M_0,F_0)\to G\colon h'\mapsto h,$
+where $h\circ\mathrm{pr}_2=\mathrm{pr}_2\circ h',$ is a group
+epimorphism with $\ker\alpha={\cal A}_L(M_0,F_0).$ Let us
+emphasize that $\hat f\in{\cal A}(M_0,F_0)$ lies over an
+automorphism $f\in{\cal A}(M,F)$ if and only if it satisfies the
+relation $\hat f\circ\Psi_0=\Psi_0\circ\hat f.$ Remark that
+$\alpha(\Psi_0)=\Psi\subset{\cal A}(\mathbb{E}^q,\xi)=G$ is the
+global holonomy group of the foliation $(M,F).$ Let $N(\Psi)$ be
+the normalizer of $\Psi$ in the Lie group $G.$ It is not difficult
+to check that the map $$\beta\colon{\cal A}_B(M,F)\to
+N(\Psi)/\Psi\colon f\cdot{\cal A}_L(M,F)\mapsto \alpha(\hat
+f)\cdot\Psi,$$ where $\hat f\in{\cal A}(M_0,F_0)$ lies over $f$
+with respect to the map $\kappa,$ is a group isomorphism, hence
+${\cal A}_B(M,F)\cong N(\Psi)/\Psi.$
+
+In our case $\Psi=\langle\psi\rangle$ and
+$N(\Psi)=\mathbb{R}^+\cdot O(q),$ therefore ${\cal A}_B(M,F)\cong
+U(1)\times O(q),$ where $U(1)\cong(\mathbb{R}^+\cdot E)/\Psi$ is
+the compact 1-dimensional abelian group.
+
+If $q=1,$ then $O(q)=\mathbb{Z}_2$ and ${\cal A}_B(M,F)\cong
+U(1)\times \mathbb{Z}_2.$
+\end{Example}
+
+%{\bf Example 2.} 
+\begin{Example}
+Consider the foliation $(M,F)$ constructed in Example 1 as a
+transversally homothetic foliation, i.~e., with a different
+transverse rigid geometry. In this case the Lie group ${\cal
+A}_B(M,F)$ is isomorphic to the quotient Lie group $N(\Psi)/\Psi,$
+where $N(\Psi)$ is the normalizer of $\Psi$ in the Lie group
+$(\mathbb{R}^+\cdot E)\rightthreetimes\mathbb{R}^q.$ Since
+$N(\Psi)=\mathbb{R}^+\cdot E,$ so ${\cal A}_B(M,F)\cong U(1).$
+\end{Example}
+
+%{\bf Remark 9.} 
+\begin{Remark}
+In both examples 1 and 2 the foliation
+$(M,F)$ has a closed leaf and, in Theorem~3, the equality is
+achieved in the estimate~(ii) of the dimension of ${\cal
+A}_B(M,F)$.
+\end{Remark}
+
+%{\bf Example 3.} 
+\begin{Example}
+Let $\psi$ be the rotation of the plane
+$\mathbb{E}^2$ about the point $0\in\mathbb{E}^2$ through the
+angle $\delta=2\pi r.$ Consider an Euclidean metric $g$ on
+$\mathbb{E}^2.$ Denote by $Iso(\mathbb{E}^2,g)$ the full isometry
+group of $(\mathbb{E}^2,g).$ Let
+$\rho\colon\pi_1(S^1,b)\cong\mathbb{Z}\to Iso(\mathbb{E}^2,g)$ be
+defined by the equality $\rho(1):=\psi,$ $1\in\mathbb{Z}.$ Then we
+have a suspended Riemannian foliation
+$(M,F):=\mathrm{Sus}(\mathbb{E}^2,S^1,\rho).$ This foliation has a
+unique closed (compact) leaf.
+
+There exists a group isomorphism between ${\cal A}_B(M,F)$ and the
+quotient group $N(\Psi)/\Psi,$ where $\Psi=\langle\psi\rangle$ and
+$N(\Psi)$ is the normalizer of $\Psi$ in the Lie group
+$Iso(\mathbb{E}^2,g)$ identified with
+$O(2)\rightthreetimes\mathbb{R}^2.$ Since $N(\Psi)=O(2),$ so
+${\cal A}_B(M,F)=O(2)/\Psi.$ Hence ${\cal A}_B(M,F)$ admits a Lie
+group structure if and only if $\Psi$ is a closed subgroup of
+$O(2)$ or, equivalent, when $\delta=2\pi r$ for some rational
+number $r.$
+
+If $\delta=2\pi r,$ where $r$ is a non-zero rational number, then
+${\cal A}_B(M,F)\cong O(2).$
+\end{Example}
+
+
+% \begin{thebibliography}{99}
+% \bibitem{Bl} Blumenthal R.A. Cartan connections in folated bundles //
+% Michigan Math. J. -- 1984. -- V.~31. -- P.~55--63.
+% \bibitem{BH} Blumenthal R.A., Hebda J.J. Ehresmann connections for foliations //
+% Indiana Univ. Math. J. -- 1984. -- V.~33. -- N~4. -- P.~597--611.
+% \bibitem{CZ} Chubarov G.V., Zhukova N.I. Aspects of the qualitative theory
+% of suspended foliations // J. of Difference Equations and
+% Applications. -- 2003. -- V.~9. -- N~3-4. -- P.~393--405.
+% \bibitem{Con} Conlon L. Transversally parallelizable foliations of
+% codimension~2 // Trans. Amer. Math. Soc. -- 1974. -- V.~194. --
+% P.~79--102.
+% \bibitem{AG} D'Ambra G., Gromov M. Lectures on
+% transformation groups: geometry and dynamics, Surveys in
+% differential geometry (Cambridge, Mass., 1990). -- Lehigh
+% University, Bethlehem, Penn., 1991. -- P.~19--111.
+% \bibitem{G} Gromov M. Rigid transformations groups // Geometrie
+% differentielle (Paris, 1986), Travaux en Cours, 33. -- Hermann,
+% Paris, 1988. -- P.~65--139.
+% \bibitem{HMV} Hector G., Macias-Virgos E. Diffeological groups // Reseach and Exposition
+% in Math. -- 2002. -- V.~25. -- P.~247--260.
+% \bibitem{KT} Kamber F., Tondeur Ph. Foliated bundles and characteristic classes. --
+% Springer, 1975. -- Lecture Notes in Math. -- V.~494.
+% \bibitem{Kash} Kashiwabara S. The decomposition of differential
+% manifolds and its applications // Tohoku Math. J. -- 1959. --
+% V.~11. -- P.~43--53.
+% \bibitem{Les} Leslie J. A remark on the group of automorphisms
+% of a foliation having a dense leaf // J. Diff. Geom. -- 1972. --
+% V.~7. -- P.~597--601.
+% \bibitem{Mol_book} Molino P. Riemannian Foliations. Progress in Math., Birkhauser Boston,
+% 1988.-- 339~p.
+
+% \bibitem{Wol} Wolak R.A. Foliated and associated geometric
+% structures on foliated manifolds. Ann. Fac. Sci. Toulouse Math. --
+% 1989. -- Т.~10. -- N~3. -- C.~337--360.
+
+% \bibitem{Wol_book} Wolak R.A. Geometric structures on Foliated Manifolds.
+% -- Publ. del Dep. de Geometria y Topologia, Universidad de
+% Santiago de Compostela, 1989. -- V.~76. -- 169~p.
+% \bibitem{BZ} Багаев А.В., Жукова H. И.  Группы изометрий римановых орбифолдов
+% // Сиб. Мат. Журнал. -- 2007. -- Т.~48. -- N~4. -- C.~723--741.
+% \bibitem{Bel} Белько И.В. Аффинные преобразования трансверсальной
+% проектируемой связности на многообразии со слоением // Мат.
+% сборник. -- 1982. -- Т.~117. -- N~2. -- С.~181--195.
+% \bibitem{ZhNNGU04}  Жукова Н.И. Свойства графиков эресмановых слоений
+% // Вестник ННГУ. Сер. Математика. -- 2004. -- Вып.~1. -- С.~73--87.
+% \bibitem{Minsets}  Жукова Н.И. Минимальные множества картановых
+% слоений // Труды матем. института им. В.А. Стеклова. -- 2007. --
+% Т.~256. -- С.~115–-147
+% \bibitem{KN1} Кобаяси Ш., Номидзу К. Основы дифференциальной геометрии. -- М.:
+% Наука, 1981. -- Т.~1. -- 344~c.
+% \bibitem{Kob} Кобаяси Ш.  Группы преобразований в дифференциальной
+% геометрии. -- М.: Наука, 1986. -- 224~c.
+% \bibitem{Tam} Тамура И. Топология слоений. -- М.: Мир, 1979. --
+% 317~c.
+% \end{thebibliography}
+
+
+\nocite{*}
+
+
+\putbib[bib/zhukova/zhukova]
+
+\makealttitle
+
+} % END \selectlanguage
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: cp1251-unix
+%%% End:

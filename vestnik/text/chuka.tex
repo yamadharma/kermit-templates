@@ -1,0 +1,713 @@
+% \include{preamble}
+
+% \usepackage{color}
+% \usepackage{pscyr}
+% \begin{document}
+
+\udc{519.6}
+
+\title{О некоторых итерационных методах высокого порядка сходимости
+для решения нелинейных уравнений}
+
+\alttitle{Some Iteration Methods with High-Order Convergence for
+Nonlinear Equations}
+
+\author[a1]{Т. Жанлав}%
+\author[a2]{О. Чулуунбаатар}%
+
+\altauthor[a1]{T. Zhanlav}%
+\altauthor[a2]{O. Chuluunbaatar}%
+
+\address[a1]{
+Факультет  математики и компьютерных наук\\
+Монгольский государственный  университет \\
+ г. Улан-Батор, Монголия}
+
+\address[a2]{Лаборатория  информационных технологий\\
+  Объединённый институт ядерных исследований\\
+  г. Дубна, Московской обл., Россия, 141980}
+
+\altaddress[a1]{
+  School of Mathematics and Computer Science\\
+  National University of Mongolia\\
+  Ulan-Bator, Mongolia}
+
+\altaddress[a2]{ Laboratory of  Information Technologies\\
+  Joint Institute for Nuclear Research\\
+  Dubna, Moscow Region, Russia 141980}
+
+\thanks{Работа выполнена в рамках темы ОИЯИ <<Математическая поддержка
+  экспериментальных и теоретических исследований, проводимых ОИЯИ
+  05-6-1060-2005/2010>> и поддержана РФФИ (грант 08-01-00604-а
+  <<Математическое моделирование динамики лёгких атомов и молекул под
+  действием быстрых частиц, лазерных импульсов и магнитных полей>>).\\
+Авторы благодарят С.И. Виницкого, А.А. Гусева, И.В. Пузынина и Л.А.
+Севастьянова за сотрудничество и поддержку.
+}
+
+\begin{abstract}
+  В данной работе изучены итерационные методы высокого порядка
+  сходимости для решения нелинейных уравнений. Показано, что все
+  методы третьего порядка сходимости эквивалентны эталонному методу
+  Чебышева. Рассмотрены приёмы ускорения сходимости метода Ньютона. На
+  этой основе предложены новые итерационные методы. На тестовых
+  примерах сделано сравнение различных итерационных методов.
+\end{abstract}
+
+
+\begin{altabstract}
+  In this paper the iteration methods with high-order convergence for
+  nonlinear equations are studied. It is shown that all the iteration
+  methods with third-order convergence are equivalent to the standard
+  Tchebyshev method. The acceleration of the convergence of the
+  Newton method is also considered. New iteration methods on the
+  procedure discussed above are proposed. Comparison between different
+  iteration methods is given by test examples.
+\end{altabstract}
+
+\keywords{метод Ньютона, итерационные методы}
+
+\altkeywords{Newton method, iteration methods}
+
+\received{\formatdate{6}{04}{2009}}
+
+\maketitle
+
+
+
+
+\section{Введение}
+
+Для решения большинства нелинейных задач применяются различные
+итерационные методы. Одним из хорошо известных итерационных методов является
+метод Ньютона. Его преимущество состоит в том, что он сходится
+быстрее, чем метод простых итераций. На практике очень важна не только
+сходимость итерационных методов, но и их скорость сходимости. В
+последние годы появилось много итерационных
+методов~\cite{1,2,3,4,6,9,5,7,8,10}, порядок сходимости которых выше
+второго. Среди них методы типа Хелли~\cite{6,9}, двухшаговые и
+трехшаговые методы Ньютоновского типа~\cite{5,7,8}. Отличительной
+чертой этих методов является отсутствие явного вычисления второй и
+более высоких производных, которые обычно присутствуют в итерационных
+методах высокого порядка сходимости. В работах~\cite{11,12} получены
+методы Ньютоновского типа третьего порядка сходимости, основанные на
+аппроксимации определённого интеграла различными квадратурными
+формулами. В работе~\cite{4} предложены многошаговые методы,
+основанные на различных декомпозиционных техниках. В данной работе
+показано, что существуют многочисленные итерационные методы третьего
+порядка сходимости и все они эквивалентны эталонному методу Чебышева
+третьего порядка точности~\cite{12a}. В параграфе 3 рассматривается
+возможность ускорения метода Ньютона. Предлагаются полученные на этой
+основе дискретные и непрерывные модификации метода Ньютона третьего и
+четвёртого порядка сходимости. В параграфе 4 на тестовых примерах
+делается сравнение предложенных в данной работе методов с различными
+итерационными методами.
+
+\section{Связь между итерационными методами третьего порядка сходимости}
+
+Как отмечено выше, в последние годы появилось много итерационных
+методов третьего порядка сходимости для решения нелинейного уравнения
+\begin{equation}
+  \label{2.1}
+  f(x)=0.
+\end{equation}
+Покажем, что все эти методы эквивалентны эталонному методу Чебышева
+точности $O(f(x_{n})^{3})$:
+\begin{equation}
+  \label{2.2}
+  x_{n+1}=x_{n}-\frac{f(x_{n})}{f'(x_{n})}-\frac{f''(x_{n})f(x_{n})^{2}}
+  {2(f'(x_{n}))^{3}},\quad n=0,1,\ldots
+\end{equation}
+
+Известно, что метод Чебышева имеет третий порядок
+сходимости~\cite{12a}. Главный недостаток метода~(\ref{2.2}) состоит в
+том, что в нем участвует $f''(x_{n})$, вычисление которой
+затруднительно.
+
+Получим методы третьего порядка сходимости, для которых не требуется
+вычисления второй производной. С этой целью будем использовать
+аппроксимацию второй производной:
+\begin{equation}
+  \label{2.3}
+  \frac{f''(x_{n})}{2}\left(\frac{f(x_{n})}{f'(x_{n})} \right)^{2}
+  \approx af\left( x_{n}-\frac{f(x_{n})}
+    {f'(x_{n})} \right)+bf(x_{n})+cf\left(
+    x_{n}+\frac{f(x_{n})}{f'(x_{n})} \right). 
+\end{equation}
+
+Пусть $f(x)$~--- непрерывная трижды дифференцируемая функция в
+окрестности точки $x_{n}$, находящейся близко к точному решению
+$x^{*}$. Тогда величина $\Delta _{n}={f(x_{n})}/{f'{(x_{n})}}$
+является малой, и разложение в ряд Тейлора даёт соотношение
+\begin{equation}
+\label{2.4}
+\frac{f''(x_{n})}{2}\Delta_{n}^{2}\approx
+(b+2c)f(x_{n})+\frac{a+c}{2} f ''(x_{n})
+\Delta_{n}^{2}+(c-a)\frac{f'''(x_{n})}{6}\Delta_{n}^{3}+\cdots
+\end{equation}
+
+Для того чтобы аппроксимация (\ref{2.4}) была третьего порядка, {\it
+  необходимо выполнение равенства}:
+\begin{equation}
+\label{2.5}
+  b+2c=0,\quad a+c=1 \Leftrightarrow c=-\frac{b}{2},\quad
+  a=1+\frac{b}{2}. 
+\end{equation}
+
+Подстановка разложения (\ref{2.3}) в (\ref{2.2}) с учётом (\ref{2.5})
+даёт однопараметрическое семейство схем третьего порядка сходимости
+\begin{multline}
+\label{2.6}
+x_{n+1}=x_{n}-\frac{1}{f'(x_{n})}\left [
+  \left(1+\frac{b}{2}\right)f\left(x_{n}-\frac{f(x_{n})}{f'(x_{n})}
+  \right)\right. +\\
+\left.+(1+b)f(x_{n})-\frac{b}{2}
+  f\left(x_{n}+\frac{f(x_{n})}{f'(x_{n})}\right)\right].
+\end{multline}
+
+Рассмотрим частные случаи:\\
+{\bf 1.} При $b=0$ получим схему предложенную в работе \cite{13}
+ \begin{equation}
+\label{2.7}
+ x_{n+1}=x_{n}-\frac{1}{f'(x_{n})}\left(f(x_{n})+f\left(x_{n}-
+\frac{f(x_{n})}{f'(x_{n})}\right )\right). 
+ \end{equation}
+{\bf 2.} При $b=-2$ получим схему предложенную в работе \cite{8}
+ \begin{equation}
+ \label{2.8}
+ x_{n+1}=x_{n}-\frac{1}{f'(x_{n})}\left(f\left(x_{n}+
+     \frac{f(x_{n})}{f'(x_{n})}\right)-f(x_{n})\right).
+\end{equation}
+{\bf 3.} При $b=-1$ получим схему
+\begin{equation}
+  \label{2.9}
+  x_{n+1}=x_{n}-\frac{1}{2f'(x_{n})}\left(f\left(x_{n}-
+      \frac{f(x_{n})}{f'(x_{n})}\right)+
+    f\left(x_{n}+\frac{f(x_{n})}{f'(x_{n})}\right)\right),
+\end{equation}
+которая является линейной комбинацией схем (\ref{2.7}) и
+(\ref{2.8}). Далее запишем схему (\ref{2.2}) в виде
+\begin{equation}
+ \label{2.10}
+ x_{n+1}=x_{n}-\frac{f(x_{n})}{f'(x_{n})}\left(1+
+   \frac{f''(x_{n})f(x_{n})}{2f'(x_{n})^{2}}\right).
+\end{equation}
+
+При аппроксимации второй производной по формуле
+\begin{equation}
+\label{10a}
+f''(x_{n})\approx{\frac{f'(x_{n}+\Delta_{n})-f'(x_{n})}{\Delta_{n}}}
+\end{equation}
+схема (\ref{2.10}) принимает вид
+ \begin{equation}
+ \label{2.11}
+ x_{n+1}=x_{n}-\frac{f(x_{n})}{f'(x_{n})}\left(1+
+   \frac{1}{2}\frac{f(x_{n})}{(f'(x_{n}))^{2}}
+   \frac{f'(x_{n}+\Delta_{n})-f'(x_{n})}{\Delta_{n}}\right),
+\end{equation}
+порядок сходимости которой равен трём.  При
+$\Delta_n=a{f(x_{n})}/{f'(x_{n})}$ формула (\ref{2.11}) записывается в
+виде
+\begin{equation}
+ \label{2.11b}
+ x_{n+1}=x_{n}-\frac{f(x_{n})}{2(f'(x_{n}))^2}\left(\left(2-\frac1a\right)f'(x_{n})+
+   \frac1af'\left(x_{n}+a\frac{f(x_{n})}{f'(x_{n})}\right)\right).
+\end{equation}
+
+Пусть $a=1/2$, тогда имеем
+\begin{equation}
+ \label{2.12}
+  x_{n+1}=x_{n}-\frac{f(x_{n})}{(f'(x_{n}))^{2}}
+  f'\left(x_{n}+\frac12\frac{f(x_{n})}{f'(x_{n})}\right).
+\end{equation}
+
+При $a=-1/2$ имеем
+\begin{equation}
+  \label{2.13}
+  x_{n+1}=x_{n}-\frac{f(x_{n})}{(f'(x_{n}))^{2}}\left(
+    2f'(x_{n})-f'\left(x_{n}-\frac12\frac{f(x_{n})}{f'(x_{n})}\right) \right).
+\end{equation}
+
+Поскольку
+\begin{equation*}
+  1+\frac{f''(x_{n})f(x_{n})}{2(f'(x_{n}))^{2}}=
+  \left(1-\frac{f''(x_{n})f(x_{n})}{2(f'(x_{n}))^{2}}\right)^{-1}+O(f^{2}(x_{n})),
+\end{equation*}
+то из (\ref{2.10}) получаем также схему третьего порядка сходимости
+\begin{equation}
+  \label{2.14}
+  x_{n+1}=x_{n}-\frac{f(x_{n})}{f'(x_{n})}\left(1-
+    \frac{f''(x_{n})f(x_{n})}{2(f'(x_{n}))^{2}}\right)^{-1}.
+\end{equation}
+
+Подстановка разложения (\ref{2.3}) в (\ref{2.14}) с учётом (\ref{2.5})
+даёт также однопараметрическое семейство схем
+\begin{multline}
+  \label{2.15}
+  x_{n+1}=x_{n}-\frac{f^2(x_{n})}{f'(x_{n})}\times\\
+  \times\left((1-b)f(x_{n})-\left(1+\frac{b}{2}\right)f\left(x_{n}-
+      \frac{f(x_{n})}{f'(x_{n})}\right)+
+    \frac{b}{2}f\left(x_{n}+\frac{f(x_{n})}{f'(x_{n})}\right)\right)^{-1}.
+\end{multline}
+
+Рассмотрим частные случаи:\\
+{\bf 1.} При $b=0$ получим схему
+\begin{equation}
+  \label{2.16}
+  x_{n+1}=x_{n}-\frac{f^{2}(x_{n})}{f'(x_{n})}
+  \left(f(x_{n})-f\left(x_{n}-\frac{f(x_{n})}{f'(x_{n})}\right)\right)^{-1}.
+\end{equation}
+{\bf 2.} При $b=-2$ получим схему
+ \begin{equation}
+ \label{2.17}
+  x_{n+1}=x_{n}-\frac{f^{2}(x_{n})}{f'(x_{n})}
+  \left(3f(x_{n})-f\left(x_{n}+\frac{f(x_{n})}{f'(x_{n})}\right)\right)^{-1}.
+ \end{equation}
+{\bf 3.} При $b=1$ получим схему
+\begin{equation}
+  \label{2.18}
+  x_{n+1}=x_{n}+\frac{2f^{2}(x_{n})}{f'(x_{n})}
+  \left(3f\left(x_{n}-\frac{f(x_{n})}{f'(x_{n})}\right)-f\left(x_{n}+\frac{f(x_{n})}{f'(x_{n})}\right)\right)^{-1}.
+\end{equation}
+
+Используя аппроксимацию (\ref{10a}) из (\ref{2.14}), получаем схему
+\begin{equation}
+  \label{2.19}
+  x_{n+1}=x_{n}-f(x_{n})\left(f'(x_{n})-\frac{f(x_{n})}{2f'(x_{n})}
+    \frac{f'(x_{n}+ \Delta_{n})-f'(x_{n})}{\Delta_{n}}\right)^{-1}, 
+\end{equation}
+порядок сходимости которого равен трём. Пусть
+$\Delta_{n}={f(x_{n})}/{f'(x_{n})}$, тогда из (\ref{2.19}) следует
+\begin{equation}
+ \label{2.20}
+  x_{n+1}=x_{n}-2f(x_{n})\left(3f'(x_{n})-f'\left(x_{n}+
+\frac{f(x_{n})}{f'(x_{n})}\right)\right)^{-1}.
+ \end{equation}
+Если $\Delta_{n}=-{f(x_{n})}/{f'(x_{n})},$ то из (\ref{2.19})
+получаем схему, предложенную в работе \cite{12}
+ \begin{equation}
+ \label{2.21}
+ x_{n+1}=x_{n}-2f(x_{n})\left(f'(x_{n})+f'\left(x_{n}-
+\frac{f(x_{n})}{f'(x_{n})}\right)\right)^{-1}.
+ \end{equation}
+
+%\setcounter{equation}{0}
+
+\section{Об ускорении сходимости непрерывного аналога метода Ньютона}
+
+Рассмотрим непрерывный аналог метода Ньютона для нелинейного
+уравнения~(\ref{2.1})
+\begin{equation}
+\label{3.1}
+\begin{gathered}
+ f'(x_{n})v_{n}=-f(x_{n}),\\
+ x_{n+1}=x_{n}+\tau_{n}v_{n},\quad 0<\tau_{n}\leqslant  1,\quad n=0,1,\ldots
+\end{gathered} 
+\end{equation}
+
+В работе \cite{14} показано, что при оптимальном выборе
+итерационного параметра $\tau_{n}$ итерационный процесс (\ref{3.1})
+сходится. При этом известно, что при $\tau_{n}\neq 1$ метод
+(\ref{3.1}) имеет первый порядок сходимости, а при  $\tau_{n}= 1$
+превращается в метод Ньютона, имеющий второй порядок сходимости.
+Естественно на начальных шагах итераций с линейной сходимостью, когда
+$\tau_{n}\ll 1$, целесообразно применять какой-либо приём ускорения
+сходимости, который может дать большой эффект \cite{12,13}. В
+идейном плане приём ускорения сходимости итераций близок к процедуре
+Ричардсона уточнения решения на последовательности сеток. 
+
+Попытаемся ускорить сходимость метода (\ref{3.1}) с помощью уже
+найденных приближений $x_{k}$ и $x_{n}$ при $k\neq n$. Предположим,
+что вещественная функция $f(x)$ является достаточно гладкой в
+окрестности изолированного решения $x^{*}$. Разложим функцию в ряд
+Тейлора в окрестности решения
+\begin{equation*}
+\begin{gathered}
+f(x_{k})=f(x^{*})+f'(x^{*})(x_{k}-x^{*})+\frac{f''(x^{*})}{2}(x_{k}-x^{*})^{2}
++\cdots,\\
+f(x_{n})=f(x^{*})+f'(x^{*})(x_{n}-x^{*})+\frac{f''(x^{*})}{2}(x_{n}-x^{*})^{2}
++\cdots
+\end{gathered}
+\end{equation*}
+
+Умножая первое соотношение на $x_{n}-x^{*}$ и вычитая второе
+умноженное на $x_{k}-x^{*}$, имеем
+\begin{equation}
+  \label{3.2}
+  x^{*}=\tilde{x}_{k}+\frac{f''(x^{*})}{2}(x_{k}-x^{*})(x_{n}-x^{*})\frac{x_{k}-x_{n}}
+  {f(x_{n})-f(x_{k})}+\cdots,
+\end{equation}
+где
+\begin{equation}
+  \label{3.3}
+  \tilde{x}_{k}=\frac{x_{k}f(x_{n})-x_{n}f(x_{k})}{f(x_{n})-f(x_{k})}.
+\end{equation}
+
+Из (\ref{3.2}) видно, что величина $\tilde{x}_{k}$, находится ближе к
+корню $x^{*}$, чем $x_{k}$ и $x_{n}$. Конкретно, если $x_{n}=x^{*}$
+или $x_{k}=x^{*}$, то $\tilde{x}_{k}=x^{*}$.  Используя (\ref{3.2})
+при $k=n+1$ и $k=n-1$, получаем
+\begin{equation}
+\label{3.4}
+  x^{*}=\frac{\tilde{x}_{n+1}x_{n-1}-x_{n+1}\tilde{x}_{n-1}}{\tilde{x}_{n+1}-x_{n+1}-
+    (\tilde{x}_{n-1}-x_{n-1})}+O((x^{*}-x_{n})^{3}). 
+\end{equation}
+
+Таким образом, комбинация величин $x_{n-1}$, $x_{n+1}$ и
+$\tilde{x}_{n-1}$, $\tilde{x}_{n+1}$ даёт $x^{*}$ с лучшей
+точностью, нежели $x_{n+1}$ и $\tilde{x}_{n+1}$ в отдельности.
+Приёмы (\ref{3.3}) и (\ref{3.4}) в сочетании  с основным
+итерационным процессом (\ref{3.1}) позволяют ускорить последний.
+
+Теперь рассмотрим конкретные сочетания основной (\ref{3.1}) и
+вспомогательной (\ref{3.3}) итераций. Первым из них является
+\begin{gather}
+x_{n+1}=x_{n}-\tau_{n}\frac{f(x_{n})}{f'(x_{n})},\label{3.5}\\
+\tilde x_{n+1}=\frac{x_{n}f(x_{n+1})-x_{n+1}f(x_{n})}{f(x_{n+1})-f(x_{n})}, \quad
+ n=0,1,\ldots\label{3.6}
+\end{gather}
+
+Чтобы определить порядок сходимости итерационных процессов
+(\ref{3.5}), (\ref{3.6}), перепишем их в виде
+ \begin{gather}
+e_{n+1}=e_{n}-\tau_{n}\frac{f(x_{n})-f(x^*)}{f'(x_{n})},\label{3.5a}\\
+\tilde x_{n+1}-x^{*}=e_{n}+\frac{f(x^{*})}{f'(x_{n})}-\frac{f(x_{n})}{f(x_{n+1})-f(x_{n})}
+ (x_{n+1}-x_{n}),\label{3.6a}
+ \end{gather}
+где $e_{n}=x_{n}-x^{*}$. Подставляя разложения
+ \begin{equation*}
+\begin{gathered}
+f(x^*)-f(x_{n})=-f'(x_{n})e_{n}+\frac{f''(x_{n})}{2}e_{n}^{2}+O(e_{n}^{3}),\\
+\left(\frac{f{(x_{n+1})}-f(x_{n})}{x_{n+1}-x_{n}}\right)^{-1}=\frac{1}
+{f'(x_{n})}
+ \left(1+\frac{f''(x_{n})f(x_{n})}{2(f'(x_{n}))^{2}}\tau_{n}+O(e_{n}^{2})\right),
+\end{gathered}
+\end{equation*}
+в формулах (\ref{3.5a}) и (\ref{3.6a}), получаем
+ \begin{gather}
+e_{n+1}=(1-\tau_{n})e_{n}+O(e_{n}^{2}),   \label{3.7}\\
+\tilde x_{n+1}-x^{*}=\frac{f''(x_{n})}{2f'(x_{n})}(1-\tau_{n})e_{n}^{2}+O(e_{n}^{3}).
+ \label{3.8}
+\end{gather}
+Отсюда видно, что итерационный процесс (\ref{3.5}) имеет первый
+порядок сходимости, а процесс (\ref{3.6}) имеет второй порядок
+сходимости. При $\tau_{n}\to 1$ их порядок сходимости увеличивается
+на единицу.
+
+Итерационные процессы (\ref{3.5}) и (\ref{3.6}) рассматривались  в
+отдельности. Объединяя их, получим следующие итерационные процессы
+ \begin{gather}
+ x_{n+1}=\tilde{x}_{n}-\tau_{n}\frac{f(\tilde{x}_{n})}{f'(\tilde{x}_{n})},
+ \label{3.9a}\\
+ \tilde{x}_{n+1}=\frac{\tilde{x}_{n}f(x_{n+1})-x_{n+1}f(\tilde{x}_
+ {n})}{f(x_{n+1})-f(\tilde{x}_{n})},\quad n=0,1,\ldots, \label{3.9b}
+\end{gather}
+где $\tilde{x}_{0}$~--- заданное начальное приближение к искомому
+решению $x^{*}$. Здесь, в отличие от процессов (\ref{3.5}) и
+(\ref{3.6}), основным считается (\ref{3.9b}), а (\ref{3.9a}) является
+вспомогательным. При этом легко показать, что
+ \begin{equation*}
+\begin{gathered}
+e_{n+1}=(1-\tau_{n})\tilde{e}_{n}+O(\tilde{e}_{n}^{2}),\\
+\tilde{e}_{n+1}=\frac{f''(\tilde{x}_{n})}{2f'(\tilde{x}_{n})}(1-\tau_{n})\tilde{e}_
+ {n}^{2}+O(\tilde{e}_{n}^{3}),
+\end{gathered}
+\end{equation*}
+где $\tilde{e}_{n}=\tilde{x}_{n}-x^{*}$. Следовательно, итерационный
+процесс (\ref{3.9b}) имеет второй порядок сходимости, а при $\tau
+\to 1$ его порядок сходимости увеличивается на единицу. Запишем
+(\ref{3.9a}), (\ref{3.9b}) в более удобном виде, для чего используем
+представление
+\begin{multline*}
+ \frac{\tilde{x}_{n}f(x_{n+1})-x_{n+1}f(\tilde{x}_{n})}{f(x_{n+1})-
+ f(\tilde{x}_{n})}=\tilde{x}_{n}-\frac{x_{n+1}-\tilde{x}_{n}}{f(x_{n+1})-f(\tilde{x}_{n})}
+ f(\tilde{x}_{n})\equiv\\
+ \equiv x_{n+1}-\frac{x_{n+1}-\tilde{x}_{n}}{f(x_{n+1})-f(\tilde{x}_{n})}
+ f(x_{n+1}).
+\end{multline*}
+
+В результате имеем две итерационных схемы
+ \begin{gather}
+ x_{n+1}=\tilde{x}_{n}-\tau_{n}\frac{f(\tilde{x}_{n})}{f'(\tilde{x}_{n})},\quad
+ \tilde{x}_{n+1}=\tilde{x}_{n}-\frac{x_{n+1}-\tilde{x}_{n}}{f(x_{n+1})-f
+ (\tilde{x}_{n})} f(\tilde{x}_{n}), \label{3.10}\\
+ x_{n+1}=\tilde{x}_{n}-\tau_{n}\frac{f(\tilde{x}_{n})}{f'(\tilde{x}_{n})}, \quad
+ \tilde{x}_{n+1}=x_{n+1}-\frac{x_{n+1}-\tilde{x}_{n}}{f(x_{n+1})- f(\tilde{x}_{n})}f(x_{n+1}).
+ \label{3.11}
+\end{gather}
+
+Очевидно, что порядок сходимости схем (\ref{3.10}) и (\ref{3.11})
+равен трём при $\tau_{n}=1$ или $\tau_n\to 1$. Оказывается, что
+можно переходить к непрерывным процессам дискретных схем
+(\ref{3.10}) и (\ref{3.11}). Для этого используем аппроксимацию
+ \begin{equation}
+ \label{3.12} 
+\frac{f(x_{n+1})-f(\tilde{x}_{n})}{x_{n+1}-\tilde{x}_{n}}\approx f'(\hat{x}_{n}),
+ \end{equation}
+где $\hat{x}_{n}=\sigma x_{n+1}+(1-\sigma)\tilde{x}_{n},\,\sigma\in
+[0,1]$. В результате, получим новые итерационные схемы:
+ \begin{gather}
+ x_{n+1}=\tilde{x}_{n}-\tau_n\frac{f(\tilde{x}_{n})}{f'(\tilde{x}_{n})},\quad
+ f'(\hat{x}_{n})(\tilde{x}_{n+1}-\tilde{x}_{n})=-f(\tilde{x}_{n}),
+ \label{3.14}\\
+ x_{n+1}=\tilde{x}_{n}-\tau_{n}\frac{f(\tilde{x}_{n})}{f'(\tilde{x}_{n})},\quad
+ f'(\hat{x}_{n})(\tilde{x}_{n+1}-{x}_{n+1})=-f(x_{n+1}).\label{3.15}
+\end{gather}
+
+Теперь исследуем сходимость этих итерационных схем.  Сначала
+рассмотрим итерационную схему (\ref{3.14}). Из второго соотношения
+следует, что
+ \begin{equation}
+\label{3.16}
+ \tilde{e}_{n+1}=\tilde{e}_{n}-(f'(\hat{x}_{n}))^{-1}f(\tilde{x}_{n}).
+ \end{equation}
+
+Предположим, что функция $f(x)$ {\it имеет непрерывные производные
+до четвёртого порядка}. Разложим $f'(\hat{x}_{n})$ в окрестности
+точки $\tilde{x}_n$
+ \begin{equation}
+ \label{3.17}
+ f'(\hat{x}_{n})=f'(\tilde{x}_{n})\!+\!f''(\tilde{x}_{n})(\hat{x}_{n}-\tilde{x}_
+ {n})\!+\!\frac{f'''(\tilde{x}_{n})}{2}(\hat{x}_{n}-\tilde{x}_{n})^{2}\!+\!O((\hat{x}_{n}-\tilde{x}_{n})^{3}).
+ \end{equation}
+
+Аналогично
+ \begin{equation}
+ \label{3.18}
+ f(\tilde{x}_{n})=f'(\tilde{x}_{n})\left[\tilde{e}_{n}-\frac{f''(\tilde{x}_{n})}{2f'(\tilde{x}_{n})}
+ \tilde{e}_{n}^{2}+\frac{f'''(\tilde{x}_{n})}{6f'(\tilde{x}_{n})}\tilde{e}_{n}^{3}+O(\tilde{e}_{n}^{4})\right].
+ \end{equation}
+
+Далее, из (\ref{3.14}) и (\ref{3.18}) следует
+ \begin{multline*}
+ \hat{x}_{n}-\tilde{x}_{n}=\sigma(x_{n+1}-\tilde{x}_{n})=-\sigma
+ \tau_{n}\frac{f(\tilde{x}_{n})}{f'(\tilde{x}_{n})}=\\
+ =-\sigma \tau_{n}\tilde{e}_{n}+\frac{\sigma\tau_{n}f''(\tilde{x}_{n})}
+ {2f'(\tilde{x}_{n})}\tilde{e}_{n}^{2}-\frac{\sigma\tau_{n}f'''(\tilde{x}_{n})}{6f'(\tilde{x}_{n})}
+ \tilde{e}_{n}^{3}+O(\tilde{e}_{n}^{4}).
+\end{multline*}
+
+Подставляя последнее соотношение в (\ref{3.17}), получим
+ \begin{multline*}
+ f'(\hat{x}_{n})=f'(\tilde{x}_{n})\left\{1-\sigma \tau_{n}\frac{f''(\tilde{x}_{n})}
+ {f'(\tilde{x}_{n})}\tilde{e}_{n}+\frac{\sigma \tau_{n}}{2f'(\tilde{
+ x}_{n})}\right.\times\\
+ \left.\times\left(\frac{(f''(\tilde{x}_{n}))^{2}}{f'(\tilde{x}_{n})}+\sigma
+ \tau_{n}f'''(\tilde{x}_{n})\right)\tilde{e}_{n}^{2}+O(\tilde{e}_{n}^{3})\right\}.
+\end{multline*}
+
+Если величина $\tilde{e}_{n}$ является малой, то из последнего
+соотношения следует, что существует $(f'(\hat{x}_{n}))^{-1}$ и имеет
+вид
+ \begin{multline}
+ (f'(\hat{x}_{n}))^{-1}=(f'(\tilde{x}_{n}))^{-1}
+ \left\{1+\sigma \tau_{n}\frac{f''(\tilde{x}_{n})}{f'(\tilde{x}_{n})}\tilde{e}_{n}
+ -\frac{\sigma \tau_{n}}{2f'(\tilde{x}_{n})}\right.\times\\
+ \left.\times\left ((1-2\sigma
+ \tau_{n})\frac{(f''(\tilde{x}_{n}))^{2} }{f'(\tilde{x}_{n})}+\sigma
+ \tau_{n}f'''(\tilde{x}_{n})\right
+ )\tilde{e}_{n}^{2}+O(\tilde{e}_{n}^{3})\right\} . 
+\label{3.19}
+\end{multline}
+
+Подставляя (\ref{3.18}) и (\ref{3.19}) в (\ref{3.16}), имеем
+ \begin{equation}
+ \tilde{e}_{n+1}=\frac{f''(\tilde{x}_{n})}{2f'(\tilde{x}_{n})}
+ (1-2\sigma \tau_{n})\tilde{e}_{n}^{2}+O(\tilde{e}_{n}^{3}).\label{3.20}
+ \end{equation}
+
+Отсюда {\bf итерационная схема (\ref{3.14}) в общем случае имеет
+второй порядок сходимости, а при $\sigma \tau_{n}={1}/{2}$, -- третий
+порядок.} В частности при $\tau_{n}= 1$ и $\sigma ={1}/{2}$ схема
+(\ref{3.14}) приобретает вид
+ \begin{equation}
+ x_{n+1}=x_{n}-\frac{f(x_{n})}{f' \left(x_{n}-\frac{f(x_{n})}{2f'(x_{n})} \right )},
+ \label{3.21}
+ \end{equation}
+что совпадает  со схемой,
+предложенной в работе \cite{11}. Аналогичным образом исследуется
+сходимость итерационной схемы (\ref{3.15}):
+ \begin{equation}
+\tilde{e}_{n+1}=\frac{B_{n}}{f'(\hat{x}_{n})},\label{3.22}
+\end{equation}
+\begin{multline*}
+ B_{n}=(1-\tau_{n})\frac{f''(x_{n+1})}{2}[1+(1-2\sigma)\tau_{n}]\tilde
+ {e}_{n}^{2}+\\
+ +\frac{1}{6}\Bigl[\frac{3f''(\tilde{x}_{n})f''(x_{n+1})}{f'(\tilde{x}_{n})}\tau_{n}
+  (1-\tau_{n}+(1-\sigma)(2\tau_{n}-1))+\\
+ +f'''(x_{n+1})(3(1-\sigma)^{2}
+ \tau^{2}_{n}-(1-\tau_{n})^{2})(1-\tau_{n})\Bigr]\tilde{e}_{n}^{3}+O(\tilde{e}_{n}^{4}).
+\end{multline*}
+
+Из (\ref{3.22}) видно, что итерационная схема (\ref{3.15}) имеет
+второй порядок сходимости при $\tau_n\neq1$, а если $\sigma\neq1$,
+$\tau_n=1$, то получаем схему третьего порядка.
+При $\sigma=\tau_{n}=1$ получаем схему
+ \begin{equation}
+        x_{n+1}=\tilde x_{n}-\frac{f({\tilde x}_{n})}{f'(\tilde x_{n})},\quad
+ \tilde x_{n+1}=x_{n+1}-\frac{f(x_{n+1})}{f'(x_{n+1})},\quad
+ n=0,1,\ldots,\label{3.24}
+ \end{equation}
+имеющую четвертую порядок сходимости.
+
+\section{Численные эксперименты}
+
+Качество предлагаемых итерационных алгоритмов (\ref{3.10}),
+(\ref{3.11}), (\ref{3.14}) и (\ref{3.15}) проверено на различных
+тестовых задачах, которые были взяты из работы \cite{3}. Сделано
+сравнение с известными итерационными процессами со сходимостью
+третьего и четвёртого порядка
+\begin{table}[!h]
+\begin{tabular}{ll}
+$f_{1}(x)=x^{3}+4x^{2}-10=0$,&$x^{*}=1,3652300134140968$\\
+$f_{2}(x)=\sin^{2} x-x^{2}+1=0$,&$x^{*}=1,4044916482153412$\\
+$f_{3}(x)=x^{2}-e^{x}-3x+2=0$,  &$x^{*}=0,2575302854398607$\\
+$f_{4}(x)=\cos x-x=0$,          &$x^{*}=0,7390851332151604$\\
+$f_{5}(x)=(x-1)^{3}-1=0$,       &$x^{*}=2,0$\\
+$f_{6}(x)=x^{3}-10$,            &$x^{*}=2,1544346900318837$\\
+$f_{7}(x)=xe^{x^{2}}-\sin ^{2}x+3\cos x+5=0$,&$x^{*}=-1,207647827130918$\\
+$f_{8}(x)=e^{x^{2}+7x-30}-1=0$,&$x^{*}=3,0$
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\caption{Сравнение скорости сходимости итерационных схем по числу
+итераций} 
+\label{tab:ch:1}
+\begin{tabular}{|p{0.04\linewidth}|c|p{0.09\linewidth}|p{0.08\linewidth}|c|c|c|c|p{0.11\linewidth}|c|c|}
+ \hlx{hv[3-10]}
+$f(x)$ & $x_{0}$ & \multicolumn{9}{c|}{$n$ в зависимости от схемы,
+  заданной соответствующей формулой}\\
+ %\hline
+ \hlx{v[3-10]hv}
+\mbox{} & \mbox{}& (\ref{2.7}), \cite{13} & (\ref{2.8}),  \cite{8}  & (\ref{2.16}) &
+ (\ref{2.17}) & (\ref{2.18})& (\ref{2.20}) & (\ref{2.21}), \cite{12} & (\ref{3.14}) & (\ref{3.24})\\
+% && \cite{13} & \cite{8} &&&&&\cite{12}&&\\
+ \hlx{vhv}
+ $f_{1}$ & 1   & 4  & 4 & 3 & 3 & 3 & 3  & 3 & 3 & 3\\
+ $f_{2}$ & 1   & 16 & 4 & 4 & 3 & 4 & 4  & 4 & 4 & 3\\
+ $f_{3}$ & 3   & 4  & 5 & 4 & 5 & 5 & 8  & 4 & 4 & 3\\
+ $f_{4}$ & 1   & 3  & 3 & 3 & 3 & 3 & 3  & 2 & 3 & 2\\
+ $f_{5}$ & $2,5$ & 4  & 4 & 4 & 3 & 4 & 3  & 4 & 4 & 3\\
+ $f_{6}$ & $1,5$ & 5  & 4 & 4 & 3 & 4 & 6  & 4 & 4 & 3 \\
+ $f_{7}$ & $-2$  & 6  & 5 & 5 & 5 & 6 & 27 & 6 & 5 & 4\\
+ $f_{8}$ & $5,5$ & 32 & 26& 28& 14& 35& 7  & 30& 27& 22\\
+ \hlx{vh}
+\end{tabular}
+\end{table}
+
+ 
+В табл.~\ref{tab:ch:1}  указано число итераций ($n$).
+% и общее число вычислений значений функций  ($m$).
+Итерации были прекращены при выполнение $|f(x_{n})|\leqslant  \varepsilon
+=10^{-15}$. Как видно из табл. 1, качество предлагаемых итерационных
+схем не хуже, чем ранее известных и они могут быть использованы как
+альтернативный вариант.
+
+\section{Заключение}
+
+Изучены итерационные методы высокого порядка сходимости для решения
+нелинейных уравнений. Получены два основных однопараметрических
+семейства методов третьего порядка сходимости. На основе полученных
+методов показано, что все методы третьего порядка сходимости
+эквивалентны эталонному методу Чебышева. Возможно ускорение
+итерационного процесса с помощью оптимально выбранного параметра на
+каждом итерационном шаге.
+
+Рассмотрены приёмы ускорения сходимости метода Ньютона. На этой
+основе предложены новые итерационные методы до четвёртого порядка
+сходимости.
+
+Предлагаемые выше итерационные методы применимы для численного
+решения системы нелинейных функциональных уравнений, если оператор
+удовлетворяет условиям гладкости и обратимости в окрестности искомых
+решений.
+
+
+% \begin{thebibliography}{10}
+
+% \bibitem{1} {\it Aslam Noor M. and Ahmad F.} Numerical comparison of iterative methods
+% for solving nonlinear equations // Appl. Math. Comput. Vol.
+% 180.--2006.--P. 167--172.
+
+% \bibitem{2} {\it Aslam Noor M. and Inayat Noor K.} Three-step iterative methods for nonlinear equations
+% // Appl. Math. Comput. Vol. 183.--2006.--P. 322--327.
+
+% \bibitem{3} {\it Aslam Noor M. and Inayat Noor K.} Some iterative schemes for nonlinear equations
+% // Appl. Math. Comput. Vol. 183.--2006.--P. 774--779.
+
+% \bibitem{4} {\it Aslam Noor M., Inayat Noor K., Mohynd-Din S.T. and
+% Shabbir A.} An iterative method with cubic convergence for nonlinear equations
+% // Appl. Math. Comput. Vol. 183.--2006. P. 1249--1255.
+
+% \bibitem{6} {\it Ezquerro J.A. and Hern\'andez M.A.} On Halley-type iterations with free second derivative
+% // J. Comput. Appl. Math. Vol. 170.--2004.--P. 455--459.
+
+% \bibitem{9} {\it Kou J., Li Y. and Wang X.} Modified Halley’s method free from
+% second derivative // Appl. Math. Comput. Vol. 183.--2006.--P.
+% 704--708.
+
+% \bibitem{5} {\it Chen J.} Some new iterative methods with three-order convergence
+% // Appl. Math. Comput. Vol. 181.--2006.--P. 1519--1522.
+
+% \bibitem{7} {\it Homeier H.H.H.} On Newton-type methods with cubic convergence
+% // J. Comput. Appl. Math. Vol. 176.--2005.--P. 425--432.
+
+% \bibitem{8} {\it Kou J., Li Y. and Wang X.} A modification of Newton method with
+% third-order convergence // Appl. Math. Comput. Vol. 181.--2006.--P.
+% 1106--1111.
+
+% \bibitem{10} {\it  Kanvar M.V., Kunreja V.K. and Singh S.} On some third-order iterative
+% methods for solving nonlinear equations // Appl. Math. Comput. Vol.
+% 171.--2005.--P. 272--280.
+
+% \bibitem{11} {\it Frontini M. and Sormani E.} Some variant of Newton's
+% method with third-order convergence // Appl. Math. Comput. Vol.
+% 140.--2003.--P. 419--426.
+
+% \bibitem{12} {\it Weerakoon S. and Fernando T.G.I.} A variant of Newton's
+% method with accelerated third-order convergence // Appl. Math. Lett.
+%  V. 13.--2000.--P. 87--93.
+
+% \bibitem{12a} {\it Баквагов Н.С., Лапин А.В. и Чишонков Е.В.} Численные методы в
+% задачах и упражнениях, М. Высшая школа, 2000.
+
+% \bibitem{14} {\it Жанлав Т., Пузынин И.В.} О сходимости итераций на основе
+% непрерывного аналога метода Ньютона // Журнал Вычисл. Матем. и
+% Матем. Физ.
+%  Т. 32. вып. 6.--1992.--С. 846--856.
+
+% \bibitem{13} {\it Porta F.A. and Ptak V.} Nondiscrete induction and iterative
+% processes, Research Notes in mathematics, vol. 103, Pitman, Boston,
+% 1984.
+
+% \end{thebibliography}
+
+
+% \makealttitle
+
+
+%\end{document}
+
+\putbib[bib/chuka/chuka]
+
+\makealttitle
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: cp1251-unix
+%%% End:
+
+% LocalWords:  Some Iteration Methods with High Order Convergence for Nonlinear
+% LocalWords:  Жанлав Чулуунбаатар Zhanlav Chuluunbaatar School of Mathematics
+% LocalWords:  and Computer Science National University Mongolia Ulan Bator In
+% LocalWords:  Laboratory Information Technologies Joint Institute Nuclear ОИЯИ
+% LocalWords:  Research Dubna Region Виницкого Гусева Пузынина Севастьянова the
+% LocalWords:  Чебышева this paper iteration methods high order convergence are
+% LocalWords:  nonlinear equations studied It is shown that all third to method
+% LocalWords:  equivalent standard Tchebyshev acceleration Newton also New on
+% LocalWords:  considered procedure discussed above proposed Comparison between
+% LocalWords:  different given by test examples Хелли двухшаговые трехшаговые
+% LocalWords:  многошаговые декомпозиционных af bf cf однопараметрическое ll xe
+% LocalWords:  Ричардсона vhv vh однопараметрические bib Moscow hv

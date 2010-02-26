@@ -1,0 +1,990 @@
+\graphicspath{{image/popova/}}
+
+
+\udc{541.139}
+
+
+\title{Флуктуационная теория зарождения защитных нанослоёв на 
+металлах в агрессивных электролитах}
+
+
+
+\author{Н. А. Ковальчуков}
+\author{Ю. А.  Попов}
+\author{Ю. П. Рыбаков}
+\author{В. А. Попова}
+
+\address{%
+        Кафедра теоретической физики\\
+        Российский университет дружбы народов\\
+        Россия, 117198, Москва, ул. Миклухо-Маклая, 6}
+
+
+\begin{abstract}
+  В статье изложена математическая модель ингибирующего нанослоя. Он
+  формируется по механизму гетерогенного зародышеобразования на
+  энергетически неоднородной поверхности $S$ реального
+  анодно-растворяющегося металла. Рассмотрено возникновение на $S$
+  флюктуации $\Delta V_{\text{ф}}$ электролита, насыщение которых
+  ионными компонентами описывается классическими уравнениями ионного
+  массопереноса. Каждый объём $\Delta V_{\text{ф}}$ может быть
+  материнской фазой для зародыша ингибитора. Рассмотрена кинетика
+  зародышеобразования и эволюция зародышей, обусловленная изменением
+  материнской фазы.
+\end{abstract}
+
+\keywords{зародыш, гетерогенность, флюктуация, энергетическая
+  неоднородность, материнская фаза, статистический разброс, эволюция
+  зародыша}
+
+\received{\formatdate{22}{06}{2009}}
+
+\alttitle{Fluctuation Theory of Protective Nanolayers on Metals in the
+  Aggressive Electrolytes }
+
+\altauthor{N. A. Kovalchukov}
+\altauthor{Yu. A. Popov}
+\altauthor{Yu. P. Rybakov}
+\altauthor{V. A. Popova}
+
+
+\altaddress{%
+  Department of Theoretical Physics\\
+  Peoples' Friendship University of Russia\\
+  6, Miklukho-Maklaya str., Moscow, Russia, 117198}
+
+\begin{altabstract}
+  In this article the mathematical model of inhibitiring nanolayer is
+  exposed. The latter is formed by the mechanism of heterogeneous
+  germ-formation on energetically non-uniformed surface $S$ of the
+  real anodic dissolution metal. There considered the rise of a
+  fluctuation $\Delta V_{\text{ф}}$ of electrolyte on the surface $S$.
+  Their saturation by the ions components is described by the
+  classical equations of the ionic mass transfer. Every volume $\Delta
+  V_{\text{ф}}$ can be a mother phase for the germ of inhibitor. There
+  considered the kinetics of germ-formation and the evolution of germ
+  given by the change of the mother phase.
+\end{altabstract}
+
+\altkeywords{germ, heterogeneity, fluctuation, power heterogeneity,
+  mother phase, statistical dispersion, evolution of germ}
+
+\maketitle
+
+\section{Введение}
+
+
+Металлам и сплавам термодинамически выгодно перейти в ионное
+состояние, т.е. раствориться в среде с ионной проводимостью. Такими
+средами являются растворы электролитов, распространённые во многих
+сферах человеческой деятельности. Затормозить эти спонтанные процессы
+рентабельными способами весьма трудно. Но легко оценить величину
+наносимого ими ущерба, сравнимого по американской статистике с
+военными расходами. Например, если поверхность $S$ металла не защищена,
+то в зависимости от агрессивности среды, её температуры и других
+условий в течение года могут раствориться многие сотни моноатомных
+слоев металлической структуры. Их масса относительно мала, но
+связанные с этим косвенные экономические потери (т.е. не самой
+растворившейся массы) несоизмеримо велики и часто катастрофичны.
+
+Закономерности, управляющие разрушением поверхности $S$, относятся к
+стыку физики металлов, физики электролитов и физики пограничных
+явлений. Ему соответствует обилие факторов и параметров, определяющих
+кинетику разрушения. Их теоретическое изучение развивается поэтому
+медленно и противоречиво, хотя металлы и сплавы по-прежнему остаются
+основными конструкционными материалами. Задачи защиты поверхности $S$
+решаются в основном эмпирически, используются дорогостоящие материалы
+и заменители или создаются защитные нанослои.
+
+Механизм разрушения, по крайней мере, двухстадиен. На первой стадии
+поверхностные ионы металла $М^{z+}$ и анионы электролита образуют
+адсорбционные комплексы, т.е. большие молекулы, связанные с
+растворителем. Связь ионов $М^{z+}$ с решёткой ослабляется и через
+определённое время жизни $\tau $ под влиянием фононных колебаний и
+взаимодействий на второй стадии комплексы переходят в электролит. В их
+составе от решётки отрываются и ионы $М^{z+}$. Плотность тока
+растворения $i\sim \frac{1}{ \tau }$. Этот механизм разрушения
+рассматривается в наших работах.
+
+\section{Методы защиты}
+
+
+Одним из основных методов защиты металла является создание на его
+поверхности $S$ тонких труднорастворимых покрытий (слоев). Их состав,
+структура, механизм функционирования зависят от его природы, от
+состава электролита и величины межфазного скачка потенциала
+$\phi $. Он является параметром, определяющим взаимодействие
+с электролитом и образование слоев. Принципиальная форма вольтамперной
+кривой, т.е.  зависимость плотности $i(\phi )$ анодного тока
+растворении от потенциала {$\phi $} приведена на рис.~\ref{fig1}. На ней
+выделены две области I и II, называемые областями слоевой и оксидной
+пассивности. В этих интервалах значений потенциала $\phi $ образуются
+защитные слои, и плотность $i(\phi )$ тока растворения
+уменьшается соответственно на (1--2) и (5--7) порядков. Можно
+сказать, что на практике эксплуатируются, в основном,
+запассивированные металлы и их сплавы. Эти слои термодинамически
+неравновесны, в них происходят процессы массопереноса, существует
+сильное электрическое поле.
+\begin{figure}[!h]
+\centerline{\includegraphics[width=0.5\linewidth]{popova1}}
+\caption{Вольт-амперная кривая, зависимость плотности  
+ $i(\phi )$ анодного тока растворении от потенциала $\phi $}
+\label{fig1}
+\end{figure}
+
+
+
+При значениях потенциалов области II ионы $М^{z+}$ и анионы $О^{2-}$
+электролита при определённых условиях образуют пассивирующий слой со
+стехиометрией оксида.  Кислород внедряется в решётку металла, образуя
+ячейки $M_k O_e $, т.е. металл на поверхности $S$ переходит в оксид. На
+границе с электролитом его ячейки растворяются. Оба процесса взаимно
+компенсируются и происходят с малой скоростью, чем и обусловлена
+оксидная пассивация. Её теория изложена в~\cite{1}.
+
+Область I возникает, если электролит содержит ионные компоненты
+$А^{n-}$, способные образовывать с ионами $М^{z+}$ на поверхности $S$
+трудно растворимое покрытие со стехиометрией соли $A_a M_m $,
+называемое ингибирующим слоем. Ионы $М^{z+}$ участвуют в его структуре
+при условии $an = zm$. Ионная компонента $А^{n-}$ специально вносится
+в электролит в качестве добавки и у поверхности $S$ создаётся достаточно
+большая концентрация $С_{А}$ ионов $А^{n-}$. Толщина {$\delta $}
+первой, т.е. пограничной с металлом очень важной части слоя,
+вычисленная ниже, составляет $\delta \sim 10 ^{-7 }$--$10 ^{-5}$ см.
+
+\section{Зарождение ингибирующего слоя}
+
+
+Ингибирующий слой образуется как новая фаза~\cite{2} по механизму
+гетерогенного зародышеобразования. Благодаря множественности его
+центров оно представляется, на первый взгляд, хаотическим,
+беспорядочным процессом, уловить закономерности которого не совсем
+просто. Изложим его теоретическую модель, в которой тем не менее
+определены физические факторы, управляющие механизмом образования и
+функционирования слоя.
+
+Вначале на поверхности $S$ зарождается пограничная часть слоя,
+названная первым рядом зародышей. Он служит родственной подложкой, на
+которой вырастают последующие их ряды. Исходным фактором в образовании
+подложки служит энергетическая неоднородность поверхности $S$. Это
+значит, что плотность $i_{k}$ токов анодного растворения её
+различных площадок $\Delta S_{k}$ неодинакова. Источником
+неоднородности является, например, выход на границу с электролитом
+граней растворяющихся кристалликов (составляющих структуру любого
+реального металла) с различным числом межчастичных связей или выход
+межкристаллитных границ и других структурных неоднородностей. Их
+активности, т.е. плотности $i_{k}$ анодных токов различных площадок
+$\Delta S_{k}$ могут многократно отличаться. Они изменяются
+случайным образом вдоль поверхности $S$, т.е. её активность в этом
+смысле является флюктуирующей величиной.
+
+Флюктуациям активности соответствуют флюктуации концентраций $С_{М}$ и
+$С_{А}$ ионов $М^{z+}$ растворяющегося со скоростью $v=\frac{i}{zF}$
+металла и противоионов $A^{n-}$. Если в объёме $\Delta V_{ф}$
+достаточно большой положительной флюктуации достигается насыщение
+раствора электролита, то с определённой вероятностью $W(r_{p})$
+возникает зародыш новой труднорастворимой фазы со стехиометрией
+молекул соли $A_a M_m $. Поэтому объём $\Delta V_{ф}$ флюктуации
+является для этого зародыша с радиусом $r_{p}$ материнской фазой. Его
+специфика состоит в том, что:
+
+а) зародыш двухкомпонентен; он образован заряженными частицами
+$М^{z+}$ и $А^{n-}$, в сильном электрическом поле, влияющем на его
+кинетику;
+
+б) источники ионов $М^{z+}$ и $А^{n-}$ пространственно разделены, ибо
+это площадки $\Delta S_{k}$ растворяющейся поверхности $S$ и
+окружающий её электролит; этим осложнено формирование материнской
+фазы;
+
+в) возникший зародыш экранирует площадку $\Delta S_{k}$, источник
+ионов $М^{z+}$ исчезает, электролит в объёме $\Delta V_{ф}$
+затрачивается; т.е.  материнская фаза изменяется. Условия равновесия
+нарушаются и происходит эволюция зародыша, т.е. изменение его радиуса.
+
+Соответственно вначале необходимо решение задач о формировании
+материнской фазы, т.е. флюктуации $\Delta V_{ф}$; о кинетике
+образования зародыша в её объёме $\Delta V_{ф}$; об эволюции зародыша
+вследствие изменения материнской фазы.
+
+
+\subsection{Формирование флюктуации $\Delta V_{ф}$}
+
+
+Согласно изложенному поверхность $S$ неоднородна, т.е. состоит из
+множества различных площадок $\Delta S_{j}$ (граней поликристалликов)
+\[
+S=\sum\limits_j^N {\Delta S_j }.
+\]
+Каждая из них, анодно растворяясь, генерирует плотность $i_{j}(\phi )$
+тока ионов $М^{z+}$. Средняя по их множеству плотность $i_{0}(\phi )$
+анодного тока, соответствующая рис.~\ref{fig1}, равна
+\begin{equation}
+\label{eq1}
+i_0 \left( \phi \right)=\frac{1}{ S}\sum\limits_j^N i_j \left( \phi 
+  \right),
+\end{equation}
+и на каждой из них существует достаточная концентрация ионов $А^{n-}$.
+
+Рассмотрим выступившую в некоторый момент времени $t$ на границу с
+электролитом площадку $\Delta S_{k}$ с повышенной активностью,
+т.е. значением плотности $i_{k}(\phi )$ тока своих ионов $М^{z+}$,
+превышающим $i_{0}(\phi )$ в $k$ раз
+\begin{equation}
+\label{eq2}
+i_k \left( \varphi \right)=ki_0 \left( \varphi \right),\quad
+k\gg 1.
+\end{equation}
+
+Так как значение $k$ может составить десятки и сотни единиц, то
+концентрация $C_{M}$ ионов $М^{z+}$ возрастает, и на площадке $\Delta
+S_{k}$ возникает локальная область электролита с большими
+концентрациями ионов $А^{n-}$ и $М^{z+}$, способными образовывать
+комплексы типа $aА^{-n}+ {mM}^{z+}$.
+
+Относительно всего электролита она представляет его флюктуацию, объём
+$\Delta V_{ф }$ которой ограничен площадкой $\Delta S_{k}$ и некоторой
+поверхностью $\sigma (t)$, рис.~\ref{fig2}. Вследствие продолжающегося
+растворения поверхности $\Delta S_{k}$ масса ионов $М^{z+}$, их
+концентрация $C_{M}$ в объёме $\Delta V_{ф }$ увеличиваются, и
+поверхность $\sigma (t)$ движется из-за увеличения объёма согласно
+рис.~\ref{fig2}. В некоторый момент $t _{0}$ в нём достигается насыщение
+электролита, и с вероятностью $W= W(C_{M}, C_{А})$ возникает зародыш
+новой фазы со стехиометрией молекул труднорастворимой соли $A_a M_m
+$. Флюктуация $\Delta V_{ф }$ является для него материнской
+фазой. Рост объёма $\Delta V_{ф }$, движение поверхности $\sigma (t)$
+и рост концентраций $C_{M}$, $ C_{А}$ самосогласуются. Рассмотрим эти
+процессы считая, что ионы $М^{z+}$ благодаря своей большой
+концентрации вытеснили из объёма $\Delta V_{ф }$ положительные ионы
+другого сорта. Поэтому электролит в объёме $\Delta V_{ф }$ является
+бинарным. Зарядности всех положительных ионов одинаковы, зарядности
+всех отрицательных ионов также одинаковы.
+\begin{figure}[!h]
+\centerline{\includegraphics[width=0.5\linewidth]{popova2}}
+\caption{Растворяющаяся площадка $\Delta S_{K}$, объём флюктуации
+  $\Delta V_{ф}$ и его  граничная поверхность  $\sigma (t)$ в моменты
+  времени $t_{1}$ и $t_{2}$; $t_{2}>t_{1}$}
+\label{fig2}
+\end{figure}
+
+
+
+\subsection{Уравнения ионного массопереноса в объёме флюктуации
+  $\Delta V_{ф }$}
+
+
+Движение ионов $А^{n-}$ и $М^{z+}$ в объёме $\Delta V_{ф }$
+описывается общими уравнениями~\cite{3} для их концентраций $С_A \left(
+  {\vec  r, t} \right)$, $С_М \left( {\vec  r
+   , t} \right)$ и поля $\vec  Е $
+\begin{equation}
+\label{eq3}
+%\begin{array}{l}
+ \frac{\partial C_A }{\partial t} + {\mathrm{div\,}} \vec {j}_A  = 0, \quad 
+ \frac{\partial C_M }{\partial t} + {\mathrm{div\,}} \vec {j}_M  = 0, \quad
+ zC_M  - nC_A  = 0.  
+% \end{array}
+\end{equation}
+
+ Плотности потоков $\vec  j _А $ и 
+$\vec  j _М $, учитывающие механизмы диффузии и миграции 
+в электрическом поле $\vec  Е $, равны
+\begin{equation}
+\label{eq4}
+\begin{gathered}
+ \vec {j}_M  = -D_M \nabla C_M  + D_M \alpha _M C_M \vec {E},\quad 
+\alpha _M  = \frac{zF}{RT}, \\ 
+ \vec {j}_A  = -D_A \nabla C_A  - D_A \alpha _A C_A \vec {E},\quad 
+\alpha _A  = \frac{nF}{RT}. 
+\end{gathered}
+\end{equation}
+
+Поток ионов $М^{z+}$, оторвавшихся от поверхности $\Delta S_{k}$,
+распространяется в объёме $\Delta V_{ф }$ и в момент $t$ достигает
+граничную поверхность $\sigma (t)$. Её он не пересекает, так как по
+определению она является границей объёма. Движение $\sigma (t)$ есть
+следствие распространения ионов $М^{z+}$. Их распространение и её
+движение представляют единый согласованный процесс\footnote{В принципе
+  можно принять, что граница флюктуации не резкая, а является тонким
+  диффузным слоем. Тогда поверхность $\sigma (t)$ представляет его
+  центральное продольное сечение. В слое быстро изменяются
+  концентрации ионных компонент, и формируется электролит объёма
+  $\Delta V_{ф }$ флюктуации. При этом существенно условие
+  электронейтральности.}. Такой подход соответствует
+молекулярно-кинетической теории, не предполагает скорость
+распространения электродиффузии бесконечной~\cite{4}. В
+действительности она зависит от коэффициентов диффузии, от зарядности
+ионов и др. Из-за неопределённости формы движущейся поверхности
+$\sigma (t)$ возможно лишь приближенное решение задачи~\eqref{eq3},
+\eqref{eq4}. Учтём, что отрываясь от площадки $\Delta S_{k}$ в
+результате фононных колебаний, ионы $М^{z+}$ движутся нормально к её
+поверхности.  Поэтому примем для упрощения задачи~\eqref{eq3}, что
+объём $\Delta V_{ф }$ является <<столбиком>> высотой $h(t)$,
+рис.~\ref{fig3}.
+\begin{figure}[!h]
+\centerline{\includegraphics[width=0.5\linewidth]{popova3}}
+\caption{Упрощённая форма объёма $\Delta V_{ф}$ флюктуации}
+\label{fig3}
+\end{figure}
+Следовательно,
+\begin{equation}
+\label{eq5}
+V_ф  = h(t) \cdot  \Delta S_k 
+\end{equation}
+
+Уравнения~\eqref{eq3} тождественными преобразованиями сводятся к виду
+\begin{equation}
+\label{eq6}
+\begin{gathered}
+ C_A =zC,\quad C_M =nC ,\quad  
+ \frac{\partial C}{\partial t}=D_0 \Delta C,\\ 
+D_0 =\frac{D_A D_M 
+\left( {z + n} \right)}{nD_A +zD_M }  ,\quad 
+ {\mathrm{div\,}}\left( {C\vec  E } \right)=\frac{D_A - D_M }{D_A n+D_M 
+z}\Delta С 
+\end{gathered}
+\end{equation}
+
+Граничные условия на площадке $\Delta S_{k}$ 
+\begin{equation}
+\label{eq7}
+j_{Ms}  = -\frac{k i_0 }{zF},\quad \quad j_{As}  = 0,
+\end{equation}
+индекс $s$ означает принадлежность величины поверхности $\Delta
+S_{k}$. Из \eqref{eq4}, (\ref{eq6}) и~\eqref{eq7} окончательно находим
+\begin{equation}
+\label{eq8}
+\frac{\partial C_s \left( t \right)}{\partial x} =-q\left( t \right),\quad 
+q\left( t \right)=\frac{k i_0 }{zFD_M \left( {n+ z} \right)}.
+\end{equation}
+
+ На части поверхности   $\sigma (t)$  с координатой   $x = h(t)$  
+граничные условия, соответствующие изложенному подходу, запишем в виде
+\begin{equation}
+\label{eq9}
+C\left( {h\left( t \right),t} \right) = C_0,\quad \frac{\partial C\left( 
+{h\left( t \right),t} \right)}{\partial x}{\kern 1pt}={\kern 1pt}0,
+\end{equation}
+$С_{0}$~--- объёмное значение
+$C(x)$. Соотношения~\eqref{eq6},~\eqref{eq7}, \eqref{eq8}  и
+(\ref{eq9}) представляют в полном виде краевую задачу, описывающую
+ионный массоперенос в объёме $\Delta V_{ф }$, т.е. формирование
+материнской фазы. Интегрируя (\ref{eq6}) в пределах $0\leqslant
+ x\leqslant  h\left( t \right)$, имеем
+\begin{equation}
+\label{eq10}
+%\begin{array}{l}
+ \frac{\d }{\d t}{\kern 1pt}\left[ {\Omega \left( t \right) - C_0 {\kern 
+1pt}h\left( t \right)} \right] = D_0 {\kern 1pt}\left[ {\frac{\partial 
+C\left( {h\left( t \right),t} \right)}{\partial x} -\frac{\partial C\left( 
+{0,t} \right)}{\partial x}} \right], 
+% \end{array}
+\end{equation}
+где
+\begin{equation}
+\label{eq11}
+\Omega \left( t \right)=\int\limits_0^{h(t)} {C\left( {x,t} \right)\d x}. 
+\end{equation}
+
+Используя (\ref{eq9}), решение~\eqref{eq6} ищем в виде полинома:
+\[
+C\left( {x,t} \right) = A_0  + A_1 x + A_2 x^2.
+\]
+Коэффициенты $А_{0}(t)$, $A_{1}(t)$, $A_{2}(t)$ определяются
+граничными условиями и искомое решение имеет вид
+\begin{equation}
+\label{eq12}
+%\begin{gathered}
+ C\left( {x,t} \right)=C_0 +\frac{q\left( t \right)}{2h\left( t 
+\right)} \left[ {h\left( t \right)-x} \right]^2, \quad
+ C_М =nC\left( {x,t} \right) ,\quad C_А =zC\left( {x,t} \right) . 
+%\end{gathered}
+\end{equation}
+
+Видно, что на границе $x = h(t)$ условие электронейтральности,
+как и во всем объёме $\Delta V_{ф} ( x, t )$,
+выполняется. Интегрируя~\eqref{eq6} с учётом (\ref{eq12}), имеем уравнение
+для $h(t)$, описывающее движение граничной поверхности флюктуации
+$\Delta V_{ф}$
+\[
+%\begin{array}{l}
+ \frac{\d }{\d t}\left[ {q\left( t \right) \cdot  h^2\left( t \right)} 
+\right]=6D_0 q\left( t \right) , \quad 
+ h\left( 0 \right)=0. 
+% \end{array}
+\]
+Его решение
+\[
+h\left( t \right)=\sqrt {6D_0  \cdot  \frac{1}{q\left( t \right)} \cdot 
+ \int\limits_0^t {q\left( \xi \right) \d \xi } }.
+\]
+
+В качестве $q$ используем выражение (\ref{eq8}), и тогда
+\[
+h\left( t \right)=\sqrt {6D_0 t}.
+\]
+
+Максимальное значение $h$ соответствует моменту $t$ = $\tau $ рождения
+зародыша, т.е.
+\[
+h_m =\sqrt {6D_0 \tau }.
+\]
+
+Со временем концентрация электролита в объёме флюктуации $\Delta
+V_{ф}$ повышается. Его состояние у поверхности $S$ приближается к
+насыщенному, формирование материнской фазы завершается, и вероятность
+$W_k \sim \frac{1 }{\tau }$ образования зародыша соли $А_{а} M_{m}$ на
+площадке $\Delta S_{k}$ становится достаточной. Рассмотрим кинетику
+этого процесса.
+
+
+\subsection{Кинетика образования двухкомпонентного зародыша в
+  электрическом поле}
+
+
+Оценим время $\tau $ указанного процесса, высоту $h (\tau )$ столбика,
+т.е. размер флюктуации $\Delta V_{\phi}$ и равновесный радиус $r_{p}$
+зародыша. Вероятность $W_p$ его гетерогенного образования и радиус
+$r_{p}$ связаны с изменением $\Delta \mu $ химических потенциалов его
+компонент (приложение).
+\begin{equation}
+\label{eq13}
+\begin{gathered}
+ r_p =\frac{2\sigma V_m \sin \alpha }{\Delta \mu },   \quad   V_M 
+=\frac{M}{\rho }, \quad
+ W_p =W_0 \exp  \left[ {-\frac{\pi \sigma r_{кр}^2 \omega \left( \alpha 
+\right)}{3RT \sin ^2\alpha }} \right] , \\ 
+\Delta n_0 =\frac{V_з }{V_M },\quad     V_з =jr_{p}^3, 
+\end{gathered}
+\end{equation}
+где $V_{з}$~--- объём зародыша; $V_{M}$, $M$~--- его мольные объём и
+масса; $j$~--- геометрический фактор; $\Delta $ $n_{0}$~--- число молей
+молекул $А _{а} M _{m}$ в зародыше. Мольные электрохимические
+потенциалы $\mu _{ik}$ в начальном $Н$ и конечном $К$ (твёрдом) состояниях
+равны
+\begin{equation}
+\label{eq14}
+\begin{gathered}
+ \mu _{Mi} =\mu _{M0} +mRT\ln C_{Mii} +zmF\varphi _{1i}, \\ 
+ \mu _{Ai} =\mu _{A0} +aRT\ln C_{Ai} -naF\varphi _{2i}, \quad
+ i=N,K,
+\end{gathered}
+\end{equation}
+где $\varphi _{ВПГ}$~--- потенциал внутренней плоскости Гельмгольца
+ВПГ. Величина $\Delta \mu = (\mu _{МН} -\mu _{МК} ) + (\mu _{АН} -\mu
+_{АК})$ равна изменению потенциалов при переходе системы из начального
+$Н$ в конечное $К$ состояние. Согласно (\ref{eq14})
+\begin{equation}
+\label{eq15}
+\begin{gathered}
+ \Delta \mu =RT\ln \left[ {K\left( \varphi \right)\frac{C_Н }{С_К }} 
+\right], \quad
+ С_К =С_{МК}^m \cdot С_{АК}^a, \\
+ К\left( \varphi \right)=\exp \frac{Fn\Delta \varphi }{RT},\quad \Delta 
+\varphi =\varphi -\varphi _{ВПГ} 
+\end{gathered}
+\end{equation}
+где $С_{Н}$~--- поверхностное произведение растворимости соли $А _{а} M_{m}$,
+\[
+C_М =nC,   \quad   C_А =zC,\quad
+C=C_0 +\frac{q\left( t \right)}{2h\left( t \right)} \cdot  \left[ {h\left( 
+t \right)-x} \right]^2.
+\]
+
+Индексы $К$, $Н$ относят величины либо к конечному, либо к начальному
+состоянию. Согласно (\ref{eq13}), (\ref{eq14})
+\begin{equation}
+\label{eq16}
+\begin{gathered}
+ r_р =\frac{B}{\ln \left[ {K\left( \varphi \right)\cdot \frac{C_К }{C_Н }} 
+\right]},\quad В=\frac{2\sigma V_М }{RT}\sin \alpha,\quad V_М 
+=\frac{M}{\rho }, \\ 
+ W_P =W_0 \exp \left( {-Ar_p^2 } \right),\quad A=\frac{\pi \sigma \omega 
+\left( \alpha \right)}{3RT\sin ^2\alpha }. 
+\end{gathered}
+\end{equation}
+
+Видно, что с ростом концентрации $С_{К}$ равновесный радиус $r_{p}$
+зародыша уменьшается, но зато быстро увеличивается вероятность $W_{р}$
+его возникновения. При этом для рассматриваемых процессов существенно,
+что среднее значение $С_{\mbox{М}0}(x, t)$ концентрации ионов $M^{z+}$
+возрастает~\cite{3} совместно со средним анодным током $i_{0}$. Аналогично
+и сильное влияние электрического поля. Оно определяется величиной
+$K(\varphi ) \gg  1$, экспоненциально зависящей от анодного потенциала
+$\varphi $ и уменьшающей равновесный радиус $r_{p}$.
+
+Следуя сказанному выше, вычислим: время $\tau $ образования зародыша,
+считая начало растворения площадки $\Delta S_{k}$ нулевым моментом $t
+= 0$; максимальный объём $V_{ф} (\tau ) = h (\tau ) \cdot \Delta S_{k}$
+флюктуации; число $\Delta n_{0}$ молей молекул в зародыше объёмом~$V_{з}$.
+
+Приближённо примем, что все количество $Q( t)$ молей ионов $M^{z+}$,
+находящихся в конечный момент $\tau $ в объёме флюктуации, входят в
+структуру зародыша (т.е.  флюктуация превращается в зародыш). Поэтому
+$Q (\tau )$ определяется концентрацией $C_{\mbox{М}} = {nC}$
+(моль/см $^{3}$) ионов $M ^{z+}$.  Согласно (\ref{eq12})
+\begin{equation}
+\label{eq17}
+\begin{gathered}
+ Q\left( \tau \right)=\int\limits_0^{h\left( \tau \right)} {nC\left( {x,\tau 
+} \right) \d x} =n \left[ {C_0 h\left( \tau \right)+\frac{qh^2\left( \tau 
+\right)}{6}} \right] \cdot  \Delta S_k, \\ 
+ h\left( \tau \right)=\sqrt {6D_0 \tau }, \quad
+ q=\frac{i_0 \kappa }{zFD_М \left( {z+n} \right)}. 
+\end{gathered}
+\end{equation}
+
+Вместе с тем
+\begin{equation}
+\label{eq18}
+Q\left( \tau \right)=\frac{i_0  \cdot  \kappa  \cdot  \tau  \cdot 
+ \Delta S_k }{zF},
+\end{equation}
+причём $Q (\tau )=\Delta  n$, а число $\Delta n_{0}$ молей
+молекул $A_{a} M_{m}$ в зародыше равно
+\[
+\Delta n_0 =\frac{1}{m}\Delta n \left( {\mbox{моль}} 
+\right) ,  \quad   \Delta n=Q,\quad
+zm=an .
+\]
+
+Соотношения~\eqref{eq17}--\eqref{eq18} определяют время $\tau $ и
+другие искомые величины (приложение):
+\begin{equation}
+\label{eq19}
+\begin{gathered}
+  \tau = \frac{6D_0 }{\Omega ^2}\left( {\frac{ \left( {z+n} \right) }{
+        \left( {z+n} \right)-\frac{D_0}{D_M}}} \right)^2, \quad \Omega
+  =\frac{i_0 \kappa
+  }{zFC_0 }, \\
+  V_з =h\left( \tau \right) \cdot \Delta S_k, \quad h\left( \tau
+  \right)=\sqrt {6D_0 \tau },\quad V_ф =h\left( \tau \right)\cdot
+  \Delta S_k.
+\end{gathered}
+\end{equation}
+
+В изложенной теории установлена на количественном уровне зависимость
+зарождения пограничного слоя ингибитора от коэффициентов
+поверхностного натяжения $\sigma _{ij}$, от произведения растворимости
+$С_{Н}$ соли $А _{а} M _{m}$, образующей зародыш, и от полевого
+фактора $K ( \varphi )$, определяемого скачком потенциала $\Delta
+\varphi $. Согласно~\eqref{eq13} и \eqref{eq15}, уменьшение $С_{Н}$
+или, напротив, увеличение скачка $\Delta \varphi $ ведёт к уменьшению
+радиуса $r_{p}$ зародыша и, как следствие, к резкому
+(экспоненциальному) возрастанию вероятности $W_{р}$ его рождения.
+
+
+\subsection{Взаимодействие зародышей}
+
+
+Реально в каждый момент времени $t_{k}$ зародыши возникают
+одновременно на множестве достаточно активных площадок $\Delta S_{k}$
+поверхности $S$.  Вследствие затраты анионов $А^{n-}$ на построение их
+молекулярной структуры происходит обеднение электролита, окружающего
+каждую площадку $\Delta S_{k}$. В общем случае возникает дефицит
+анионов, влияющий на флюктуации и радиусы зародышей. Соответственно,
+начинается их взаимодействие, т.е. конкуренция за ионные компоненты.
+Параметр обеднения
+\[
+\xi =\frac{\Delta V_э }{V_з }=\frac{a\rho }{MC_A }\gg 1,
+\]
+где $\Delta V_{э}$~--- объём электролита, $V_{з}$~--- объём
+зародыша. Следовательно, в его образовании участвуют даже анионы
+участков электролита, удалённые от площадки $\Delta S_{k }$. Таким
+образом, источник ионов $M^{z+}$ (поверхность $\Delta S_{k}$ )
+экранируется, источник анионов $А^{n-}$ (окружающий электролит) ими
+обедняется. В результате концентрации $С_{МK}$, $C_{АK}$ ионных
+компонент флюктуируют около средних значений $\bar {C}_М $, $\bar
+{C}_А $, и становятся
+\[
+ C_{МK} =\bar {C}_М +\Delta C_{МK}, \quad
+ C_{АK} =\bar {C}_А +\Delta C_{АK}. 
+\]
+
+Каждая флюктуация $\Delta С_{МK}$, $\Delta С_{АK}$ порождает
+отклонение $\Delta r_{k}$ радиуса $r_{k}$ зародыша на площадке $\Delta
+S_{k}$ от его среднего значения $\bar {r}$, т.е.
+\[
+r_k =\bar {r}+\Delta r_k.
+\]
+
+Возникает статистический разброс радиусов $r$ $_{k}$. Можно показать,
+что
+\[
+\bar {r}+\Delta r_k =\frac{B}{\ln  \left[ {\bar {K}\left( \varphi 
+\right) \cdot  \frac{C_0 +\Delta C_K }{C_H }} \right]},
+\]
+причём $\bar {r}$ соответствует условию отсутствия флюктуаций
+концентрации, т.е. $\Delta С_{К} = 0$.
+\[
+\bar {r}=\frac{B}{\ln  \left[ {\bar {K}\left( \varphi \right) \cdot 
+ \frac{C_0 }{C_H }} \right]},\quad
+\Delta r_K =-\frac{\bar {r}^2}{B} \cdot  \frac{\Delta C_K }{C_0 }.
+\]
+Эта формула определяет статистическое распределение зародышей на
+площадках $\Delta S_{k}$ в начальный момент $t_{k }$. Физически он не
+выделен, далее индекс <<$k$>> у всех величин опустим, момент
+рождения обозначим $\tau $.
+
+
+\subsection{Эволюция зародышей. Уравнение эволюции}
+
+
+В формуле~\eqref{eq16} флюктуации, т.е. величины $\Delta С$ и $\Delta r$,
+относятся к моменту $\tau $ рождения зародыша. В последующее время $t>
+\tau $ они изменяются вследствие взаимного влияния. Их радиусы
+осциллируют совместно с концентрациями. Эти процессы наблюдаются
+экспериментально~\cite{3}. Для описания осцилляций при ${t> \tau}$,
+названных ниже эволюцией зародыша, переобозначим
+\[
+\left\{
+\begin{aligned}
+& r=\bar {r}+\Delta \rho \left( t \right) , \\ 
+& \Delta \rho \left( \tau \right)=\Delta r  
+\end{aligned}
+\right.
+\]
+и получим уравнение эволюции. В плоском случае пишем его в виде
+\begin{equation}
+\label{eq20}
+%\begin{array}{l}
+  \frac{\d m\left( t \right)}{\d t}=v \cdot  S \left( {C-C_H } \right) , \quad 
+  \d m\left( t \right)=\frac{\rho }{M}\d V\left( t \right) , 
+% \end{array}
+\end{equation}
+где ${\d m} ( t )$~--- количество молей вещества материнской фазы,
+перешедшее за время ${\d t}$ через поверхность {$\sigma $} зародыша; $v$
+-- скорость перехода; ${\d V} ( t )$~--- объём массы ${\d m} ( t )$; $\rho
+$ и $М$~--- её плотность и мольный вес; $С$
+($\frac{\mbox{моль}}{\mbox{см}^{\mbox{3}}}$)~--- концентрация. Из
+(\ref{eq20}) имеем
+\[
+\frac{\d V\left( t \right)}{\d t}=Q \cdot  \sigma  \left( {C-C_H } 
+\right),\quad Q=\frac{M \cdot  v}{\rho }.
+\]
+
+Для сферы с радиусом $R$ необходим учёт кривизны, т.е.
+\[
+\begin{gathered}
+ \frac{\d V\left( t \right)}{\d t}=Q \cdot  \sigma  \left[ {C-C_H \exp 
+ \left( {\frac{B_0 }{R\left( t \right)}} \right)} \right], \\ 
+ V\left( t \right)=\frac{4\pi }{3}R^3\left( t \right),\quad S\left( 
+t \right)=4\pi R^2\left( t \right), \quad
+ B_0 =\frac{2\sigma V_0 }{RT},\quad V_0 =\frac{M}{\rho } 
+\end{gathered}
+\]
+или
+\begin{equation}
+\label{eq21}
+\frac{\d R\left( t \right)}{\d t}=Q \cdot  \left[ {C-C_H \exp  \left( 
+{\frac{B_0 }{R\left( t \right)}} \right)} \right].
+\end{equation}
+При равновесии
+\[
+\frac{\d R\left( t \right)}{\d t}=0,\quad     C=C_0 =C_H +\delta.
+\]
+
+Из (\ref{eq21}) получаем правильное выражение равновесного радиуса:
+\[
+R_p =\frac{B_0 }{\ln  \left( {\tfrac{C_0 }{C_H }} \right)}.
+\]
+
+Для зародыша с радиусом $r(t)$ на площадке $\Delta $ $S$ основания
+сферического сегмента (рис.~\ref{fig4})
+\begin{equation}
+\label{eq22}
+\begin{gathered}
+ V\left( t \right)=\frac{\pi }{3}r^3\left( t \right) \cdot  \frac{\omega 
+\left( \alpha \right)}{\sin ^3\alpha }, \\ 
+ \omega \left( \alpha \right)=\left( {1-\cos \alpha } \right)^2\cdot 
+ \left( {2+\cos \alpha } \right), \quad 
+ S\left( t \right)=2\pi r^2\left( t \right) \cdot  \frac{1-\cos \alpha 
+}{\sin ^2\alpha }. 
+\end{gathered}
+\end{equation}
+\begin{figure}[!h]
+\centerline{\includegraphics[width=0.6\linewidth]{popova4}}
+\caption{Зародыш в форме сферического сегмента на металле в растворе
+  электролита (материнской фазе): $R$~--- радиус сферы, $\sigma
+  _{мр}$, $\sigma _{мз}$, $\sigma _{рз}$~--- поверхностные натяжения
+  металл--раствор, металл--зародыш, зародыш--раствор. сферическая
+  часть поверхности $S_{сф} =2\pi Rh$, площадь основания сегмента
+  равна $S_{осн }=2\pi r ^{2} = \pi R^{2} \sin^{2}\alpha $, где
+  $r=R\sin \alpha $~--- радиус зародыша, $h=R(1- \cos\alpha )$~---
+  высота шарового сегмента. Из условия $\sigma _{мр}+ \sigma _{мз} +
+  \sigma _{рз} = 0$, получаем выражение для $\cos\alpha : \cos \alpha
+  =\frac{\sigma _{мз} -\sigma _{мр} }{\sigma , \sigma _{рз=}\sigma }$.
+}
+\label{fig4}
+\end{figure}
+
+
+Используя (\ref{eq22}), искомое уравнение эволюции получаем в виде
+\begin{equation}
+\label{eq23}
+\begin{gathered}
+ \frac{\d r\left( t \right)}{\d t}=\bar {Q} \cdot  \left[ {C\left( t 
+\right)-\frac{C_H }{K\left( \varphi \right)}\exp  \frac{B}{r\left( t 
+\right)}} \right] , \\ 
+ B=\frac{2\sigma V_0 }{RT}\sin \alpha,   \quad  \bar {Q}=Q \cdot  \left[ 
+{\frac{2 \left( {1-\cos \alpha } \right) \cdot  \sin \alpha }{\omega 
+\left( \alpha \right)}} \right] , \quad
+ t>\tau. 
+\end{gathered}
+\end{equation}
+ Поскольку
+\[
+\left\{
+\begin{aligned}
+& r\left( t \right)=\bar {r}+\Delta \rho \left( t \right) , \\ 
+& C=C_0 +\Delta C\left( t \right) , 
+\end{aligned}
+\right.
+\]
+то в (\ref{eq23}) пишем
+\begin{equation}
+\label{eq24}
+\left\{
+\begin{aligned}
+& \frac{\d \left( {\bar {r}+\Delta \rho } \right)}{\d t}=\bar {Q} \cdot  \left[ 
+{C_0 +\Delta C-\frac{C_H }{K\left( \varphi \right)}\exp  \left( 
+{\frac{B}{\bar {r}+\Delta \rho }} \right)} \right] , \\ 
+& \frac{\d \bar {r}}{\d t}=\bar {Q} \cdot  \left[ {C_0 \left( t 
+\right)-\frac{C_H }{K\left( \varphi \right)}\exp  \frac{B}{\bar {r}}} 
+\right] =0 . 
+\end{aligned}
+\right.
+\end{equation}
+Отсюда
+\begin{equation}
+\label{eq25}
+%\begin{array}{l}
+ C_0 =\frac{C_Н }{K\left( \varphi \right)}\exp \frac{B}{\bar {r}}, \quad
+ \frac{B}{\bar {r}+\Delta \rho }\approx \frac{B}{\bar {r}}-B\frac{\Delta 
+\rho }{\bar {r}^2}. 
+% \end{array}
+\end{equation}
+
+Для флюктуаций радиусов $\Delta \rho (t)$ из (\ref{eq24}),
+(\ref{eq25}) получаем уравнение
+\[
+\frac{\d \Delta \rho \left( t \right)}{\d t}=\bar {Q} \cdot  \left[ {\Delta 
+C\left( t \right)+C_0  \cdot  \left( {1-\exp  \frac{-B\Delta \rho \left( 
+t \right)}{\bar {r}^2}} \right)} \right],
+\]
+ или в линейном приближении
+\[
+\frac{\d \Delta \rho \left( t \right)}{\d t}=\bar {Q} \cdot  \left[ {\Delta 
+C\left( t \right)+C_0  \cdot  B\frac{\Delta \rho \left( t 
+\right)}{r^2\left( t \right)}} \right].
+\]
+
+Таким образом, нами рассмотрено гетерогенное образование зародышей
+ингибитора, возникающих в объёме $\Delta V_{ф}$ положительных
+флюктуаций ионных компонент электролита на металлической
+анодно-растворяющейся поверхности $S$. Установлены зависимость
+$\Delta V _{ф}$ от флюктуаций анодного тока, вероятность
+возникновения зародышей. Постепенно они заполняют поверхность $S$,
+образуя первый, т.е. пограничный слой ингибитора. Он представляет
+родственную подложку. На основании этого возможно моделирование роста
+последующих нанослоёв.
+
+ \section{Приложение }
+
+ Вероятность   $W$  зародышеобразования экспоненциально 
+зависит от изменения $\Delta $  $F$  свободной энергии 
+материнской и дочерней фаз:
+\begin{equation}
+\label{p:1}
+\begin{gathered}
+ W=W_0 \exp  \left( {-\frac{\Delta F}{RT}} \right) , \quad 
+ \Delta F=\Delta F_S -\Delta F_V, \\ 
+ \Delta F_V =\Delta \mu  \cdot  \Delta n_0, \quad
+ \Delta n_0 =\frac{V_з }{V_M }, \quad     V_M =\frac{M}{\rho }, 
+\end{gathered}
+\end{equation}
+% (П.1)
+где $\Delta $ $F_{V}$ и $\Delta $ $F_{S}$~--- объёмная и поверхностная
+части $\Delta $ $F$ ; $\Delta \mu $ и $\Delta $ $n_{0}$~--- изменения
+химических потенциалов фаз и число молей вещества в объёме $V_{з}$
+зародыша; $V_{M}$, $M$~--- его мольный объём и вес, $\rho $~---
+плотность. Примем, что в объёме флюктуации он имеет форму сферического
+сегмента (рис.~\ref{fig4}). Его объём $V_{з}$ и поверхность $S$
+$_{сф}$ (вновь образованная) равны
+\begin{equation}
+\label{p:2}
+\begin{gathered}
+ V_з =\frac{\pi }{3}h^2\left( {3R-h} \right)=\frac{\pi }{3}r^3\frac{\omega 
+\left( \alpha \right)}{\sin ^3\alpha }, \\ 
+ S_{сф} =2\pi Rh=\frac{2\pi r^2\left( {1-\cos \alpha } \right)}{\sin 
+^2\alpha }, \quad 
+ \omega \left( \alpha \right)=\left( {1-\cos \alpha } \right)^2 \cdot 
+ \left( {2+\cos \alpha } \right) .  
+\end{gathered}
+\end{equation}
+% (П.2)
+Кроме того,
+\begin{equation}
+\label{p:3}
+\begin{gathered}
+\Delta F_V =\Delta \mu  \cdot  \frac{\pi
+     r^3}{3V_M } \cdot
+    \frac{\omega \left( \alpha \right)}{\sin ^3\alpha }, \\
+   \Delta F_S =S_{сф} \sigma _{рз} +S_{осн} \left( {\sigma _{зм}
+       -\sigma _{мр} } \right)=\sigma \pi r^2\frac{\omega \left(
+       \alpha \right)}{\sin ^2\alpha },
+   \\
+   S_{осн} =\pi r^2,\quad      \sigma _{мр} -\sigma _{зм} =\sigma
+   _{рз} \cos
+   \alpha,    \quad  \sigma _{рз} =\sigma. 
+ \end{gathered}
+\end{equation} 
+% (П.3)
+Отсюда в соответствии с (\ref{eq13}) определяются изменения свободной
+энергии $\Delta $ $F$, равновесный (критический) радиус $r_{p}$ и
+критическое значение $\Delta $ $F_{кр}$:
+\[
+\begin{gathered}
+\Delta F=\pi  \cdot  \frac{\omega \left( \alpha \right)}{\sin ^2\alpha 
+} \cdot  \left[ {\sigma r^2-\frac{\Delta \mu }{3V_M } \cdot 
+ \frac{r^3}{\sin \alpha }} \right],\quad
+r_p =\frac{2\sigma V_M \sin \alpha }{\Delta \mu },
+\\
+\Delta F_p =\frac{\pi \omega \left( \alpha \right)}{\sin ^2\alpha } \cdot 
+ r_p^2  \cdot  \frac{\sigma }{3}=\frac{\pi }{3} \cdot  \sigma 
+^3 \omega \left( \alpha \right) \cdot  \left( {\frac{2V_M }{\Delta \mu }} 
+\right)^2.
+\end{gathered}
+\]
+
+% \section{Приложение II}
+
+ Формула (\ref{eq19}) для времени $\tau $ и других характерных величин
+ следует из формул (\ref{eq17}), (\ref{eq18}). Сопоставив их, имеем
+\begin{equation}
+\label{p:3a}
+\begin{gathered}
+ C_0 h\left( \tau \right)+\frac{q\left( \tau \right) \cdot  h^2\left( \tau 
+\right)}{6}=\frac{i_0  \cdot  \kappa  \cdot  \tau }{zF}, \\ 
+ h\left( \tau \right)=\sqrt {6D_0 \tau }  ,\quad      q=\frac{i_0 \kappa 
+}{zFD_М \left( {z+n} \right)}, \quad 
+ V_з =h\left( \tau \right) \cdot  \Delta S_k  . 
+\end{gathered}
+\end{equation}
+% (П.3)
+Отсюда
+\[
+\sqrt {6D_0 \tau } =\frac{i_0 \kappa }{zFC_0 } \cdot  \tau  \cdot 
+ \left( {1-\frac{D_0 }{D_M \left( {z+n} \right)}} \right)
+\]
+ и в соответствии с (\ref{eq19})
+\begin{equation}
+\label{p:4}
+\tau = \frac{6D_0 }{\Omega ^2}\left( {\frac{ \left( {z+n} \right)
+}{ \left( {z+n}-\frac{D_0}{D_M} \right)}} \right)^2.
+\end{equation}
+% (П.4)
+
+Единственным параметром в~\eqref{p:4}, характеризующим металл, является
+$i_{0}\kappa $, причём от $i_{0}\kappa $ зависит степень
+насыщения раствора электролита.  Согласно (\ref{eq16}), с ростом
+насыщения равновесный радиус (т.е. величина $h (\tau ))$ должен
+уменьшаться, а вероятность $W_{p}$ зародышеобразования~---
+увеличиваться. Значения $h (\tau )$, зависящие от $i_{0}$ $\kappa $
+по~\eqref{p:3a},~\eqref{p:4}, приведены в табл.~\ref{tab1}, \ref{tab2}
+
+\begin{table}[!h]
+\caption{Значения $h (\tau )$, зависящие от $i_{0}$ $\kappa $
+по~\eqref{p:3a}, \eqref{p:4}}.
+\label{tab1}
+\begin{tabular}{|p{0.2\textwidth}|p{0.1\textwidth}|p{0.2\textwidth}|}
+  \hlx{hv}
+  ${i}_{0} \kappa $, А/см$^{2}$  & 
+  {$\tau $, сек}& 
+  $h(\tau )$, см \\
+  \hlx{vhv}
+  $10^{-4}$& 842& $2,23 \cdot  10 ^{-2}$  \\
+\hlx{vhv}
+$10^{-3}$& $8,42$& 
+$2,23 \cdot  10^{-3}$  \\
+\hlx{vhv}
+$10^{-2}$& 
+$0,084$& 
+$2,23 \cdot 10^{-4}$  \\
+\hlx{vhv}
+\multicolumn{3}{|p{0.5\textwidth}|}{ $С _{0} = 10^{-2}$ моль/л,  $D_{0}\sim
+  10^{-7}$  см$^{2}$ /сек,   $z = 3$,  $n = 2$} \\
+\hlx{h}
+\end{tabular}
+\end{table}
+
+%Оценка значений $V_{з}\leqslant h (\tau ) \cdot \Delta S_{k}$ :
+
+\begin{table}[!h]
+\caption{Оценка значений $V_{з}\leqslant h (\tau ) \cdot \Delta S_{k}$}
+\label{tab2}
+\begin{tabular}{|l|l|l|}
+\hlx{hv}
+$\Delta S_{k}$, см$^{2}$  & 
+$h(\tau )$, см& 
+$V_{з}$ , см$^{3}$   \\
+\hlx{vhv}
+ $10^{-3}$& 
+ $2 \cdot  10 ^{-2}$& 
+ $2 \cdot  10 ^{-5}$  \\
+\hlx{vhv}
+ $10^{-5}$& 
+ $2 \cdot  10^{-3}$& 
+ $2 \cdot  10^{-8}$ \\
+\hlx{vh}
+\end{tabular}
+\end{table}
+
+% \begin{center}
+%  \textbf{Литература}
+% \end{center}
+
+%  1. Popov Yu.A. Theory of interaction of metals a corrosive 
+% environment: Monography. Cambridge International Science Publishing. 278 p.
+
+%  2. Фольмер М. Кинетика образования новой фазы. М.: Наука, 1986. 205 
+% с.
+
+%  3. Левич В.В. Физико-химическая гидродинамика. М.: Наука, 
+% 1972. 735 с.
+
+%  4. Тихонов А.Н., Самарский А.А. Уравнения математической физики. М.: ГИТТЛ, 
+% 1951. 659 с.
+
+
+
+
+\putbib[bib/popova/popova]
+
+%\clearpage
+
+\makealttitle
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: cp1251-unix
+%%% End:
+
+% LocalWords:  image popova нанослоёв Ковальчуков Попова нанослоя массопереноса
+% LocalWords:  Fluctuation Theory of Protective Nanolayers on Metals in the Yu
+% LocalWords:  Aggressive Electrolytes Kovalchukov Popov Rybakov Theoretical is
+% LocalWords:  Peoples Friendship University this article mathematical model by
+% LocalWords:  inhibitiring nanolayer exposed latter formed mechanism germ non
+% LocalWords:  heterogeneous formation energetically uniformed surface real can
+% LocalWords:  anodic dissolution metal There considered rise fluctuation Their
+% LocalWords:  electrolyte saturation ions components described classical ionic
+% LocalWords:  equations mass transfer Every volume be mother phase for and II
+% LocalWords:  inhibitor kinetics evolution given change heterogeneity power an
+% LocalWords:  statistical dispersion моноатомных нанослои двухстадиен zm zF ki
+% LocalWords:  вольтамперной запассивированные неравновесны межчастичных aА mM
+% LocalWords:  противоионов двухкомпонентен поликристалликов самосогласуются zC
+% LocalWords:  Зарядности зарядности div nC RT nF электродиффузии eq nD zD Ms
+% LocalWords:  As zFD pt массоперенос jr ik Mi mRT Mii zmF Ai aRT naF ВПГ МК АК
+% LocalWords:  Гельмгольца Fn Ar qh zFC ij MC МK АK осциллируют переобозначим
+% LocalWords:  мр мз рз сф Rh зм hv сек vhv vh bib Миклухо Physics Miklukho str
+% LocalWords:  Maklaya Moscow

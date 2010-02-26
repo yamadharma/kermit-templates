@@ -1,19 +1,117 @@
-%% Р›РѕРєР°Р»СЊРЅС‹Рµ РѕРїСЂРµРґРµР»РµРЅРёСЏ
+%%%
 
-\usepackage[a4,center]{crop}
-\usepackage[nodayofweek]{datetime}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{bm}
+\usepackage{indentfirst}
+\usepackage{epigraph}
 \usepackage{textcomp}
+\usepackage{cite}
+\usepackage{layout}
 
-\usepackage{bibunits}
+\usepackage{longtable}
+\usepackage{lscape}
+\usepackage{epic}
+\usepackage[a4,center]{crop}
+
+\usepackage{calc}
+\usepackage{soul}
+
+\usepackage{rotating}
+
+
+\usepackage[scanall]{psfrag}
+
+\usepackage[nodayofweek]{datetime}
+
+\usepackage{texnames}
+\usepackage{paralist}
+
+\usepackage{pstricks}
+\usepackage{pst-node}
+\usepackage{pst-tree}
+
+\usepackage{url}
+
+\usepackage{multirow}
+
+\usepackage{calc}
+
+% \sloppy
+\allowdisplaybreaks
+
+% \setcounter{secnumdepth}{0}
+\setcounter{tocdepth}{0}
+\renewcommand{\abstractname}{}
+\renewcommand{\refname}{Литература}
+\renewcommand{\abstractname}{}
+%%%
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\e}{\mathrm{e}}
+\renewcommand{\i}{\mathrm{i}}
+\newcommand{\setC}{\mathbb{C}}
+\newcommand{\setR}{\mathbb{R}}
+\newcommand{\setS}{\mathbb{S}}
+\newcommand{\setZ}{\mathbb{Z}}
+\newcommand{\setM}{\mathbb{M}}
+\newcommand{\setV}{\mathbb{V}}
+\newcommand{\cvec}[1]{\bm{#1}}
+\newcommand{\avec}[1]{\bm{\mathrm{#1}}} 
+\newcommand{\crd}[1]{\bm{\mathrm{#1}}}  % векторный индекс
+\newcommand{\const}{\ensuremath{\mathrm{const}}}
+\newcommand{\grad}{\mathrm{grad}}
+\newcommand{\sign}{\mathrm{sign}}
+\newcommand{\ivec}[1]{\underrightarrow{#1}}
+\newcommand{\rot}{\mathrm{rot}}
+\newcommand{\Div}{\mathrm{div}}
+\DeclareMathOperator{\Trace}{Tr}
+
+\usepackage{wrapfig}
+
+\def\bibnamefont{\textit}
 
 \nocite{*}
-\usepackage{gost7184}
-\bibliographyunit[\title]
-\bibliographystyle*{gost7184u}
 
+\DeclareMathOperator*{\cov}{\mathrm{cov}}
+\DeclareMathOperator*{\diag}{\mathrm{diag}}
+
+
+\usepackage{bibunits}
+\bibliographyunit[\title]
+
+\usepackage{gost7184}
+\bibliographystyle*{gost7184u}% 
+
+
+
+\selectlanguage{russian}%  
+\Russian
+%%%
+
+\usepackage{tabularx}
+
+
+%%%
+\renewcommand{\sectionFontShape}{\bfseries}
+\renewcommand{\subsectionFontShape}{\bfseries}
+\renewcommand{\subsubsectionFontShape}{\bfseries}
+%%
+\renewcommand{\paragraphFontShape}{\bfseries}
+\renewcommand{\subparagraphFontShape}{\bfseries}
+%%
+\makeatletter
+\def\@captionfont{\normalfont}
+\makeatother
+\captionsetup{font={footnotesize}}
+%%%
+
+\usepackage{afterpage}
+
+\renewcommand{\thesubfigure}{\asbuk{subfigure}}
 
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "../default"
-%%% coding: utf-8-unix
+%%% coding: cp1251-unix
 %%% End: 
