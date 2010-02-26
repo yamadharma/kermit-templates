@@ -6,8 +6,11 @@ MACRO_FORMAT = latex
 # pdf | dvi | ps | pspdf
 LATEX_GENERATION_PROCEDURE = pdf
 
-# HAS_MULTIPLE_BIB = yes
-# MULTIPLE_BIB_FILES = default rec
+#HAS_MULTIPLE_BIB = yes
+# For multbib
+#MULTIPLE_BIB_FILES = default rec
+# For bibunits
+#MULTIPLE_BIB_FILES = bu*
 
 # Shell command used to launch MakeIndex
 # makeindex | xindy
@@ -16,8 +19,17 @@ MAKEINDEX_CMD = xindy
 # Style file for MakeIndex
 MAKEINDEX_STYLEFILE = index.xdy
 
-# TEX4HT_FINAL_POST_CMD = scripts/html-fix
+#TEX4HT_FINAL_POST_CMD = scripts/html-fix
 
+# Image directory
 AUTO_GENERATE_IMAGE_DIRECTORY = image
+
+# BibTeX command
+BIBTEX_CMD = bibtex
+
+# Post LaTeX command
+#POST_LATEX_CMD = scripts/post_latex_cmd
+
+TMPFILES_LOCAL = *.tac
 
 include mkfiles/main.mk
