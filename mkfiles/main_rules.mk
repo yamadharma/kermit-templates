@@ -112,6 +112,9 @@ ${COMPILATION_TARGET_FILE}:: ${TEXFILES} ${PRIVATE_IMAGES} ${BIBFILES} ${MAKEIND
 	  if "${HAS_BIBTEX_CITATION_CMD}" "${TEXFILE}" "${AUXFILE}" "${BBLFILE}" ${BIBFILES}; then \
 	    COMPBIBTEX="yes"; \
 	  fi && \
+	  if test -n "${MULTIPLE_BIB}"; then \
+	    COMPBIBTEX="yes"; \
+	  fi && \
 	  unset COMPMAKEINDEX && \
 	  if ${HAS_INDEX_CMD} "${IDXFILE}" "${MAKEINDEX_STYLEFILE}"; then \
 	    COMPMAKEINDEX="yes"; \
@@ -123,13 +126,13 @@ ${COMPILATION_TARGET_FILE}:: ${TEXFILES} ${PRIVATE_IMAGES} ${BIBFILES} ${MAKEIND
 	  if test -n "$$COMPBIBTEX" -o -n "$$CMPMAKEINDEX" -o -n "$$CMPMAKEGLOS"; then \
 	    if test -n "$$COMPBIBTEX"; then \
 	      if test -n "${MULTIPLE_BIB}"; then \
-	    	for i in ${MULTIPLE_BIB_FILES}; do \
-	    	  ${BIBTEX_CMD} ${BIBTEX_FLAGS} $$i && \
+		for i in $(basename ${MULTIPLE_BIB_FILES}); do \
+		  ${BIBTEX_CMD} ${BIBTEX_FLAGS} $$i && \
 	          ${FIX_BBL_CMD}  $$i.bbl && \
 	          ${TOUCH_CMD} $$i.bbl; \
 	        done \
 	      else \
-	    	  ${BIBTEX_CMD} ${BIBTEX_FLAGS} ${FILE} && \
+		  ${BIBTEX_CMD} ${BIBTEX_FLAGS} ${FILE} && \
 	          ${FIX_BBL_CMD} ${BBLFILE} && \
 	          ${TOUCH_CMD} ${BBLFILE}; \
 	      fi ; \
@@ -139,13 +142,16 @@ ${COMPILATION_TARGET_FILE}:: ${TEXFILES} ${PRIVATE_IMAGES} ${BIBFILES} ${MAKEIND
 	      ${TOUCH_CMD} ${INDFILE}; \
 	    fi && \
 	    ${LATEX_CMD} ${LATEX_DRAFT_FLAGS} ${LATEX_FLAGS} ${FILE}; \
+	    ${POST_LATEX_CMD}; \
 	    if test -n "$$COMPMAKEGLOS"; then \
 	      ${MAKEGLOS_FULL_CMD} && \
 	      ${TOUCH_CMD} ${GLSFILE}; \
 	    fi ; \
 	  fi && \
-	  ${LATEX_CMD} ${LATEX_DRAFT_FLAGS} ${LATEX_FLAGS} ${FILE} && \
-	  ${LATEX_CMD} ${LATEX_FLAGS} ${FILE}
+	  ${LATEX_CMD} ${LATEX_DRAFT_FLAGS} ${LATEX_FLAGS} ${FILE}; \
+	  ${POST_LATEX_CMD}; \
+	  ${LATEX_CMD} ${LATEX_FLAGS} ${FILE}; \
+	  ${POST_LATEX_CMD}
 
 
 ifdef HAS_MULTIPLE_BIB

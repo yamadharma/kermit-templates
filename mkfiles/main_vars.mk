@@ -66,6 +66,12 @@ endif
 # must be compiled not in draft mode
 LATEX_FLAGS = 
 
+# Post latex command
+ifndef POST_LATEX_CMD
+POST_LATEX_CMD = echo "No post-latex command"
+endif
+
+
 # Shell command used to launch BibTeX
 ifndef BIBTEX_CMD
 BIBTEX_CMD = mkfiles/scripts/rubibtex.utf8
@@ -242,12 +248,14 @@ TMPFILES = bibtex.stamp ${AUXFILE} *.log ${BBLFILE} *.blg \
            *.thm *.xdv *.aux *.bbl \
            ${GLOFILE} ${GLSFILE} ${GLGFILE} makeglossary.stamp \
            *.idx *.glo *.raw \
-	   $(call launchShell, ${FIND_CMD} . -name "auto") \
            makeindex.stamp ${ADDITIONALAUXFILES} \
            ${PDFFILE} ${DVIFILE} ${PSFILE} \
            VARIABLES \
            *.css ${FILE}-js.* *.pfg lst.tex \
-           *.4tc *.4ct *.idv *.${HTML_EXT} *.lg *.xref *.4dx *.4ix *.dvi
+           *.4tc *.4ct *.idv *.${HTML_EXT} *.lg *.xref *.4dx *.4ix *.dvi \
+           ${TMPFILES_LOCAL}
+
+# $(call launchShell, ${FIND_CMD} . -name "auto") \
 
 DESINTEGRABLEFILES = ${PRIVATE_IMAGES} ${PRIVATE_TMPIMAGES} ${BACKUPFILES} ${EMACSFILES}
 
