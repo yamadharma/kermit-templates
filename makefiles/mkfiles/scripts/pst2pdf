@@ -77,6 +77,8 @@ tmpdir=${TMPDIR-${TEMP-${TMP-/tmp}}}/.$progname$$
 log=$tmpdir/log
 version="1.0"
 
+pdfcrop_opts="--xetex"
+
 # look for optional things first
 while
 case $1 in
@@ -137,7 +139,7 @@ test -f "${dir}"/"$job.eps" && myexec ps2pdf "$ps2pdf_opts" "${dir}"/"$job.eps" 
 
 if $crop
 then
-    myexec pdfcrop "${dir}"/"$job.pdf" "${dir}"/"$job-crop.pdf" 
+    myexec pdfcrop "${pdfcrop_opts}" "${dir}"/"$job.pdf" "${dir}"/"$job-crop.pdf" 
     mv "${dir}"/"$job-crop.pdf" "${dir}"/"$job.pdf"
     pdftops "${dir}"/"$job.pdf" "${dir}"/"$job.eps"
 fi    
