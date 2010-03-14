@@ -64,7 +64,7 @@ endif
 
 # LaTeX flags which must be passed when the document
 # must be compiled not in draft mode
-LATEX_FLAGS = 
+LATEX_FLAGS =
 
 # Post latex command
 ifndef POST_LATEX_CMD
@@ -74,7 +74,8 @@ endif
 
 # Shell command used to launch BibTeX
 ifndef BIBTEX_CMD
-BIBTEX_CMD = mkfiles/scripts/rubibtex.utf8
+BIBTEX_CMD = bibtex
+#BIBTEX_CMD = mkfiles/scripts/rubibtex.utf8
 endif
 
 # bibtex flags
