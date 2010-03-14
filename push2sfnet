@@ -1,0 +1,24 @@
+#!/bin/bash
+
+PROJNAME=kermit-templates
+TMP=/tmp
+VERSION=`cat VERSION`
+
+TMPDIR=$TMP/$PROJNAME
+
+rm -rf $TMPDIR
+mkdir -p $TMPDIR/$PROJNAME
+
+cp -RL * $TMPDIR/$PROJNAME
+rm $TMPDIR/$PROJNAME/{VERSION,push2sfnet}
+
+cd $TMPDIR
+
+tar -cJvf kermit-templates-$VERSION.tar.xz $PROJNAME
+tar -cjvf kermit-templates-$VERSION.tar.bz2 $PROJNAME
+
+scp $PROJNAME-$VERSION.tar.xz $PROJNAME-$VERSION.tar.bz2 yama_dharma,kermit@frs.sourceforge.net:/home/frs/project/k/ke/kermit/$PROJNAME
+
+
+
+
