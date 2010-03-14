@@ -17,8 +17,4 @@ cd $TMPDIR
 tar -cJvf $PROJNAME-$VERSION.tar.xz $PROJNAME
 tar -cjvf $PROJNAME-$VERSION.tar.bz2 $PROJNAME
 
-#scp $PROJNAME-$VERSION.tar.xz $PROJNAME-$VERSION.tar.bz2 yama_dharma,kermit@frs.sourceforge.net:/home/frs/project/k/ke/kermit/$PROJNAME
-
-
-
-
+scp $PROJNAME-$VERSION.tar.xz $PROJNAME-$VERSION.tar.bz2 yama_dharma,kermit@frs.sourceforge.net:/home/frs/project/k/ke/kermit/$PROJNAME
