@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROJNAME=kermit-makefiles
+PROJNAME=`cat PROJECT`
 TMP=/tmp
 VERSION=`cat VERSION`
 
@@ -10,14 +10,14 @@ rm -rf $TMPDIR
 mkdir -p $TMPDIR/$PROJNAME
 
 cp -RL * $TMPDIR/$PROJNAME
-rm $TMPDIR/$PROJNAME/{VERSION,push2sfnet}
+rm $TMPDIR/$PROJNAME/{VERSION,PROJECT,push2sfnet}
 
 cd $TMPDIR
 
 tar -cJvf $PROJNAME-$VERSION.tar.xz $PROJNAME
 tar -cjvf $PROJNAME-$VERSION.tar.bz2 $PROJNAME
 
-scp $PROJNAME-$VERSION.tar.xz $PROJNAME-$VERSION.tar.bz2 yama_dharma,kermit@frs.sourceforge.net:/home/frs/project/k/ke/kermit/$PROJNAME
+#scp $PROJNAME-$VERSION.tar.xz $PROJNAME-$VERSION.tar.bz2 yama_dharma,kermit@frs.sourceforge.net:/home/frs/project/k/ke/kermit/$PROJNAME
 
 
 
