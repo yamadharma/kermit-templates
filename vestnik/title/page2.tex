@@ -1,4 +1,5 @@
-{%
+\begin{otherlanguage*}{english}
+
 \fontsize{10dd}{12dd}\selectfont%
 
 \begin{flushleft}
@@ -18,7 +19,13 @@
   \fontsize{14dd}{18dd}\selectfont%
   \textit{Series}\\[4dd]
   \textbf{\PFUaltjournalseries}\\[4dd]
-  \textbf{\PFUjournalyear, No~\PFUjournalnumber}
+  \textbf{\PFUjournalyear, No~\PFUjournalnumber}%
+  \makeatletter
+  \ifx\PFUjournalissue\@empty
+  \else
+  \textbf{, \PFUjornalissueName~\PFUjournalissue}
+  \fi
+  \makeatother
 \end{flushleft}
 
 \noindent
@@ -52,9 +59,9 @@ Peoples' Friendship University of Russia
   \end{minipage}
 \end{flushright}
 
-\clearpage
+\end{otherlanguage*}
 
-}
+\clearpage
 
 %%% Local Variables:
 %%% mode: latex

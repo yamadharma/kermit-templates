@@ -18,7 +18,13 @@
   \medskip
   \textbf{\MakeUppercase{\PFUaltjournalseries}} \\
   \medskip
-  \textbf{\PFUjournalyear, \No~\PFUjournalnumber}
+  \textbf{\PFUjournalyear, \No~\PFUjournalnumber}%
+  \makeatletter
+  \ifx\PFUjournalissue\@empty
+  \else
+  \textbf{, \PFUjornalissueName~\PFUjournalissue}
+  \fi
+  \makeatother
 \end{center}
 
 %\vfill

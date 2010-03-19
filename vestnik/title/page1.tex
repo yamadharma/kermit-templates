@@ -22,7 +22,13 @@
   \fontsize{14dd}{18dd}\selectfont%
   \textit{Серия}\\[4dd]
   \textbf{\PFUjournalseries}\\[4dd]
-  \textbf{\PFUjournalyear, \No~\PFUjournalnumber}
+  \textbf{\PFUjournalyear, \No~\PFUjournalnumber}%
+  \makeatletter
+  \ifx\PFUjournalissue\@empty
+  \else
+  \textbf{, \PFUjornalissueName~\PFUjournalissue}
+  \fi
+  \makeatother
 \end{flushleft}
 
 \noindent
