@@ -5,3 +5,9 @@ sed -i -e 's/\\T 2A/\\IeC/g' default.tac
 sed -i -e '/section/d' default.toc
 sed -i -e '/paragraph/d' default.toc
 
+if [ -f default.alist ]
+then
+sort default.alist -o default.alist.tmp
+mv default.alist.tmp default.alist
+fi
+
