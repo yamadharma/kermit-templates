@@ -5,9 +5,14 @@ sed -i -e 's/\\T 2A/\\IeC/g' default.tac
 sed -i -e '/section/d' default.toc
 sed -i -e '/paragraph/d' default.toc
 
-if [ -f default.alist ]
+if [ -f default.loa ]
 then
-sort default.alist -o default.alist.tmp
-mv default.alist.tmp default.alist
+scripts/t2a2utf default.loa > default.loa.tmp
+mv default.loa.tmp default.loa
+sort default.loa -o default.loa.tmp
+mv default.loa.tmp default.loa
+recode UTF8..WINDOWS1251 default.loa
+#iconv -futf8 -tcp1251 default.loa > default.loa.tmp
+#cp default.loa.tmp default.loa
 fi
 
