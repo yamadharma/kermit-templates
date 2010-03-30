@@ -9,7 +9,7 @@ if [ -f default.loa ]
 then
 scripts/t2a2utf default.loa > default.loa.tmp
 mv default.loa.tmp default.loa
-sort default.loa -o default.loa.tmp
+sort default.loa | uniq > default.loa.tmp
 mv default.loa.tmp default.loa
 recode UTF8..WINDOWS1251 default.loa
 #iconv -futf8 -tcp1251 default.loa > default.loa.tmp
