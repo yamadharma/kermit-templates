@@ -14,6 +14,8 @@ rm $TMPDIR/$PROJNAME/{VERSION*,PROJECT,push2sfnet}
 
 cd $TMPDIR
 
+find . -type d -name "auto" -exec rm -rf {} \;
+
 tar -cJvf $PROJNAME-$VERSION.tar.xz $PROJNAME
 tar -cjvf $PROJNAME-$VERSION.tar.bz2 $PROJNAME
 
