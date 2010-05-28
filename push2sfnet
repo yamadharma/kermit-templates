@@ -10,9 +10,11 @@ rm -rf $TMPDIR
 mkdir -p $TMPDIR/$PROJNAME-$VERSION
 
 cp -RL * $TMPDIR/$PROJNAME-$VERSION
-rm $TMPDIR/$PROJNAME/{VERSION*,PROJECT,push2sfnet}
+rm $TMPDIR/$PROJNAME-$VERSION/{VERSION*,PROJECT,push2sfnet}
 
 cd $TMPDIR
+
+find . -type d -name "auto" -exec rm -rf {} \;
 
 tar -cJvf $PROJNAME-$VERSION.tar.xz $PROJNAME-$VERSION
 tar -cjvf $PROJNAME-$VERSION.tar.bz2 $PROJNAME-$VERSION
