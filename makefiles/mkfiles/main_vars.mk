@@ -243,9 +243,13 @@ SOURCE_IMAGES =
 MAKEFILE_FILENAME = Makefile
 
 TMPFILES = bibtex.stamp ${AUXFILE} *.log ${BBLFILE} *.blg \
-	   *.cb *.toc *.out *.lof *.lot *.los *.maf *.fot \
+           *.cb *.toc *.out *.lof *.lot *.los *.maf *.snm *.nav \
+           *.fot \
            *.lom *.tmp *.loa ${IDXFILE} *.ilg ${INDFILE} \
-           *.mtc *.mtc[0-9] *.mtc[0-9][0-9] *.bmt *.thlodef \
+           *.mtc *.mtc[0-9] *.mtc[0-9][0-9] *.mtc[0-9][0-9][0-9] \
+           *.mtf *.mtf[0-9] *.mtf[0-9][0-9] *.mtf[0-9][0-9][0-9] \
+           *.mtl *.mtl[0-9] *.mtl[0-9][0-9] *.mtl[0-9][0-9][0-9] \
+           *.bmt *.thlodef \
            *.thm *.xdv *.aux *.bbl \
            ${GLOFILE} ${GLSFILE} ${GLGFILE} makeglossary.stamp \
            *.idx *.glo *.raw \
