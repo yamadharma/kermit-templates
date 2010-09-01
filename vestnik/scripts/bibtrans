@@ -118,7 +118,8 @@ def translit ( match ):
   return value
 
 #
-pattern_rus = ur"(\\bibitem{.*?\\begin{otherlanguage}{russian})(.*?)(.\\end{otherlanguage})"
+pattern_rus = ur"(\\bibitem{.*?\\begin{otherlanguage.*?}{russian})(.*?)(.\\end{otherlanguage.*?})"
+#pattern_rus = ur"(\\bibitem{.*?\\selectlanguage{russian})(.*?)(}%selectlanguage)"
 regex_rus = re.compile( pattern_rus, re.DOTALL | re.MULTILINE | re.UNICODE | re.VERBOSE )
 
 #
@@ -136,6 +137,7 @@ except:
 # регулярных выражений и вывести найденные совпадения
 txt_data = fdin.read()
 txt_data = regex_rus.sub( translit, txt_data )
+txt_data = re.sub( u"otherlanguage", u"otherlanguage*", txt_data )
 #print txt_data
 fdout.write(txt_data)
 fdin.close()
