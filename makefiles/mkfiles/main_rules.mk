@@ -131,11 +131,13 @@ ${COMPILATION_TARGET_FILE}:: ${TEXFILES} ${PRIVATE_IMAGES} ${BIBFILES} ${MAKEIND
 		  ${BIBTEX_CMD} ${BIBTEX_FLAGS} $$i && \
 	          ${FIX_BBL_CMD}  $$i.bbl && \
 	          ${TOUCH_CMD} $$i.bbl; \
-	        done \
+	        done; \
+	        ${POST_BIBTEX_CMD}; \
 	      else \
 		  ${BIBTEX_CMD} ${BIBTEX_FLAGS} ${FILE} && \
 	          ${FIX_BBL_CMD} ${BBLFILE} && \
 	          ${TOUCH_CMD} ${BBLFILE}; \
+	          ${POST_BIBTEX_CMD}; \
 	      fi ; \
 	    fi && \
 	    if test -n "$$COMPMAKEINDEX"; then \
