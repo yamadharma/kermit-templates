@@ -1,0 +1,14 @@
+#!/bin/sh
+
+BIBTRANS=scripts/bibtrans
+
+for FILE in *.bbl
+do
+    recode WINDOWS1251..UTF-8 "$FILE"
+    ${BIBTRANS} "$FILE" "$FILE".tmp
+    mv "$FILE".tmp "$FILE"
+    recode UTF8..WINDOWS1251 "$FILE"
+done
+
+
+

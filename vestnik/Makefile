@@ -30,7 +30,14 @@ BIBTEX_CMD = bibtex
 # Post LaTeX command
 POST_LATEX_CMD = scripts/post_latex_cmd
 
+# Post BibTeX command
+POST_BIBTEX_CMD = scripts/post_bibtex_cmd
+
 # Additional temporary files
-TMPFILES_LOCAL = *.tac
+TMPFILES_LOCAL = *.tac *.loa default.titlelist.*
 
 include mkfiles/main.mk
+
+titlelist: default.titlelist.tex
+	./scripts/tex2html
+

@@ -1,0 +1,143 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+import sys
+import re
+import codecs
+
+TRANSTABLE = (
+        (u"'", u"'"),
+        (u'"', u'"'),
+        (u"‘", u"'"),
+        (u"’", u"'"),
+        (u"«", u'"'),
+        (u"»", u'"'),
+        (u"“", u'"'),
+        (u"”", u'"'),
+        (u"–", u"--"),  # en dash
+        (u"—", u"---"),  # em dash
+        (u"‒", u"-"),  # figure dash
+        (u"−", u"-"),  # minus
+        (u"…", u"..."),
+        (u"№", u"No"),
+        # one-symbol replacements
+        (u"А", u"A"),
+        (u"Б", u"B"),
+        (u"В", u"V"),
+        (u"Г", u"G"),
+        (u"Д", u"D"),
+        (u"Е", u"E"),
+        (u"Ё", u"Yo"),
+        (u"Ж", u"Zh"),
+        (u"З", u"Z"),
+        (u"И", u"I"),
+        (u"Й", u"Yj"),
+        (u"К", u"K"),
+        (u"Л", u"L"),
+        (u"М", u"M"),
+        (u"Н", u"N"),
+        (u"О", u"O"),
+        (u"П", u"P"),
+        (u"Р", u"R"),
+        (u"С", u"S"),
+        (u"Т", u"T"),
+        (u"У", u"U"),
+        (u"Ф", u"F"),
+        (u"Х", u"Kh"),
+        (u"Ц", u"C"),
+        (u"Ч", u"Ch"),
+        (u"Ш", u"Sh"),
+        (u"Щ", u"Th"),
+        (u"Ъ", u"Jh"),
+        (u"Ы", u"Ih"),
+        (u"Ь", u"J"),
+        (u"Э", u"Eh"),
+        (u"Ю", u"Yu"),
+        (u"Я", u"Ya"),
+        ## lower
+        (u"а", u"a"),
+        (u"б", u"b"),
+        (u"в", u"v"),
+        (u"г", u"g"),
+        (u"д", u"d"),
+        (u"е", u"e"),
+        (u"ё", u"yo"),
+        (u"ж", u"zh"),
+        (u"з", u"z"),
+        (u"и", u"i"),
+        (u"й", u"yj"),
+        (u"к", u"k"),
+        (u"л", u"l"),
+        (u"м", u"m"),
+        (u"н", u"n"),
+        (u"о", u"o"),
+        (u"п", u"p"),
+        (u"р", u"r"),
+        (u"с", u"s"),
+        (u"т", u"t"),
+        (u"у", u"u"),
+        (u"ф", u"f"),
+        (u"х", u"kh"),
+        (u"ц", u"c"),
+        (u"ч", u"ch"),
+        (u"ш", u"sh"),
+        (u"щ", u"th"),
+        (u"ъ", u"jh"),
+        (u"ы", u"ih"),
+        (u"ь", u"j"),
+        (u"э", u"eh"),
+        (u"ю", u"yu"),
+        (u"я", u"ya"),
+        )  #: Translation table
+
+TRANSTABLE_SPEC = (
+         (ur"\bblnofirst{}", u"No"),
+         (ur"\bblno{}", u"No"),
+         (ur"\bblpp{}", u"S."),
+         (ur"\bblnump{}", u"s"),
+         (ur"\bblvol{}", u"T."),
+        )
+
+def cyr2lat ( text ):
+  translit = text
+  for symb_in, symb_out in TRANSTABLE:
+    translit = translit.replace(symb_in, symb_out)
+  for symb_in, symb_out in TRANSTABLE_SPEC:
+    translit = translit.replace(symb_in, symb_out)
+  return translit
+
+def translit ( match ):
+  "Транслитерация"
+  for group_index, group in enumerate( match.groups() ):
+    if group_index == 0:
+      value = group
+    elif group_index == 1:
+      value = value + group + " [%" + cyr2lat( group ) + "]"
+    elif group_index == 2:
+      value = value + group
+  return value
+
+#
+pattern_rus = ur"(\\bibitem{.*?\\begin{otherlanguage}{russian})(.*?)(.\\end{otherlanguage})"
+regex_rus = re.compile( pattern_rus, re.DOTALL | re.MULTILINE | re.UNICODE | re.VERBOSE )
+
+#
+filename_in = sys.argv[1]
+filename_out = sys.argv[2]
+try:
+  fdin = codecs.open ( filename_in, 'r', encoding='utf-8' )
+  fdout = codecs.open ( filename_out, 'w', encoding='utf-8' )
+except:
+  print 'Ошибка при попытке открыть файл'
+
+
+
+# Считать содержимое файла, обработать с помощью трёх подготовленных
+# регулярных выражений и вывести найденные совпадения
+txt_data = fdin.read()
+txt_data = regex_rus.sub( translit, txt_data )
+#print txt_data
+fdout.write(txt_data)
+fdin.close()
+fdout.close()
+
