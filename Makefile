@@ -30,6 +30,9 @@ AUTO_GENERATE_IMAGE_DIRECTORY = image
 # Post LaTeX command
 #POST_LATEX_CMD = scripts/post_latex_cmd
 
+# Post BibTeX command
+#POST_BIBTEX_CMD = scripts/post_bibtex_cmd
+
 # Additional temporary files
 #TMPFILES_LOCAL = *.tac
 
