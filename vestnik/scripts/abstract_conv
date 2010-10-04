@@ -1,0 +1,18 @@
+#!/bin/sh
+
+ROOT="src text"
+
+for i in $ROOT
+do
+    cd "$i"
+    for i in *.tex
+    do
+	sed -i -e 's:\\begin{abstract}:\\abstracts{:g' \
+	    -e 's:\\end{abstract}:}:g' \
+	    -e 's:\\begin{altabstract}:\\altabstracts{:g' \
+	    -e 's:\\end{altabstract}:}:g' \
+	    "$i"
+    done
+    cd ../
+done
+

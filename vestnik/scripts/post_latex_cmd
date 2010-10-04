@@ -5,14 +5,34 @@ sed -i -e 's/\\T 2A/\\IeC/g' default.tac
 sed -i -e '/section/d' default.toc
 sed -i -e '/paragraph/d' default.toc
 
+sed -i -e 's:\\unhbox \\voidb@x \\penalty \\@M \\tmspace +\\thinmuskip {.1667em}:~:g' \
+default.tac
+
+sed -i -e 's:\\unhbox \\voidb@x \\penalty \\@M \\tmspace +\\thinmuskip {.1667em}:~:g' \
+default.toc
+
+#-e 's: ~:~:g' \
+#-e 's:\\ignorespaces::g' \
+#-e 's:\\unskip {},:,:g' \
+
+#scripts/t2a2utf default.toc
+#recode UTF8..WINDOWS1251 default.toc
+
 if [ -f default.loa ]
 then
-scripts/t2a2utf default.loa > default.loa.tmp
-mv default.loa.tmp default.loa
+scripts/t2a2utf default.loa
 sort -u default.loa -o default.loa.tmp
 mv default.loa.tmp default.loa
 recode UTF8..WINDOWS1251 default.loa
 #iconv -futf8 -tcp1251 default.loa > default.loa.tmp
 #cp default.loa.tmp default.loa
 fi
+
+#if [ -f titleslist.tex ]
+#then
+#sed -i -e 's/\\T 2A//g' \
+#    -e 's/\\T2A//g' \
+#    titleslist.tex
+#scripts/t2a2utf titleslist.tex
+#fi
 
