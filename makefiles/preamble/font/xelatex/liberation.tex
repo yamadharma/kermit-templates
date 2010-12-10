@@ -2,9 +2,13 @@
 %% url: https://fedorahosted.org/liberation-fonts
 %% gentoo: emerge media-fonts/liberation-fonts
 
-\setromanfont{Liberation Serif}
-\setsansfont{Liberation Sans}
-\setmonofont{Liberation Mono}
+\newfontfamily\cyrillicfont[Script=Russian,Ligatures=TeX]{Liberation Serif}
+\newfontfamily\cyrillicfontsf[Script=Russian,Ligatures=TeX,Scale=MatchLowercase]{Liberation Sans}
+\newfontfamily\cyrillicfonttt[Script=Russian,Scale=MatchLowercase]{Liberation Mono}
+
+\setromanfont[Ligatures=TeX]{Liberation Serif}
+\setsansfont[Ligatures=TeX,Scale=MatchLowercase]{Liberation Sans}
+\setmonofont[Scale=MatchLowercase]{Liberation Mono}
 
 %%% Local Variables:
 %%% mode: latex

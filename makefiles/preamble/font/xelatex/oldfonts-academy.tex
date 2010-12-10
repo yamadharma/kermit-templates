@@ -2,11 +2,13 @@
 %% url: http://lizard.phys.msu.su/home/compu_sci/
 %% gentoo: emerge media-fonts/oldfonts-ttf
 
-\setromanfont{Academy Old}
-\setsansfont{Liberation Sans}
-\setmonofont{Liberation Mono}
+\newfontfamily\cyrillicfont[Script=Russian,Ligatures=TeX]{Academy Old}
+\newfontfamily\cyrillicfontsf[Script=Russian,Ligatures=TeX,Scale=MatchLowercase]{Liberation Sans}
+\newfontfamily\cyrillicfonttt[Script=Russian,Scale=MatchLowercase]{Liberation Mono}
 
-\newfontfamily\cyrillicfont{Academy Old}
+\setromanfont[Ligatures=TeX]{Academy Old}
+\setsansfont[Ligatures=TeX,Scale=MatchLowercase]{Liberation Sans}
+\setmonofont[Scale=MatchLowercase]{Liberation Mono}
 
 %%% Local Variables:
 %%% mode: latex

@@ -2,18 +2,13 @@
 
 \usepackage{mathtext}
 
-\usepackage{fontspec}
-\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-
-%% Dirty hack. We need amssymb befor xunicode
+% Dirty hack. We need amssymb befor xunicode
 \usepackage{amssymb}
 
 \usepackage{xunicode}
 \usepackage{xltxtra}
 
 \usepackage{polyglossia}
-\setdefaultlanguage{russian}
-\setotherlanguages{english}
 
 % \usepackage{xecyr}
 
@@ -22,6 +17,12 @@
 \input{preamble/font/xelatex}
 
 %}}}
+
+\setdefaultlanguage[spelling=modern]{russian}  % устанавливает язык по умолчанию
+\setotherlanguages{english}
+
+\usepackage{fontspec}
+\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase} % устанавливает поведение шрифтов по умолчанию
 
 \input{preamble/fix/xelatex}
 
