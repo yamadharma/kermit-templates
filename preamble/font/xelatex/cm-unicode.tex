@@ -2,13 +2,13 @@
 %% url: http://canopus.iacp.dvo.ru/~panov/cm-unicode/
 %% gentoo: emerge media-fonts/cm-unicode-otf
 
-\setromanfont{CMU Serif}
-\setsansfont{CMU Sans Serif}
-\setmonofont{CMU Typewriter Text}
+\newfontfamily\cyrillicfont[Script=Russian,Ligatures=TeX]{CMU Serif}
+\newfontfamily\cyrillicfontsf[Script=Russian,Ligatures=TeX,Scale=MatchLowercase]{CMU Sans Serif}
+\newfontfamily\cyrillicfonttt[Script=Russian,Scale=MatchLowercase]{CMU Typewriter Text}
 
-%\newfontfamily\cyrillicfont[Script=Russian]{CMU Serif}
-%\newfontfamily\cyrillicfontsf[Script=Russian]{CMU Sans Serif}
-%\newfontfamily\cyrillicfonttt[Script=Russian]{CMU Typewriter Text}
+\setmainfont[Ligatures=TeX]{CMU Serif}
+\setsansfont[Ligatures=TeX,Scale=MatchLowercase]{CMU Sans Serif}
+\setmonofont[Scale=MatchLowercase]{CMU Typewriter Text}
 
 %%% Local Variables:
 %%% mode: latex
