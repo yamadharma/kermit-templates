@@ -239,6 +239,7 @@ TEXFILES = ${TEXFILE} ${ADDITIONALTEXFILES}
 BIBFILES = $(call launchShell, ${FIND_CMD} . -name "*.bib")
 STYFILES = $(call launchShell, ${FIND_CMD} . -name "*.sty" -o -name "*.cls")
 EMACSFILES = $(call launchShell, ${FIND_CMD} . -name "*.rel")
+EPS_CONVERTED_TO_PDF = $(call launchShell, ${FIND_CMD} . -name "*-eps-converted-to.pdf")
 
 TMPIMAGES =
 IMAGES =
@@ -262,6 +263,7 @@ TMPFILES = bibtex.stamp ${AUXFILE} *.log ${BBLFILE} *.blg \
            VARIABLES \
            *.css ${FILE}-js.* *.pfg lst.tex \
            *.4tc *.4ct *.idv *.${HTML_EXT} *.lg *.xref *.4dx *.4ix *.dvi \
+           ${EPS_CONVERTED_TO_PDF} \
            ${TMPFILES_LOCAL}
 
 # $(call launchShell, ${FIND_CMD} . -name "auto") \
