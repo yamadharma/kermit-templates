@@ -254,7 +254,7 @@ TMPFILES = bibtex.stamp ${AUXFILE} *.log ${BBLFILE} *.blg \
            *.mtc *.mtc[0-9] *.mtc[0-9][0-9] *.mtc[0-9][0-9][0-9] \
            *.mtf *.mtf[0-9] *.mtf[0-9][0-9] *.mtf[0-9][0-9][0-9] \
            *.mtl *.mtl[0-9] *.mtl[0-9][0-9] *.mtl[0-9][0-9][0-9] \
-           *.bmt *.thlodef \
+           *.bmt *.thlodef *.lbl *.brf \
            *.thm *.xdv *.aux *.bbl \
            ${GLOFILE} ${GLSFILE} ${GLGFILE} makeglossary.stamp \
            *.idx *.glo *.raw \
