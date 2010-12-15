@@ -37,12 +37,15 @@ ifeq ("$(call isTranslatorLoaded,ruby2tex)","false")
 #                     and the command's standard output will be sent
 #                     to the target file.
 
+# Constant definitions
+RUBY2TEX_TEXT_WIDTH ?= 60
+RUBY2TEX_TAB_SIZE   ?= 2
 
 # Command definition.
 # Required synoptics of the command:
 # <binfile> <flags> <inputflags> <input.rb> <outputflags> <output.tex>
 RUBY2TEX_BIN           = texifyruby
-RUBY2TEX_FLAGS         = -l 60
+RUBY2TEX_FLAGS         = -l ${RUBY2TEX_TEXT_WIDTH} -t ${RUBY2TEX_TAB_SIZE}
 RUBY2TEX_INPUT_FLAGS   = -i
 RUBY2TEX_OUTPUT_FLAGS  = -o
 RUBY2TEX_POST_FLAGS    = >/dev/null 2>/dev/null

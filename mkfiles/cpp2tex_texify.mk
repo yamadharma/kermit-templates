@@ -37,12 +37,15 @@ ifeq ("$(call isTranslatorLoaded,cpp2tex)","false")
 #                     and the command's standard output will be sent
 #                     to the target file.
 
+# Constant definitions
+CPP2TEX_TEXT_WIDTH ?= 60
+CPP2TEX_TAB_SIZE   ?= 2
 
 # Command definition.
 # Required synoptics of the command:
 # <binfile> <flags> <inputflags> <input.cpp> <outputflags> <output.tex>
 CPP2TEX_BIN           = texifyc++
-CPP2TEX_FLAGS         = -l 60
+CPP2TEX_FLAGS         = -l ${CPP2TEX_TEXT_WIDTH} -t ${CPP2TEX_TAB_SIZE}
 CPP2TEX_INPUT_FLAGS   = -i
 CPP2TEX_OUTPUT_FLAGS  = -o
 CPP2TEX_POST_FLAGS    = >/dev/null 2>/dev/null

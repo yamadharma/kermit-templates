@@ -37,12 +37,15 @@ ifeq ("$(call isTranslatorLoaded,java2tex)","false")
 #                     and the command's standard output will be sent
 #                     to the target file.
 
+# Constant definitions
+JAVA2TEX_TEXT_WIDTH ?= 60
+JAVA2TEX_TAB_SIZE   ?= 2
 
 # Command definition.
 # Required synoptics of the command:
 # <binfile> <flags> <inputflags> <input.java> <outputflags> <output.tex>
 JAVA2TEX_BIN           = texifyjava
-JAVA2TEX_FLAGS         = -l 60
+JAVA2TEX_FLAGS         = -l ${JAVA2TEX_TEXT_WIDTH} -t ${JAVA2TEX_TAB_SIZE}
 JAVA2TEX_INPUT_FLAGS   = -i
 JAVA2TEX_OUTPUT_FLAGS  = -o
 JAVA2TEX_POST_FLAGS    = >/dev/null 2>/dev/null
