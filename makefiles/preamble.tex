@@ -8,9 +8,13 @@
 \makeatother
 
 % looks for pdfTEX in pdf mode
-\usepackage{ifpdf}
-\usepackage{ifxetex}
+\IfFileExists{ifpdf.sty}{\usepackage{ifpdf}}{}
+\IfFileExists{ifxetex.sty}{\usepackage{ifxetex}}{}
+\IfFileExists{ifluatex.sty}{\usepackage{ifluatex}}{}
 
+\ifluatex
+    \input preamble/lualatex
+\else
 \ifxetex
     \input preamble/xelatex
 \else
@@ -19,6 +23,7 @@
 	\input preamble/pdflatex
     \fi
 \fi
+\fi
 
 \input preamble/common
 
@@ -26,7 +31,7 @@
 
 \iftexht
     \input preamble/tex4ht
-\fi    
+\fi
 
 %%% Local Variables: 
 %%% mode: latex
