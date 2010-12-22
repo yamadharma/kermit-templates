@@ -96,6 +96,7 @@ TRANSTABLE_SPEC = (
          (ur"\bblpp{}", u"S."),
          (ur"\bblnump{}", u"s"),
          (ur"\bblvol{}", u"T."),
+         (ur"\bblissuefirst{}", u"Vihp."),
         )
 
 def cyr2lat ( text ):
