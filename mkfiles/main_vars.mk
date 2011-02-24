@@ -34,6 +34,9 @@ SCM_UPDATE_CMD = bzr update
 # Shell command used to commit the document into a SCM (CVS or SVN)
 SCM_COMMIT_CMD = bzr commit
 
+# Use local texmf.cnf
+TEXMFCNF := .:$(shell kpsewhich --expand-path '$$TEXMFCNF')
+
 # Macro format used
 # latex by default
 ifeq ("${MACRO_FORMAT}","")
@@ -42,9 +45,9 @@ endif
 
 # Shell command used to compile the LaTeX document
 ifeq ("-${LATEX_GENERATION_PROCEDURE}","-pdf")
-LATEX_CMD = pdflatex
+LATEX_CMD_MAIN = pdflatex
 else
-LATEX_CMD = latex
+LATEX_CMD_MAIN = latex
 endif
 
 # LaTeX flags which must be passed when the document
@@ -58,9 +61,11 @@ endif
 # Redefine for XeLaTeX
 ifeq ("${MACRO_FORMAT}","xelatex")
 LATEX_GENERATION_PROCEDURE = pdf
-LATEX_CMD = xelatex
+LATEX_CMD_MAIN = xelatex
 LATEX_DRAFT_FLAGS = --no-pdf
 endif
+
+LATEX_CMD = TEXMFCNF=${TEXMFCNF} ${LATEX_CMD_MAIN}
 
 # LaTeX flags which must be passed when the document
 # must be compiled not in draft mode
