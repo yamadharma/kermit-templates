@@ -35,5 +35,6 @@ AUTO_GENERATE_IMAGE_DIRECTORY = image
 
 # Additional temporary files
 #TMPFILES_LOCAL = *.tac
+#TMPDIRS_LOCAL =
 
 include mkfiles/main.mk

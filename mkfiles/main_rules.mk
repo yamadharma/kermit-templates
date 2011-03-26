@@ -59,6 +59,7 @@ makeindex:: ${INDFILE}
 
 clean::
 	@ ${RM} ${TMPFILES}
+	@ ${RM} -rf ${TMPDIRS}
 	@ if [ -d "${TEX4HT_TEX_OUT_DIR}" ]; then ${RM} -rf ${TEX4HT_TEX_OUT_DIR} ; fi
 
 cleanall:: clean
