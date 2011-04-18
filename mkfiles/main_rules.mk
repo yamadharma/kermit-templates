@@ -154,6 +154,10 @@ ${COMPILATION_TARGET_FILE}:: ${TEXFILES} ${PRIVATE_IMAGES} ${BIBFILES} ${MAKEIND
 	  fi && \
 	  ${LATEX_CMD} ${LATEX_DRAFT_FLAGS} ${LATEX_FLAGS} ${FILE}; \
 	  ${POST_LATEX_CMD}; \
+	    if test -n "$$COMPMAKEINDEX"; then \
+	      ${MAKEINDEX_FULL_CMD} && \
+	      ${TOUCH_CMD} ${INDFILE}; \
+	    fi ; \
 	  ${LATEX_CMD} ${LATEX_FLAGS} ${FILE}; \
 	  ${POST_LATEX_CMD}
 
