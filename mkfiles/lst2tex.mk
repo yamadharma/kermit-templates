@@ -38,7 +38,7 @@ LST2TEX_OUTPUT_STDOUT = no
 #----------- DO NOT CHANGE BELOW
 #-----------------------------------
 
-LST_FIG = $(call launchShell, ${FIND_CMD} ${AUTO_GENERATE_LST_DIRECTORY} -regextype posix-extended -regex ".*\.(c|h)")
+LST_FIG = $(call launchShell, ${FIND_CMD} -L ${AUTO_GENERATE_LST_DIRECTORY} -regextype posix-extended -regex ".*\.(c|h)")
 
 LST_TEX = $(addsuffix .tex,          ${LST_FIG})
 
