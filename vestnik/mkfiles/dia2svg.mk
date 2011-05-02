@@ -1,1 +1,0 @@
-../../makefiles/mkfiles/dia2svg.mk

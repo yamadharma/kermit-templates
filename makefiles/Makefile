@@ -24,6 +24,9 @@ MAKEINDEX_STYLEFILE = index.xdy
 # Image directory
 AUTO_GENERATE_IMAGE_DIRECTORY = image
 
+# Listing directory
+#AUTO_GENERATE_LST_DIRECTORY = lst
+
 # BibTeX command
 #BIBTEX_CMD = bibtex
 
@@ -35,5 +38,11 @@ AUTO_GENERATE_IMAGE_DIRECTORY = image
 
 # Additional temporary files
 #TMPFILES_LOCAL = *.tac
+#TMPDIRS_LOCAL =
 
 include mkfiles/main.mk
+
+include Makefile.postamble
+
+## Основные правила
+include mkfiles/main_rules.mk
