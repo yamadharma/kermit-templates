@@ -108,20 +108,26 @@ def cyr2lat ( text ):
   return translit
 
 def translit ( match ):
-  "Транслитерация"
-  for group_index, group in enumerate( match.groups() ):
-    if group_index == 0:
-      value = group
-    elif group_index == 1:
-      value = value + group + " [%" + cyr2lat( group ) + "]"
-    elif group_index == 2:
-      value = value + group
-  return value
+    "Транслитерация"
+    for group_index, group in enumerate( match.groups() ):
+	if group_index == 0:
+	    value = group
+	elif group_index == 1:
+	    if regex_bibtrans.match(group):
+		value = value + group
+	    else:
+		value = value + group + "\n\\begin{bibtranslit}" + cyr2lat( group ) + "\n\\end{bibtranslit}"
+	elif group_index == 2:
+	    value = value + group
+    return value
 
 #
 pattern_rus = ur"(\\bibitem{.*?\\begin{otherlanguage.*?}{russian})(.*?)(.\\end{otherlanguage.*?})"
-#pattern_rus = ur"(\\bibitem{.*?\\selectlanguage{russian})(.*?)(}%selectlanguage)"
+pattern_bibtrans = ur"(.*?)(\\begin{bibtranslit})(.*?)(.\\end{bibtranslit})(.*?)"
+##pattern_rus = ur"(\\bibitem{.*?\\selectlanguage{russian})(.*?)(}%selectlanguage)"
 regex_rus = re.compile( pattern_rus, re.DOTALL | re.MULTILINE | re.UNICODE | re.VERBOSE )
+regex_bibtrans = re.compile( pattern_bibtrans, re.DOTALL | re.MULTILINE | re.UNICODE | re.VERBOSE )
+
 
 #
 filename_in = sys.argv[1]
