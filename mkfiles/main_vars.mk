@@ -76,6 +76,11 @@ ifndef POST_LATEX_CMD
 POST_LATEX_CMD = echo "No post-latex command"
 endif
 
+ifndef FINAL_POST_LATEX_CMD
+FINAL_POST_LATEX_CMD =
+endif
+
+
 # Shell command used to launch BibTeX
 ifndef BIBTEX_CMD
 BIBTEX_CMD = bibtex
@@ -196,8 +201,6 @@ HTML_EXT = xht
 TEX4HT_TEX_ARG_1 += ,xhtml,mozilla,xht
 TEX4HT_TEX_ARG_2 += -cmozhtf
 endif
-
-
 
 ifndef TEX4HT_TEX_POST_CMD
 TEX4HT_TEX_POST_CMD = ./bin/t2_utf8.sh default.xref 
