@@ -4,7 +4,7 @@ include mkfiles/eps2pdf_epstopdf.mk
 # include mkfiles/eps2pdf_ps2pdf.mk
 
 ## Правила преобразования
-include mkfiles/eps2pdf_.mk
+# include mkfiles/eps2pdf_.mk
 
 # include mkfiles/dia2pdf.mk
 # include mkfiles/dia2svg.mk

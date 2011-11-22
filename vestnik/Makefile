@@ -24,20 +24,33 @@ MAKEINDEX_STYLEFILE = index.xdy
 # Image directory
 AUTO_GENERATE_IMAGE_DIRECTORY = image
 
+# Listing directory
+#AUTO_GENERATE_LST_DIRECTORY = lst
+
 # BibTeX command
-BIBTEX_CMD = bibtex
+#BIBTEX_CMD = bibtex
 
 # Post LaTeX command
 POST_LATEX_CMD = scripts/post_latex_cmd
+FINAL_POST_LATEX_CMD = scripts/final_post_latex_cmd
 
 # Post BibTeX command
 POST_BIBTEX_CMD = scripts/post_bibtex_cmd
 
 # Additional temporary files
 TMPFILES_LOCAL = *.tac *.loa default.titlelist.*
+TMPDIRS_LOCAL = split-paper.d
 
 include mkfiles/main.mk
 
+include Makefile.postamble
+
+## Основные правила
+include mkfiles/main_rules.mk
+
 titlelist: default.titlelist.tex
 	./scripts/tex2html
+
+split: default.pdf
+	./scripts/split-paper
 

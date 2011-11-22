@@ -4,7 +4,9 @@ FILE=default.titlelist
 
 if [ -f ${FILE}.tex ]
 then
-    sed -i -e 's/\\T 2A/\\IeC/g' ${FILE}.tex
+    sed -i -e 's/\\T 2A/\\IeC/g' \
+	-e 's:\\bu@cite {[^}]*}::g' \
+		${FILE}.tex
 #    sed -i -e 's:\\unhbox \\voidb@x \\penalty \\@M \\tmspace +\\thinmuskip {.1667em}:~:g' \
 #	-e 's:\\unhbox \\voidb@x \\penalty \\@M:~:g' \
 #	${FILE}.tex
