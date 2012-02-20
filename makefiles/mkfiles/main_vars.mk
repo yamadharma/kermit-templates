@@ -69,7 +69,7 @@ LATEX_CMD = TEXMFCNF=${TEXMFCNF} ${LATEX_CMD_MAIN}
 
 # LaTeX flags which must be passed when the document
 # must be compiled not in draft mode
-LATEX_FLAGS =
+LATEX_FLAGS = -shell-escape
 
 # Post latex command
 ifndef POST_LATEX_CMD
