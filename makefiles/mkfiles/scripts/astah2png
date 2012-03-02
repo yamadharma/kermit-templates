@@ -1,0 +1,24 @@
+#!/bin/bash
+
+ASTAH_HOME="/usr/lib/astah_community"
+
+INITIAL_HEAP_SIZE=64m
+MAXIMUM_HEAP_SIZE=1024m
+
+JAVA_OPTS="-Xms$INITIAL_HEAP_SIZE -Xmx$MAXIMUM_HEAP_SIZE"
+
+OUTPUT_DIRECTORY=`dirname "$2"`
+PROJECT_BASENAME=`basename "$1" .asta`
+PROJECT_BASENAME=`basename "$PROJECT_BASENAME" .jude`
+
+rm -rf "$2/$PROJECT_BASENAME"
+
+java $JAVA_OPTS -cp "$ASTAH_HOME/astah-community.jar" com.change_vision.jude.cmdline.JudeCommandRunner -image all -f "$1" -t all -o "$OUTPUT_DIRECTORY"
+
+for FFF in "$OUTPUT_DIRECTORY/$PROJECT_BASENAME/"*
+do
+	mv -f "$FFF" "$OUTPUT_DIRECTORY/${PROJECT_BASENAME}:"`basename $FFF`
+done
+rm -rf "$OUTPUT_DIRECTORY/$PROJECT_BASENAME"
+touch "$2"
+
