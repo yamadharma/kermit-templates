@@ -1,6 +1,8 @@
 
 # Name of the main TeX file (without extension and path)
+ifndef FILE
 FILE = default
+endif
 
 # Indicate if the PDF document must be opened
 OPEN_PDF = yes
@@ -53,7 +55,7 @@ endif
 # LaTeX flags which must be passed when the document
 # must be compiled in draft mode
 ifeq ("-${LATEX_GENERATION_PROCEDURE}","-pdf")
-LATEX_DRAFT_FLAGS = --draftmode # since pdflatex 1.40
+LATEX_DRAFT_FLAGS = -draftmode -shell-escape # since pdflatex 1.40
 else
 LATEX_DRAFT_FLAGS =
 endif
