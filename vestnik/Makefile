@@ -38,7 +38,7 @@ FINAL_POST_LATEX_CMD = scripts/final_post_latex_cmd
 POST_BIBTEX_CMD = scripts/post_bibtex_cmd
 
 # Additional temporary files
-TMPFILES_LOCAL = *.tac *.loa default.titlelist.*
+TMPFILES_LOCAL = *.tac *.loa default.titlelist.* split-paper.tex
 TMPDIRS_LOCAL = split-paper.d
 
 include mkfiles/main.mk

@@ -6,6 +6,10 @@ if [ -f ${FILE}.tex ]
 then
     sed -i -e 's/\\T 2A/\\IeC/g' \
 	-e 's:\\bu@cite {[^}]*}::g' \
+	-e 's:\\NCC@op@prepare::g' \
+	-e 's:\\\[:\$:g' \
+	-e 's:\\\]:\$:g' \
+	-e 's:\\limits::g' \
 		${FILE}.tex
 #    sed -i -e 's:\\unhbox \\voidb@x \\penalty \\@M \\tmspace +\\thinmuskip {.1667em}:~:g' \
 #	-e 's:\\unhbox \\voidb@x \\penalty \\@M:~:g' \

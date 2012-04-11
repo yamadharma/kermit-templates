@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 sed -i -e 's/\\T 2A/\\IeC/g' default.toc
 sed -i -e 's/\\T 2A/\\IeC/g' default.tac
@@ -37,3 +37,8 @@ fi
 #scripts/t2a2utf titleslist.tex
 #fi
 
+#if [[ -f /usr/bin/pdfopt ]]
+#then
+#    /usr/bin/pdfopt default.pdf default-tmp.pdf
+#    mv default-tmp.pdf default.pdf
+#fi
