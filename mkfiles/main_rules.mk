@@ -16,7 +16,7 @@ ifeq ("${MAKEINDEX_CMD}","makeindex")
 else
 ifeq ("${MAKEINDEX_CMD}","xindy")
     # MAKEINDEX_FULL_CMD = ${TEX2XINDY} < ${IDXFILE} > index.raw ; ${MAKEINDEX_CMD} ${MAKEINDEX_FLAGS} index.raw
-    MAKEINDEX_FULL_CMD = ${MAKEINDEX_CMD} -I latex -M ${MAKEINDEX_STYLEFILE} ${IDXFILE
+    MAKEINDEX_FULL_CMD = ${MAKEINDEX_CMD} -I latex -M ${MAKEINDEX_STYLEFILE} ${IDXFILE}
 endif
 endif
 
