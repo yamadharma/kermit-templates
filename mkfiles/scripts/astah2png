@@ -1,5 +1,7 @@
 #!/bin/bash
 
+FILE_TO_TOUCH="$2"
+
 ASTAH_HOME="/usr/lib/astah_community"
 
 INITIAL_HEAP_SIZE=64m
@@ -7,18 +9,26 @@ MAXIMUM_HEAP_SIZE=1024m
 
 JAVA_OPTS="-Xms$INITIAL_HEAP_SIZE -Xmx$MAXIMUM_HEAP_SIZE"
 
-OUTPUT_DIRECTORY=`dirname "$2"`
+OUTPUT_DIRECTORY=`dirname "$FILE_TO_TOUCH"`
 PROJECT_BASENAME=`basename "$1" .asta`
 PROJECT_BASENAME=`basename "$PROJECT_BASENAME" .jude`
 
-rm -rf "$2/$PROJECT_BASENAME"
+rm -rf "$OUTPUT_DIRECTORY/$PROJECT_BASENAME"
 
 java $JAVA_OPTS -cp "$ASTAH_HOME/astah-community.jar" com.change_vision.jude.cmdline.JudeCommandRunner -image all -f "$1" -t all -o "$OUTPUT_DIRECTORY"
 
 for FFF in "$OUTPUT_DIRECTORY/$PROJECT_BASENAME/"*
 do
-	mv -f "$FFF" "$OUTPUT_DIRECTORY/${PROJECT_BASENAME}:"`basename $FFF`
+	TARGETIMG="$OUTPUT_DIRECTORY/${PROJECT_BASENAME}:"`basename "$FFF"`
+	#echo "Renaming to $TARGETIMG"
+	mv -f "$FFF" "$TARGETIMG"
+	IMGWIDTH=`identify -format "%w" "$TARGETIMG"`
+	IMGHEIGHT=`identify -format "%h" "$TARGETIMG"`
+	IMGHEIGHT="$[$IMGHEIGHT - 20]"
+	#echo "Croping to ${IMGWIDTH}x${IMGHEIGHT}"
+	mogrify -crop "${IMGWIDTH}x${IMGHEIGHT}" "$TARGETIMG"
 done
+#echo "Finalizing $OUTPUT_DIRECTORY/$PROJECT_BASENAME"
 rm -rf "$OUTPUT_DIRECTORY/$PROJECT_BASENAME"
-touch "$2"
+touch "$FILE_TO_TOUCH"
 
