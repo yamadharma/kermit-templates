@@ -1,4 +1,4 @@
-# autolatex - astah2png.mk
+# autolatex - lisp2tex_texify.mk
 # Copyright (C) 2012  Stephane Galland <galland@arakhne.org>
 #
 # This program is free software; you can redistribute it and/or modify
@@ -16,7 +16,7 @@
 # the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
 
-ifeq ("$(call isTranslatorLoaded,astah2png)","false")
+ifeq ("$(call isTranslatorLoaded,lisp2tex)","false")
 
 # If the images must be auto-generated, the following lines
 # permits to change the generators
@@ -37,67 +37,60 @@ ifeq ("$(call isTranslatorLoaded,astah2png)","false")
 #                     and the command's standard output will be sent
 #                     to the target file.
 
+# Constant definitions
+LISP2TEX_TEXT_WIDTH ?= 60
+LISP2TEX_TAB_SIZE   ?= 2
 
 # Command definition.
 # Required synoptics of the command:
-# <binfile> <input.dot> <output.png>
-ASTAH2PNG_BIN           = astah2png
-ASTAH2PNG_FLAGS         = 
-ASTAH2PNG_INPUT_FLAGS   = 
-ASTAH2PNG_OUTPUT_FLAGS  = 
-ASTAH2PNG_POST_FLAGS    =
-ASTAH2PNG_OUTPUT_INPUT  = no
-ASTAH2PNG_OUTPUT_STDOUT = no
+# <binfile> <flags> <inputflags> <input.rb> <outputflags> <output.tex>
+LISP2TEX_BIN           = texifylisp
+LISP2TEX_FLAGS         = -l ${LISP2TEX_TEXT_WIDTH} -t ${LISP2TEX_TAB_SIZE}
+LISP2TEX_INPUT_FLAGS   = -i
+LISP2TEX_OUTPUT_FLAGS  = -o
+LISP2TEX_POST_FLAGS    = >/dev/null 2>/dev/null
+LISP2TEX_OUTPUT_INPUT  = no
+LISP2TEX_OUTPUT_STDOUT = no
 
 #-----------------------------------
 #----------- DO NOT CHANGE BELOW
 #-----------------------------------
 
 # Notify of the loading of this module
-LOADED_TRANSLATORS += astah2png
+LOADED_TRANSLATORS += lisp2tex
 
-ASTAH_FIG = $(call launchShell, ${FIND_CMD} ${AUTO_GENERATE_IMAGE_DIRECTORY} -name "*.asta" -a -not -name "*.ltx.asta")
-JUDE_FIG = $(call launchShell, ${FIND_CMD} ${AUTO_GENERATE_IMAGE_DIRECTORY} -name "*.jude" -a -not -name "*.ltx.jude")
+LISP_FIG = $(call launchShell, ${FIND_CMD} ${AUTO_GENERATE_IMAGE_DIRECTORY} -name "*.lisp")
 
-PNG_ASTAH = $(addsuffix .png,          $(basename ${ASTAH_FIG}))
-PNG_JUDE = $(addsuffix .png,          $(basename ${JUDE_FIG}))
+TEX_LISP = $(addsuffix .tex,          $(basename ${LISP_FIG}))
 
-SOURCE_IMAGES += ${ASTAH_FIG} ${JUDE_FIG}
-IMAGES        += ${PNG_ASTAH} ${PNG_JUDE}
+SOURCE_IMAGES += ${LISP_FIG}
+IMAGES        += ${TEX_LISP}
 
 # Compile the convertion parameters
-ifeq ("-$(findstring =,$(ASTAH2PNG_INPUT_FLAGS))","-")
-ASTAH2PNG_INPUT_FLAGS_EX = $(ASTAH2PNG_INPUT_FLAGS) "$<"
+ifeq ("-$(findstring =,$(LISP2TEX_INPUT_FLAGS))","-")
+LISP2TEX_INPUT_FLAGS_EX = $(strip $(LISP2TEX_INPUT_FLAGS)) "$<"
 else
-ASTAH2PNG_INPUT_FLAGS_EX = "$(ASTAH2PNG_INPUT_FLAGS)$<"
+LISP2TEX_INPUT_FLAGS_EX = $(strip $(LISP2TEX_INPUT_FLAGS))"$<"
 endif
-ifeq ("-$(findstring =,$(ASTAH2PNG_OUTPUT_FLAGS))","-")
-ASTAH2PNG_OUTPUT_FLAGS_EX = $(ASTAH2PNG_OUTPUT_FLAGS) "$@"
+ifeq ("-$(findstring =,$(LISP2TEX_OUTPUT_FLAGS))","-")
+LISP2TEX_OUTPUT_FLAGS_EX = $(strip $(LISP2TEX_OUTPUT_FLAGS)) "$@"
 else
-ASTAH2PNG_OUTPUT_FLAGS_EX = "$(ASTAH2PNG_OUTPUT_FLAGS)$@"
+LISP2TEX_OUTPUT_FLAGS_EX = $(strip $(LISP2TEX_OUTPUT_FLAGS))"$@"
 endif
 
 # Compile the convertion commands
-ifeq ("${ASTAH2PNG_OUTPUT_STDOUT}","yes")
-ASTAH2PNG_SHELL_CMD = $(ASTAH2PNG_BIN) $(ASTAH2PNG_FLAGS) $(ASTAH2PNG_INPUT_FLAGS_EX) $(ASTAH2PNG_POST_FLAGS) > "$@"
+ifeq ("${LISP2TEX_OUTPUT_STDOUT}","yes")
+LISP2TEX_SHELL_CMD = $(LISP2TEX_BIN) $(LISP2TEX_FLAGS) $(LISP2TEX_INPUT_FLAGS_EX) $(LISP2TEX_POST_FLAGS) > "$@"
 else
-ifeq ("${ASTAH2PNG_OUTPUT_INPUT}","yes")
-ASTAH2PNG_SHELL_CMD = $(ASTAH2PNG_BIN) $(ASTAH2PNG_FLAGS) $(ASTAH2PNG_OUTPUT_FLAGS_EX) $(ASTAH2PNG_INPUT_FLAGS_EX) $(ASTAH2PNG_POST_FLAGS)
+ifeq ("${LISP2TEX_OUTPUT_INPUT}","yes")
+LISP2TEX_SHELL_CMD = $(LISP2TEX_BIN) $(LISP2TEX_FLAGS) $(LISP2TEX_OUTPUT_FLAGS_EX) $(LISP2TEX_INPUT_FLAGS_EX) $(LISP2TEX_POST_FLAGS)
 else
-ASTAH2PNG_SHELL_CMD = $(ASTAH2PNG_BIN) $(ASTAH2PNG_FLAGS) $(ASTAH2PNG_INPUT_FLAGS_EX) $(ASTAH2PNG_OUTPUT_FLAGS_EX) $(ASTAH2PNG_POST_FLAGS)
+LISP2TEX_SHELL_CMD = $(LISP2TEX_BIN) $(LISP2TEX_FLAGS) $(LISP2TEX_INPUT_FLAGS_EX) $(LISP2TEX_OUTPUT_FLAGS_EX) $(LISP2TEX_POST_FLAGS)
 endif
 endif
 
 
-
-$(PNG_ASTAH): %.png: %.asta
-	@ ${ECHO_CMD} "$< -> $@" && $(ASTAH2PNG_SHELL_CMD)
-
-$(PNG_JUDE): %.png: %.jude
-	@ ${ECHO_CMD} "$< -> $@" && $(ASTAH2PNG_SHELL_CMD)
-
-cleanall::
-	@rm -rf $(addsuffix ':'*.png, $(basename ${ASTAH_FIG})) 2>/dev/null
-	@rm -rf $(addsuffix ':'*.png, $(basename ${JUDE_FIG})) 2>/dev/null
+$(TEX_LISP): %.tex: %.lisp
+	@ ${ECHO_CMD} "$< -> $@" && $(LISP2TEX_SHELL_CMD)
 
 endif
