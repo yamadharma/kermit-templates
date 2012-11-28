@@ -1,6 +1,11 @@
 %% Пакеты для библиографии
 
-\usepackage{cite}
+\makeatletter
+\@ifclassloaded{revtex4-1}{\relax}{%
+\usepackage{cite}%
+}
+\makeatother
+
 % \usepackage{gost7184}
 % \bibliographystyle{gost7184u}
 \bibliographystyle{ugost2008}
