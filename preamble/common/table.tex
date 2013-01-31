@@ -1,7 +1,11 @@
 %% Многостраничные таблицы
 \usepackage{longtable}
 %% Улучшенная разграфка
-\usepackage{mdwtab}
+\iftexht
+    \newcommand{\hlx}[1]{\hline}
+\else
+    \usepackage{mdwtab}
+\fi
 
 \usepackage{makecell}
 

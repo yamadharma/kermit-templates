@@ -1,7 +1,10 @@
 %% Работа с графикой
 
 \usepackage{graphicx}
-\usepackage{floatrow}
+
+\iftexht\else
+    \usepackage{floatrow}
+\fi
 
 %% Путь к рисункам
 \graphicspath{{image/}}
