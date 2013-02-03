@@ -3,9 +3,16 @@
 \usepackage{cmap}
 \usepackage{mathtext}
 
-\usepackage{ucs}
-\usepackage[utf8x]{inputenc}
-\usepackage[T2A]{fontenc}
+
+\usepackage[T1,T2A]{fontenc}
+%{{{ Use only one
+%% ucs conflicts with biblatex
+%\usepackage{ucs}
+%\usepackage[utf8x]{inputenc}
+%%
+\usepackage[utf8]{inputenc}
+%}}}
+
 \usepackage[english,russian]{babel}
 
 %{{{ Fonts
