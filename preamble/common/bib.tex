@@ -2,7 +2,9 @@
 
 \makeatletter
 \@ifclassloaded{revtex4-1}{\relax}{%
-\usepackage{cite}%
+    \@ifclassloaded{beamer}{\relax}{%
+    \usepackage{cite}%
+    }
 }
 \makeatother
 
