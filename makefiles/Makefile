@@ -17,7 +17,10 @@ LATEX_GENERATION_PROCEDURE = pdf
 MAKEINDEX_CMD = xindy
 
 # Style file for MakeIndex
+# index.ist | index.xdy
 MAKEINDEX_STYLEFILE = index.xdy
+
+#MAKEINDEX_FULL_CMD = ./scripts/t2a2utf ${IDXFILE}; recode UTF8..CP1251 ${IDXFILE} ; ${MAKEINDEX_CMD} ${MAKEINDEX_FLAGS} ${IDXFILE}; enca -c default.ind
 
 #TEX4HT_FINAL_POST_CMD = scripts/html-fix
 
