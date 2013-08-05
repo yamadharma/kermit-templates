@@ -12,18 +12,21 @@
 \IfFileExists{ifxetex.sty}{\usepackage{ifxetex}}{}
 \IfFileExists{ifluatex.sty}{\usepackage{ifluatex}}{}
 
-\ifluatex
-    \input preamble/lualatex
-\else
-\ifxetex
-    \input preamble/xelatex
-\else
-    \input preamble/latex
-    \ifpdf
-	\input preamble/pdflatex
-    \fi
-\fi
-\fi
+\usepackage{ifthenx}
+
+\ifthenelse{\boolean{luatex}}
+    {\input preamble/lualatex}
+%else
+{\ifthenelse{\boolean{xetex}}
+    {\input preamble/xelatex}
+    %else
+    {
+	\input preamble/latex
+	\ifpdf
+	    \input preamble/pdflatex
+	\fi
+    }
+}
 
 \input preamble/common
 
