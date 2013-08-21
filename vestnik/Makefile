@@ -38,8 +38,8 @@ FINAL_POST_LATEX_CMD = scripts/final_post_latex_cmd
 POST_BIBTEX_CMD = scripts/post_bibtex_cmd
 
 # Additional temporary files
-TMPFILES_LOCAL = *.tac *.loa default.titlelist.* split-paper.tex
-TMPDIRS_LOCAL = split-paper.d
+TMPFILES_LOCAL = *.tac *.loa default.titlelist.* split-paper.tex default.xml default.html default*.png
+TMPDIRS_LOCAL = split-paper.d default.htmld
 
 include mkfiles/main.mk
 
@@ -54,3 +54,5 @@ titlelist: default.titlelist.tex
 split: default.pdf
 	./scripts/split-paper
 
+default.html: default.pdf
+	./scripts/tex2html2 default "default,xhtml,mathml" " -cunihtf" "-cvalidate"
