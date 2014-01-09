@@ -23,7 +23,9 @@ latex $FILE
 
 tex4ht $FILE
 
-mk4ht htlatex $FILE "xhtml,word,oofice,charset=utf-8" "symbol/\! -cunihtf -utf8" "-cvalidate"
+# mk4ht htlatex $FILE "xhtml,word,oofice,charset=utf-8" "symbol/\! -cunihtf -utf8" "-cvalidate"
 # mk4ht htlatex $FILE "xhtml,mathml,charset=utf-8" "symbol/\! -cunihtf -utf8" "-cvalidate"
+#mk4ht wlatex $FILE
+mk4ht xhmlatex $FILE "default" "symbol/\! -cunihtf -utf8" "-cvalidate"
 
 sed -i -e 's:<!--.*-->::g' ${FILE}.html
