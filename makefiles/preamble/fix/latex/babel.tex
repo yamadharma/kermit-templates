@@ -1,5 +1,7 @@
 %% The macro \No is removed in babel's russianb sinse v 1.2
-\def\No{\textnumero}
+\ifx\No\undefined
+    \def\No{\textnumero}
+\fi
 
 %%% Local Variables:
 %%% mode: latex
