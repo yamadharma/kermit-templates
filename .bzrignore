@@ -1,0 +1,6 @@
+ls-R
+*~
+auto/*
+auto/*.el
+auto/*
+*.rel
