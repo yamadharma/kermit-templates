@@ -5,12 +5,15 @@
 % Dirty hack. We need amssymb befor xunicode
 \usepackage{amssymb}
 
-\usepackage{xunicode}
+%% Don't load xunicode before fontspec (loaded by xltxtra). 
+%% In a current system you don't need to load xunicode at all, 
+%% fontspec will do it at the correct place.
+% \usepackage{xunicode}
 \usepackage{xltxtra}
 
 \usepackage{polyglossia}
 
-% \usepackage{xecyr}
+\usepackage{xecyr}
 
 %{{{ Fonts
 

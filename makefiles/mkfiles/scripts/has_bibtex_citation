@@ -74,6 +74,10 @@ while (my $line = <FILE>) {
 		push @citation, "BC_$1";
 		$foundcitation = 1;
 	}
+	elsif ($line =~ /\\abx\@aux\@cite\{(.*?)\}/) {
+		push @citation, "CI_$1";
+		$foundcitation = 1;
+	}
 }
 
 close(*FILE);

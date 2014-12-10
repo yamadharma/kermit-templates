@@ -1,6 +1,12 @@
 % Подключение файла с преамбулой
 \input preamble.tex
 
+%{{{ biblatex
+
+\addbibresource{bib/ref.bib}
+
+%}}}
+
 \begin{document}
 
 %% Подключение файла с титульным листом
@@ -12,7 +18,7 @@
 %% Подключение файлов с текстом работы:
 
 %% Подключение файла со списком сокращений
-\input{text/sokr}%
+\input{text/abbr}%
 
 %% Подключение файла с введением
 \input{text/intro}%
@@ -38,8 +44,16 @@
 \listoftables
 
 %% Подключение файла с библиографией
-\nocite{*}
-\bibliography{bib/lit-ref}
+%{{{ bibtex
+
+%\bibliography{bib/ref}
+
+%}}}
+%{{{ biblatex
+
+\printbibliography
+
+%}}}
 
 \end{document}
 

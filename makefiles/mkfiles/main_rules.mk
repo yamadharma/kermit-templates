@@ -131,6 +131,7 @@ ${COMPILATION_TARGET_FILE}:: ${TEXFILES} ${PRIVATE_IMAGES} ${BIBFILES} ${MAKEIND
 	  if test -n "$$COMPBIBTEX" -o -n "$$CMPMAKEINDEX" -o -n "$$CMPMAKEGLOS"; then \
 	    if test -n "$$COMPBIBTEX"; then \
 	      if test -n "${MULTIPLE_BIB}"; then \
+	        ${PRE_BIBTEX_CMD}; \
 		for i in $(basename ${MULTIPLE_BIB_FILES}); do \
 		  ${BIBTEX_CMD} ${BIBTEX_FLAGS} $$i && \
 	          ${FIX_BBL_CMD}  $$i.bbl && \
@@ -138,7 +139,8 @@ ${COMPILATION_TARGET_FILE}:: ${TEXFILES} ${PRIVATE_IMAGES} ${BIBFILES} ${MAKEIND
 	        done; \
 	        ${POST_BIBTEX_CMD}; \
 	      else \
-		  ${BIBTEX_CMD} ${BIBTEX_FLAGS} ${FILE} && \
+		  ${PRE_BIBTEX_CMD}; \
+	          ${BIBTEX_CMD} ${BIBTEX_FLAGS} ${FILE} && \
 	          ${FIX_BBL_CMD} ${BBLFILE} && \
 	          ${TOUCH_CMD} ${BBLFILE}; \
 	          ${POST_BIBTEX_CMD}; \

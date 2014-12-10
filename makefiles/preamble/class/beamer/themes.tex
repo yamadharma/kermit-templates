@@ -20,3 +20,10 @@
 
 % Убираем навигационные символы
 % \setbeamertemplate{navigation symbols}{}
+
+% Версия для печати
+\ifdefined\printable
+  \usecolortheme{dove}
+  \setbeamertemplate{navigation symbols}{}
+\fi
+

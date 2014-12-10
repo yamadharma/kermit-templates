@@ -2,7 +2,9 @@
 
 \usepackage{graphicx}
 
-\iftexht\else
+\iftexht
+    \def\RawFloats{}
+\else
     \usepackage{floatrow}
 \fi
 

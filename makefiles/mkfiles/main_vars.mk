@@ -82,7 +82,6 @@ ifndef FINAL_POST_LATEX_CMD
 FINAL_POST_LATEX_CMD =
 endif
 
-
 # Shell command used to launch BibTeX
 ifndef BIBTEX_CMD
 BIBTEX_CMD = bibtex
@@ -93,7 +92,8 @@ endif
 BIBTEX_FLAGS =
 
 # Shell command used to fix BibTeX files
-FIX_BBL_CMD = mkfiles/scripts/fixbbl.py
+# FIX_BBL_CMD = mkfiles/scripts/fixbbl.py
+FIX_BBL_CMD =
 
 # Check if has bibtex citation
 HAS_BIBTEX_CITATION_CMD = mkfiles/scripts/has_bibtex_citation
@@ -109,9 +109,14 @@ ifeq ("${MULTIPLE_BIB_FILES}","")
 MULTIPLE_BIB_FILES=${FILE}
 endif
 
+# Pre bibtex command
+ifndef PRE_BIBTEX_CMD
+PRE_BIBTEX_CMD = echo "No pre-bibtex command"
+endif
+
 # Post bibtex command
 ifndef POST_BIBTEX_CMD
-POST_BIBTEX_CMD = echo "No post-latex command"
+POST_BIBTEX_CMD = echo "No post-bibtex command"
 endif
 
 # Shell command used to translate DVI to PS
@@ -257,6 +262,8 @@ SOURCE_IMAGES =
 
 MAKEFILE_FILENAME = Makefile
 
+
+
 TMPFILES = bibtex.stamp ${AUXFILE} *.log ${BBLFILE} *.blg \
            *.cb *.toc *.out *.lof *.lot *.los *.maf *.snm *.nav \
            *.fot \
@@ -273,6 +280,8 @@ TMPFILES = bibtex.stamp ${AUXFILE} *.log ${BBLFILE} *.blg \
            VARIABLES \
            *.css ${FILE}-js.* *.pfg lst.tex \
            *.4tc *.4ct *.idv *.${HTML_EXT} *.lg *.xref *.4dx *.4ix *.dvi \
+           *.bak *.pyg \
+           *.bbl *.bcf *.blg *-blx.aux *-blx.bib *.brf *.run.xml \
            ${EPS_CONVERTED_TO_PDF} \
            ${TMPFILES_LOCAL}
 

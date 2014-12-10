@@ -1,11 +1,11 @@
 %% Многостраничные таблицы
 \usepackage{longtable}
 %% Улучшенная разграфка
-\iftexht
+\ifthenelse{\boolean{texht}\or\boolean{revtex}}{%
     \newcommand{\hlx}[1]{\hline}
-\else
+}{%
     \usepackage{mdwtab}
-\fi
+}
 
 \usepackage{makecell}
 

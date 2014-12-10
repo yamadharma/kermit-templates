@@ -12,8 +12,25 @@
 \IfFileExists{ifxetex.sty}{\usepackage{ifxetex}}{}
 \IfFileExists{ifluatex.sty}{\usepackage{ifluatex}}{}
 
-\usepackage{ifthenx}
+\usepackage{xifthen}
 
+% Check tex4ht
+\provideboolean{texht}
+\newif\iftexht\texhtfalse
+\makeatletter
+\@ifpackageloaded{tex4ht}{\texhttrue}{\texhtfalse}
+\@ifpackageloaded{tex4xt}{\setboolean{texht}{true}}{\setboolean{texht}{false}}
+\makeatother
+
+% Check revtex
+\provideboolean{revtex}
+\makeatletter
+\@ifclassloaded{revtex4-1}{\setboolean{revtex}{true}}{\setboolean{revtex}{false}}
+\ifthenelse{\boolean{revtex}}{}{%
+    \@ifclassloaded{revtex4}{\setboolean{revtex}{true}}{\setboolean{revtex}{false}}
+}
+\makeatother
+         
 \ifthenelse{\boolean{luatex}}
     {\input preamble/lualatex}
 %else
