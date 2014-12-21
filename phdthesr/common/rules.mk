@@ -30,7 +30,7 @@ AUTO_GENERATE_IMAGE_DIRECTORY = image
 #AUTO_GENERATE_LST_DIRECTORY = lst
 
 # BibTeX command
-BIBTEX_CMD = biber
+BIBTEX_CMD = bibtexu -l ru
 
 # Post BibTeX command
 #POST_BIBTEX_CMD = scripts/post_bibtex_cmd

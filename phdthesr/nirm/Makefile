@@ -1,1 +1,1 @@
-../nirs/Makefile
+../common/Makefile
