@@ -10,9 +10,22 @@ usepdftitle={false}, % не вставлять информацию из пер�
 % aspectratio=16:9
 \ifdefined\aspectXVIxIX
 aspectratio=169,
-\else
-\fi
+\else\fi
+\ifdefined\printable
+%8pt,
+%a4paper,
+handout,
+\else\fi
 ]{beamer}
+
+%{{{ Dirty hack
+
+\IfFileExists{ifpdf.sty}{\usepackage{ifpdf}}{}
+\IfFileExists{ifxetex.sty}{\usepackage{ifxetex}}{}
+\IfFileExists{ifluatex.sty}{\usepackage{ifluatex}}{}
+\usepackage{xifthen}
+
+%}}}
 
 \input{preamble/class/beamer/common}
 \input{preamble/class/beamer/caption}
@@ -22,6 +35,15 @@ aspectratio=169,
 \else
     \input{preamble/class/beamer/pst}
 \fi
+
+\ifdefined\withnotes
+    \input{preamble/class/beamer/notes}
+\else\fi
+
+\ifdefined\handoutwithnotes
+    \input{preamble/class/beamer/handoutwithnotes}
+\else\fi
+
 
 %%% Local Variables:
 %%% mode: latex

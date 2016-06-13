@@ -67,6 +67,13 @@ LATEX_CMD_MAIN = xelatex
 LATEX_DRAFT_FLAGS = --no-pdf
 endif
 
+# Redefine for LuaLaTeX
+ifeq ("${MACRO_FORMAT}","lualatex")
+LATEX_GENERATION_PROCEDURE = pdf
+LATEX_CMD_MAIN = lualatex
+LATEX_DRAFT_FLAGS = 
+endif
+
 LATEX_CMD = TEXMFCNF=${TEXMFCNF} ${LATEX_CMD_MAIN}
 
 # LaTeX flags which must be passed when the document
@@ -285,7 +292,7 @@ TMPFILES = bibtex.stamp ${AUXFILE} *.log ${BBLFILE} *.blg \
            ${EPS_CONVERTED_TO_PDF} \
            ${TMPFILES_LOCAL}
 
-TMPDIRS = ${TMPDIRS_LOCAL}
+TMPDIRS = _minted-default ${TMPDIRS_LOCAL}
 
 # $(call launchShell, ${FIND_CMD} . -name "auto") \
 

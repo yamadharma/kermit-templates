@@ -1,5 +1,5 @@
 # MACRO_FORMAT
-# latex | xelatex
+# latex | xelatex | lualatex
 MACRO_FORMAT = latex
 
 # Indicate which generation procedure to use. One in:

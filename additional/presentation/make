@@ -1,0 +1,14 @@
+#!/bin/bash
+
+make FILE=russian $@
+#make FILE=russian_16x9 $@
+#make FILE=russian_print $@
+#make FILE=russian_only-notes $@
+#make FILE=russian_with-notes $@
+make FILE=russian_handout-with-notes $@
+
+#make FILE=english BIBTEX_CMD=bibtexu $@
+#make FILE=english_16x9 BIBTEX_CMD=bibtexu $@
+#make FILE=english_print BIBTEX_CMD=bibtexu $@
+#make FILE=english_only-notes BIBTEX_CMD=bibtexu $@
+#make FILE=english_with-notes BIBTEX_CMD=bibtexu $@

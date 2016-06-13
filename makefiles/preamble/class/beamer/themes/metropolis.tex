@@ -1,0 +1,70 @@
+\usetheme{metropolis}
+
+% Options
+
+% titleformat
+% regular, smallcaps, allsmallcaps, allcaps
+\metroset{titleformat=smallcaps}
+
+% titleformat plain
+% regular, smallcaps, allsmallcaps, allcaps
+\metroset{titleformat plain=smallcaps}
+
+% sectionpage
+% none, simple, progressbar
+\metroset{sectionpage=progressbar}
+
+% subsectionpage
+% none, simple, progressbar
+\metroset{subsectionpage=progressbar}
+
+% numbering
+% none, counter, fraction
+\metroset{numbering=fraction}
+
+% progressbar
+% none, head, frametitle, foot
+\metroset{progressbar=frametitle}
+
+% block
+% transparent, fill
+\metroset{block=fill}
+
+% background
+% dark, light
+\metroset{background=light}
+
+% Цветовая тема
+% \usecolortheme{beaver}
+
+% infolines
+%\useoutertheme{infolines}
+% circles inmargin rectangles rounded
+%\useinnertheme{rounded}
+
+% serif structurebold structureitalicserif structuresmallcapsserif
+%\usefonttheme{professionalfonts}
+
+% Убираем навигационные символы
+% \setbeamertemplate{navigation symbols}{}
+
+% Версия для печати
+\ifdefined\printable
+\usecolortheme{dove}
+\setbeamertemplate{navigation symbols}{}
+\fi
+
+
+\ifdefined\withnotes
+\metroset{sectionpage=none}
+\metroset{subsectionpage=none}
+\fi
+
+% \setbeamertemplate{section in toc}[default]
+%\AtBeginSection[] {
+%\begin{frame}
+%% \frametitle{Outline}
+%% \frametitle{Содержание}
+%\tableofcontents[currentsection]
+%\note{\tableofcontents[currentsection]}
+%\end{frame}}

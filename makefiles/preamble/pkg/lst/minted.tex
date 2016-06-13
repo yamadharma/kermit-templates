@@ -7,8 +7,11 @@
 \usepackage{minted}
 
 
-%% Поддержка русских букв
+%{{{ Поддержка русских букв
+
 \makeatletter
+% Not needed for minted v2.0
+\ifdefined\minted@write@detok\@empty\else
 \newcommand{\minted@write@detok}[1]{%
   \immediate\write\FV@OutFile{\detokenize{#1}}}%
 
@@ -33,7 +36,10 @@
   \immediate\openout\minted@code\jobname.pyg
   \immediate\write\minted@code{\expandafter\detokenize\expandafter{#1}}%
   \immediate\closeout\minted@code}
+\fi
 \makeatother
+
+%}}}
 
 %% Выравнивание по центру
 %\RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{}
