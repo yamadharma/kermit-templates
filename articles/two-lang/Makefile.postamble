@@ -1,0 +1,14 @@
+NAME = `cat NAME`
+
+pdf:
+	pdftk english.pdf russian.pdf cat output $(NAME).pdf
+
+vestnik:
+	scripts/prepare_vestnik $(NAME) title/*.tex text/*.tex
+
+casc:
+	scripts/prepare_casc $(NAME) text/*.tex
+
+arxiv:
+	scripts/prepare_arxiv title/*.tex text/*.tex
+

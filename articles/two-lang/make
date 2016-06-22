@@ -1,0 +1,5 @@
+#!/bin/bash
+
+make FILE=russian $@
+make FILE=english BIBTEX_CMD=bibtex $@
+

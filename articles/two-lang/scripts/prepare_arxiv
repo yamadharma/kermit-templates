@@ -1,0 +1,84 @@
+#!/bin/bash
+
+CURDIR=`pwd`
+
+MAINLANG=english
+ALTLANG=russian
+
+file_list=$@
+scriptname=`basename $0`
+
+PROJECT_NAME=${scriptname/prepare_/}
+
+echo ${PROJECT_NAME}
+
+out_dir=out/${PROJECT_NAME}
+
+rm -rf ${out_dir}
+mkdir -p ${out_dir}
+
+clean_english() {
+sed -e '/\\begin{English}/d' \
+    -e '/\\end{English}/d' \
+    -e '/\\begin{Russian}/,/\\end{Russian}/d' \
+    ${file} >> ./${out_dir}/english.tex
+
+sed -i -e '/\\begin{noVestnik}/d' \
+    -e '/\\end{noVestnik}/d' \
+    -e '/\\begin{Vestnik}/,/\\end{Vestnik}/d' \
+    ${out_dir}/english.tex
+
+}
+
+clean_russian() {
+sed -e '/\\begin{Russian}/d' \
+    -e '/\\end{Russian}/d' \
+    -e '/\\begin{English}/,/\\end{English}/d' \
+    ${file} >> ./${out_dir}/russian.tex
+
+sed -i -e '/\\begin{noVestnik}/d' \
+    -e '/\\end{noVestnik}/d' \
+    -e '/\\begin{Vestnik}/,/\\end{Vestnik}/d' \
+    ${out_dir}/russian.tex
+}
+
+
+for i in russian english
+do
+    touch ${out_dir}/${i}.tex
+    cat support/arxiv/preamble/pre/* >> ${out_dir}/${i}.tex
+    cat support/arxiv/preamble/${i}.tex >> ${out_dir}/${i}.tex
+    cat support/arxiv/preamble/post/* >> ${out_dir}/${i}.tex
+
+    cp ${i}.bbl ${out_dir}/
+done
+
+for file in ${file_list}
+do
+
+clean_russian
+clean_english
+
+done
+
+for i in russian english
+do
+    cat support/arxiv/preamble/end/* >> ${out_dir}/${i}.tex
+    sed -i -e '/^%/D' ${out_dir}/${i}.tex
+done
+
+mkdir -p ${out_dir}/bib
+cp -R bib/* ${out_dir}/bib
+
+cp -R image ${out_dir}/
+#find ${out_dir}/image -name "*.pdf" -exec pdftops -r 600 -eps "{}" \;
+
+find ${out_dir} -name "auto" -exec rm -rf '{}' \;
+
+# Files
+cp support/${PROJECT_NAME}/files/* ${out_dir}
+
+cd "${out_dir}"
+tar czvf ../${PROJECT_NAME}.tar.gz *
+cd "${CURDIR}"
+
