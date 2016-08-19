@@ -1,0 +1,159 @@
+#!/bin/bash
+
+
+MAINLANG=english
+ALTLANG=russian
+
+
+file_list=$@
+scriptname=`basename $0`
+
+PROJECT_NAME=${scriptname/prepare_//}
+
+out_dir=out/${PROJECT_NAME}
+
+out_name=`cat NAME`
+
+rm -rf ${out_dir}
+mkdir -p ${out_dir}/{text,bib}
+
+cp -r bib/* ${out_dir}/bib/
+
+clean_english() {
+sed -e '/\\begin{English}/d' \
+    -e '/\\end{English}/d' \
+    -e '/\\begin{Russian}/,/\\end{Russian}/d' \
+    ${file} >> ./${out_dir}/english.tex
+}
+
+clean_russian() {
+sed -e '/\\begin{Russian}/d' \
+    -e '/\\end{Russian}/d' \
+    -e '/\\begin{English}/,/\\end{English}/d' \
+    ${file} >> ./${out_dir}/russian.tex
+}
+
+clean_maintitle() {
+sed -i -e 's:\\begin{abstract}:\\abstracts{:g' \
+    -e 's:\\end{abstract}:}:g' \
+    -e 's:\\affiliation:\\address:g' \
+    -e '/^\\email/D' \
+    ${out_dir}/${MAINLANG}.tex
+}
+
+clean_alttitle() {
+sed -i -e 's:\\begin{abstract}:\\altabstracts{:g' \
+    -e 's:\\end{abstract}:}:g' \
+    -e 's:\\author:\\altauthor:g' \
+    -e 's:\\address:\\altaddress:g' \
+    -e 's:\\affiliation:\\altaddress:g' \
+    -e 's:\\title:\\alttitle:g' \
+    -e 's:\\keywords:\\altkeywords:g' \
+    -e '/^\\email/D' \
+    ${out_dir}/${ALTLANG}.tex
+}
+
+for i in ${MAINLANG}
+do
+    touch ${out_dir}/${i}.tex
+    cat support/${PROJECT_NAME}/preamble/pre/* >> ${out_dir}/${i}.tex
+#    cat support/${PROJECT_NAME}/preamble/${i}.tex >> ${out_dir}/${i}.tex
+    cat support/${PROJECT_NAME}/preamble/post/* >> ${out_dir}/${i}.tex
+
+    cp ${i}.bbl ${out_dir}/
+done
+
+# title
+#shift
+#for file in $1
+#do
+
+#clean_russian
+#clean_english
+
+#clean_maintitle
+#clean_alttitle
+
+#cat ./${out_dir}/${MAINLANG}.tex >> ./${out_dir}/text/${out_name}.tex
+#cat ./${out_dir}/${ALTLANG}.tex >> ./${out_dir}/text/${out_name}.tex
+
+#rm ./${out_dir}/*.tex
+
+#done
+
+# body
+#shift
+for file in $@
+do
+
+clean_russian
+clean_english
+
+cat ./${out_dir}/${MAINLANG}.tex >> ./${out_dir}/text/${out_name}.tex
+# cat ./${out_dir}/english.tex >> ./${out_dir}/text/${out_name}.tex
+
+rm ./${out_dir}/*.tex
+
+done
+
+sed -i -e '/\\begin{noVestnik}/d' \
+    -e '/\\end{noVestnik}/d' \
+    -e '/\\begin{Vestnik}/,/\\end{Vestnik}/d' \
+    ${out_dir}/text/${out_name}.tex
+
+
+# sed -i -e '/^\\bibliography.*/D' ${out_dir}/text/${out_name}.tex
+sed -i -e '/^\\bibliographystyle.*/D' ${out_dir}/text/${out_name}.tex
+
+
+#sed -i -e '/^\\newblock URL.*/D' \
+#    -e 's:\\providecommand\*{\\BibEmph}\[1\]{\#1}:\\providecommand*{\\BibEmph}[1]{\\emph{#1}}:g' \
+#    ${out_dir}/*.bbl
+
+#cat ${out_dir}/*.bbl >> ${out_dir}/text/${out_name}.tex
+
+sed -i -e '/^%/D' ${out_dir}/text/${out_name}.tex
+
+
+cat support/${PROJECT_NAME}/preamble/end/* >> ${out_dir}/text/${out_name}.tex
+
+#find ${out_dir} -name "*.bib" -exec recode UTF-8..WINDOWS1251 "{}" \;
+#find ${out_dir} -name "*.tex" -exec recode UTF-8..WINDOWS1251 "{}" \;
+
+#find ${out_dir} -name "*.bib" -o name "*.tex" -exec echo -e '%%% Local Variables:\n%%% mode: latex\n%%% coding: cp1251-unix\n%%% End:\n' >> '{}' \;
+#find ${out_dir} -name "*.bib" -exec echo -e '%%% Local Variables:\n%%% mode: latex\n%%% coding: cp1251-unix\n%%% End:\n' >> '{}' \;
+#find ${out_dir} -name "*.tex" -exec echo -e '%%% Local Variables:\n%%% mode: latex\n%%% coding: cp1251-unix\n%%% End:\n' >> '{}' \;
+
+echo -e '%%% Local Variables:\n%%% mode: latex\n%%% coding: cp1251-unix\n%%% End:\n' >> ${out_dir}/text/${out_name}.tex
+
+for i in ${out_dir}/bib/${out_name}/*.bib
+do
+    sed -i -e '/^%/D' ${i}
+    echo -e '\n\n%%% Local Variables:\n%%% mode: bibtex\n%%% coding: cp1251-unix\n%%% End:\n' >> ${i}
+done
+
+# Для webofc
+
+sed -i -e 's:{acknowledgments}:{acknowledgement}:' ${out_dir}/text/${out_name}.tex
+
+# Для журнала Программирование
+
+#sed -i -e 's:\\section:\\He:' ${out_dir}/text/${out_name}.tex
+#sed -i -e 's:\\subsection:\\he:' ${out_dir}/text/${out_name}.tex
+#sed -i -e '/^\\maketitle.*/D' ${out_dir}/text/${out_name}.tex
+#sed -i -e 's:\\begin{abstract}:\\rusabstr{:' ${out_dir}/text/${out_name}.tex
+#sed -i -e 's:\\end{abstract}:}\\maketitle:' ${out_dir}/text/${out_name}.tex
+
+
+#find ${out_dir} -name "*.tex" -exec recode UTF-8..WINDOWS1251 "{}" \;
+
+#for i in russian english
+#do
+#    cat support/arxiv/preamble/end/* >> ${out_dir}/${i}.tex
+#    sed -i -e '/^%/D' ${out_dir}/${i}.tex
+#done
+
+#mkdir -p ${out_dir}/bib
+#cp bib/*.bib ${out_dir}/bib
+
+#tar czvf ${out_dir}.tar.gz ${out_dir}

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+file=$1
+
+sed -i -e 's:\\setR:\\mathbb{R}:g' \
+    -e 's:\\crd:\\underline:g' \
+    -e 's:\\Rot:\\mathrm{rot}:g' \
+    -e 's:\\Div:\\mathrm{div}:g' \
+    -e 's:\\Grad:\\mathrm{grad}:g' \
+    "${file}"
+
+#sed -i -r -e 's:\\tensor.*?\[(.*?)\]\{(.*?)\}\{(.*?)\}:{}\1 \2 \3:g' \
+#    "${file}"
