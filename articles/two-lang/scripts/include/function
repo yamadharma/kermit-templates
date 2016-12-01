@@ -1,0 +1,105 @@
+# -*- mode:sh -*-
+
+clear_english() {
+    sed -e '/\\begin{English}/d' \
+	-e '/\\end{English}/d' \
+	-e '/\\begin{Russian}/,/\\end{Russian}/d' \
+	${file} >> ${out_dir}/english_clean.tex
+}
+
+clear_russian() {
+    sed -e '/\\begin{Russian}/d' \
+	-e '/\\end{Russian}/d' \
+	-e '/\\begin{English}/,/\\end{English}/d' \
+	${file} >> ${out_dir}/russian_clean.tex
+}
+
+
+clear_lang() {
+    local restlang=$1
+    local dellang=$2
+    Restlang=${restlang^}
+    Dellang=${dellang^}
+
+    sed -e '/\\begin{'$Restlang'}/d' \
+    	-e '/\\end{'$Restlang'}/d'\
+	-e '/\\begin{'$Dellang'}/,/\\end{'$Dellang'}/d' \
+	 ${file} >> ${out_dir}/${restlang}_clean.tex
+}
+
+clear_mainlang() {
+    clear_lang ${MAINLANG} ${ALTLANG}
+}
+
+clear_altlang() {
+    clear_lang ${ALTLANG} ${MAINLANG}
+}
+
+clear_all_lang() {
+    clear_mainlang
+    clear_altlang
+}
+
+clear_maintitle() {
+    sed -i -e 's:\\begin{abstract}:\\abstracts{:g' \
+	-e 's:\\end{abstract}:}:g' \
+	-e 's:\\affiliation:\\address:g' \
+	-e '/^\\email/D' \
+	${out_dir}/${MAINLANG}_clean.tex
+}
+
+clear_alttitle() {
+    sed -i -e 's:\\begin{abstract}:\\altabstracts{:g' \
+	-e 's:\\end{abstract}:}:g' \
+	-e 's:\\author:\\altauthor:g' \
+	-e 's:\\address:\\altaddress:g' \
+	-e 's:\\affiliation:\\altaddress:g' \
+	-e 's:\\title:\\alttitle:g' \
+	-e 's:\\keywords:\\altkeywords:g' \
+	-e '/^\\email/D' \
+	${out_dir}/${ALTLANG}_clean.tex
+}
+
+clear_comment() {
+    local file=$1
+
+    # Оставить собственные комментарии
+    for tag in $comment_tag_self ${comment_tag_self_list[@]}
+    do
+	# Метка комментария - имя с заглавной буквы
+	Tag=${tag^}
+	sed -i -e '/\\begin{'$Tag'}/d' \
+	    -e '/\\end{'$Tag'}/d' \
+	    -e '/\\begin{'no$Tag'}/,/\\end{'no$Tag'}/d' \
+	    ${file}
+    done
+
+    # Удалить другие комментарии
+    for tag in ${comment_tag_list[@]}
+    do
+	# Метка комментария - имя с заглавной буквы
+	Tag=${tag^}
+	sed -i -e '/\\begin{'no$Tag'}/d' \
+	    -e '/\\end{'no$Tag'}/d' \
+	    -e '/\\begin{'$Tag'}/,/\\end{'$Tag'}/d' \
+	    ${file}
+    done
+}
+
+clear_garbage() {
+    # Удалить комментарии
+    sed -i -e '/^%/D' ${out_dir}/text/${out_name}.tex
+}
+
+convert_to_cp1251() {
+    find ${out_dir} -name "*.bib" -exec recode -f UTF-8..WINDOWS1251 "{}" \;
+    find ${out_dir} -name "*.tex" -exec recode -f UTF-8..WINDOWS1251 "{}" \;
+    
+    echo -e '%%% Local Variables:\n%%% mode: latex\n%%% coding: cp1251-unix\n%%% End:\n' >> ${out_dir}/text/${out_name}.tex
+    
+    for i in $(find ${out_dir} -name "*.bib")
+    do
+	sed -i -e '/^%/D' ${i}
+	echo -e '%%% Local Variables:\n%%% mode: bibtex\n%%% coding: cp1251-unix\n%%% End:\n' >> ${i}
+    done
+}

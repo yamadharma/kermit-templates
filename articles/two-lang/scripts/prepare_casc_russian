@@ -1,0 +1,100 @@
+#!/bin/bash
+
+file_list=$@
+
+echo $file_list
+
+PROJECT_NAME=casc
+
+out_dir=out/casc
+
+out_name=$1
+
+rm -rf ${out_dir}
+mkdir -p ${out_dir}/{text,bib}
+
+cp -r bib/* ${out_dir}/bib/
+
+for i in english
+do
+    touch ${out_dir}/${i}.tex
+    cat support/${PROJECT_NAME}/preamble/pre/* >> ${out_dir}/${i}.tex
+    cat support/${PROJECT_NAME}/preamble/${i}.tex >> ${out_dir}/${i}.tex
+    cat support/${PROJECT_NAME}/preamble/post/* >> ${out_dir}/${i}.tex
+
+    cp default.bbl ${out_dir}/
+done
+
+for file in $file_list
+do
+
+sed -e '/\\begin{Russian}/d' \
+    -e '/\\end{Russian}/d' \
+    -e '/\\begin{English}/,/\\end{English}/d' \
+    ${file} >> ./${out_dir}/english.tex
+
+#sed -i -e 's:\\begin{abstract}:\\altabstracts{:g' \
+#    -e 's:\\end{abstract}:}:g' \
+#    -e 's:\\author:\\altauthor:g' \
+#    -e 's:\\address:\\altaddress:g' \
+#    -e 's:\\title:\\alttitle:g' \
+#    -e 's:\\keywords:\\altkeywords:g' \
+#    ${out_dir}/english.tex
+
+sed -i -e 's:\\prescript{\*}{}:{}^{*}:g' \
+    ${out_dir}/english.tex
+
+#sed -e '/\\begin{Russian}/d' \
+#    -e '/\\end{Russian}/d' \
+#    -e '/\\begin{English}/,/\\end{English}/d' \
+#    ${file} >> ./${out_dir}/russian.tex
+
+#sed -i -e 's:\\begin{abstract}:\\abstracts{:g' \
+#    -e 's:\\end{abstract}:}:g' \
+#    ${out_dir}/russian.tex
+
+
+
+#cat ./${out_dir}/russian.tex >> ./${out_dir}/text/${out_name}.tex
+cat ./${out_dir}/english.tex >> ./${out_dir}/text/${out_name}.tex
+
+rm ./${out_dir}/*.tex
+
+done
+
+sed -i -e '/\\begin{noVestnik}/d' \
+    -e '/\\end{noVestnik}/d' \
+    -e '/\\begin{Vestnik}/,/\\end{Vestnik}/d' \
+    ${out_dir}/text/${out_name}.tex
+
+sed -i -e '/^\\bibliography.*/D' ${out_dir}/text/${out_name}.tex
+
+
+sed -i -e '/^\\newblock URL.*/D' \
+    -e 's:\\providecommand\*{\\BibEmph}\[1\]{\#1}:\\providecommand*{\\BibEmph}[1]{\\emph{#1}}:g' \
+    ${out_dir}/*.bbl
+
+cat ${out_dir}/*.bbl >> ${out_dir}/text/${out_name}.tex
+
+sed -i -e '/^%/D' ${out_dir}/text/${out_name}.tex
+
+# find ${out_dir} -name "*.bib" -o -name "*.tex" -exec recode UTF-8..WINDOWS1251 "{}" \;
+
+#find ${out_dir} -name "*.bib" -o name "*.tex" -exec echo -e '%%% Local Variables:\n%%% mode: latex\n%%% coding: cp1251-unix\n%%% End:\n' >> '{}' \;
+#find ${out_dir} -name "*.bib" -exec echo -e '%%% Local Variables:\n%%% mode: latex\n%%% coding: cp1251-unix\n%%% End:\n' >> '{}' \;
+#find ${out_dir} -name "*.tex" -exec echo -e '%%% Local Variables:\n%%% mode: latex\n%%% coding: cp1251-unix\n%%% End:\n' >> '{}' \;
+
+#echo -e '%%% Local Variables:\n%%% mode: latex\n%%% coding: cp1251-unix\n%%% End:\n' >> ${out_dir}/text/${out_name}.tex
+#echo -e '%%% Local Variables:\n%%% mode: bibtex\n%%% coding: cp1251-unix\n%%% End:\n' >> ${out_dir}/bib/${out_name}/${out_name}.bib
+
+
+for i in english
+do
+    cat support/${PROJECT_NAME}/preamble/end/* >> ${out_dir}/text/${out_name}.tex
+#    sed -i -e '/^%/D' ${out_dir}/${i}.tex
+done
+
+#mkdir -p ${out_dir}/bib
+#cp bib/*.bib ${out_dir}/bib
+
+#tar czvf ${out_dir}.tar.gz ${out_dir}

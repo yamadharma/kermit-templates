@@ -9,6 +9,25 @@ vestnik:
 casc:
 	scripts/prepare_casc $(NAME) text/*.tex
 
+mmcp:
+	scripts/prepare_mmcp $(NAME) text/*.tex
+
+mmg:
+	scripts/prepare_mmg $(NAME) text/*.tex
+
+ecms:
+	scripts/prepare_ecms $(NAME) text/*.tex
+
+jpcs:
+	scripts/prepare_jpcs $(NAME) text/*.tex
+
+lncs:
+	scripts/prepare_lncs $(NAME) text/*.tex
+
+spie:
+	scripts/prepare_spie $(NAME) text/*.tex
+
 arxiv:
+	./make MACRO_FORMAT=latex
 	scripts/prepare_arxiv title/*.tex text/*.tex
 

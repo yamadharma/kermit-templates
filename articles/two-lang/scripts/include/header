@@ -1,0 +1,28 @@
+# -*- mode:sh -*-
+
+file_list=$@
+
+scriptname=`basename $0`
+
+# Убираем префикс `prepare_`
+PROJECT_NAME=${scriptname/prepare_/}
+
+out_dir="out/${PROJECT_NAME}"
+
+out_name="${PROJECT_NAME}_`cat NAME`"
+
+# Создаём каталоги
+rm -rf ${out_dir}
+mkdir -p ${out_dir}/{text,bib}
+# Копируем библиографию
+cp -r bib/* ${out_dir}/bib/
+
+comment_tag_list=(vestnik
+		  spie
+		 )
+
+# Собственная метка комментария - имя с заглавной буквы
+comment_tag_self=${PROJECT_NAME}
+# Дополнительные метки
+comment_tag_self_list=()
+
