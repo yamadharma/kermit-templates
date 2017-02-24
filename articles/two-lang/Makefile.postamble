@@ -18,6 +18,9 @@ mmg:
 ecms:
 	scripts/prepare_ecms $(NAME) text/*.tex
 
+aisc:
+	scripts/prepare_aisc $(NAME) text/*.tex
+
 jpcs:
 	scripts/prepare_jpcs $(NAME) text/*.tex
 
