@@ -88,7 +88,14 @@ clear_comment() {
 
 clear_garbage() {
     # Удалить комментарии
-    sed -i -e '/^%/D' ${out_dir}/text/${out_name}.tex
+    if [[ -f ${out_dir}/text/${out_name}.tex ]]
+    then
+	sed -i -e '/^%/D' ${out_dir}/text/${out_name}.tex
+    fi
+    if [[ -f "$1" ]]
+    then
+	sed -i -e '/^%/D' "$1"
+    fi
 }
 
 convert_to_cp1251() {

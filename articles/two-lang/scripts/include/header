@@ -20,7 +20,8 @@ cp -r bib/* ${out_dir}/bib/
 comment_tag_list=(vestnik
 		  spie
 		  ecms
-		  aisc    
+		  aisc
+		  lncs
 		 )
 
 # Собственная метка комментария - имя с заглавной буквы
