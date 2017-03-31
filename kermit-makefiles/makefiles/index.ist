@@ -1,0 +1,24 @@
+% 
+
+preamble "\n \\begin{theindex}\n  \\providecommand{\\BOL}{\\relax} \n\n \\BOL"
+
+postamble "\n\n \\end{theindex}\n"
+
+%item_1 "\n \\subitem --- "
+%item_2 "\n \\subsubitem --- --- "
+%item_01 "\n \\subitem --- "
+%item_12 "\n \\subsubitem --- --- "
+
+delim_0   " "
+delim_1   " "
+delim_2   " "
+
+group_skip
+"\n\n \\indexspace\n \\BOL"
+
+%lethead_prefix   "{\\bfseries\\hfil "
+%lethead_suffix   "\\hfil}\\nopagebreak\n"
+%lethead_flag       1
+heading_prefix   "{\\bfseries\\hfil "
+heading_suffix   "\\hfil}\\nopagebreak\n"
+headings_flag       1

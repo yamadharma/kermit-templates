@@ -1,0 +1,16 @@
+\usepackage{hyperref}
+\hypersetup{backref,
+ colorlinks=false}
+\hypersetup{pdfborder=0 0 0}
+
+% http://tex.stackexchange.com/questions/24445/hyperref-lualatex-and-unicode-bookmarks-issue-garbled-page-numbers-in-ar-for-l
+\hypersetup{pdfencoding=auto}
+
+\ifthenelse{\boolean{xetex}}{}{%
+  \usepackage{breakurl}
+}
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End:

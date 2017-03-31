@@ -1,0 +1,11 @@
+%% Улучшенная разграфка
+\ifthenelse{\boolean{texht}\or\boolean{revtex}}{%
+    \newcommand{\hlx}[1]{\hline}
+}{%
+    \usepackage{mdwtab}
+}
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End:
