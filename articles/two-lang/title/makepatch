@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for i in *.tex
+do
+    [[ -f 1/"$i" ]] && diff -Naurp "$i" 1/"$i" > "$i".patch
+done
+

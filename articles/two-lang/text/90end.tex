@@ -1,0 +1,55 @@
+\begin{noAisc}
+\begin{noVestnik}
+\begin{Russian}
+  \ifthenelse{\boolean{xetex}}
+  {\bibliographystyle{ugost2008l}}
+  {\bibliographystyle{gost2008l}}
+\end{Russian}
+\begin{English}
+% \bibliographystyle{abbrvnat}
+% \bibliographystyle{naturemag}
+% \bibliographystyle{apsrev4-1}
+% \bibliographystyle{aipnum4-1}
+% \bibliographystyle{apsrmp4-1}
+% \bibliographystyle{gost2008l}
+% \bibliographystyle{plainnat}
+% \bibliographystyle{abbrvnat}
+% \bibliographystyle{unsrtnat}
+ \bibliographystyle{elsarticle-num}
+\end{English}
+
+% \nocite{*}
+\bibliography{bib/red-linearization/cite}
+\end{noVestnik}
+
+
+\begin{Vestnik}
+  \putbib[bib/red-linearization/cite_ru]
+  
+  \makealttitle
+  
+  \putaltbib[bib/red-linearization/cite_en]
+
+\begin{English}
+} % END \selectlanguage
+\end{English}
+
+\end{Vestnik}
+
+\end{noAisc}
+
+% \begin{Lncs}
+% %  \section*{References}
+%   \bibliography{lncs_one-step-diagram}
+% \end{Lncs}
+
+\begin{Aisc}
+  \bibliography{red-linearization}
+\end{Aisc}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../default"
+%%% coding: utf-8-unix
+%%% End:
+
