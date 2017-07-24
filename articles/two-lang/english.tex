@@ -1,0 +1,32 @@
+% Подключение файла с преамбулой
+\input preamble.tex
+
+\input define.tex
+
+\usepackage[sort&compress]{natbib}
+
+\begin{document}
+% \date{}
+
+\selectlanguage{english}
+\includecomment{English}%
+\excludecomment{Russian}%
+
+\excludecomment{Vestnik}%
+\includecomment{noVestnik}%
+
+\excludecomment{Ecms}%
+\includecomment{noEcms}%
+
+\input{title}%
+
+\input{text}%
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% TeX-master: t
+%%% End:
+
