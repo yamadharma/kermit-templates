@@ -1,0 +1,7 @@
+NAME=`cat NAME`
+
+rename:
+	mv default.pdf $(NAME).pdf
+
+odt:
+	mk4ht xhlatex default "xhtml,ooffice" "ooffice/! -cmozhtf" "-coo -cvalidate"

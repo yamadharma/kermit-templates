@@ -1,0 +1,4 @@
+#!/bin/bash
+
+find . -name "*.bib" -exec sed -i -e "s:language =:langid =:g" "{}" \;
+

@@ -47,10 +47,11 @@ else
 endif
 
 ifeq ("${MAKEGLOS_CMD}","makeindex")
-    MAKEGLOS_FULL_CMD = ${MAKEGLOS_CMD} ${MAKEGLOS_FLAGS} -o ${GLSFILE}  -t ${GLGFILE} ${GLOFILE}
+    MAKEGLOS_FULL_CMD = ${MAKEGLOS_CMD} ${MAKEGLOS_FLAGS} -o ${GLSFILE} -t ${GLGFILE} ${GLOFILE}
 else
 ifeq ("${MAKEGLOS_CMD}","xindy")
-    MAKEGLOS_FULL_CMD = ${TEX2XINDY} < ${GLOFILE} > glossary.raw ; ${MAKEGLOS_CMD} ${MAKEINDEX_FLAGS} -t ${GLGFILE} glossary.raw
+#    MAKEGLOS_FULL_CMD = ${TEX2XINDY} < ${GLOFILE} > glossary.raw ; ${MAKEGLOS_CMD} ${MAKEINDEX_FLAGS} -t ${GLGFILE} glossary.raw
+    MAKEGLOS_FULL_CMD = ${MAKEGLOS_CMD} ${MAKEGLOS_FLAGS} -M ${MAKEGLOS_STYLEFILE} -o ${GLSFILE} -t ${GLGFILE} ${GLOFILE}
 endif
 endif
 
@@ -140,7 +141,8 @@ ${COMPILATION_TARGET_FILE}:: ${TEXFILES} ${PRIVATE_IMAGES} ${BIBFILES} ${MAKEIND
 	  if ${HAS_GLOS_CMD} "${GLOFILE}" "${MAKEGLOS_STYLEFILE}"; then \
 	    COMPMAKEGLOS="yes"; \
 	  fi && \
-	  if test -n "$$COMPBIBTEX" -o -n "$$CMPMAKEINDEX" -o -n "$$CMPMAKEGLOS"; then \
+		echo !!!!!!!!!! ${MAKEGLOS_FULL_CMD}; \
+	  if test -n "$$COMPBIBTEX" -o -n "$$COMPMAKEINDEX" -o -n "$$COMPMAKEGLOS"; then \
 	    if test -n "$$COMPBIBTEX"; then \
 	      if test -n "${MULTIPLE_BIB}"; then \
 	        ${PRE_BIBTEX_CMD}; \

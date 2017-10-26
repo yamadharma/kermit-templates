@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#find . -name "*.bib" -exec sed -i -e "s:language =:langid =:g" "{}" \;
+
+for i in `find . -name "*.bib"`
+do
+    tmpfile=`mktemp -u`
+    bibtool -r fix4biblatex.rc -i "$i" -o "$tmpfile"
+    mv "$tmpfile" "$i"
+
+    bibtool -r biblatex -i "$i" -o "$tmpfile"
+    mv "$tmpfile" "$i"
+
+done

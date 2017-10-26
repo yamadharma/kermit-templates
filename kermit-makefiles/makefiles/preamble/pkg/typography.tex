@@ -1,0 +1,31 @@
+% Do not to leave widows and orphans
+\usepackage[all]{nowidow}
+
+\usepackage[%
+% prevent hyphenation of words on more than two consecutive lines
+hyphenation, %
+% to indent paragraphs by 1em
+parindent, %
+% option ensures that the last line of a paragraph is at least as
+% long as the double value of \parindent
+lastparline, %
+\ifluatex
+% avoid hyphenation points that would isolate a single letter
+% When this option is activated, only LuaTEX can render the document
+nosingleletter, %
+% When two consecutive lines begin (homeoarchy) or end (homoioteleuton) with the
+% same word or series of letters, it can confuse the reader, so this
+% has to be avoided
+% When this option is activated, only LuaTEX can render the document
+homeoarchy, %
+\fi 
+]{impnattypo}
+
+% Use microtype
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{alltext}
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End:

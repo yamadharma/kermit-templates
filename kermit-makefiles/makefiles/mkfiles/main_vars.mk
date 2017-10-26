@@ -146,7 +146,7 @@ TOUCH_CMD = mkfiles/scripts/touch
 HAS_INDEX_CMD = mkfiles/scripts/has_index
 
 # Shell command used to launch MakeIndex
-# makeindex | xindy
+# makeindex | xindy | upmendex
 ifeq ("${MAKEINDEX_CMD}","")
 MAKEINDEX_CMD = makeindex
 endif
@@ -173,11 +173,27 @@ endif
 
 # Style file for glossary
 ifndef MAKEGLOS_STYLEFILE
-MAKEGLOS_STYLEFILE = glossary.ist
+ifeq ("${MAKEGLOS_CMD}","makeindex")
+MAKEGLOS_STYLEFILE = ${FILE}.ist
+endif
+ifeq ("${MAKEGLOS_CMD}","xindy")
+MAKEGLOS_STYLEFILE = ${FILE}.xdy
+else
+MAKEGLOS_STYLEFILE = ${FILE}
+endif
 endif
 
 # makeglos flags
-MAKEGLOS_FLAGS = 
+ifndef MAKEGLOS_FLAGS
+ifeq ("${MAKEGLOS_CMD}","makeindex")
+MAKEGLOS_FLAGS =
+endif
+ifeq ("${MAKEGLOS_CMD}","xindy")
+MAKEGLOS_FLAGS = -I xindy -L russian -C utf8
+else
+MAKEGLOS_FLAGS =
+endif
+endif
 
 # Program that permits to display a message in stdout
 ECHO_CMD = mkfiles/scripts/echo

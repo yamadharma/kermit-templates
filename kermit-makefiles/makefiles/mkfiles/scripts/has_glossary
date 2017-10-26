@@ -22,7 +22,7 @@ if ( -f "$ARGV[0]") {
 	open(*FILE, "< $ARGV[0]") or die("$ARGV[0]: $!\n");
 	while (my $line = <FILE>) {
 		$line =~ s/%.*$//;
-		if ($line =~ /\\glossaryentry/) {
+		if (($line =~ /\\glossaryentry/) || ($line =~ /\\glossentry/)) {
 			$line =~ s/\s+//g;
 			push @gloses, "$line";
 		}
