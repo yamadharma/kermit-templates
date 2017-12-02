@@ -17,12 +17,15 @@ mkdir -p ${out_dir}/{text,bib}
 # Копируем библиографию
 cp -r bib/* ${out_dir}/bib/
 
-comment_tag_list=(vestnik
-		  spie
-		  ecms
-		  aisc
-		  lncs
-		 )
+comment_tag_list=(
+    vestnik
+    spie
+    ecms
+    aisc
+    lncs
+    programm
+    maik
+)
 
 # Собственная метка комментария - имя с заглавной буквы
 comment_tag_self=${PROJECT_NAME}
