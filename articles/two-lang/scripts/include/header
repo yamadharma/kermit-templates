@@ -25,6 +25,7 @@ comment_tag_list=(
     lncs
     programm
     maik
+    iopconf
 )
 
 # Собственная метка комментария - имя с заглавной буквы
