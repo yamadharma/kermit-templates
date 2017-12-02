@@ -28,7 +28,7 @@ lncs:
 	scripts/prepare_lncs $(NAME) text/*.tex
 
 spie:
-	scripts/prepare_spie $(NAME) text/*.tex
+	scripts/prepare_spie $(NAME) title/*.tex text/*.tex
 
 arxiv:
 #	./make MACRO_FORMAT=latex
