@@ -47,5 +47,5 @@ BIBTEX_CMD = bibtexu -l ru
 #POST_BIBTEX_CMD = scripts/post_bibtex_cmd
 
 # Additional temporary files
-#TMPFILES_LOCAL = *.tac *.loa default.titlelist.* split-paper.tex default.xml default.html default*.png *.4o[mftsy]
-#TMPDIRS_LOCAL = split-paper.d default.htmld
+TMPFILES_LOCAL = *.tac *.loa default.titlelist.* split-paper.tex default.xml default.html default*.png *.4o[mftsy]
+TMPDIRS_LOCAL = split-paper.d default.htmld out
