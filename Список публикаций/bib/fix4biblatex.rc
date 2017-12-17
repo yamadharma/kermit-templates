@@ -2,6 +2,9 @@ suppress.initial.newline = 1
 
 preserve.key.case = 1
 
+new.entry.type{online}
+new.entry.type{patent}
+
 #fmt.name.name = {}
 #fmt.name.pre = {}
 #fmt.inter.name = {}
@@ -12,12 +15,13 @@ preserve.key.case = 1
 #key.base = {lower}
 #key.number.separator = {}
 
-sort = on
-sort.format = {
-    {%-N(author)# %-N(editor)# zzNoName}
-    {%d(year)#9999}
-    {%-0T(title)#zzNoTitle}
-}
+#sort = on
+#sort.format = {
+#    {%-N(author)# %-N(editor)# zzNoName}
+#    {%d(year)#9999}
+#    {%-0T(title)#zzNoTitle}
+#}
+
 
 ## Sanitize double {{ }}
 #rewrite.rule = {"^{{\(.*\)}}$" = "{\1}"}
