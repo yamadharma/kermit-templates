@@ -33,6 +33,9 @@ spie:
 iopconf:
 	scripts/prepare_iopconf $(NAME) title/*.tex text/*.tex
 
+svproc:
+	scripts/prepare_svproc $(NAME) title/*.tex text/*.tex
+
 arxiv:
 #	./make MACRO_FORMAT=latex
 	scripts/prepare_arxiv $(NAME) title/*.tex text/*.tex

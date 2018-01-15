@@ -22,6 +22,7 @@ comment_tag_list=(
     spie
     ecms
     aisc
+    svproc
     lncs
     programm
     maik
