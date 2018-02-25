@@ -3,6 +3,9 @@ NAME = `cat NAME`
 pdf:
 	pdftk english.pdf russian.pdf cat output $(NAME).pdf
 
+prepare:
+	./scripts/src_prepare
+
 vestnik:
 	scripts/prepare_vestnik $(NAME) title/*.tex text/*.tex
 

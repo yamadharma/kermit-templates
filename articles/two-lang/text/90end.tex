@@ -1,4 +1,4 @@
-\begin{noAisc}
+\begin{no@TARGET@}
 \begin{noVestnik}
 \begin{Russian}
   \ifthenelse{\boolean{xetex}}
@@ -19,16 +19,16 @@
 \end{English}
 
 % \nocite{*}
-\bibliography{bib/red-linearization/cite}
+\bibliography{bib/@PROJECT@/cite}
 \end{noVestnik}
 
 
 \begin{Vestnik}
-  \putbib[bib/red-linearization/cite_ru]
+  \putbib[bib/@PROJECT@/cite_ru]
   
   \makealttitle
   
-  \putaltbib[bib/red-linearization/cite_en]
+  \putaltbib[bib/@PROJECT@/cite_en]
 
 \begin{English}
 } % END \selectlanguage
@@ -36,20 +36,19 @@
 
 \end{Vestnik}
 
-\end{noAisc}
+\end{no@TARGET@}
 
 % \begin{Lncs}
 % %  \section*{References}
 %   \bibliography{lncs_one-step-diagram}
 % \end{Lncs}
 
-\begin{Aisc}
-  \bibliography{red-linearization}
-\end{Aisc}
+\begin{@TARGET@}
+  \bibliography{@PROJECT@}
+\end{@TARGET@}
 
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "../default"
 %%% coding: utf-8-unix
 %%% End:
 

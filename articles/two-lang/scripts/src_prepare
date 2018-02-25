@@ -1,0 +1,28 @@
+#!/bin/bash
+
+[[ -L default.tex ]] || ln -s russian.tex default.tex
+
+if [[ $(cat NAME) != "" ]]
+then
+    PROJECT=$(cat NAME)
+    mkdir -p image/${PROJECT}/{en,ru}
+    [[ -d bib/@PROJECT@ ]] && mv bib/@PROJECT@ bib/${PROJECT}
+    for i in title/* text/*
+    do
+	[[ -L "$i" ]] || sed -i -e "s:@PROJECT@:${PROJECT}:g" "$i"
+    done
+else
+    echo "Add name of project into NAME file"
+fi
+
+if [[ $(cat TARGET) != "" ]]
+then
+    TARGET=$(cat TARGET)
+    for i in *.tex title/* text/*
+    do
+	[[ -L "$i" ]] || sed -i -e "s:@TARGET@:${TARGET}:g" "$i"
+    done 
+else
+    echo "Add target name into TARGET file"
+fi
+    
