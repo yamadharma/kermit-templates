@@ -81,6 +81,9 @@ do
     
 done
 
+clear_comment "${out_dir}/text/${MAINLANG}.tex"
+clear_comment "${out_dir}/text/${ALTLANG}.tex"
+
 # }}}
 
 # {{{ Make postamble
@@ -90,14 +93,11 @@ cat support/${PROJECT_NAME}/preamble/end/* >> ${out_dir}/text/${ALTLANG}.tex
 
 # }}}
 
-clear_comment "${out_dir}/text/${MAINLANG}.tex"
-clear_comment "${out_dir}/text/${ALTLANG}.tex"
-
 clear_garbage "${out_dir}/text/${MAINLANG}.tex"
 clear_garbage "${out_dir}/text/${ALTLANG}.tex"
 
-cp -R image ${out_dir}/
-# find ${out_dir}/image -name "*.pdf" -exec pdftops -r 600 -eps "{}" \;
+cp -RL image ${out_dir}/
+#find ${out_dir}/image -name "*.pdf" -exec pdftops -r 600 -eps "{}" \;
 
 find ${out_dir} -name "auto" -exec rm -rf '{}' \;
 
