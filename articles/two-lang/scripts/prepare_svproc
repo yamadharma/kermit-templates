@@ -17,7 +17,7 @@ do
     cat support/${PROJECT_NAME}/preamble/pre/*.tex >> ${out_dir}/${i}.tex
     # cat support/${PROJECT_NAME}/preamble/${i}.tex >> ${out_dir}/${i}.tex
     mkdir -p ${out_dir}/title
-    cp support/${PROJECT_NAME}/preamble/title/*.tex ${out_dir}/title/
+    cp support/${PROJECT_NAME}/title/*.tex ${out_dir}/title/
     
     cp ${i}.bbl ${out_dir}/
 

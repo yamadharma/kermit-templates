@@ -20,7 +20,7 @@ then
     TARGET=$(cat TARGET)
     for i in *.tex title/* text/*
     do
-	[[ -L "$i" ]] || sed -i -e "s:@TARGET@:${TARGET}:g" "$i"
+	[[ -L "$i" ]] || sed -i -e "s:@TARGET@:${TARGET^}:g" "$i"
     done 
 else
     echo "Add target name into TARGET file"

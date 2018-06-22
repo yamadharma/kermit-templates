@@ -313,7 +313,7 @@ TMPFILES = bibtex.stamp ${AUXFILE} *.log ${BBLFILE} *.blg \
            ${EPS_CONVERTED_TO_PDF} \
            ${TMPFILES_LOCAL}
 
-TMPDIRS = _minted-default ${TMPDIRS_LOCAL}
+TMPDIRS = _minted-* ${TMPDIRS_LOCAL}
 
 # $(call launchShell, ${FIND_CMD} . -name "auto") \
 

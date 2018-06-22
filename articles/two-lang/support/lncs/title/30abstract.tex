@@ -1,0 +1,46 @@
+\begin{abstract}
+In this paper we compare the performance of classical Runge--Kutta
+methods implemented in Fortran and Julia languages. We use the
+technique described in technical report by Tomas Kalibera and Richard
+E.~Jones from University of Kent. This technique allows to solve the
+following problems. 
+1.~The determination of the number of runs required by the program to
+pass the warm-up stage (e.g. JIT-compilation, memory buffers
+filling). 2.~The determination of the optimal number of levels of the
+experiment and the number of repetitions at each level for robust
+testing. 3.~The construction of the confidence interval for the
+resulting average run time.
+
+Before testing Runge--Kutta methods, we carry on numerical experiments
+to study the capabilities of Fortran and Julia for vectorization of
+array operations. Vectorized computations are particularly useful in
+case of Runge-Kutta method applied to ODEs systems of large
+dimension. This functionality allows to achieve acceleration when
+working with arrays of small size, by using SIMD instructions of
+modern processors, which allows to gain performance boost even in the
+case of single-threaded program. In Fortran, this feature is stable
+and built on the syntax level, and in Julia is still under testing.
+
+For the numerical experiment we implement several classical
+Runge--Kutta methods in both languages in the most similar way. We
+also study unvectorized versions of our functions. For Julia we tested
+not only built-in vectorization capabilities, but also external
+library.
+For processing the results of measurements Python 3 with Matplotlib,
+NumPy and SciPy (stats module) were used. We carried out experiments
+for variety of ODE dimensions (from 2 to 64) and different types of
+processors.
+Our work may be interesting not only for the results of comparison of
+the new Julia language with Fortran, but also for the robust testing
+method demonstration.%
+\keywords{Runge--Kutta scheme
+  \and
+  Julia language
+  \and
+  Fortran language
+  \and
+  Performance.}
+\end{abstract}
+
+
+

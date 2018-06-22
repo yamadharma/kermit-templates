@@ -1,9 +1,9 @@
 NAME = `cat NAME`
 
-pdf:
+pdf:	## Make combined english+russian pdf file
 	pdftk english.pdf russian.pdf cat output $(NAME).pdf
 
-prepare:
+prepare:	## Prepare source tree for compilation
 	./scripts/src_prepare
 
 vestnik:

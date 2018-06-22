@@ -1,13 +1,15 @@
 FILE = `cat NAME`
 LATEX=pdflatex
+LATEX_FLAGS=-shell-escape
 BIBTEX=bibtex
 
+
 all:
-	$(LATEX) $(FILE)
-	$(LATEX) $(FILE)
+	$(LATEX) $(LATEX_FLAGS) $(FILE)
+	$(LATEX) $(LATEX_FLAGS) $(FILE)
 	-$(BIBTEX) $(FILE)
-	$(LATEX) $(FILE)
-	$(LATEX) $(FILE)
+	$(LATEX) $(LATEX_FLAGS) $(FILE)
+	$(LATEX) $(LATEX_FLAGS) $(FILE)
 	mkdir -p out
 	mv $(FILE).pdf out
 
@@ -19,7 +21,7 @@ fixbib:
 
 clean:
 	-rm -f *.{log,toc,tac,aux,dvi,ps,bbl,blg,tmp,nav,out,snm,vrb,rel,*~} $(FILE).pdf
-	rm -rf out
+	rm -rf out _minted*
 	for i in $(ALLSUBDIRS); do \
 	    (cd $$i; make clean) || exit 1; \
 	done

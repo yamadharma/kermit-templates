@@ -73,12 +73,12 @@ bibtex:: ${BBLFILE}
 
 makeindex:: ${INDFILE}
 
-clean::
+clean::	## Clean working directory
 	@ ${RM} ${TMPFILES}
 	@ ${RM} -rf ${TMPDIRS}
 	@ if [ -d "${TEX4HT_TEX_OUT_DIR}" ]; then ${RM} -rf ${TEX4HT_TEX_OUT_DIR} ; fi
 
-cleanall:: clean
+cleanall:: clean	## Hard clean working directory
 	@ ${RM} ${DESINTEGRABLEFILES}
 
 images:: ${PRIVATE_IMAGES}
