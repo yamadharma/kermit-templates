@@ -1,0 +1,143 @@
+#!/bin/bash
+# -*- mode: sh -*-
+
+MAINLANG=english
+ALTLANG=russian
+
+source scripts/include/header
+source scripts/include/function
+
+
+# {{{ Make preamble
+
+for i in ${MAINLANG}
+do
+    touch ${out_dir}/${i}.tex
+    # mkdir -p ${out_dir}/pre
+    cat support/${PROJECT_NAME}/preamble/pre/*.tex >> ${out_dir}/${i}.tex
+    # cat support/${PROJECT_NAME}/preamble/${i}.tex >> ${out_dir}/${i}.tex
+    mkdir -p ${out_dir}/title
+    # cp support/${PROJECT_NAME}/title/*.tex ${out_dir}/title/
+    
+    cp ${i}.bbl ${out_dir}/
+
+    cat ${out_dir}/${i}.tex >> ${out_dir}/text/${out_name}.tex
+done
+
+# }}}
+
+
+# {{{ title
+
+shift
+
+for file in "$@"
+do
+    # Из head берём только основной язык
+    if [[ $file == +(title/*head*) ]]
+    then
+
+	clear_all_lang
+
+	cat ./${out_dir}/${MAINLANG}_clean.tex >> ./${out_dir}/${file}
+	# cat ./${out_dir}/${ALTLANG}_clean.tex >> ./${out_dir}/text/${out_name}.tex
+	
+	rm ./${out_dir}/*.tex
+	
+	shift
+	continue
+    fi
+
+    # Skeep all authors
+    if [[ $file == +(title/*author*) ]]
+    then
+
+	echo $file
+	clear_all_lang
+
+	cat ./${out_dir}/${MAINLANG}_clean.tex >> ./${out_dir}/${file%%_*}.tex
+	# cat ./${out_dir}/${ALTLANG}_clean.tex >> ./${out_dir}/text/${out_name}.tex
+	
+	rm ./${out_dir}/*.tex
+	
+	shift
+	continue
+    fi
+
+    if [[ $file == +(title/*) ]]
+    then
+
+
+	clear_all_lang
+	
+	# clear_maintitle
+	# clear_alttitle
+	
+	# Только основной язык
+	cat ./${out_dir}/${MAINLANG}_clean.tex >> ./${out_dir}/${file}
+	# cat ./${out_dir}/${ALTLANG}_clean.tex >> ./${out_dir}/text/${out_name}.tex
+	
+	rm ./${out_dir}/*.tex
+	
+	shift
+    fi
+done
+
+cp support/${PROJECT_NAME}/title/*.tex ${out_dir}/title/
+cat ./${out_dir}/title/*.tex >> ./${out_dir}/text/${out_name}.tex
+rm -rvf ./${out_dir}/title
+
+# }}}
+
+# {{{ body
+
+for file in "$@"
+do
+
+    clear_all_lang
+    
+    # Нужен только один язык
+    cat ./${out_dir}/${MAINLANG}_clean.tex >> ./${out_dir}/text/${out_name}.tex
+    # cat ./${out_dir}/${ALTLANG}_clean.tex >> ./${out_dir}/text/${out_name}.tex
+    
+    rm ./${out_dir}/*.tex
+    
+done
+
+clear_comment "${out_dir}/text/${out_name}.tex"
+
+# }}}
+
+# {{{ Make postamble
+
+cat support/${PROJECT_NAME}/preamble/end/* >> ${out_dir}/text/${out_name}.tex
+
+# }}}
+
+# {{{ Acknowledgments hacks
+
+sed -i -e 's:\\begin{acknowledgments}:\\section*{Acknowledgment}:g' \
+    ${out_dir}/text/${out_name}.tex
+
+sed -i -e '/\\end{acknowledgments}/D' \
+     ${out_dir}/text/${out_name}.tex
+
+# sed -i -e 's:\\section{:\\Section{:g' \
+#     -e 's:\\subsection{:\\Subsection{:g' \
+#     ${out_dir}/text/${out_name}.tex
+
+# }}}
+
+clear_garbage
+
+# {{{ Copy support files
+
+if [[ -d "support/${PROJECT_NAME}/files" ]]
+then
+    if [[ ! -z `ls support/"${PROJECT_NAME}"/files/*` ]]
+    then
+	cp -R support/"${PROJECT_NAME}"/files/* "${out_dir}"/text/
+    fi
+fi
+
+# }}}

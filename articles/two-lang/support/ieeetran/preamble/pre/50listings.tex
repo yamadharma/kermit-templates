@@ -1,0 +1,28 @@
+%% Работа с листингами
+% Пакет listings
+\usepackage{listings}
+\usepackage{listingsutf8}
+\lstset{%
+    showstringspaces=false,
+%    numbers=left, 
+%    numberstyle=\tiny,
+%    upquote=false,
+    keepspaces=true,
+    columns=flexible,
+    basicstyle=\footnotesize\ttfamily,%
+    breaklines=true,%
+    breakatwhitespace=true,%
+    postbreak=\space,%
+    prebreak={\mbox{\quad$\hookleftarrow$}},%
+}
+
+%\ifthenelse{\boolean{luatex}\OR\boolean{xetex}}{}{%
+%    \lstset{inputencoding=utf8/koi8-r}}
+
+\lstloadlanguages{C,make,bash,[x86masm]Assembler,[LaTeX]TeX}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End:

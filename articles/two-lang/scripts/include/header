@@ -27,6 +27,8 @@ comment_tag_list=(
     programm
     maik
     iopconf
+    ieeetran
+    @TARGET@
 )
 
 # Собственная метка комментария - имя с заглавной буквы
