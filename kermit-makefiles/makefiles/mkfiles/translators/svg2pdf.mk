@@ -28,7 +28,7 @@ ifeq ("$(call isTranslatorLoaded,svg2pdf)","false")
 SVG2EPS_BIN           = inkscape
 SVG2EPS_FLAGS         = --without-gui
 SVG2EPS_INPUT_FLAGS   =
-SVG2EPS_OUTPUT_FLAGS  = --export-embed-fonts --export-text-to-path --export-eps=
+SVG2EPS_OUTPUT_FLAGS  = --export-text-to-path --export-eps=
 SVG2EPS_POST_FLAGS    =
 SVG2EPS_OUTPUT_INPUT  = no
 SVG2EPS_OUTPUT_STDOUT = no

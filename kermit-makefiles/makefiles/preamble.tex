@@ -1,57 +1,7 @@
 %%% 
 
 \input preamble/class
-
-\newif\iftexht\texhtfalse
-\makeatletter
-\@ifpackageloaded{tex4ht}{\texhttrue}{\texhtfalse}
-\makeatother
-
-% looks for pdfTEX in pdf mode
-\IfFileExists{ifpdf.sty}{\usepackage{ifpdf}}{}
-\IfFileExists{ifxetex.sty}{\usepackage{ifxetex}}{}
-\IfFileExists{ifluatex.sty}{\usepackage{ifluatex}}{}
-
-\usepackage{xifthen}
-
-% Check tex4ht
-%\provideboolean{texht}
-%\newif\iftexht\texhtfalse
-%\makeatletter
-%\@ifpackageloaded{tex4ht}{\texhttrue}{\texhtfalse}
-%\@ifpackageloaded{tex4xt}{\setboolean{texht}{true}}{\setboolean{texht}{false}}
-%\makeatother
-
-% Check revtex
-\provideboolean{revtex}
-\makeatletter
-\@ifclassloaded{revtex4-1}{\setboolean{revtex}{true}}{\setboolean{revtex}{false}}
-\ifthenelse{\boolean{revtex}}{}{%
-    \@ifclassloaded{revtex4}{\setboolean{revtex}{true}}{\setboolean{revtex}{false}}
-}
-\makeatother
-         
-\ifthenelse{\boolean{luatex}}
-    {\input preamble/lualatex}
-%else
-{\ifthenelse{\boolean{xetex}}
-    {\input preamble/xelatex}
-    %else
-    {
-	\input preamble/latex
-	\ifpdf
-	    \input preamble/pdflatex
-	\fi
-    }
-}
-
-\input preamble/pkg
-
-\input preamble/local
-
-\iftexht
-    \input preamble/tex4ht
-\fi
+\input preamble/include/main
 
 %%% Local Variables: 
 %%% mode: latex

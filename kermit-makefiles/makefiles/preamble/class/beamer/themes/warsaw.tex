@@ -29,10 +29,21 @@
 
 
 % \setbeamertemplate{section in toc}[default]
+% \AtBeginSection[] {
+% \begin{frame}
+% % \frametitle{Outline}
+% % \frametitle{Содержание}
+% \tableofcontents[currentsection]
+% \note{\tableofcontents[currentsection]}
+% \end{frame}}
+
 \AtBeginSection[] {
-\begin{frame}
-% \frametitle{Outline}
-% \frametitle{Содержание}
-\tableofcontents[currentsection]
-\note{\tableofcontents[currentsection]}
-\end{frame}}
+  \begin{frame}
+    \begin{centering}
+      \begin{beamercolorbox}[sep=12pt,center,rounded=true,shadow=true]{part title}
+        \usebeamerfont{section title}\insertsection\par
+      \end{beamercolorbox}
+    \end{centering}
+    \note{\insertsection}
+  \end{frame}
+}

@@ -2,25 +2,36 @@
 % Пакет listings
 \usepackage{listings}
 \usepackage{listingsutf8}
+
 \lstset{%
-    showstringspaces=false,
-%    numbers=left, 
-%    numberstyle=\tiny,
-%    upquote=false,
-    keepspaces=true,
-    columns=flexible,
-    basicstyle=\footnotesize\ttfamily,%
-    breaklines=true,%
-    breakatwhitespace=true,%
-    postbreak=\space,%
-    prebreak={\mbox{\quad$\hookleftarrow$}},%
+  showstringspaces=false,
+  % numbers=left, 
+  % numberstyle=\tiny,
+  % upquote=false,
+  keepspaces=true,
+  columns=flexible,
+  % basicstyle=\footnotesize\ttfamily,
+  basicstyle=\ttfamily
 }
 
+%{{{ Break lines
+
+\lstset{breaklines=true}
+\lstset{breakautoindent=true}
+\lstset{breakatwhitespace=true}
+
+% Break sign
+\lstset{prebreak=\space}
+\lstset{postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookrightarrow\space}}}
+% \lstset{postbreak=\space}
+% \lstset{prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}}}
+
+%}}}
+
 \ifthenelse{\boolean{luatex}\OR\boolean{xetex}}{}{%
-    \lstset{inputencoding=utf8/koi8-r}}
+  \lstset{inputencoding=utf8/koi8-r}}
 
-\lstloadlanguages{C,make,bash,[x86masm]Assembler,[LaTeX]TeX}
-
+% \lstloadlanguages{C,make,bash,[x86masm]Assembler,[LaTeX]TeX}
 
 %%% Local Variables:
 %%% mode: latex

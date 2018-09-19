@@ -53,7 +53,11 @@ new.entry.type{patent}
 #rewrite.rule = {language # "English"}
 
 # Sanitize month
-resource bibtool.d/month
+#resource bibtool.d/month
+
+# Fix for concret entry types
+resource bibtool.d/eprint
+resource bibtool.d/book
 
 #
 # Semantic checks for year fields
@@ -92,3 +96,14 @@ rewrite.rule = {address # "Москва" # "М."}
 
 # rename url date field to be correctly used by BibTeX, BibLaTeX, abnTeX etc
 rename.field {urldate = urlaccessdate}
+
+# BibTeX-1.0 Support
+apply.alias = on
+apply.include = on
+apply.modify = on
+
+# Delete all empty fields
+rewrite.rule { "^\" *\"$" }
+rewrite.rule { "^{ *}$" }
+rewrite.rule { "^\"\"$" }
+rewrite.rule { "^{}$" }

@@ -39,6 +39,9 @@ iopconf:
 svproc:
 	scripts/prepare_svproc $(NAME) title/*.tex text/*.tex
 
+ieeetran:
+	scripts/prepare_ieeetran $(NAME) title/*.tex text/*.tex
+
 arxiv:
 #	./make MACRO_FORMAT=latex
 	scripts/prepare_arxiv $(NAME) title/*.tex text/*.tex

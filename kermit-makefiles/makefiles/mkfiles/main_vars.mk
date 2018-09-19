@@ -203,7 +203,7 @@ ECHO_ERR_CMD = mkfiles/scripts/echo_err
 
 # Program that permits to find a file
 # FIND_CMD = mkfiles/scripts/script_find
-FIND_CMD = find
+FIND_CMD = find -L
 
 # Convertion to HTML
 

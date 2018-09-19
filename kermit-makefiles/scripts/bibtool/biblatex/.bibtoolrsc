@@ -60,6 +60,10 @@ resource bibtool.d/biblatex
 # Use biblatex
 resource biblatex
 
+# Fix for concret entry types
+resource bibtool.d/eprint
+resource bibtool.d/book
+
 #
 # Semantic checks for year fields
 #
@@ -99,3 +103,14 @@ rewrite.rule = {address # "Москва" # "М."}
 rename.field {urldate = urlaccessdate}
 
 #rename.field {$Misc = $Book}
+
+# BibTeX-1.0 Support
+apply.alias = on
+apply.include = on
+apply.modify = on
+
+# Delete all empty fields
+rewrite.rule { "^\" *\"$" }
+rewrite.rule { "^{ *}$" }
+rewrite.rule { "^\"\"$" }
+rewrite.rule { "^{}$" }

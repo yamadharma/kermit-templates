@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ## Based on pst-pdf script
 
@@ -71,6 +71,7 @@ myexec()
 progname=pdflatexps
 silent=true # default setting; change if you like
 crop=true
+#crop=false
 needsCleanup=false
 ps2pdf_opts="-dAutoRotatePages=/None"
 tmpdir=${TMPDIR-${TEMP-${TMP-/tmp}}}/.$progname$$
@@ -78,6 +79,11 @@ log=$tmpdir/log
 version="1.0"
 
 pdfcrop_opts="--xetex"
+
+macro_format=latex
+# ext_tmp: temporary extention
+# dvi | pdf
+ext_tmp=dvi
 
 # look for optional things first
 while
@@ -126,16 +132,21 @@ else
     PREAMBLE_NAME=preamble
 fi
 
-latex \
+FLAGS=-shell-escape
+
+${macro_format} ${FLAGS} \
     "\input{$PREAMBLE_NAME} \begin{document} \thispagestyle{empty} \input{$file} \end{document}"
 
 
-mv ${PREAMBLE_NAME}.dvi "${dir}"/$job.dvi
+mv ${PREAMBLE_NAME}.${ext_tmp} "${dir}"/$job.${ext_tmp}
 test -f ${PREAMBLE_NAME}.aux && rm ${PREAMBLE_NAME}.aux
 test -f ${PREAMBLE_NAME}.log && rm ${PREAMBLE_NAME}.log
 
-test -f "${dir}"/"$job.dvi" && myexec dvips -Ppdf -o "${dir}"/"$job.eps" "${dir}"/"$job.dvi"
-test -f "${dir}"/"$job.eps" && myexec ps2pdf "$ps2pdf_opts" "${dir}"/"$job.eps" "${dir}"/"$job.pdf"
+if [[ ${ext_tmp} == "dvi" ]]
+then
+    test -f "${dir}"/"$job.dvi" && myexec dvips -Ppdf -o "${dir}"/"$job.eps" "${dir}"/"$job.dvi"
+    test -f "${dir}"/"$job.eps" && myexec ps2pdf "$ps2pdf_opts" "${dir}"/"$job.eps" "${dir}"/"$job.pdf"
+fi
 
 if $crop
 then

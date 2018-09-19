@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Сколько страниц удалить для правильной нумерации
+NUMPAGE_FIX=0
+# Сколько разделов удалить в начале
+CHAPTERS_REMOVE=1
+
+rm -rf split-paper.d
+mkdir split-paper.d
+
+echo "#!/bin/bash" > run_split-paper
+
+# Делаем промежуточный файл
+# формат: paperid page-begin page-end
+
+awk '\
+BEGIN{ORS=""; numpage_fix=$NUMPAGE_FIX; } \
+NR == 1 {print $1, $2 + numpage_fix " ";} \
+NR != 1 {print $2 - 1  + numpage_fix ; print "\n"; print $1, $2  + numpage_fix " ";} \
+END{print "end", "\n"} \
+' split-paper.tex > split-paper
+
+#{{{ Удалить вспомогательные разделы
+
+for i in $(seq 1 ${CHAPTERS_REMOVE})
+do
+    sed -i -e '1D' split-paper
+done
+
+#}}}
+
+# Нумеруем строки
+nl -n rz -w 3 split-paper > split-paper.nl
+mv split-paper.nl split-paper
+
+awk '{print "qpdf --empty --pages default.pdf ", $3 "-" $4, " -- ", "split-paper.d/" $1 "-" $2 ".pdf" >> "run_split-paper"}' split-paper
+chmod +x run_split-paper
+
+./run_split-paper
+
+rm run_split-paper
+rm split-paper

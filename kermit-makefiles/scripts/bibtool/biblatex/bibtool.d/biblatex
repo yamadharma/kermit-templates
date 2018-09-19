@@ -1,4 +1,2 @@
 # For BibLaTex
 rename.field {language=langid}
-rename.field {pages = pagetotal if $type = "Book"}
-rename.field {numpages = pagetotal if $type = "Book"}
