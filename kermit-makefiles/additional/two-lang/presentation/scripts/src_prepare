@@ -1,0 +1,40 @@
+#!/bin/bash
+
+MAIN_LANG=russian
+
+[[ -L default.tex ]] || ln -s ${MAIN_LANG}.tex default.tex
+
+for i in 16x9 handout-with-notes only-notes poster print with-notes
+do
+    if [[ -L default_${i}.tex ]]
+    then
+	:
+    else
+	[[ -f ${MAIN_LANG}_${i}.tex ]] && ln -s ${MAIN_LANG}_${i}.tex default_${i}.tex
+    fi
+done
+
+if [[ $(cat NAME) != "" ]]
+then
+    PROJECT=$(cat NAME)
+    mkdir -p image/${PROJECT}/{en,ru}
+    [[ -d bib/@PROJECT@ ]] && mv bib/@PROJECT@ bib/${PROJECT}
+    for i in title/* text/*
+    do
+	[[ -L "$i" ]] || sed -i -e "s:@PROJECT@:${PROJECT}:g" "$i"
+    done
+else
+    echo "Add name of project into NAME file"
+fi
+
+# if [[ $(cat TARGET) != "" ]]
+# then
+#     TARGET=$(cat TARGET)
+#     for i in *.tex title/* text/*
+#     do
+# 	[[ -L "$i" ]] || sed -i -e "s:@TARGET@:${TARGET^}:g" "$i"
+#     done 
+# else
+#     echo "Add target name into TARGET file"
+# fi
+    

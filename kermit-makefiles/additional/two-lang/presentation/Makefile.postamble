@@ -1,0 +1,9 @@
+NAME=`cat NAME`
+
+rename:	## Rename pdf files
+	mmv "*.pdf" "$(NAME)_#1.pdf"
+
+prepare:	## Prepare source tree for compilation
+	./scripts/src_prepare
+
+
