@@ -1,15 +1,25 @@
 # -*- mode:sh -*-
 
-file_list=$@
-
 scriptname=`basename $0`
 
-# Убираем префикс `prepare_`
-PROJECT_NAME=${scriptname/prepare_/}
+if [[ ${scriptname} == prepare ]]
+then
+    PROJECT_NAME=$1
+    NAME=$2
+    shift
+    shift
+    file_list=$@
+else
+    # Старый вариант именования скриптов
+    # Убираем префикс `prepare_`
+    PROJECT_NAME=${scriptname/prepare_/}
+    NAME=$1
+    shift
+    file_list=$@
+fi
 
 out_dir="out/${PROJECT_NAME}"
-
-out_name="${PROJECT_NAME}_`cat NAME`"
+out_name="${PROJECT_NAME}_${NAME}"
 
 # Создаём каталоги
 rm -rf ${out_dir}

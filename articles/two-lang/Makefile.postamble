@@ -4,7 +4,8 @@ pdf:	## Make combined english+russian pdf file
 	pdftk english.pdf russian.pdf cat output $(NAME).pdf
 
 prepare:	## Prepare source tree for compilation
-	./scripts/src_prepare
+	@./scripts/src_prepare
+	@[[ -d support/$(TARGET) ]] && (cd support/$(TARGET); make) 
 
 vestnik:
 	scripts/prepare_vestnik $(NAME) title/*.tex text/*.tex
@@ -34,7 +35,7 @@ spie:
 	scripts/prepare_spie $(NAME) title/*.tex text/*.tex
 
 iopconf:
-	scripts/prepare_iopconf $(NAME) title/*.tex text/*.tex
+	scripts/prepare iopconf $(NAME) title/*.tex text/*.tex
 
 svproc:
 	scripts/prepare_svproc $(NAME) title/*.tex text/*.tex
