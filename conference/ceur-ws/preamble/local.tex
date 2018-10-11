@@ -1,0 +1,514 @@
+\usepackage{geometry}
+%\geometry{reset}
+\geometry{papersize={145mm,200mm}}
+
+\geometry{twoside}
+\geometry{bindingoffset=0pt}
+
+% \geometry{heightrounded}
+\geometry{includeheadfoot}
+%\geometry{includefoot}
+%\geometry{includehead}
+
+
+%\geometry{hmargin={22mm,11mm},vmargin={12mm,13mm}}
+%\geometry{hmargin={16mm,16mm},vmargin={12mm,13mm}}
+%\geometry{hmargin={16mm,16mm},vmargin={10mm,13mm}}
+%\geometry{total={112mm,175mm}}
+%\geometry{outer=10mm}
+%\geometry{inner=27mm}
+%\geometry{textwidth=112mm}
+%\geometry{textheight=170mm}
+%\geometry{marginparwidth=0pt,marginparsep=0pt}
+%\geometry{headheight=0pt}
+%\geometry{headsep=0pt}
+% \geometry{voffset=0pt}
+%  \geometry{footskip=2mm}
+% \geometry{showframe}
+% \geometry{asymmetric}
+
+%\setlength\hoffset{-7.4mm}
+%\setlength\oddsidemargin{0pt}
+%\setlength\evensidemargin{-15mm}
+\geometry{hcentering}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\renewcommand{\headerFontSize}{\small}
+%\fancypagestyle{plain}{%
+% \pagestyle{empty}
+\fancyhf{}
+\fancyhead{}
+% \fancyhead[RO,LE]{{\small\textrm{\thepage}}}
+\fancyhead[LE,RO]{\headerFontSize\thepage}%
+%\fancyhead[RE]{\leftmark}%
+\fancyhead[RE]{\headerFontSize ITTMM---2018}%
+\fancyhead[CO]{\headerFontSize \leftmark}
+% \renewcommand{\headrulewidth}{0pt}
+% \renewcommand{\footrulewidth}{0pt}
+% \fancyfoot[C]{{\small\textrm{\thepage}}}
+% \fancyfoot[RO,LE]{{\small\textrm{\thepage}}}
+\fancyfoot{}
+
+% \fancypagestyle{plain}{%
+% \fancyhead[LE,RO]{\headerFontSize\thepage}%
+% \fancyhead[RE]{\leftmark}%
+% \fancyhead[LO]{\rightmark}
+% \fancyfoot{}
+% }
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyhead{}
+  \fancyfoot{}
+  \fancyhead[CO,CE]{\LARGE \DivFontShape \mypartname}%
+  % \fancyhf{}
+  % \fancyhead[LC,RC]{\partname}%
+  % \renewcommand{\headrulewidth}{0pt}
+  \fancyfoot{}
+}
+
+\fancypagestyle{firstpage}{%
+  \fancyhf{}
+  \fancyhead{}
+  \fancyfoot{}
+  \fancyhead[LE,RO]{\headerFontSize\thepage}%
+  \fancyfoot[LE,LO]{\headerFontSize Copyright © 2018 for the
+    individual papers by the papers' authors. Copying permitted for
+    private and academic purposes. This volume is published and
+    copyrighted by its editors.\\
+    In: K. E. Samouylov, L. A. Sevastianov, D. S. Kulyabov (eds.):
+    Selected Papers of the VIII Conference ``Information and
+    Telecommunication Technologies and Mathematical Modeling of High-Tech
+    Systems'', Moscow, Russia, 20-Apr-2018, published at
+    \url{http://ceur-ws.org}}
+  % \fancyhead[RE]{\leftmark}%
+  % \fancyhead[RE]{\headerFontSize ITTMM---2018}%
+  % \fancyhead[CO]{\headerFontSize \leftmark}
+  % \fancyhead[CO,CE]{\LARGE \DivFontShape \mypartname}%
+  % \fancyhf{}
+  % \fancyhead[LC,RC]{\partname}%
+  % \renewcommand{\headrulewidth}{0pt}
+}
+
+\usepackage{pdfpages}
+
+% \usepackage{url}
+
+\sloppy
+%\raggedbottom
+\flushbottom
+
+%\clubpenalty=10000
+%\widowpenalty=10000
+\finalhyphendemerits=0
+\doublehyphendemerits=1000000
+
+% \renewcommand{\chapterFontShape}{\bfseries}
+% \renewcommand{\headerFontSize}{\normalfont}
+\renewcommand{\headerFontSize}{\small}
+
+%\renewcommand{\titleFontShape}{\bfseries}
+%\renewcommand{\titleFontSize}{\large}
+
+%\renewcommand{\sectionFontShape}{\bfseries}
+%\renewcommand{\sectionFontSize}{\normalfont}
+
+% \renewcommand{\subsectionFontShape}{\bfseries}
+%\renewcommand{\subsectionFontSize}{\normalfont}
+
+%\renewcommand{\paragraphFontShape}{\bfseries}
+
+%\titleformat{\chapter}[display]%
+%    {\thispagestyle{fancy}\normalfont\chapterFontSize\chapterFontShape\chapterPosition}{\chaptertitlename\space\thechapter}{0.8\baselineskip}{\vspace{-1ex}\chapterFontSize}[\titlerule]
+
+% \titleformat{\paragraph}[runin]%
+%     {\normalfont\paragraphFontSize\paragraphFontShape}{\theparagraph\secaftersnum}{1em}{\indent}
+% \titleformat{\subparagraph}[runin]%
+%     {\normalfont\subparagraphFontSize\subparagraphFontShape}{\thesubparagraph\secaftersnum}{1em}{\indent}
+
+
+% \captionsetup[wrapfigure]{labelformat=empty,font={small},justification=centerlast}
+% \captionsetup[figure]{labelformat=empty,font={small},justification=centerlast}
+
+\makeatletter
+\@addtoreset{section}{PFUtitle}
+\@addtoreset{equation}{PFUtitle}
+\@addtoreset{figure}{PFUtitle}
+\@addtoreset{table}{PFUtitle}
+\@addtoreset{Example}{PFUtitle}
+% \renewcommand\theequation{\@arabic\c@section}
+\renewcommand\thechapter{\@Roman\c@chapter}
+
+\renewcommand \thepart {\@Roman\c@part}
+
+\usepackage{afterpage}
+
+\def\mypartname{}
+
+% \makeatletter
+% \renewcommand*{\cleardoublepage}{\clearpage\if@twoside \ifodd\c@page\else
+%     \hbox{}%
+%     \thispagestyle{empty}%
+%     \newpage%
+%     \if@twocolumn\hbox{}\newpage\fi\fi\fi}
+% \makeatother
+
+
+\renewcommand{\part}[2][]%
+{%
+  {%
+    \cleardoublepage
+    \thispagestyle{empty}
+    \refstepcounter{part}%
+    \def\mypartname{#2}
+    % \def\mypartname{#1}
+    \interlinepenalty\@M
+    \vspace*{.3\textheight}
+    \begin{center}
+      % \vskip 10\p@ \@plus -1ex \@minus -.2ex
+      % {\LARGE \DivFontShape \thepart.~#2\par}
+      {\Huge \DivFontShape #2\par}
+    \end{center}
+    \par\nobreak
+    \vfill
+    % \vskip 10\p@\@plus -1ex \@minus -.2ex%
+    \clearpage{\pagestyle{empty}\cleardoublepage}
+  }
+  % \def\mypartname{#2}
+  % \def\mypartname{#1}
+  % \thispagestyle{plain}
+  % \fancyhf{}
+  % \fancyhead[CO,CE]{\LARGE \DivFontShape \mypartname}%
+  % \renewcommand{\headrulewidth}{0pt}
+  % \afterpage{%
+  % \fancyhf{}
+  % \fancyhead[LE,RO]{\headerFontSize\thepage}%
+  % \fancyhead[RE]{\headerFontSize Информационно-телекоммуникационные
+  % технологии и матмоделирование --- 2016}%
+  % \fancyhead[CO]{\headerFontSize \leftmark}
+  % % \fancyhead[CE]{\headerFontSize Информационно-телекоммуникационные технологии и математическое моделирование высокотехнологичных систем}%
+  % % \fancyhead[CO]{\headerFontSize \leftmark \rightmark}
+  % % \renewcommand{\headrulewidth}{0.4pt}
+  % \fancyfoot{}
+  % }
+  \addtocontents{tac}%
+  {{\vspace{8dd}\protect\noindent\protect\raggedright\protect\protect\large\DivFontShape{\thepart.~#1}%
+      \@par
+      \vspace{4dd}}} 
+  \addtocontents{toc}%
+  % {{\vspace{8dd}\protect\noindent\protect\raggedright\protect\protect\large\DivFontShape{\thepart.~#2}%
+  {{\vspace{8dd}\protect\noindent\protect\raggedright\protect\protect\large\DivFontShape{#2}%
+      \@par
+      \vspace{4dd}}}
+}
+
+\newcommand{\partNonumber}[2][]%
+{%
+  {%
+    \clearpage
+%    \refstepcounter{part}%
+    \interlinepenalty\@M
+    \begin{center}
+      \vskip 10\p@ \@plus -1ex \@minus -.2ex
+      {\LARGE \DivFontShape #2\par}
+    \end{center}
+    \par\nobreak
+    \vskip 10\p@\@plus -1ex \@minus -.2ex%
+  }
+  \addtocontents{tac}%
+  {{\vspace{8dd}\protect\noindent\protect\raggedright\protect\protect\large\DivFontShape{#1}%
+     \@par
+      \vspace{4dd}}} 
+  \addtocontents{toc}%
+  {{\vspace{8dd}\protect\noindent\protect\raggedright\protect\protect\large\DivFontShape{#2}%
+      \@par
+      \vspace{4dd}}}
+}
+
+\renewcommand{\tableofcontents}{%
+    {\centering\textbf{\LARGE\contentsname}%
+    \par\nobreak%
+    \vskip 1ex \@plus -1ex \@minus -.2ex}%
+    \@starttoc{toc}%
+%    \raggedbottom\relax
+}
+
+\def\@settitle{
+  \begin{center}%
+    % \@titlesize
+    \titleFontSize\titleFontShape
+    \MakeUppercase{\@title}
+  \end{center}%
+}
+
+\def\@setalttitle{%
+  \begin{center}%
+    % \large
+    % \bfseries
+    \titleFontSize\titleFontShape
+    \@alttitle
+  \end{center}%
+} % END \@setalttitle
+
+\def\@setkeywords{%
+  \hskip\parindent%
+  % \@keywordsize%
+  {\keywordsname:}\enspace \@keywords\@addpunct.%
+}%
+\def\@setaltkeywords{%
+  \hskip\parindent%
+  % \@keywordsize%
+  {\keywordsname:}\enspace \alt@keywords\@addpunct.%
+}%
+
+\def\@abstract[#1]{%
+  \global\@hasabstracttrue
+  \hyphenpenalty\sv@hyphenpenalty     % restore \hyphenpenalty
+  \global\setbox\t@abstract=\vbox\bgroup
+ %  \if@twocolumn\onecolumn \fi
+%      \if@twocolumn
+%       \@restonecoltrue\onecolumn
+%     \else
+%       \@restonecolfalse
+%     \fi
+ %\leftskip\z@
+  %\@rightskip\z@ \rightskip\@rightskip \parfillskip\@flushglue
+%   \leftskip=0.10753\textwidth \rightskip\leftskip
+  \leftskip=0pt \rightskip\leftskip
+%   \small
+    \itshape \bfseries
+  \parindent 1em                      % \parindent in abstract
+%  \noindent {\bfseries\abstractname}  % caption `Abstract' (bold)
+%  \vskip 0.5\@bls    % half a line of space below
+% \noindent
+\ignorespaces
+}
+
+\def\@altabstract[#1]{%
+  \begin{otherlanguage*}{\PFUaltlanguage}
+  \global\@hasaltabstracttrue
+  \hyphenpenalty\sv@hyphenpenalty     % restore \hyphenpenalty
+%     \if@twocolumn
+%       \@restonecoltrue\onecolumn
+%     \else
+%       \@restonecolfalse
+%     \fi
+  \global\setbox\t@altabstract=\vbox\bgroup
+%   \leftskip=0.10753\textwidth \rightskip\leftskip
+%  \leftskip=0.10753\columnwidth \rightskip\columnwidth
+  \leftskip\z@ 
+%  \leftskip=0.05\textwidth
+%  \@rightskip0.5\textwidth \advance\@rightskip \columnsep
+  \rightskip\leftskip
+%  \advance\@rightskip 0.1\textwidth
+%  \rightskip\@rightskip
+%  \rightskip0.5\textwidth
+%   \@rightskip\z@ \rightskip\@rightskip \parfillskip\@flushglue
+%   \small
+   \itshape \bfseries
+  \parindent 1em                      % \parindent in abstract
+%  \noindent {\bfseries\abstractname}  % caption `Abstract' (bold)
+%  \vskip 0.5\@bls    % half a line of space below
+%\noindent
+\ignorespaces
+}
+
+
+\makeatother
+
+\allowdisplaybreaks
+
+% \setlength\leftmargini{0pt}
+
+\usepackage{epigraph}
+
+\usepackage{array}
+\usepackage{hhline}
+\usepackage{lscape}
+
+\def\tableFont{\small}
+% \goth
+\let\goth\frak
+% mathscr
+\let\mathscr\mathcal
+
+\usepackage{caption}
+\captionsetup{font={small}}
+
+\makeatletter
+%\usepackage{float}
+%\newfloat{scheme}{htbp}{los}[PFUtitle]
+%\floatname{scheme}{Схема}
+\newcounter{scheme}[PFUtitle]
+\newcommand\schemename{Схема}
+\def\fps@scheme{tbp}
+\def\ftype@scheme{1}
+\def\ext@scheme{los}
+\renewcommand\thescheme{\@arabic\c@scheme}
+\def\fnum@scheme{\schemename\nobreakspace\thescheme}
+\newenvironment{scheme}
+               {\@float{scheme}}
+               {\end@float}
+\DeclareCaptionFormat{gost1.5}{\hfill#1\newline#2#3\par}
+\captionsetup[scheme]{format=gost1.5,labelsep=none,position=top,justification=centering}
+\makeatother
+
+\usepackage{titletoc}
+
+\titlecontents{chapter}[0pt]%
+{\vspace{1ex minus .1ex}}%
+{\chaptertitlename\space\thecontentslabel.\quad}%
+{}%
+{\titlerule*[1pc]{.}\contentspage}
+
+%{\vspace{1ex minus .1ex}\chapterFontShape}%
+
+\titlecontents{section}[1pc]%
+{}%
+{\thecontentslabel.\quad}%
+{..}%
+{\titlerule*[1pc]{.}\contentspage}
+
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+
+% Хак для xelatex
+\def\etal{и др.}
+\def\PFUudcName{УДК}
+
+% \usepackage[mediummath]{nccmath}
+
+% \usepackage{breqn}
+
+% \usepackage{unicode-math}
+% \setmathfont{Cambria Math}
+
+
+%\usepackage[math-style=French]{unicode-math}
+%\setmathfont{Cambria Math}
+%\setmathfont{STIX}
+
+% \usepackage{unicode-math}
+% \setmathfont[math-style=french]{Cambria Math}
+% \setmathfont[math-style=french]{STIXGeneral}
+
+%\renewcommand{\thesubfigure}{\asbuk{subfigure}}
+%\usepackage{subfigure}
+
+%\usepackage{pagefram}
+
+% \geometry{showframe}
+% \usepackage{showframe}
+
+% показать границы
+%\usepackage[gridunit=mm]{showframe}
+
+%\usepackage{makeidx}
+%\usepackage{index}
+
+% \usepackage{indextools}
+% \makeindex[name=author,title={Author index}]
+% \makeindex[name=altauthor,title={Author index}]
+% \makeindex
+
+
+\makeindex[name=author,title={Author index},options=-s author]
+
+% \makeatletter
+
+% \def\@author@hook@post{%
+%   \iflanguage{\@defaultlanguage}
+%   {%
+%     \index[author]{\authorFamily \authorInitialsPlain}
+%   }
+%   {%
+%     \index[altauthor]{\authorFamily \authorInitialsPlain}
+%   }
+% } % END \@author@hook@post
+
+% \def\@altauthor@hook@post{%
+%   \iflanguage{\@defaultaltlanguage}
+%   {%
+%     \index[author]{\altauthorFamily \altauthorInitialsPlain}
+%   }
+%   {%
+%     \index[altauthor]{\altauthorFamily \altauthorInitialsPlain}
+%   }
+% } % END \@author@hook@post
+
+% \makeatother
+
+\makeatletter
+% \newcommand\printindex{\@input@{\jobname.ind}}
+%\def\@author@hook@post{\index{\authorfamily{} \authorinitialsplain}}
+
+\def\@maketitle@hook@pre{\let\@maketitle@hook@pre\@empty}
+% \def\@maketitle@hook@pre{%
+%   \pagestyle{fancy}
+%   % \fancyhf{}
+%   \fancyhead[LE,RO]{\headerFontSize\thepage}%
+%   \fancyhead[RE]{\headerFontSize Информационно-телекоммуникационные
+%     технологии и матмоделирование --- 2016}%
+%   \fancyhead[CO]{\headerFontSize \leftmark}
+%   \fancyfoot{}
+% }
+
+% \def\theindex{\clearpage\@restonecoltrue\if@twocolumn\@restonecolfalse\fi
+%   \columnseprule\z@ \columnsep 35\p@
+%   \twocolumn[\@xp\section\@xp*\@xp{Авторский указатель}]%
+
+%   \pagestyle{fancy}
+%   \fancyhf{}
+%   \fancyhead[LE,RO]{\headerFontSize\thepage}%
+%   \fancyhead[RE]{\headerFontSize Информационно-телекоммуникационные
+%     технологии и матмоделирование --- 2016}%
+% %    \addcontentsline{toc}{part}{Авторский указатель}
+%   \fancyhead[CO]{\headerFontSize Авторский указатель}
+%   \fancyfoot{}
+
+%   % \thispagestyle{plain}%
+%   \let\item\@idxitem
+%   \parindent\z@  \parskip\z@\@plus.3\p@\relax
+%   % \footnotesize
+% }
+
+\makeatother
+
+%\def\indexname{Авторский указатель}
+%\renewcommand{\indexspace}{\relax}
+
+% \def\indexname{Авторский указатель}
+% \makeatletter
+% \renewenvironment{theindex}
+%                {\if@twocolumn
+%                   \@restonecolfalse
+%                 \else
+%                   \@restonecoltrue
+%                 \fi
+%                 \twocolumn[\@makeschapterhead{\indexname}]%
+%                 \@mkboth{\indexname}%
+%                         {\indexname}%
+%                 %\thispagestyle{plain}
+%                 \parindent\z@
+%                 \parskip\z@ \@plus .3\p@\relax
+%                 \columnseprule \z@
+%                 \columnsep 35\p@
+%                 \let\item\@idxitem}
+%                {\if@restonecol\onecolumn\else\clearpage\fi}
+
+% \makeatother
+
+%\usepackage{lastpage}
+%\usepackage[pagecontinue]{pageslts}
+%\pagenumbering{arabic}
+\usepackage{calc}
+% \newcounter{PFUlastpage}
+\usepackage{refcount}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../default"
+%%% coding: utf-8-unix
+%%% End: 
