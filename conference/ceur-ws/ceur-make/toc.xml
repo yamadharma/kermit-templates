@@ -1,0 +1,161 @@
+<toc>
+<paper id="preface">
+<pages from="1" to="2"/>
+<title>Preface</title>
+</paper>
+<paper id="committees">
+<pages from="3" to="3"/>
+<title>Committees</title>
+</paper>
+<paper id="paper-01-a005">
+<pages from="4" to="10"/>
+<title>
+Investigation of Parameters of Meteorological Models Based on Patterns
+</title>
+<authors>
+<author>Andrey K. Gorshenin</author>
+</authors>
+</paper>
+<paper id="paper-02-c010">
+<pages from="11" to="18"/>
+<title>
+Mobility Simulation of Connected Objects in a Heterogeneous Wireless Data Transmission System
+</title>
+<authors>
+<author>Vladimir V. Rykov</author>
+<author>Victoriya Kimenchezhi</author>
+<author>Dmitry V. Kozyrev</author>
+</authors>
+</paper>
+<paper id="paper-03-c004">
+<pages from="19" to="24"/>
+<title>
+Some Characteristic Properties of Resource Distribution
+  Nonuniformity in Economic Systems
+</title>
+<authors>
+<author>Leonid A. Sevastianov</author>
+<author>Alexander V. Kryanev</author>
+<author>Daria E. Sliva</author>
+<author>Valentin V. Matokhin</author>
+</authors>
+</paper>
+<paper id="paper-04-e001">
+<pages from="25" to="32"/>
+<title>
+Software Implementation of the Eikonal Equation
+</title>
+<authors>
+<author>Dmitry S. Kulyabov</author>
+<author>Migran N. Gevorkyan</author>
+<author>Anna V. Korolkova</author>
+</authors>
+</paper>
+<paper id="paper-05-d004">
+<pages from="33" to="39"/>
+<title>
+Designing Multidimensional Information Systems Using the Data Vault Methodology
+</title>
+<authors>
+<author>Anastasiya V. Demidova</author>
+<author>Yevgeny A. Kuznetsov</author>
+<author>Maxim  B. Fomin</author>
+</authors>
+</paper>
+<paper id="paper-06-a003">
+<pages from="40" to="45"/>
+<title>
+Estimation of Heavy Tail Dependence Based on Copulas
+  for the Precipitation Analysis
+</title>
+<authors>
+<author>Leonid A. Sevastianov</author>
+<author>Nikita D. Rassakhan</author>
+<author>Eugeny Yu. Shchetinin</author>
+</authors>
+</paper>
+<paper id="paper-07-1010">
+<pages from="46" to="53"/>
+<title>
+Application of Information Technology for the Analysis of the Rating of University
+</title>
+<authors>
+<author>Oksana N. Romashkova</author>
+<author>Yulia V. Gaidamaka</author>
+<author>Ludmila A. Ponomareva</author>
+<author>Igor P. Vasilyuk</author>
+</authors>
+</paper>
+<paper id="paper-08-1060">
+<pages from="54" to="59"/>
+<title>
+Determination of the Range of the Guaranteed Radio Communication in Wireless Telecommunication Networks of IEEE 802.11 Standard with the Use of Ping Program
+</title>
+<authors>
+<author>Irina A. Gudkova</author>
+<author>Oksana N. Romashkova</author>
+<author>Vyacheslav E. Samoylov</author>
+</authors>
+</paper>
+<paper id="paper-09-c009">
+<pages from="60" to="66"/>
+<title>
+Vectorial Problem on Combinations on Hypergraphs
+</title>
+<authors>
+<author>Elvira  R. Zaripova</author>
+<author>Soltan I. Salpagarov</author>
+<author>Leonid M. Goncharov</author>
+<author>Alexander S. Pankratov</author>
+</authors>
+</paper>
+<paper id="paper-10-a002">
+<pages from="67" to="74"/>
+<title>
+Success Access Probability Analysis Using Virtual Preambles Via Random Access Channel
+</title>
+<authors>
+<author>Ivan E. Sinitsyn</author>
+<author>Elvira  R. Zaripova</author>
+<author>Yulia V. Gaidamaka</author>
+<author>Vsevolod S. Shorgin</author>
+</authors>
+</paper>
+<paper id="paper-11-c007">
+<pages from="75" to="82"/>
+<title>
+On the Simulations of the Limited Resources Queueing Systems
+</title>
+<authors>
+<author>Eduard S. Sopin</author>
+<author>Konstantin E. Samouylov</author>
+<author>Sergey Ya. Shorgin</author>
+</authors>
+</paper>
+<paper id="paper-12-c002">
+<pages from="83" to="89"/>
+<title>
+Application of the Phase Analysis of Time Series for the
+  Identification of Macroeconomic Cycles Based on the Dynamics of the
+  Exchange Rates
+</title>
+<authors>
+<author>Anastasiya V. Demidova</author>
+<author>Elena A. Teveleva</author>
+<author>Nikolay P. Tretyakov</author>
+<author>Alexandre Ya. Terletsky</author>
+</authors>
+</paper>
+<paper id="paper-13-e002">
+<pages from="90" to="100"/>
+<title>
+Automatic Code Generation for Stochastic Runge--Kutta Methods
+</title>
+<authors>
+<author>Migran N. Gevorkyan</author>
+<author>Anastasiya V. Demidova</author>
+<author>Anna V. Korolkova</author>
+<author>Dmitry S. Kulyabov</author>
+</authors>
+</paper>
+</toc>

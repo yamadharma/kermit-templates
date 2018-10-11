@@ -1,0 +1,153 @@
+#!/bin/bash
+
+#{{{ customize variables
+
+NUMPAPER=0
+
+#}}}
+
+rm -rf split-paper.d
+mkdir -p split-paper.d
+
+rm -rf paper-descr.d
+mkdir -p paper-descr.d
+
+rm -f run_split-paper
+rm -f run_paper-descr
+
+CURDIR=`pwd`
+TEXTITLE_DIR="$CURDIR"/tex-title
+TEX_DIR="$CURDIR"/tex
+
+PAPER_TMP="$CURDIR"/paper-descr.d/tmp
+rm -rf $PAPER_TMP
+mkdir -p $PAPER_TMP
+
+PAPER_DESCR_D="$CURDIR"/paper-descr.d
+
+TOC_XML="$CURDIR"/ceur-make/toc.xml
+
+FIRSTPAGE=`cat FIRSTPAGE`
+FIRSTPAGE=$(( $FIRSTPAGE - 1 ))
+
+echo "#!/bin/bash" > run_split-paper
+
+# Делаем промежуточный файл 'split-paper'
+# формат: filename paperid page-begin page-end
+
+awk \
+-v FIRSTPAGE=$FIRSTPAGE \
+'\
+BEGIN{ORS=""; numpage_fix=0; numpaper=$NUMPAPER;} \
+# Сначала выводим имя файла и первую страницу
+NR == 1 {print $1, $1, $2 + numpage_fix - FIRSTPAGE " ";} \
+# Затем последнюю страницу
+NR != 1 {print $2 - 1  + numpage_fix - FIRSTPAGE ; \
+# Переходим на новую строку
+   print "\n"; \
+# Добавляем к файлу с цифровым названием префикс paper-<numpaper>
+   if ( $1 ~ /[0-9]/ ) paperprefix="paper-" sprintf("%02d",numpaper) "-" ; else paperprefix="" ;\
+   print $1, paperprefix $1, $2  + numpage_fix - FIRSTPAGE " "; numpaper++} \
+END{print "end", "\n"} \
+' split-paper.tex > split-paper
+
+awk '{print "pdftk default.pdf cat", $3 "-" $4, "output", "split-paper.d/" $2 ".pdf" >> "run_split-paper"}' split-paper
+# awk '{print "echo", "\"Pages: " $3 "-" $4 "\"", ">>", "paper-descr.d/" $2 ".xml" >> "run_paper-descr"}' split-paper
+awk '{print "echo", "\"<paper id=\\\"" $2 "\\\">\"", ">>", "paper-descr.d/" $2 ".xml" >> "run_paper-descr"}' split-paper
+awk '{print "echo", "\"<pages from=\\\"" $3 "\\\" to=\\\"" $4 "\\\"/>\"", ">>", "paper-descr.d/" $2 ".xml" >> "run_paper-descr"}' split-paper
+awk '{print "[[ -f paper-descr.d/tmp/" $1 ".txt ]] && cat", "paper-descr.d/tmp/" $1 ".txt", ">>", "paper-descr.d/" $2 ".xml" >> "run_paper-descr"}' split-paper
+awk '{print "echo", "\"</paper>\"", ">>", "paper-descr.d/" $2 ".xml" >> "run_paper-descr"}' split-paper
+
+for i in `cut -f1 -d" " split-paper`
+do
+    if [[ -f "$TEXTITLE_DIR"/"$i".tex ]]
+    then
+	TEX_LANG=`grep russian "$TEX_DIR"/"$i".tex`
+	rc=$?
+	if [[ $rc -eq 0 ]]
+	then # russian
+	    echo "<title>" >> "$PAPER_TMP"/"$i".txt
+
+	    awk '/\\title{/,/}/' "$TEXTITLE_DIR"/"$i".tex >> "$PAPER_TMP"/"$i".txt
+	    sed -i -e 's:\\title{::g' "$PAPER_TMP"/"$i".txt
+	    sed -i -e 's:}$::g' "$PAPER_TMP"/"$i".txt
+	    sed -i -e 's:}%$::g' "$PAPER_TMP"/"$i".txt
+
+	    awk '/\\alttitle{/,/}/' "$TEXTITLE_DIR"/"$i".tex >> "$PAPER_TMP"/"$i".txt
+	    sed -i -e 's:\\alttitle{:(:g' "$PAPER_TMP"/"$i".txt
+	    sed -i -e 's:}$:):g' "$PAPER_TMP"/"$i".txt
+	    sed -i -e 's:}%$:):g' "$PAPER_TMP"/"$i".txt
+
+	    echo "</title>" >> "$PAPER_TMP"/"$i".txt
+
+	    echo "<authors>" >> "$PAPER_TMP"/"$i".txt
+	    awk '/\\altauthor{/,/}/' "$TEXTITLE_DIR"/"$i".tex >> "$PAPER_TMP"/"$i".txt
+	    awk '/\\altauthor\[/,/}/' "$TEXTITLE_DIR"/"$i".tex >> "$PAPER_TMP"/"$i".txt
+	    echo "</authors>" >> "$PAPER_TMP"/"$i".txt
+
+	    sed -i -e 's:\\altauthor.*{:<author>:g' "$PAPER_TMP"/"$i".txt
+	    sed -i -e 's:}$:</author>:g' "$PAPER_TMP"/"$i".txt
+	    sed -i -e 's:}%$:</author>:g' "$PAPER_TMP"/"$i".txt
+
+	else # english
+	    echo "<title>" >> "$PAPER_TMP"/"$i".txt
+	    awk '/\\title{/,/}/' "$TEXTITLE_DIR"/"$i".tex >> "$PAPER_TMP"/"$i".txt
+	    echo "</title>" >> "$PAPER_TMP"/"$i".txt
+
+	    sed -i -e 's:\\title{::g' "$PAPER_TMP"/"$i".txt
+	    sed -i -e 's:}$::g' "$PAPER_TMP"/"$i".txt
+	    sed -i -e 's:}%$::g' "$PAPER_TMP"/"$i".txt
+	    
+	    echo "<authors>" >> "$PAPER_TMP"/"$i".txt
+	    awk '/\\author{/,/}/' "$TEXTITLE_DIR"/"$i".tex >> "$PAPER_TMP"/"$i".txt
+	    awk '/\\author\[/,/}/' "$TEXTITLE_DIR"/"$i".tex >> "$PAPER_TMP"/"$i".txt
+	    echo "</authors>" >> "$PAPER_TMP"/"$i".txt
+
+	    sed -i -e 's:\\author.*{:<author>:g' "$PAPER_TMP"/"$i".txt
+	    sed -i -e 's:}$:</author>:g' "$PAPER_TMP"/"$i".txt
+	    sed -i -e 's:}%$:</author>:g' "$PAPER_TMP"/"$i".txt
+	    sed -i -e 's:~: :g' "$PAPER_TMP"/"$i".txt
+
+	fi
+
+	sed -i -e 's:\\title{::g' "$PAPER_TMP"/"$i".txt
+	sed -i -e 's:\\alttitle{::g' "$PAPER_TMP"/"$i".txt
+	sed -i -e 's:}$::g' "$PAPER_TMP"/"$i".txt
+	sed -i -e 's:}%$::g' "$PAPER_TMP"/"$i".txt
+
+	
+	# awk '/title{/,/}/' "$TEXTITLE_DIR"/"$i".tex >> "$PAPER_TMP"/"$i".txt
+        # awk '/author{/,/}/' "$TEXTITLE_DIR"/"$i".tex >> "$PAPER_TMP"/"$i".txt
+        # awk '/author\[/,/}/' "$TEXTITLE_DIR"/"$i".tex >> "$PAPER_TMP"/"$i".txt
+
+        sed -i -e "s:\\\'{o}:ó:g" \
+            -e "s:\\\'{e}:é:g" \
+            -e "s:\\\'{z}:ź:g" \
+            "$PAPER_TMP"/"$i".txt
+    fi
+done
+
+echo "<title>Preface</title>" >> "$PAPER_TMP"/preface.txt
+echo "<title>Committees</title>" >> "$PAPER_TMP"/committees.txt
+
+chmod +x run_split-paper
+chmod +x run_paper-descr
+
+./run_split-paper
+./run_paper-descr
+
+rm ${TOC_XML}
+
+echo "<toc>" >> ${TOC_XML}
+cat ${PAPER_DESCR_D}/preface.xml >> ${TOC_XML}
+cat ${PAPER_DESCR_D}/committees.xml >> ${TOC_XML}
+cat ${PAPER_DESCR_D}/paper*.xml >> ${TOC_XML}
+echo "</toc>" >> ${TOC_XML}
+
+rm run_split-paper
+rm run_paper-descr
+rm split-paper
+
+
+
+

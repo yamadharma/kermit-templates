@@ -1,0 +1,77 @@
+\input preamble
+
+\defaultlanguage{english}
+\defaultaltlanguage{russian}
+
+\begin{document}
+
+%\input{title/conf/common}
+
+%\trackid{content}
+%\paperid{content}
+
+%\def\leftmark{Contents}
+%\def\contentsname{Contents}
+
+%\input{title/ru/title}
+%\input{title/en/title}
+%\input{title/abstract}
+
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[LE,RO]{\headerFontSize\thepage}%
+%\fancyhead[CE]{\headerFontSize Информационно-телекоммуникационные технологии и матмоделирование}%
+%\fancyhead[CO]{\headerFontSize Оглавление}
+%\fancyfoot{}
+%\tableofcontents
+%\clearpage
+
+
+\input{title/preface}
+\input{title/committees}
+
+\clearpage
+
+%\part[Пленарные доклады]{Plenary speakers}
+%\input{text/plenary}
+
+
+%\part[Архитектура, методы управления, моделирования и проектирования компьютерных сетей]{Architecture, methods of control, modeling and design of computer networks}
+%\part{Architecture, methods of control, modeling and design of computer networks}
+\input{text/ceur}
+
+%\addtocontents{toc}{\protect\clearpage}
+
+%\part[Математическое моделирование и задачи управления]{Mathematical modeling, simulation and control problems}
+%\part{Mathematical modeling, simulation and control problems}
+%\input{text/mathmod}
+
+%\part[Молодежная школа-семинар]{Youth School-Seminar}
+%\input{text/school}
+
+\clearpage
+\phantomsection \label{indexsec}
+\addcontentsline{toc}{part}{Author index}
+\trackid{index}
+\paperid{index}
+\def\leftmark{Author index}
+\def\indexname{Author index}
+\mbox{}
+%\printindex[author]
+\clearpage
+%\printindex[altauthor]
+\label{MyLastPage}
+%\clearpage
+
+% \setcounter{PFUlastpage}{\the\value{page}}
+
+%\paperid{backpage}
+%\input{title/backpage}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% coding: utf-8-unix
+%%% End:
