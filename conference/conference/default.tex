@@ -1,0 +1,145 @@
+\input preamble
+
+\begin{document}
+
+\input{support/cover}
+
+
+\input{title/title}
+
+\trackid{content}
+\def\leftmark{Содержание}
+\def\contentsname{Содержание}
+\clearpage
+% \setcounter{page}{8}
+\phantomsection
+\tableofcontents
+\clearpage
+\def\leftmark{Contents}
+\phantomsection
+\tableofaltcontents
+\clearpage
+
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[LE,RO]{\headerFontSize\thepage}%
+%\fancyhead[CE]{\headerFontSize Информационно-телекоммуникационные технологии и матмоделирование}%
+%\fancyhead[CO]{\headerFontSize Оглавление}
+%\fancyfoot{}
+%\tableofcontents
+
+\pagestyle{empty}
+\cleardoublepage
+\phantomsection
+\trackid{conf}
+%\part[Teletraffic theory and its applications]{Теория телетрафика и её применения}
+\cleardoublepage
+\input{text/conf}
+
+%\addtocontents{toc}{\protect\clearpage}
+
+%\pagestyle{empty}
+%\cleardoublepage
+%\phantomsection
+%\trackid{title-ngn}
+%\part[Next-generation networks: management, quality, architecture]{Сети связи следующего поколения: управление, качество, архитектура}
+%\cleardoublepage
+%\input{text/ngn}
+
+%\pagestyle{empty}
+%\cleardoublepage
+%\phantomsection
+%\trackid{title-it}
+%\part[Applied information systems and technologies]{Прикладные информационные системы и~технологии}
+%\cleardoublepage
+%\input{text/it}
+
+%\part[Информационные системы управления]{Информационные системы управления}
+%\input{text/icon}
+
+% \part[Классическая механика и управление динамикой]{Классическая механика и управление динамикой}
+% \input{text/mech}
+
+%\part[Вычислительная физика]{Вычислительная физика}
+%\input{text/compphys}
+
+% \addtocontents{toc}{\protect\clearpage}
+
+%\part[High-performance distributed computing  technologies]{Высокопроизводительные технологии распределённых вычислений}
+
+\pagestyle{empty}
+\cleardoublepage
+\phantomsection
+\trackid{title-parallel}
+
+\part[Distributed, high-performance computing technologies and big
+data analytics]{Распределённые, высокопроизводительные вычисления и
+  аналитика больших данных} 
+\cleardoublepage
+\input{text/parallel}
+
+\addtocontents{tac}{\protect\clearpage}
+\pagestyle{empty}
+\cleardoublepage
+\phantomsection
+\trackid{title-model}
+\part[Mathematical modeling]{Математическое моделирование}
+\cleardoublepage
+\input{text/model}
+
+% \part[Youth School]{Молодёжная школа}
+% \input{text/youth}
+
+
+% \addtocontents{toc}{\protect\clearpage}
+
+%\part[Математические методы в экономике]{Математические методы в экономике}
+%\input{text/econom}
+
+
+
+\clearpage
+\phantomsection \label{indexsec}
+\addcontentsline{toc}{part}{Авторский указатель}
+\trackid{index}
+\paperid{index}
+\def\leftmark{Авторский указатель}
+\def\rightmark{Авторский указатель}
+\def\indexname{Авторский указатель}
+{\selectlanguage{russian}
+\def\authorindexname{Авторский указатель}
+\printindex[author]
+}
+\clearpage
+\phantomsection \label{indexaltauthor}
+\trackid{indexaltauthor}
+\paperid{indexaltauthor}
+\def\leftmark{Author index}
+\def\rightmark{Author index}
+\addcontentsline{tac}{part}{Author index}
+{\selectlanguage{english}
+\printindex[altauthor]
+}
+
+\clearpage
+% \setcounter{PFUlastpage}{\the\value{page}}
+
+\input{title/fornote}
+\input{title/fornote}
+\input{title/fornote}
+
+\clearpage
+\label{MyLastPage}
+
+\clearpage
+\phantomsection
+\paperid{backpage}
+\input{title/backpage}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% coding: utf-8-unix
+%%% End:

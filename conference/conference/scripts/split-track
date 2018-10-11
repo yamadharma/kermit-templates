@@ -1,0 +1,28 @@
+#!/bin/bash
+
+rm -rf split-track.d
+mkdir split-track.d
+
+echo "#!/bin/bash" > run_split-track
+
+# Делаем промежуточный файл
+# формат: paperid page-begin page-end
+
+awk '\
+BEGIN{ORS=""; numpage_fix=0; } \
+NR == 1 {print $1, $2 + numpage_fix " ";} \
+NR != 1 {print $2 - 1  + numpage_fix ; print "\n"; print $1, $2  + numpage_fix " ";} \
+END{print "end", "\n"} \
+' split-track.tex > split-track
+
+awk '{print "pdftk default.pdf cat", $2 "-" $3, "output", "split-track.d/" $1 ".pdf" >> "run_split-track"}' split-track
+chmod +x run_split-track
+
+./run_split-track
+
+rm run_split-track
+rm split-track
+
+
+
+

@@ -1,0 +1,24 @@
+NAME = `cat NAME`
+
+split: default.pdf	## Split main pdf file
+	#cp `cat NAME`.pdf default.pdf
+	./scripts/split-paper
+
+
+rename:	## Rename default.pdf to friendly name
+	mv default.pdf $(NAME).pdf
+#	pdftk support/$(NAME)-cover.pdf support/$(NAME)-title.pdf default.pdf support/$(NAME)-backpage.pdf cat output $(NAME).pdf
+
+textitle:	## Generate tex-title directory from src/* list
+	./scripts/make_tex-title
+
+texpdf:	## Regenerate tex directory from pdf/* list
+	./scripts/make_tex-from-pdf
+
+split: default.pdf
+	#cp `cat NAME`.pdf default.pdf
+	./scripts/split-paper
+
+articulus:
+	./scripts/articulus_papers2import
+	-xmllint --noout import4articulus.xml

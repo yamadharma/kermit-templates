@@ -1,0 +1,28 @@
+#!/bin/bash
+
+CURDIR=$(pwd)
+
+SRC_DIR=`pwd`/src
+HTML_DIR=`pwd`/html
+
+mkdir -p "$HTML_DIR"
+
+cd "${SRC_DIR}"
+
+for EXT in odt doc docx
+do
+    for i in *.$EXT
+    do
+	if [[ -f "$i" ]]
+	then
+	    TMPDIR=$(mktemp -d)
+	    # OUTDIR="$HTML_DIR"/`basename $i .$EXT`
+	    # mkdir -p "$OUTDIR"
+	    OUTDIR="$HTML_DIR"
+	    soffice -env:UserInstallation=file://"${TMPDIR}" --headless --convert-to html:"XHTML Writer File" "${SRC_DIR}"/"$i" --outdir "$OUTDIR"
+	    rm -rf "${TMPDIR}"
+	fi
+    done
+done
+
+cd "$CURDIR"

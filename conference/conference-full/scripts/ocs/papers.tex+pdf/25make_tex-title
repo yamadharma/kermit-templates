@@ -1,0 +1,27 @@
+#!/bin/bash
+
+CURDIR=`pwd`
+
+TEXTITLE_DIR="$CURDIR"/papers/tex-title
+
+mkdir -p "$TEXTITLE_DIR"
+
+cd "$CURDIR"/papers/src
+
+for i in *
+do
+    if [[ -d "$i" ]]
+    then
+	cd "$i"
+	echo >  "$TEXTITLE_DIR"/"$i".tex
+	for texfile in *.tex
+	do
+	    awk '/title{/,/}/' "$texfile" >> "$TEXTITLE_DIR"/"$i".tex
+	    awk '/author{/,/}/' "$texfile" >> "$TEXTITLE_DIR"/"$i".tex
+	    awk '/author\[/,/}/' "$texfile" >> "$TEXTITLE_DIR"/"$i".tex
+	done
+    fi
+    cd "$CURDIR"/papers/src
+done
+
+cd "$CURDIR"

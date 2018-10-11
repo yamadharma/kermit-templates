@@ -1,0 +1,45 @@
+#!/bin/bash
+
+CURDIR=`pwd`
+
+TEXTITLE_DIR="$CURDIR"/tex-title
+
+mkdir -p "$TEXTITLE_DIR"
+
+cd "$CURDIR"/src
+
+for i in *
+do
+    if [[ -d "$i" ]]
+    then
+	cd "$i"
+	echo >  "$TEXTITLE_DIR"/"$i".tex
+	for texfile in *.tex
+	do
+	    awk '/title{/,/}/' "$texfile" >> "$TEXTITLE_DIR"/"$i".tex
+	    awk '/author{/,/}/' "$texfile" >> "$TEXTITLE_DIR"/"$i".tex
+	    awk '/author\[/,/}/' "$texfile" >> "$TEXTITLE_DIR"/"$i".tex
+	    awk '/keywords{/,/}/' "$texfile" >> "$TEXTITLE_DIR"/"$i".tex
+	    awk '/altkeywords{/,/}/' "$texfile" >> "$TEXTITLE_DIR"/"$i".tex
+	    awk '/\\begin{abstract}/,/\\end{abstract}/' "$texfile" >> "$TEXTITLE_DIR"/"$i".tex
+	    awk '/\\begin{altabstract}/,/\\end{altabstract}/' "$texfile" >> "$TEXTITLE_DIR"/"$i".tex
+	    awk '/udc{/,/}/' "$texfile" >> "$TEXTITLE_DIR"/"$i".tex
+	done
+	sed -i -e "s:\\\\begin{abstract}:\\\\abstracts{:g" \
+	    -e "s:\\\\begin{altabstract}:\\\\altabstracts{:g" \
+	    -e "s:\\\\end{abstract}:}:g" \
+	    -e "s:\\\\end{altabstract}:}:g" \
+	    "$TEXTITLE_DIR"/"$i".tex
+	sed -i -e "s:\\\'{o}:ó:g" \
+	    -e "s:\\\'{e}:é:g" \
+	    -e "s:\\\'{z}:ź:g" \
+	    -e 's:\\\"{\\i}:ï:g' \
+	    -e "s:\\\v{s}:š:g" \
+	    -e "s:\\\'{c}:ć:g" \
+	    -e 's:\\\"{o}:ö:g' \
+	    "$TEXTITLE_DIR"/"$i".tex
+    fi
+    cd "$CURDIR"/src
+done
+
+cd "$CURDIR"

@@ -1,0 +1,82 @@
+% looks for pdfTEX in pdf mode
+\IfFileExists{ifpdf.sty}{\usepackage{ifpdf}}{}
+\IfFileExists{ifxetex.sty}{\usepackage{ifxetex}}{}
+\IfFileExists{ifluatex.sty}{\usepackage{ifluatex}}{}
+
+\usepackage{xifthen}
+
+\ifthenelse{\boolean{luatex}}
+    {\input preamble/lualatex}
+%else
+{\ifthenelse{\boolean{xetex}}
+    {\input preamble/xelatex}
+    %else
+    {
+        \input preamble/latex
+        \ifpdf
+            \input preamble/pdflatex
+        \fi
+    }
+}
+
+
+% \usepackage[T1,T2A]{fontenc}
+% \usepackage{ucs}
+% \usepackage[utf8x]{inputenc}
+% \usepackage[english,russian]{babel}
+
+%% Расширенная математика
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amscd}
+
+\usepackage{mathtools}
+\mathtoolsset{
+  showonlyrefs=true,
+  mathic=true,
+}
+
+\allowdisplaybreaks
+
+%% Работа с графикой
+
+\usepackage{graphicx}
+
+%% hyperref
+
+\usepackage{hyperref}
+\hypersetup{backref,
+  colorlinks=false}
+\hypersetup{pdfborder=0 0 0}
+
+%% local definitions
+
+\geometry{twoside}
+\geometry{bindingoffset=0pt}
+
+% \geometry{includeheadfoot}
+% \geometry{hmargin={16mm,16mm},vmargin={12mm,13mm}}
+% \geometry{marginparwidth=0pt,marginparsep=0pt}
+% \geometry{headheight=0pt}
+% \geometry{headsep=\baselineskip}
+\geometry{hcentering}
+
+\pagestyle{empty}
+
+\usepackage{cite}
+
+\makeatletter
+\g@addto@macro\@maketitle@hook@post{%
+ \iflanguage{english}{%
+   \bibliographystyle{elsarticle-num}
+ }{%
+   \bibliographystyle{ugost2008l}
+ }
+}
+\makeatother
+  
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End:

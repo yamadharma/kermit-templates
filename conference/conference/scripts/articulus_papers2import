@@ -1,0 +1,525 @@
+#!/usr/bin/python3
+# -*- coding: utf-8; mode: python -*-
+
+import locale
+import os
+import binascii
+import sys
+# import mimetools
+import base64
+import string
+from lxml import etree
+from codecs import open
+import re
+
+# {{{ configobj
+
+from configobj import ConfigObj
+config = ConfigObj('default.articulus.ini')
+#config.filename = 'default.ojs.ini'
+
+# }}}
+
+encoding = locale.getdefaultlocale()[1]
+
+import_file_name = "import4articulus.xml"
+
+# papersdir = sys.argv[1]
+papersdir = 'split-paper.d'
+#path = papersdir
+files_list = os.listdir(papersdir)
+
+import_file = open(import_file_name, 'w', encoding='utf-8')
+
+issues = etree.Element("issues")
+issue = etree.SubElement(issues, "issue")
+
+issue_title = etree.SubElement(issue, "title")
+number = etree.SubElement(issue, "number")
+year = etree.SubElement(issue, "year")
+
+section = etree.SubElement(issue, "section")
+section_title = etree.SubElement(section, "title")
+
+xml_article  = etree.SubElement(section, "article")
+galley = etree.SubElement(xml_article, "galley")
+
+label = etree.SubElement(galley, "label")
+file = etree.SubElement(galley, "file")
+
+embed = etree.SubElement(file, "embed")
+
+label.text = "PDF"
+
+language_code = {'russian' : 'ru', 'english' : 'en'}
+locale_code = {'russian' : 'ru_RU', 'english' : 'en_US'}
+lang_code = {'russian' : 'RUS', 'english' : 'ENG'}
+
+iso3166_2 = {
+'Абхазия':'AB',
+'Австралия':'AU',
+'Австрия':'AT',
+'Азербайджан':'AZ',
+'Албания':'AL',
+'Алжир':'DZ',
+'Американское Самоа':'AS',
+'Ангилья':'AI',
+'Ангола':'AO',
+'Андорра':'AD',
+'Антарктида':'AQ',
+'Антигуа и Барбуда':'AG',
+'Аргентина':'AR',
+'Армения':'AM',
+'Аруба':'AW',
+'Афганистан':'AF',
+'Багамы':'BS',
+'Бангладеш':'BD',
+'Барбадос':'BB',
+'Бахрейн':'BH',
+'Беларусь':'BY',
+'Белоруссия':'BY',
+'Белиз':'BZ',
+'Бельгия':'BE',
+'Бенин':'BJ',
+'Бермуды':'BM',
+'Болгария':'BG',
+'Боливия, Многонациональное Государство':'BO',
+'Бонайре, Саба и Синт-Эстатиус':'BQ',
+'Босния и Герцеговина':'BA',
+'Ботсвана':'BW',
+'Бразилия':'BR',
+'Британская территория в Индийском океане':'IO',
+'Бруней-Даруссалам':'BN',
+'Буркина-Фасо':'BF',
+'Бурунди':'BI',
+'Бутан':'BT',
+'Вануату':'VU',
+'Венгрия':'HU',
+'Венесуэла Боливарианская Республика':'VE',
+'Виргинские острова, Британские':'VG',
+'Виргинские острова, США':'VI',
+'Вьетнам':'VN',
+'Габон':'GA',
+'Гаити':'HT',
+'Гайана':'GY',
+'Гамбия':'GM',
+'Гана':'GH',
+'Гваделупа':'GP',
+'Гватемала':'GT',
+'Гвинея':'GN',
+'Гвинея-Бисау':'GW',
+'Германия':'DE',
+'Гернси':'GG',
+'Гибралтар':'GI',
+'Гондурас':'HN',
+'Гонконг':'HK',
+'Гренада':'GD',
+'Гренландия':'GL',
+'Греция':'GR',
+'Грузия':'GE',
+'Гуам':'GU',
+'Дания':'DK',
+'Джерси':'JE',
+'Джибути':'DJ',
+'Доминика':'DM',
+'Доминиканская Республика':'DO',
+'Египет':'EG',
+'Замбия':'ZM',
+'Западная Сахара':'EH',
+'Зимбабве':'ZW',
+'Израиль':'IL',
+'Индия':'IN',
+'Индонезия':'ID',
+'Иордания':'JO',
+'Ирак':'IQ',
+'Иран, Исламская Республика':'IR',
+'Ирландия':'IE',
+'Исландия':'IS',
+'Испания':'ES',
+'Италия':'IT',
+'Йемен':'YE',
+'Кабо-Верде':'CV',
+'Казахстан':'KZ',
+'Камбоджа':'KH',
+'Камерун':'CM',
+'Канада':'CA',
+'Катар':'QA',
+'Кения':'KE',
+'Кипр':'CY',
+'Киргизия':'KG',
+'Кирибати':'KI',
+'Китай':'CN',
+'Кокосовые (Килинг) острова':'CC',
+'Колумбия':'CO',
+'Коморы':'KM',
+'Конго':'CG',
+'Конго, Демократическая Республика':'CD',
+'Корея, Народно-Демократическая Республика':'KP',
+'Корея, Республика':'KR',
+'Коста-Рика':'CR',
+'Кот д''Ивуар':'CI',
+"Кот д'Ивуар":'CI',
+'Куба':'CU',
+'Кувейт':'KW',
+'Кюрасао':'CW',
+'Лаос':'LA',
+'Латвия':'LV',
+'Лесото':'LS',
+'Ливан':'LB',
+'Ливийская Арабская Джамахирия':'LY',
+'Либерия':'LR',
+'Лихтенштейн':'LI',
+'Литва':'LT',
+'Люксембург':'LU',
+'Маврикий':'MU',
+'Мавритания':'MR',
+'Мадагаскар':'MG',
+'Майотта':'YT',
+'Макао':'MO',
+'Македония':'MK',
+'Малави':'MW',
+'Малайзия':'MY',
+'Мали':'ML',
+'Малые Тихоокеанские отдаленные острова Соединенных Штатов':'UM',
+'Мальдивы':'MV',
+'Мальта':'MT',
+'Марокко':'MA',
+'Мартиника':'MQ',
+'Маршалловы острова':'MH',
+'Мексика':'MX',
+'Микронезия, Федеративные Штаты':'FM',
+'Мозамбик':'MZ',
+'Молдова, Республика':'MD',
+'Монако':'MC',
+'Монголия':'MN',
+'Монтсеррат':'MS',
+'Мьянма':'MM',
+'Намибия':'NA',
+'Науру':'NR',
+'Непал':'NP',
+'Нигер':'NE',
+'Нигерия':'NG',
+'Нидерланды':'NL',
+'Никарагуа':'NI',
+'Ниуэ':'NU',
+'Новая Зеландия':'NZ',
+'Новая Каледония':'NC',
+'Норвегия':'NO',
+'Объединенные Арабские Эмираты':'AE',
+'Оман':'OM',
+'Остров Буве':'BV',
+'Остров Мэн':'IM',
+'Остров Норфолк':'NF',
+'Остров Рождества':'CX',
+'Остров Херд и острова Макдональд':'HM',
+'Острова Кайман':'KY',
+'Острова Кука':'CK',
+'Острова Теркс и Кайкос':'TC',
+'Пакистан':'PK',
+'Палау':'PW',
+'Палестинская территория, оккупированная':'PS',
+'Панама':'PA',
+'Папский Престол (Государство — город Ватикан)':'VA',
+'Папуа-Новая Гвинея':'PG',
+'Парагвай':'PY',
+'Перу':'PE',
+'Питкерн':'PN',
+'Польша':'PL',
+'Португалия':'PT',
+'Пуэрто-Рико':'PR',
+'Республика Македония':'MK',
+'Реюньон':'RE',
+'Россия':'RU',
+'Руанда':'RW',
+'Румыния':'RO',
+'Самоа':'WS',
+'Сан-Марино':'SM',
+'Сан-Томе и Принсипи':'ST',
+'Саудовская Аравия':'SA',
+'Свазиленд':'SZ',
+'Святая Елена, Остров вознесения, Тристан-да-Кунья':'SH',
+'Северные Марианские острова':'MP',
+'Сен-Бартельми':'BL',
+'Сен-Мартен':'MF',
+'Сенегал':'SN',
+'Сент-Винсент и Гренадины':'VC',
+'Сент-Люсия':'LC',
+'Сент-Китс и Невис':'KN',
+'Сент-Пьер и Микелон':'PM',
+'Сербия':'RS',
+'Сейшелы':'SC',
+'Сингапур':'SG',
+'Синт-Мартен':'SX',
+'Сирийская Арабская Республика':'SY',
+'Сирия':'SY',
+'Словакия':'SK',
+'Словения':'SI',
+'Соединенное Королевство':'GB',
+'Соединенные Штаты':'US',
+'Соломоновы острова':'SB',
+'Сомали':'SO',
+'Судан':'SD',
+'Суринам':'SR',
+'Сьерра-Леоне':'SL',
+'Таджикистан':'TJ',
+'Таиланд':'TH',
+'Тайвань (Китай)':'TW',
+'Танзания, Объединенная Республика':'TZ',
+'Тимор-Лесте':'TL',
+'Того':'TG',
+'Токелау':'TK',
+'Тонга':'TO',
+'Тринидад и Тобаго':'TT',
+'Тувалу':'TV',
+'Тунис':'TN',
+'Туркмения':'TM',
+'Турция':'TR',
+'Уганда':'UG',
+'Узбекистан':'UZ',
+'Украина':'UA',
+'Уоллис и Футуна':'WF',
+'Уругвай':'UY',
+'Фарерские острова':'FO',
+'Фиджи':'FJ',
+'Филиппины':'PH',
+'Финляндия':'FI',
+'Фолклендские острова (Мальвинские)':'FK',
+'Франция':'FR',
+'Французская Гвиана':'GF',
+'Французская Полинезия':'PF',
+'Французские Южные территории':'TF',
+'Хорватия':'HR',
+'Центрально-Африканская Республика':'CF',
+'Чад':'TD',
+'Черногория':'ME',
+'Чешская Республика':'CZ',
+'Чили':'CL',
+'Швейцария':'CH',
+'Швеция':'SE',
+'Шпицберген и Ян Майен':'SJ',
+'Шри-Ланка':'LK',
+'Эквадор':'EC',
+'Экваториальная Гвинея':'GQ',
+'Эландские острова':'AX',
+'Эль-Сальвадор':'SV',
+'Эритрея':'ER',
+'Эстония':'EE',
+'Эфиопия':'ET',
+'Южная Африка':'ZA',
+'ЮАР':'ZA',
+'Южная Джорджия и Южные Сандвичевы острова':'GS',
+'Южная Осетия':'OS',
+'Южный Судан':'SS',
+'Ямайка':'JM',
+'Япония':'JP'
+}
+
+#print language_code[config['zaripova']['mainlanguage']]
+
+
+with open("split-paper.tex") as f:
+    publist_full = f.read().splitlines()
+
+import_file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+import_file.write('<!DOCTYPE papers PUBLIC "-//PKP//OCS Papers XML//EN" "http://pkp.sfu.ca/ocs/dtds/native.dtd">\n')
+
+
+import_file.write('<issues>\n')
+import_file.write('<issue published="true" identification="num_year_title" current="true">\n')
+
+# hardcoded
+# import_file.write('<title locale="ru_RU">' + '№ ' + config['journal']['number'] + ', ' + config['journal']['year'] + '</title>\n')
+# import_file.write('<title locale="en_US">' + 'No ' + config['journal']['number'] + ' (' + config['journal']['year'] + ')' + '</title>\n')
+import_file.write('<title locale="ru_RU">' + 'Математика. Информатика. Физика' + '</title>\n')
+import_file.write('<title locale="en_US">' + 'Mathematics. Information Sciences. Physics' + '</title>\n')
+
+
+# import_file.write('<number>' + config['journal']['number'] + '</number>\n')
+# import_file.write('<year>' + config['journal']['year'] + '</year>\n')
+
+# month_published = int(config['journal']['number'])*3-1
+
+# date_published = str(config['journal']['year']) + '-' + str(month_published).zfill(2) + '-01'
+# access_date = str(int(config['journal']['year'])+1) + '-' + str(month_published).zfill(2) + '-01'
+
+# import_file.write('<date_published>' + date_published + '</date_published>\n')
+# import_file.write('<access_date>' + access_date + '</access_date>\n')
+
+for section_count in range(1, 20):
+    section = 'section' + str(section_count)
+    if section in config:
+        import_file.write('<articles>\n')
+        import_file.write('<section>\n')
+        import_file.write('<secTitle lang=\"' + lang_code['russian'] + '\">' + config[section]['parttoc']  + '</secTitle>\n')
+        import_file.write('<secTitle lang=\"' + lang_code['english'] + '\">' + config[section]['parttac']  + '</secTitle>\n')
+        import_file.write('</section>\n')
+
+        
+        # {{{ <article>
+
+        for publist in publist_full:
+            article = publist.split(' ')[0]
+            if article in config[section]:
+                
+                import_file.write('<article language=\"' + language_code[config[section][article]['mainlanguage']] + '\">\n')
+                import_file.write('<title locale=\"' + locale_code[config[section][article]['mainlanguage']] + '">' + str(config[section][article]['title']) + '</title>\n')
+                import_file.write('<title locale=\"' + locale_code[config[section][article]['altlanguage']] + '">' + str(config[section][article]['alttitle']) + '</title>\n')
+
+                import_file.write('<abstract locale=\"' + locale_code[config[section][article]['mainlanguage']] + '">' + str(config[section][article]['abstract']) + '</abstract>\n')
+                import_file.write('<abstract locale=\"' + locale_code[config[section][article]['altlanguage']] + '">' + str(config[section][article]['altabstract']) + '</abstract>\n')
+
+
+                # {{{ <indexing>
+
+                import_file.write('<indexing>\n')
+                import_file.write('<subject locale=\"' + locale_code[config[section][article]['mainlanguage']] + '">' + config[section][article]['keywords'].replace(",",";") + '</subject>\n')
+                import_file.write('<subject locale=\"' + locale_code[config[section][article]['altlanguage']] + '">' + config[section][article]['altkeywords'].replace(",",";") + '</subject>\n')
+                import_file.write('</indexing>\n')
+
+                # }}}
+               
+    
+                # {{{ <author>
+
+                if config[section][article]['mainlanguage'] == 'russian':
+                    authorlist_ru = config[section][article]['authorstoc']
+                    authorlist_en = config[section][article]['altauthorstoc']
+                else:
+                    authorlist_ru = config[section][article]['altauthorstoc']
+                    authorlist_en = config[section][article]['authorstoc']
+                
+                if type(authorlist_ru) != type(list()):
+                    authorlist_ru = [authorlist_ru]
+
+                if type(authorlist_en) != type(list()):
+                    authorlist_en = [authorlist_en]
+
+                autor_num = len(authorlist_ru)
+                for author_index in range(0, autor_num):
+                    # print(authorlist_ru[author_index], authorlist_en[author_index])
+                    authornames_ru = authorlist_ru[author_index].split(' ')
+                    authornames_en = authorlist_en[author_index].split(' ')
+                    
+                    import_file.write('<author primary_contact=\"false\">\n')
+                
+                    if len(authornames_ru) > 2:
+                        import_file.write('<lastname>' + authornames_ru[0] + '</lastname>\n')
+                        import_file.write('<firstname>' + authornames_ru[1] + '</firstname>\n')
+                        import_file.write('<middlename>' + authornames_ru[2] + '</middlename>\n')                       
+                        # import_file.write('<lastname locale=\"' + locale_code['english'] + '\">' + authornames_en[0] + '</lastname>\n')
+                        # import_file.write('<firstname locale=\"' + locale_code['english'] + '\">' + authornames_en[1] + '</firstname>\n')
+                        # import_file.write('<middlename locale=\"' + locale_code['english'] + '\">' + authornames_en[2] + '</middlename>\n')
+                    else:                      
+                        import_file.write('<lastname>' + authornames_ru[0] + '</lastname>\n')
+                        import_file.write('<firstname>' + authornames_ru[1] + '</firstname>\n')
+                        # import_file.write('<lastname locale=\"' + locale_code['english'] + '\">' + authornames_en[0] + '</lastname>\n')
+                        # import_file.write('<firstname locale=\"' + locale_code['english'] + '\">' + authornames_en[1] + '</firstname>\n')
+                        
+                    for author_count in range(1, 20):
+                        author_bingo = False
+                        email = '<![CDATA[]]>'
+                        country = 'Россия'
+                        fullname_ru = ''
+                        authorrank = ''
+                        authordegree = ''
+                        authorpost = ''
+
+                        fullname_id = 'fullname' + str(author_count)                        
+                        if fullname_id in config[section][article]:
+                            fullname_tmp = re.sub("\s*\(.+\)\s*$",'',config[section][article][fullname_id])
+                            fullname = fullname_tmp.split(' ')
+                            if authornames_ru[0] == fullname[0]:
+                                if fullname[1][0] == authornames_ru[1][0]:
+                                    if len(authornames_ru) > 2:
+                                        #print(fullname)
+                                        if fullname[2][0] == authornames_ru[2][0]:
+                                            author_bingo = True
+                                    else:
+                                        author_bingo = True
+                        if author_bingo:
+                            email_id = 'email' + str(author_count)
+                            if email_id in config[section][article]:
+                                if config[section][article][email_id] != '':
+                                    email = str(config[section][article][email_id])
+
+                            country_id = 'country' + str(author_count)
+                            if country_id in config[section][article]:
+                                if config[section][article][country_id] != '':
+                                    country = str(config[section][article][country_id])
+
+                            authorrank_id = 'authorrank' + str(author_count)
+                            if authorrank_id in config[section][article]:
+                                if config[section][article][authorrank_id] != '':
+                                    authorrank = str(config[section][article][authorrank_id])
+
+                            authordegree_id = 'authordegree' + str(author_count)
+                            if authordegree_id in config[section][article]:
+                                if config[section][article][authordegree_id] != '':
+                                    authordegree = str(config[section][article][authordegree_id])
+
+                            authorpost_id = 'authorpost' + str(author_count)
+                            if authorpost_id in config[section][article]:
+                                if config[section][article][authorpost_id] != '':
+                                    authorpost = str(config[section][article][authorpost_id])
+                            
+                            fullname_ru = config[section][article][fullname_id]
+                            
+
+                            break
+                            
+                    import_file.write('<country>' + iso3166_2[country] + '</country>\n')
+                    import_file.write('<email>' + email + '</email>\n')
+                    
+                    import_file.write('<biography locale=\"' + locale_code['russian'] + '\">')
+                    import_file.write(fullname_ru + ' — ')
+                    if authorrank != '':
+                        import_file.write(authorrank + ', ')
+                    if authordegree != '':
+                        import_file.write(authordegree + ', ')
+                    if authorpost != '':
+                        import_file.write(authorpost)
+                    import_file.write('</biography>\n')
+
+                    import_file.write('<biography locale=\"' + locale_code['english'] + '\">')
+                    import_file.write(authorlist_en[author_index]) 
+                    import_file.write('</biography>\n')
+
+                    import_file.write('</author>\n')
+
+                    # }}}
+
+                import_file.write('<pages>' + config[section][article]['starttitle'] + '-' + config[section][article]['endtitle'] + '</pages>\n')
+
+                # {{{ <galley>
+
+                galley.attrib["locale"] = locale_code[config[section][article]['mainlanguage']]
+        
+                pdf_file_name = papersdir + "/" + article + ".pdf"
+                pdf_file = open(pdf_file_name, 'rb')
+                pdf_file_line = pdf_file.read()
+                
+                embed.attrib["encoding"] = "base64"
+                embed.attrib["mime_type"] = "application/pdf"
+                # embed.attrib["filename"] = "vestnik-miph_" + config['journal']['year'] + "-" + config['journal']['number'] + "_" + config[section][article]['starttitle'] + '-' + config[section][article]['endtitle'] + '.pdf'
+                embed.attrib["filename"] = config[section][article]['starttitle'] + '-' + config[section][article]['endtitle'] + '.pdf'
+                embed.text = binascii.b2a_base64(pdf_file_line)
+                pdf_file.close()
+                import_file.write(etree.tounicode(galley, pretty_print=True))
+
+                # }}}
+                
+
+                import_file.write('</article>\n')
+
+                # }}}
+
+        import_file.write('</articles>\n')
+
+        # import_file.write('</section>\n')
+
+
+
+import_file.write("</issue>\n")
+import_file.write("</issues>")
+import_file.close()
+

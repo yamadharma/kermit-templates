@@ -1,0 +1,4 @@
+#!/bin/bash
+
+#pdfopt default.pdf default1.pdf
+#mv default1.pdf default.pdf

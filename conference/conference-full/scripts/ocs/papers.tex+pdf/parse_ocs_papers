@@ -1,0 +1,141 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+import os
+import binascii
+import sys
+# import mimetools
+# import base64
+# import string
+from lxml import etree
+from codecs import open
+
+topdir = 'papers'
+topdir_src = topdir + '/src'
+topdir_doc = topdir_src
+topdir_tex = topdir + '/tex'
+try:
+    os.makedirs(topdir)
+    os.makedirs(topdir_src)
+    os.makedirs(topdir_tex)
+except:
+    print "Каталог существует:", topdir
+
+
+
+infile = sys.argv[1]
+
+#paper = etree.Element("paper")
+
+#print(paper.tag)
+
+#print(len(paper))
+#children = list(paper)
+#for child in paper:
+#    print(child.tag)
+
+embed = etree.Element("embed")
+initials = ""
+init_fam = ""
+
+tree = etree.parse(infile)
+papers = tree.getroot()
+
+#for event, element in etree.iterparse(infile):
+#    print("%s, %4s, %s" % (event, element.tag, element.text))
+#    if element.tag == 'id':
+
+
+for i1 in range(len(papers)):
+    paper = papers[i1]
+    for i2 in range(len(paper)):
+#	print(paper[i2].tag)
+	element = paper[i2]
+	if element.tag == 'id':
+	    paper_id = element.text
+	    paper_file_name_doc = topdir_doc + '/' + paper_id + '.doc'
+	    paper_file_name_tex = topdir_tex + '/' + paper_id + '.tex'
+	    paper_file_tex = open(paper_file_name_tex, 'w', encoding='utf-8')
+	    paper_path = topdir + '/' + element.text
+#	try:
+#	    os.makedirs(paper_path)
+#	except:
+#	    print "Каталог существует:", paper_path
+
+	# \title{}
+	# elif element.tag == 'title':
+	#     paper_file_tex.write("\\title{" + element.text + "}%" + '\n')
+	#     # \paperid{}
+	#     paper_file_tex.write("\\paperid{" + paper_id + "}%" + '\n')
+
+	# # \author{}
+	# elif element.tag == 'author':
+	#     for i3 in range(len(element)):
+	# 	author = element[i3]
+	# 	if author.tag == 'firstname':
+	# 	    initials = initials + author.text[0] + "."
+	# 	elif author.tag == 'middlename':
+	# 	    if author.text != '':
+	# 		initials = initials + " " + author.text[0] + "."
+	# 	elif author.tag == 'lastname':
+	# 	    init_fam = initials + " " + author.text
+	# 	    paper_file_tex.write("\\author{" + init_fam + "}%" + '\n')
+	# 	    initials = ""
+
+	# Вытаскивание файла
+	elif element.tag == 'galley':
+            file_locale = embed.get('locale')
+	    for i4 in range(len(element)):
+		file = element[i4]
+		if file.tag == 'file':
+		    for i5 in range(len(file)):
+			embed = file[i5]
+			if embed.tag == 'embed':
+			    filename = embed.get('filename')
+			    fileext = filename[filename.find('.'):]
+                            # Make own dir for single tex-file
+                            if fileext == '.tex':
+                                paper_dir_name_doc = topdir_src + '/' + paper_id
+                                try:
+                                    os.makedirs(paper_dir_name_doc)
+                                except:
+                                    print "Каталог существует:", paper_dir_name_doc
+                            else:
+                                paper_dir_name_doc = topdir_src
+                            # Extract embeded file
+			    paper_file_name_doc = paper_dir_name_doc + '/' + paper_id + fileext
+			    paper_file_doc = open(paper_file_name_doc, 'w')
+			    paper_file_doc.write(binascii.a2b_base64(embed.text))
+			    paper_file_doc.close()
+                            # Make main tex-file
+                            # locale
+                            if file_locale == 'en_US':
+                                paper_file_tex.write("{\\selectlanguage{english}" + '\n')
+                            else:
+                                paper_file_tex.write("{\\selectlanguage{russian}" + '\n')
+                            # Include title and authors
+	                    paper_file_tex.write("\\input{tex-title/" + paper_id + "}%" + '\n')
+	                    # \paperid{}
+	                    paper_file_tex.write("\\paperid{" + paper_id + "}%" + '\n')
+			    paper_file_tex.write("\\maketitleToc" + '\n')
+			    paper_file_tex.write("\\includepdf[pages=-,pagecommand=\\thispagestyle{fancy}]{pdf/" + paper_id + ".pdf}" + '\n')
+                            paper_file_tex.write("}" + '\n')
+			    paper_file_tex.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

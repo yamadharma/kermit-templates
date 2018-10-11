@@ -1,0 +1,24 @@
+#!/bin/bash
+
+CURDIR=`pwd`
+
+TEXTITLE_DIR="$CURDIR"/papers/tex-title
+
+mkdir -p "$TEXTITLE_DIR"
+
+cd "$CURDIR"/papers/src
+
+for i in *
+do
+    if [[ -d "$i" ]]
+    then
+	cd "$i"
+	for texfile in *.tex
+	do
+	    echo "`basename ${texfile} .tex`" > NAME
+	done
+    fi
+    cd "$CURDIR"/papers/src
+done
+
+cd "$CURDIR"

@@ -1,0 +1,76 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+import os
+import binascii
+import sys
+# import mimetools
+import base64
+import string
+from lxml import etree
+
+import codecs
+
+import csv
+import pprint
+import random
+import calendar
+
+csv.register_dialect('in', delimiter=',', lineterminator="\n")
+
+infile_name = sys.argv[1]
+
+infile = open(infile_name,'r')
+
+
+# Названия секций
+mtt_name = "Теория телетрафика и ее применения"
+ngn_name = "Сети связи следующего поколения: управление, качество, архитектура"
+it_name = "Прикладные информационные системы"
+model_name = "Математическое моделирование"
+parallel_name = "Высокопроизводительные технологии распределенных вычислений"
+ceur_name = "Расширенные тезисы"
+youth_name = "Молодёжная школа"
+
+# Файлы секций
+mtt = open("mtt.tex", 'wb')
+ngn = open("ngn.tex", 'wb')
+it = open("it.tex", 'wb')
+model = open("model.tex", 'wb')
+parallel = open("parallel.tex", 'wb')
+ceur = open("ceur.tex", 'wb')
+youth = open("youth.tex", 'wb')
+
+# Чтение из файла
+table = []
+for row in csv.reader(infile, 'in'):
+    table.append(row)
+infile.close()
+
+
+print >>mtt, "\\trackid{mtt}"
+print >>ngn, "\\trackid{ngn}"
+print >>it, "\\trackid{it}"
+print >>model, "\\trackid{model}"
+print >>parallel, "\\trackid{parallel}"
+print >>ceur, "\\trackid{ceur}"
+print >>youth, "\\trackid{youth}"
+
+for r in range(0,len(table)):
+    if table[r][len(row)-3] == "Опубликовано" :
+        output_line = '\input{tex/' + table[r][0] + "}\t\t" + "%\t" + table[r][0] + "\t\t" + table[r][5] + " " + table[r][3] + " " + table[r][4] + "\t\t" + table[r][1]
+        if table[r][len(row)-10] == mtt_name :
+            print >>mtt, output_line
+        elif table[r][len(row)-10] == ngn_name :
+            print >>ngn, output_line
+        elif table[r][len(row)-10] == it_name :
+            print >>it, output_line
+        elif table[r][len(row)-10] == model_name :
+            print >>model, output_line
+        elif table[r][len(row)-10] == parallel_name :
+            print >>parallel, output_line
+        elif table[r][len(row)-10] == ceur_name :
+            print >>ceur, output_line
+        elif table[r][len(row)-10] == youth_name :
+            print >>youth, output_line
+

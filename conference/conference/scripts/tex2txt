@@ -1,0 +1,43 @@
+#!/bin/sh
+
+sed -i '
+{
+s/\\IeC //g
+s:\\T 2A::g
+s/\. \\T2A/\. /g
+s/ \\T2A//g
+s:\\T2A::g
+s:\\par :\n:g
+s:\\par::g
+s:\\unhbox \\voidb@x \\bgroup \\let \\unhbox \\voidb@x \\setbox \\@tempboxa \\hbox {s\\global \\mathchardef \\accent@spacefactor \\spacefactor }\\accent 20 s\\egroup \\spacefactor \\accent@spacefactor :š:g
+s:\\unhbox \\voidb@x \\hbox::g
+s:[[:space:]]*\\tmspace +\\thinmuskip {.1667em}: :g
+s:\\tmspace +\\thinmuskip {.1667em}: :g
+s:\\tmspace -\\thinmuskip {.1667em}::g
+s:\\unskip {}::g
+s:\\unhbox \\voidb@x \\penalty \\@M::g
+s:\\ignorespaces[[:space:]]*::g
+s: ~: :g
+s:~: :g
+s:\"\"\" :\"\"\":g
+s:\\delimiter "026A30C :|:g
+s:\\HyphOrDash /:-:g
+s:\\HyphOrDash ::g
+s:\\"{o}:ö:g
+s:<<:«:g
+s:>>:»:g
+s:{\\guillemotleft }:«:g
+s:{\\guillemotright }:»:g
+s:{\\textquoteright }:'"'"':g
+s:<:\&lt;:g
+s:>:\&gt;:g
+s: \\ : :g
+s: \\unhbox \\voidb@x::g
+s: \\hbox {}::g
+s:\\\\::g
+s:\\"o:ö:g
+s:\\protect :\\protect:g
+s:\\modulo:mod :g
+}
+' $1
+

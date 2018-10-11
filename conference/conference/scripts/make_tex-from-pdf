@@ -1,0 +1,30 @@
+#!/bin/bash
+
+CURDIR=`pwd`
+
+TEX_DIR="$CURDIR"/tex
+
+mkdir -p "$TEX_DIR"
+
+cd "$CURDIR"/pdf
+
+for i in *.pdf
+do
+    file_name=`basename "$i" .pdf`
+
+    if [[ -f ${TEX_DIR}/${file_name}.tex ]]
+    then
+	echo "File ${TEX_DIR}/${file_name}.tex exist. Skipping"
+    else
+	echo -e "\
+{\\selectlanguage{russian}
+\\input{tex-title/${file_name}}%
+\\paperid{${file_name}}%
+\\maketitleToc
+\\includepdf[pages=-,pagecommand=\\\\thispagestyle{fancy}]{pdf/${file_name}.pdf}
+}\n" >> ${TEX_DIR}/${file_name}.tex
+    fi
+    cd "$CURDIR"/pdf
+done
+
+cd "$CURDIR"

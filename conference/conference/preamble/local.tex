@@ -1,0 +1,253 @@
+\usepackage{morewrites}
+% see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=noroom
+\usepackage{etex} 
+\reserveinserts{80}
+
+\geometry{twoside}
+\geometry{bindingoffset=0pt}
+
+% \geometry{heightrounded}
+%\geometry{includeheadfoot}
+%\geometry{includefoot}
+\geometry{includehead}
+
+
+%\geometry{hmargin={22mm,11mm},vmargin={12mm,13mm}}
+\geometry{hmargin={16mm,16mm},vmargin={12mm,13mm}}
+%\geometry{total={112mm,175mm}}
+%\geometry{outer=10mm}
+%\geometry{inner=27mm}
+%\geometry{textwidth=112mm}
+%\geometry{textheight=170mm}
+\geometry{marginparwidth=0pt,marginparsep=0pt}
+\geometry{headheight=0pt}
+\geometry{headsep=\baselineskip}
+% \geometry{voffset=0pt}
+%  \geometry{footskip=2mm}
+% \geometry{showframe}
+% \geometry{asymmetric}
+
+%\setlength\hoffset{-7.4mm}
+%\setlength\oddsidemargin{0pt}
+%\setlength\evensidemargin{-15mm}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\renewcommand{\headerFontSize}{\small}
+%\fancypagestyle{plain}{%
+% \pagestyle{empty}
+\fancyhf{}
+\fancyhead{}
+% \fancyhead[RO,LE]{{\small\textrm{\thepage}}}
+\fancyhead[LE,RO]{\normalfont\headerFontSize\thepage}%
+%\fancyhead[RE]{\leftmark}%
+\fancyhead[RE]{\normalfont\headerFontSize Информационно-телекоммуникационные
+  технологии и матмоделирование --- 2018}%
+\fancyhead[LO]{\normalfont\headerFontSize \leftmark}
+% \renewcommand{\headrulewidth}{0pt}
+% \renewcommand{\footrulewidth}{0pt}
+% \fancyfoot[C]{{\small\textrm{\thepage}}}
+% \fancyfoot[RO,LE]{{\small\textrm{\thepage}}}
+\fancyfoot{}
+
+% \fancypagestyle{plain}{%
+% \fancyhead[LE,RO]{\headerFontSize\thepage}%
+% \fancyhead[RE]{\leftmark}%
+% \fancyhead[LO]{\rightmark}
+% \fancyfoot{}
+% }
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyhead{}
+  \fancyfoot{}
+  \fancyhead[CO,CE]{\LARGE \DivFontShape \mypartname}%
+  % \fancyhf{}
+  % \fancyhead[LC,RC]{\partname}%
+  % \renewcommand{\headrulewidth}{0pt}
+  \fancyfoot{}
+}
+
+%\makeatletter
+%\@addtoreset{section}{PFUtitle}
+%\@addtoreset{equation}{PFUtitle}
+%\@addtoreset{figure}{PFUtitle}
+%\@addtoreset{table}{PFUtitle}
+%\@addtoreset{Example}{PFUtitle}
+%\@addtoreset{Theorem}{PFUtitle}
+%\@addtoreset{theorem}{PFUtitle}
+% \renewcommand\theequation{\@arabic\c@section}
+%\renewcommand\thechapter{\@Roman\c@chapter}
+%\makeatother
+
+%\makeatletter
+%\newtheorem{theorem}{\TheoremName}
+%\@addtoreset{theorem}{PFUtitle}
+%\newtheorem{statement}{Statement}
+%\@addtoreset{statement}{PFUtitle}
+%\makeatother
+
+
+
+\makeatletter
+% \newcommand\printindex{\@input@{\jobname.ind}}
+%\def\@author@hook@post{\index{\authorfamily{} \authorinitialsplain}}
+
+%\def\@maketitle@hook@pre{\let\@maketitle@hook@pre\@empty}
+%\def\@maketitle@hook@pre{\clearpage}
+\def\@makealttitle@hook@post{\clearpage}
+\makeatother
+
+%\usepackage{unicode-math}
+% \unimathsetup{math-style=french}
+%\unimathsetup{math-style=TeX}
+
+%\setmathfont{Cambria Math}
+%\usepackage[math-style=French]{unicode-math}
+%\setmathfont{Cambria Math}
+%\setmathfont{STIX}
+
+% \usepackage{unicode-math}
+% \setmathfont[math-style=french]{Cambria Math}
+% \setmathfont[math-style=french]{STIXGeneral}
+
+\sloppy
+
+
+%\usepackage{makeidx}
+% \usepackage{index}
+\makeindex
+
+\makeatletter
+% \newcommand\printindex{\@input@{\jobname.ind}}
+%\def\@author@hook@post{\index{\authorfamily{} \authorinitialsplain}}
+
+\def\theindex{\clearpage\@restonecoltrue\if@twocolumn\@restonecolfalse\fi
+  %\columnseprule\z@ \columnsep 35\p@
+  \twocolumn[\@xp\section\@xp*\@xp{Авторский указатель}]%
+  \@xp\section\@xp*\@xp{Авторский указатель}%
+
+  \pagestyle{fancy}
+  \fancyhf{}
+  \fancyhead[LE,RO]{\headerFontSize\thepage}%
+  \fancyhead[RE]{\headerFontSize Информационно-телекоммуникационные
+  технологии и матмоделирование --- 2018}%
+%    \addcontentsline{toc}{part}{Авторский указатель}
+  \fancyhead[LO]{\headerFontSize Авторский указатель}
+  \fancyfoot{}
+
+  % \thispagestyle{plain}%
+  \let\item\@idxitem
+  \parindent\z@  \parskip\z@\@plus.3\p@\relax
+  % \footnotesize
+}
+
+\makeatother
+
+%\def\indexname{Авторский указатель}
+%\renewcommand{\indexspace}{\relax}
+
+\def\indexname{Авторский указатель}
+\makeatletter
+\renewenvironment{theindex}
+               {\if@twocolumn
+                  \@restonecolfalse
+                \else
+                  \@restonecoltrue
+                \fi
+                % \twocolumn[\@makeschapterhead{\indexname}]%
+                \@makeschapterhead{\indexname}%
+                \@mkboth{\indexname}%
+                        {\indexname}%
+                %\thispagestyle{plain}
+                \parindent\z@
+                \parskip\z@ \@plus .3\p@\relax
+                %\columnseprule \z@
+                %\columnsep 35\p@
+                \let\item\@idxitem}
+               {\if@restonecol\onecolumn\else\clearpage\fi}
+
+\makeatother
+
+\usepackage{pdfpages}
+
+\selectlanguage{russian}%
+%\Russian
+
+%\makeindex[name=author,title={Авторский указатель},options=-s author,noautomatic]
+
+\makeatletter
+\renewcommand\thepart{\@Roman\c@part}
+
+\usepackage{afterpage}
+
+\def\mypartname{}
+
+\renewcommand{\part}[2][]%
+{%
+  % {%
+  \clearpage
+  \refstepcounter{part}%
+  \thispagestyle{empty}
+  % \interlinepenalty\@M
+  \mbox{}
+  \vfill
+  \begin{center}
+    % \vskip 10\p@ \@plus -1ex \@minus -.2ex
+    % {\LARGE \DivFontShape \thepart.~#2\par}
+    {\LARGE \DivFontShape #2\par}
+    \bigskip
+    {\LARGE \DivFontShape #1\par}
+  \end{center}
+  % \par\nobreak
+  % \vskip 10\p@\@plus -1ex \@minus -.2ex%
+  % }
+  \vfill
+  %   \def\mypartname{#2}
+  % \def\mypartname{#1}
+  % \fancyhf{}
+  % \fancyhead[CO,CE]{\LARGE \DivFontShape \mypartname}%
+  % \renewcommand{\headrulewidth}{0pt}
+  % \afterpage{%
+  %   \fancyhf{}
+  %   \fancyhead[LE,RO]{\headerFontSize\thepage}%
+  %   \fancyhead[RE]{\headerFontSize Компьютерная алгебра --- 2017}%
+  %   \fancyhead[CO]{\headerFontSize \leftmark}
+  %   % \fancyhead[CE]{\headerFontSize Информационно-телекоммуникационные технологии и математическое моделирование высокотехнологичных систем}%
+  %   % \fancyhead[CO]{\headerFontSize \leftmark \rightmark}
+  %   % \renewcommand{\headrulewidth}{0.4pt}
+  %   \fancyfoot{}
+  % }
+  \addtocontents{tac}%
+  % {{\vspace{8pt}\protect\noindent\protect\raggedright\protect\protect\large\DivFontShape{#1}%
+  %     % \@par
+  %     \vspace{4pt}}}
+  {{\vspace{8pt}\protect\noindent\protect\begin{flushleft}\protect\protect\large\DivFontShape{#1}\protect\end{flushleft}%
+      % \@par
+      \vspace{4pt}}}
+  \addtocontents{toc}%
+  % {{\vspace{8dd}\protect\noindent\protect\raggedright\protect\protect\large\DivFontShape{\thepart.~#2}%
+  % {{\vspace{8pt}\protect\noindent\protect\raggedright\protect\protect\large\DivFontShape{#2}%
+  %     % \@par
+  %     \vspace{4pt}}}
+  {{\vspace{8pt}\protect\noindent\protect\begin{flushleft}\protect\protect\large\DivFontShape{#2}\protect\end{flushleft}%
+      % \@par
+      \vspace{4pt}}}
+   \def\parttoc{#2}
+   \def\parttac{#1}
+    \part@hook@post
+}
+
+\def\part@hook@post{}
+
+\makeatother
+
+%\usepackage{pageslts}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../default"
+%%% coding: utf-8-unix
+%%% End: 

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ -f default.articulus.ini ]]
+then
+    # scripts/t2a2utf default.articulus.ini
+    scripts/tex2txt default.articulus.ini
+fi

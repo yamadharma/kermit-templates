@@ -1,0 +1,136 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+import os
+import binascii
+import sys
+# import mimetools
+import base64
+import string
+from lxml import etree
+from codecs import open
+
+import_file_name = "import.xml"
+
+
+papersdir = sys.argv[1]
+
+path = papersdir
+
+files_list = os.listdir(path)
+
+import_file = open(import_file_name, 'w', encoding='utf-8')
+
+papers = etree.Element("papers")
+paper = etree.SubElement(papers, "paper")
+
+id = etree.SubElement(paper, "id")
+galley = etree.SubElement(paper, "galley")
+
+label = etree.SubElement(galley, "label")
+file = etree.SubElement(galley, "file")
+
+embed = etree.SubElement(file, "embed")
+
+label.text = "PDF"
+
+import_file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+import_file.write('<!DOCTYPE papers PUBLIC "-//PKP//OCS Papers XML//EN" "http://pkp.sfu.ca/ocs/dtds/native.dtd">\n')
+import_file.write('<papers>\n')
+
+for i in files_list:
+    if i.endswith('.pdf'):
+        pdf_file_name = path + "/" + i
+        pdf_file = open(pdf_file_name, 'rb')
+        pdf_file_line = pdf_file.read()
+        id.text = i[0:len(i)-4]
+        embed.attrib["encoding"] = "base64"
+        embed.attrib["mime_type"] = "application/pdf"
+        embed.attrib["filename"] = i
+        embed.text = binascii.b2a_base64(pdf_file_line)
+#        embed.text = base64.encode(pdf_file)
+        pdf_file.close()
+        import_file.write(etree.tostring(paper, pretty_print=True))
+
+import_file.write("</papers>")
+import_file.close()
+
+# initials = ""
+# init_fam = ""
+
+# tree = etree.parse(infile)
+# papers = tree.getroot()
+
+# for i1 in range(len(papers)):
+#     paper = papers[i1]
+#     for i2 in range(len(paper)):
+# #	print(paper[i2].tag)
+# 	element = paper[i2]
+# 	if element.tag == 'id':
+# 	    paper_id = element.text
+# 	    paper_file_name_doc = topdir_doc + '/' + paper_id + '.doc'
+# 	    paper_file_name_tex = topdir_tex + '/' + paper_id + '.tex'
+# 	    paper_file_tex = open(paper_file_name_tex, 'w', encoding='utf-8')
+# 	    paper_path = topdir + '/' + element.text
+
+# 	# \title{}
+# 	elif element.tag == 'title':
+# 	    paper_file_tex.write("\\title{" + element.text + "}%" + '\n')
+# 	    # \paperid{}
+# 	    paper_file_tex.write("\\paperid{" + paper_id + "}%" + '\n')
+
+# 	# \author{}
+# 	elif element.tag == 'author':
+# 	    for i3 in range(len(element)):
+# 		author = element[i3]
+# 		if author.tag == 'firstname':
+# 		    initials = initials + author.text[0] + "."
+# 		elif author.tag == 'middlename':
+# 		    if author.text != '':
+# 			initials = initials + " " + author.text[0] + "."
+# 		elif author.tag == 'lastname':
+# 		    init_fam = initials + " " + author.text
+# 		    paper_file_tex.write("\\author{" + init_fam + "}%" + '\n')
+# 		    initials = ""
+
+# 	# Вытаскивание файла
+# 	elif element.tag == 'galley':
+# 	    for i4 in range(len(element)):
+# 		file = element[i4]
+# 		if file.tag == 'file':
+# 		    for i5 in range(len(file)):
+# 			embed = file[i5]
+# 			if embed.tag == 'embed':
+# 			    filename = embed.get('filename')
+# 			    fileext = filename[filename.find('.'):]
+# 			    if fileext != '.tex':
+# 				paper_file_name_doc = topdir_doc + '/' + paper_id + fileext
+# 				paper_file_doc = open(paper_file_name_doc, 'w')
+# 				paper_file_doc.write(binascii.a2b_base64(embed.text))
+# 				paper_file_doc.close()
+# 				paper_file_tex.write("\\maketitleToc" + '\n')
+# 				paper_file_tex.write("\\includepdf[pages=-,pagecommand=\\thispagestyle{fancy}]{pdf/" + paper_id + ".pdf}" + '\n')
+# 				paper_file_tex.close()
+# 			    else:
+# 				paper_file_tex.close()
+# 				paper_file_tex = open(paper_file_name_tex, 'w')
+# 				paper_file_tex.write(binascii.a2b_base64(embed.text))
+# 				paper_file_tex.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

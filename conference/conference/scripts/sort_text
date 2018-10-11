@@ -1,0 +1,9 @@
+#!/bin/bash
+
+mkdir -p /tmp/text
+
+for i in text/*.tex
+do
+    sort -k4 "$i" > /tmp/"$i"
+    mv /tmp/"$i" "$i"
+done
