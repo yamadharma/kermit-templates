@@ -10,7 +10,7 @@
 #
 # Licensed under GPLv3 or any later version
 
-PAPER_DIRECTORIES = 999?????
+PAPER_DIRECTORIES = paper
 
 # reasonable defaults for things that Makefile.vars (see below) can override
 MKDIR = mkdir
@@ -42,23 +42,22 @@ toc.tex: toc.xml
 	$(SAXON) $< toc2latex.xsl > $@
 
 # creates from an unzipped EasyChair proceedings archive the XML table of contents, from which any further files are generated
-#toc.xml:
-#	exec > $@ ; \
-#	echo '<toc>' ; \
-#	for i in $(PAPER_DIRECTORIES) ; \
-#	do \
-#		echo $$i >&2 ; \
-#		cd $$i ; \
-#		../easychair2xml.pl README_EASYCHAIR ; \
-#		cd .. ; \
-#	done; \
-#	echo '</toc>'
+toc.xml:
+	exec > $@ ; \
+	echo '<toc>' ; \
+	for i in $(PAPER_DIRECTORIES) ; \
+	do \
+		echo $$i >&2 ; \
+		cd $$i ; \
+		../easychair2xml.pl README_EASYCHAIR ; \
+		cd .. ; \
+	done; \
+	echo '</toc>'
 
 # creates a CEUR-WS.org compliant index.html file
 ceur-ws/index.html: toc.xml workshop.xml ceur-ws/paper-01.pdf
 	$(SAXON) $< toc2ceurindex.xsl \
 	> $@
-	sed -i -e "s/\[Language: en\]//g" ceur-ws/index.html
 
 # # Old implementation of this rule, while US-ASCII output was required:
 # # recode u8..h : assume UTF8-input; encode everything using HTML entities (e.g. © → &copy;)
@@ -122,8 +121,7 @@ zip: ceur-ws/index.html ceur-ws/temp.bib
 
 # cleans up some files created by other rules
 clean:
-	-rm $$(< ID).zip
-	-find -L . -type l | xargs rm
+	rm $$(< ID).zip
 
 # The names of the following rules are not names of files:
 .PHONY: all zip retex clean

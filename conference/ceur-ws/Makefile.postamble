@@ -3,6 +3,7 @@ NAME = `cat NAME`
 split: default.pdf	## Split main pdf file
 	#cp `cat NAME`.pdf default.pdf
 	./scripts/split-paper
+	-(cd ceur-make/ceur-ws; ln -s ../../split-paper.d/* .; rm index.pdf)
 
 
 rename:	## Rename default.pdf to friendly name

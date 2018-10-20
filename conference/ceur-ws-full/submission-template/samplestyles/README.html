@@ -1,0 +1,79 @@
+<HTML>
+<META name="layout-by" content="Manfred Jeusfeld, RWTH Aachen">
+<META name="description" content="KRDB-97 Home Page">
+<HEAD>
+<TITLE>KRDB'97 - Author Instructions</TITLE>
+</HEAD>
+<BODY bgcolor= #ffffff text=#000000 link=#ee0000 vlink=#ee0000>
+<BLOCKQUOTE>
+
+<H1>Some style files for CEUR-WS.org</H1>
+
+<b>
+WARNING: THE STYLE FILES ARE ONLY EXAMPLES. WORKSHOP ORGANIZERS PLANNING
+TO USE THEM SHOULD ADAPT THEM TO THEIR NEEDS AND ALSO CHECK WHETHER
+THEY WORK AS EXPECTED. WE CANNOT PROVIDE LATEX DEBUGGING. THE 
+STYLE FILES IN THIS DIRECTORY MAY WELL CONTAIN BUGS!<br><br>
+
+Manfred Jeusfeld, 2013-02-08<br><br>
+</b>
+
+The LaTeX style files for preparing the paper are
+<ul>
+<li> onecolceurws.sty: for preparing plain proceedings papers; no page numbers
+<li> onecolpceurws.sty: for preparing plain proceedings papers; with page numbers
+<li> twocolceurws.sty: for preparing two-column style papers; no page numbers
+<li> twocolpceurws.sty: for preparing two-column style papers; with page numbers
+</ul>
+<p>
+Use the file paper1.tex as an example for a plain paper (uses onecolceurws.sty). 
+If you want to produce a two-column paper then use paper2.tex
+(uses twocolceurws.sty) as a starter. 
+Both styles omit page numbers (see pagestyle in the style file).
+The variants paper1p.tex and paper2p.tex are
+just including page numbers.
+If you have omitted pagenumbers, then you 
+easily produce a PDF with all papers and consecutive page numbers
+with the LaTeX <A HREF="http://ceur-ws.org/latex-pagenumbers.tex">script</A>
+by Daniel A. Sadilek. See <A HREF="http://CEUR-WS.org/Vol-324/dsml08.pdf">Vol-324/dsml08.pdf</A>
+to see the compiled proceedings file. You can use a suitable PDF cutter tool
+to recover the individual papers with the absolute paper numbers from the overall proceedings
+file.
+
+<p>
+As editor of a workshop proceedings volume, you can pick the most suitable style file,
+and then adapt the clause <tt>\copyrightspace</tt> to reflect the right workshop title,
+date and editors. You are also welcome to adapt other settings like the page layout to
+your needs. We strongly recommend to use this clause because it lets readers trace back
+a PDF paper to the workshop where it was published.
+
+<p>
+If you use other text processing software than LaTeX, then print out the suitable
+paper*.pdf  and adapt your text
+ processing software to the layout.
+
+Generate the PDF for A4 paper format with
+<PRE>
+   % latex paper1.tex
+   % dvipdf paper1.dvi
+</PRE>
+The other variants are created analogously.
+<p>
+
+<p> The style files were derived from the VLDB style;
+permission to use for CEUR-WS.org was kindly granted by the Board of Trustees
+of VLDB (www.vldb.org). You are welcome to share alternative style files
+with us!
+
+</BLOCKQUOTE>
+
+<hr>
+<FONT size=2>
+17-Oct-2011: created by by M. Jeusfeld,
+<A HREF="http://ceur-ws.org">ceur-ws.org</A><br>
+8-Feb-2013: adaptions for Latex 2e to allow inclusion of EPS files
+</FONT>
+
+</BODY>
+</HTML>
+

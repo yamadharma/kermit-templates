@@ -1,0 +1,70 @@
+Acronym of workshop,			DBLP page of the workshop series
+ITTMM-WSS-2018,				,
+
+Co-located with,			DBLP page of umbrella conference
+ITTMM,					,
+
+Editors,				INDEX page,											Numbers of papers
+
+Konstantin E. Samouylov,		https://dblp.uni-trier.de/pers/hd/s/Samouylov:Konstantin_E=,					62
+Leonid A. Sevastyanov,			https://dblp.uni-trier.de/pers/hd/s/Sevastyanov:Leonid_A=,					27
+Dmitry S. Kulyabov,			https://dblp.uni-trier.de/pers/hd/k/Kulyabov:Dmitry_S=,						20
+
+PC Member				INDEX page,											Numbers of papers
+
+Konstantin E. Samouylov,		https://dblp.uni-trier.de/pers/hd/s/Samouylov:Konstantin_E=,					62
+Sergey Ya. Shorgin,			https://dblp.uni-trier.de/pers/hd/s/Shorgin:Sergey,						35
+Irina A. Gudkova,			https://dblp.uni-trier.de/pers/hd/g/Gudkova:Irina,						40
+Sergey D. Andreev,			https://dblp.uni-trier.de/pers/hd/a/Andreev_0001:Sergey,					185
+Yulia Gaidamaka,			https://dblp.uni-trier.de/pers/hd/g/Gaidamaka:Yulia,						43
+Eugeny A. Kucheryavy,			https://dblp.uni-trier.de/pers/hd/k/Koucheryavy:Yevgeni,					249
+Valery A. Naumov,			https://dblp.uni-trier.de/pers/hd/n/Naumov:Valeriy,						23
+
+Paper,	Author,				INDEX page,											Numbers of papers
+
+paper1, Andrey N. Vinogradov,		,
+paper1, Igor P. Tishchenko,		https://dblp.uni-trier.de/pers/hd/t/Tishchenko:Igor,						7
+paper1, Semion V. Paramonov,		https://dblp.uni-trier.de/pers/hd/p/Paramonov:S=_V=,						4
+
+paper2, Aleksandr Y. Buyko,		,
+paper2, Andrey N. Vinogradov,		,
+paper2, Igor P. Tishchenko,		https://dblp.uni-trier.de/pers/hd/t/Tishchenko:Igor,						7
+
+paper3, Tatiana A. Milovanova,		https://dblp.uni-trier.de/pers/hd/m/Milovanova:Tatiana,						1
+paper3, Lusine A. Meykhanadzhyan,	https://dblp.uni-trier.de/pers/hd/m/Meykhanadzhyan:Lusine,					1
+paper3, Rostislav V. Razumchik,		https://dblp.uni-trier.de/pers/hd/r/Razumchik:Rostislav,					28
+
+paper4, Elvira R. Zaripova,		https://dblp.uni-trier.de/pers/hd/z/Zaripova:Elvira_R=,						7
+paper4, Alexander Yu. Grebeshkov,	https://dblp.uni-trier.de/pers/hd/g/Grebeshkov:Alexander,					2
+paper4, Yurii N. Orlov,			https://dblp.uni-trier.de/pers/hd/o/Orlov:Yuri,							15
+paper4, Vsevolod S. Shorgin,		https://dblp.uni-trier.de/pers/hd/s/Shorgin:Vsevolod;https://dblp.uni-trier.de/pers/hd/s/Shorgin:Vsevolod_S=,	3
+
+paper5, Yurii N. Orlov,			https://dblp.uni-trier.de/pers/hd/o/Orlov:Yuri,							15
+paper5, Elvira R. Zaripova,		https://dblp.uni-trier.de/pers/hd/z/Zaripova:Elvira_R=,						7
+paper5, Alexey V. Chukarin,		https://dblp.uni-trier.de/pers/hd/c/Chukarin:Alexey,						1
+
+paper6, Anastasiya V. Demidova,		https://dblp.uni-trier.de/pers/hd/d/Demidova:Anastasiya_V=,					7
+paper6, Soltan I. Salpagarov,		https://www.scopus.com/authid/detail.uri?authorId=57201380251&amp;eid=2-s2.0-85044531153,	1
+paper6, Alexander S. Pankratov		,
+
+paper7, Duy T. Nguyen,			,
+paper7, Vyacheslav M. Khachumov,	,
+paper7, Mikhail V. Khachumov,		https://dblp.uni-trier.de/pers/hd/k/Khachumov:Mikhail?q=Khachumov,				1
+paper7, Soltan I. Salpagarov,		https://www.scopus.com/authid/detail.uri?authorId=57201380251&amp;eid=2-s2.0-85044531153,	1
+paper7, Konstantin S. Yakovlev,		https://dblp.uni-trier.de/pers/hd/y/Yakovlev:Konstantin,					27
+
+paper8, Anastasiya V. Demidova,		https://dblp.uni-trier.de/pers/hd/d/Demidova:Anastasiya_V=,					7
+paper8, Maxim B. Fomin,			https://www.scopus.com/authid/detail.uri?authorId=57193381628,					6
+paper8, Sergey G. Shorokhov,		,
+
+paper9, Andrey Bokovoy,			https://dblp.uni-trier.de/pers/hd/b/Bokovoy:Andrey,						4
+paper9, Maxim B. Fomin,			https://www.scopus.com/authid/detail.uri?authorId=57193381628,					6
+paper9, Konstantin S. Yakovlev,		https://dblp.uni-trier.de/pers/hd/y/Yakovlev:Konstantin,					27
+
+paper10, Mikhail V. Khachumov,		https://dblp.uni-trier.de/pers/hd/k/Khachumov:Mikhail?q=Khachumov,				1
+paper10, Vladimir B. Melekhin,		,
+paper10, Alexander S. Pankratov,	,
+paper10, Anton A. Andreychuk,		https://dblp.uni-trier.de/pers/hd/a/Andreychuk:Anton,						10
+
+
+
