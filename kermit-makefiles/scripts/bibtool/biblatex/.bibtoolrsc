@@ -54,8 +54,6 @@ new.entry.type{patent}
 
 # Sanitize month
 resource bibtool.d/month
-# Biblatex specific
-resource bibtool.d/biblatex
 
 # Use biblatex
 resource biblatex
@@ -63,6 +61,8 @@ resource biblatex
 # Fix for concret entry types
 resource bibtool.d/eprint
 resource bibtool.d/book
+# Biblatex specific
+resource bibtool.d/language
 
 #
 # Semantic checks for year fields
