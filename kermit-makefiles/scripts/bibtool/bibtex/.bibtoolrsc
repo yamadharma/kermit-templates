@@ -58,6 +58,7 @@ new.entry.type{patent}
 # Fix for concret entry types
 resource bibtool.d/eprint
 resource bibtool.d/book
+
 # Biblatex specific
 resource bibtool.d/language
 

@@ -6,7 +6,7 @@
 % http://tex.stackexchange.com/questions/24445/hyperref-lualatex-and-unicode-bookmarks-issue-garbled-page-numbers-in-ar-for-l
 \hypersetup{pdfencoding=auto}
 
-\ifthenelse{\boolean{xetex}}{}{%
+\ifthenelse{\boolean{luatex}\OR\boolean{xetex}}{}{%
   \usepackage{breakurl}
 }
 

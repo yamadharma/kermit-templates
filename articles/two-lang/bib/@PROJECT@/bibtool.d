@@ -1,0 +1,1 @@
+../../../../kermit-makefiles/scripts/bibtool/bibtex/bibtool.d

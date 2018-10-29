@@ -6,7 +6,6 @@
 %% Need pygment <http://pygments.org/> <http://pypi.python.org/pypi/Pygments>
 \usepackage{minted}
 
-
 %{{{ Поддержка русских букв
 
 \makeatletter
@@ -41,6 +40,17 @@
   \immediate\closeout\minted@code}
 \fi
 }
+\makeatother
+
+%}}}
+%{{{ Fix minted red box around some characters
+
+\usepackage{xpatch}
+\makeatletter
+\AtBeginEnvironment{minted}{\dontdofcolorbox}
+\def\dontdofcolorbox{\renewcommand\fcolorbox[4][]{##4}}
+\xpatchcmd{\inputminted}{\minted@fvset}{\minted@fvset\dontdofcolorbox}{}{}
+\xpatchcmd{\mintinline}{\minted@fvset}{\minted@fvset\dontdofcolorbox}{}{}
 \makeatother
 
 %}}}
