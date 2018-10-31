@@ -5,7 +5,6 @@ pdf:	## Make combined english+russian pdf file
 
 prepare:	## Prepare source tree for compilation
 	@./scripts/src_prepare
-	@[[ -d support/$(TARGET) ]] && (cd support/$(TARGET); make) 
 
 vestnik:
 	scripts/prepare_vestnik $(NAME) title/*.tex text/*.tex

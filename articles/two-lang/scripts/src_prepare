@@ -6,6 +6,7 @@ if [[ $(cat NAME) != "" ]]
 then
     PROJECT=$(cat NAME)
     mkdir -p image/${PROJECT}/{en,ru}
+    # Replace template @PROJECT@ to project name
     [[ -d bib/@PROJECT@ ]] && mv bib/@PROJECT@ bib/${PROJECT}
     for i in title/* text/*
     do
@@ -18,11 +19,14 @@ fi
 if [[ $(cat TARGET) != "" ]]
 then
     TARGET=$(cat TARGET)
+    # Replace template @TARGE@ to target name
     for i in *.tex title/* text/*
     do
 	[[ -L "$i" ]] || sed -i -e "s:@TARGET@:${TARGET^}:g" "$i"
-    done 
+    done
+    # Run Makefile in support directory
+    [[ -d support/$(TARGET) ]] && (cd support/$(TARGET); make)
 else
     echo "Add target name into TARGET file"
 fi
-    
+
