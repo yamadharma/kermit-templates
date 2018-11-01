@@ -13,9 +13,9 @@ source scripts/include/function
 for i in ${MAINLANG} ${ALTLANG}
 do
     touch ${out_dir}/${i}.tex
-    cat support/${PROJECT_NAME}/preamble/pre/*.tex >> ${out_dir}/${i}.tex
-    cat support/${PROJECT_NAME}/preamble/${i}.tex >> ${out_dir}/${i}.tex
-    cat support/${PROJECT_NAME}/preamble/post/*.tex >> ${out_dir}/${i}.tex
+    cat support/${PROJECT_NAME}/preamble/class/*.tex >> ${out_dir}/${i}.tex
+    cat support/${PROJECT_NAME}/preamble/lang/${i}.tex >> ${out_dir}/${i}.tex
+    cat support/${PROJECT_NAME}/preamble/pkg/*.tex >> ${out_dir}/${i}.tex
     
     cp ${i}.bbl ${out_dir}/
 

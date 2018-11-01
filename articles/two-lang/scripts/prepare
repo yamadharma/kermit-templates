@@ -9,12 +9,13 @@ source scripts/include/function
 
 # {{{ Make preamble
 
-for i in ${MAINLANG}
+for i in ${MAINLANG} # ${ALTLANG}
 do
     touch ${out_dir}/${i}.tex
     # mkdir -p ${out_dir}/pre
-    cat support/${PROJECT_NAME}/preamble/pre/*.tex >> ${out_dir}/${i}.tex
-    # cat support/${PROJECT_NAME}/preamble/${i}.tex >> ${out_dir}/${i}.tex
+    cat support/${PROJECT_NAME}/preamble/class/*.tex >> ${out_dir}/${i}.tex
+    cat support/${PROJECT_NAME}/preamble/lang/${i}.tex >> ${out_dir}/${i}.tex
+    cat support/${PROJECT_NAME}/preamble/pkg/*.tex >> ${out_dir}/${i}.tex
     mkdir -p ${out_dir}/title
     # cp support/${PROJECT_NAME}/title/*.tex ${out_dir}/title/
     

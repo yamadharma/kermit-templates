@@ -25,7 +25,7 @@ then
 	[[ -L "$i" ]] || sed -i -e "s:@TARGET@:${TARGET^}:g" "$i"
     done
     # Run Makefile in support directory
-    [[ -d support/$(TARGET) ]] && (cd support/$(TARGET); make)
+    [[ -d support/${TARGET} ]] && (cd support/${TARGET}; make)
 else
     echo "Add target name into TARGET file"
 fi
