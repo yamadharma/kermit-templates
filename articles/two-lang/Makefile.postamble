@@ -31,7 +31,7 @@ lncs:
 	scripts/prepare_lncs $(NAME) text/*.tex
 
 spie:
-	scripts/prepare_spie $(NAME) title/*.tex text/*.tex
+	scripts/prepare spie $(NAME) title/*.tex text/*.tex
 
 iopconf:
 	scripts/prepare iopconf $(NAME) title/*.tex text/*.tex

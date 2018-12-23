@@ -6,6 +6,11 @@ ALTLANG=russian
 
 source scripts/include/header
 source scripts/include/function
+# For specific project
+if [[ -d "scripts/include/project/${PROJECT_NAME}" ]]
+then
+    source "scripts/include/project/${PROJECT_NAME}"
+fi
 
 # {{{ Make preamble
 
@@ -112,17 +117,9 @@ cat support/${PROJECT_NAME}/preamble/end/* >> ${out_dir}/text/${out_name}.tex
 
 # }}}
 
-# {{{ Acknowledgments hacks
+# {{{ Project specific hack
 
-sed -i -e 's:\\begin{acknowledgments}:\\section*{Acknowledgment}:g' \
-    ${out_dir}/text/${out_name}.tex
-
-sed -i -e '/\\end{acknowledgments}/D' \
-     ${out_dir}/text/${out_name}.tex
-
-# sed -i -e 's:\\section{:\\Section{:g' \
-#     -e 's:\\subsection{:\\Subsection{:g' \
-#     ${out_dir}/text/${out_name}.tex
+project_hack
 
 # }}}
 
