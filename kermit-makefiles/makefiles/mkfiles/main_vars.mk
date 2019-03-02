@@ -277,7 +277,7 @@ GLGFILE=${FILE}.glg		# Log for glossary
 
 
 ADDITIONALTEXFILES = $(call launchShell, ${FIND_CMD} . -name "*.tex" -path "./*/*")
-ADDITIONALAUXFILES = $(addsuffix .aux, $(basename ${ADDITIONALTEXFILES}))
+ADDITIONALAUXFILES = $(call launchShell, ${FIND_CMD} . -name "*.aux" -path "./*/*")
 TEXFILES = ${TEXFILE} ${ADDITIONALTEXFILES}
 BIBFILES = $(call launchShell, ${FIND_CMD} . -name "*.bib")
 STYFILES = $(call launchShell, ${FIND_CMD} . -name "*.sty" -o -name "*.cls")
