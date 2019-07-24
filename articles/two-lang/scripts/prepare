@@ -1,20 +1,52 @@
 #!/bin/bash
 # -*- mode: sh -*-
 
-MAINLANG=english
-ALTLANG=russian
-
 source scripts/include/header
 source scripts/include/function
+
+if [[ -f "support/${PROJECT_NAME}/LANG" ]]
+then
+    MAINLANG=$(cat "support/${PROJECT_NAME}/LANG")
+elif [[ -f "support/${PROJECT_NAME}/MAINLANG" ]]
+     then
+    MAINLANG=$(cat "support/${PROJECT_NAME}/MAINLANG")
+else
+    MAINLANG=english
+fi
+
+if [[ -f "support/${PROJECT_NAME}/ALTLANG" ]]
+then
+    ALTLANG=$(cat "support/${PROJECT_NAME}/ALTLANG")
+else
+    case ${MAINLANG} in
+	english)
+	    ALTLANG=russian
+	    ;;
+	russian)
+	    ALTLANG=english
+	    ;;
+	*)
+	    ALTLANG=russian
+	    ;;
+    esac
+fi
+
+if [[ -f "support/${PROJECT_NAME}/TWOLANG" ]]
+then
+    LANGLIST=${MAINLANG} ${ALTLANG}
+else
+    LANGLIST=${MAINLANG}
+fi
+
 # For specific project
-if [[ -d "scripts/include/project/${PROJECT_NAME}" ]]
+if [[ -f "scripts/include/project/${PROJECT_NAME}" ]]
 then
     source "scripts/include/project/${PROJECT_NAME}"
 fi
 
 # {{{ Make preamble
 
-for i in ${MAINLANG} # ${ALTLANG}
+for i in ${LANGLIST}
 do
     touch ${out_dir}/${i}.tex
     # mkdir -p ${out_dir}/pre

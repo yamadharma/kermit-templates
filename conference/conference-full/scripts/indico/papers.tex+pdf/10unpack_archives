@@ -1,0 +1,59 @@
+#!/bin/bash
+
+CURDIR=`pwd`
+
+PAPER="$CURDIR"/papers/src
+
+mkdir -p "$PAPER"
+
+ARCEXT="zip 7z rar tar.gz tgz tar tar.bz2 tar.xz gz bz2 xz"
+
+# Распакуем архивы
+cd "$CURDIR"/papers/src
+
+for dir in *
+do
+    if [[ -d ${dir} ]]
+    then
+	cd ${dir}
+	
+	for EXT in $ARCEXT
+	do
+	    for i in *.$EXT
+	    do
+		if [[ -f "$i" ]]
+		then
+		    case $EXT in
+			tar.xz)
+			    tar xJvf "$PAPER"/${dir}/"$i"
+			    ;;
+			zip)
+			    unzip -Outf8 "$PAPER"/${dir}/"$i"
+			    ;;
+			*)
+			    7z x "$PAPER"/${dir}/"$i"
+			    ;;
+		    esac
+		    rm "$i"
+		    # Если каталог, вытаскиваем всё из каталога и удаляем его
+		    if [[ `ls | wc -l` == 1 ]]
+		    then
+			OLDDIR=`ls`
+			if [[ -d "$OLDDIR" ]]
+			then
+			    cd "$OLDDIR"
+			    mv * ..
+			    rm .*
+			    cd ..
+			    rmdir "$OLDDIR"
+			fi
+		    fi
+		fi
+	    done
+	done
+	cd ../
+    fi
+done
+
+
+cd "$CURDIR"

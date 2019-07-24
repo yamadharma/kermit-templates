@@ -1,0 +1,21 @@
+#!/bin/bash
+
+CURDIR=`pwd`
+
+cd "$CURDIR"/papers/src
+
+for i in *
+do
+    if [[ -d "$i" ]]
+    then
+	cd "$i"
+	crlf -u *.tex
+	crlf -u *.bib
+	enca -c *.tex
+	enca -c *.bib
+	cd ..
+    fi
+    cd "$CURDIR"/papers/src
+done
+
+cd "$CURDIR"

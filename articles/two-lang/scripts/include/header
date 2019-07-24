@@ -38,6 +38,7 @@ comment_tag_list=(
     maik
     iopconf
     ieeetran
+    webofc
     @TARGET@
 )
 

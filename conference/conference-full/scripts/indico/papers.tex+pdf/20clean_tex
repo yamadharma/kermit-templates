@@ -1,0 +1,28 @@
+#!/bin/bash
+
+CURDIR=`pwd`
+
+cd "$CURDIR"/papers/src
+
+for i in *
+do
+    if [[ -d "$i" ]]
+    then
+	cd "$i"
+	for texfile in *.tex
+	do
+	    sed -i -e "/{inputenc}/d" "$texfile"
+	done
+	rm split-track.tex
+	rm split-paper.tex
+	rm definition.tex
+	rm Makefile
+	rm -f *.{log,toc,tac,aux,dvi,bbl,blg,tmp,nav,out,snm,vrb,rel,thm,rel,*~,synctex.gz,synctex,ddf,bst}
+	rm -rf out auto preamble
+	rm *.cls *.clo *.sty
+	rm funny_graph_ru.eps
+    fi
+    cd "$CURDIR"/papers/src
+done
+
+cd "$CURDIR"

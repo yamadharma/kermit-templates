@@ -42,6 +42,9 @@ svproc:
 ieeetran:
 	scripts/prepare_ieeetran $(NAME) title/*.tex text/*.tex
 
+webofc:		## Make article based on template
+	scripts/prepare $@ $(NAME) title/*.tex text/*.tex
+
 arxiv:
 #	./make MACRO_FORMAT=latex
 	scripts/prepare_arxiv $(NAME) title/*.tex text/*.tex

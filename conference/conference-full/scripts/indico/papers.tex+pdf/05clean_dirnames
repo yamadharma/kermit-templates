@@ -1,0 +1,35 @@
+#!/bin/bash
+
+DIRLENGTH=3
+
+CURDIR=`pwd`
+
+PAPER="$CURDIR"/papers/src
+
+cd ${PAPER}
+
+for i in *
+do
+    if [[ -d $i ]]
+    then
+	if [[ $i != ${i%%_*} ]]
+	then
+	   mv "$i" "${i%%_*}"
+	fi	
+    fi    
+done
+
+for i in *
+do
+    if [[ -d $i ]]
+    then
+	if [[ ${#i} != ${DIRLENGTH} ]]
+	then	    
+	    mv "${i}" $(printf "%0${DIRLENGTH}d" "${i}")
+	fi	
+    fi    
+done
+
+cd ${CURDIR}
+
+	 

@@ -1,0 +1,8 @@
+# Convert URL DOI to DOI
+#rewrite.rule = {url# "https?://.*doi"} # Should have DOI field instead
+#rewrite.rule = {url# "https?://.*doi\.org/\(10\.[0-9]+/[^\"}]+\)" # "{\1}"}
+rename.field {url=doiurl if url="doi"}
+rename.field {doiurl=delete if doi="10."}
+delete.field = {delete}
+rename.field {doiurl=doi}
+rewrite.rule = {doi# "https?://.*doi\.org/\(10\.[0-9]+/.+\)"# "\1"}

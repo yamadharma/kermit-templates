@@ -1,0 +1,25 @@
+# -*- mode:sh -*-
+
+project_hack() {
+
+# {{{ Acknowledgments hacks
+
+sed -i -e 's:\\begin{acknowledgments}:\\begin{acknowledgement}:g' \
+    ${out_dir}/text/${out_name}.tex
+
+sed -i -e 's:\\end{acknowledgments}:\\end{acknowledgement}:g' \
+    ${out_dir}/text/${out_name}.tex
+
+# }}}
+
+# {{{ Abstract
+
+sed -i -e 's:\\begin{abstract}:\\abstract{:g' \
+    ${out_dir}/text/${out_name}.tex
+
+sed -i -e 's:\\end{abstract}:}:g' \
+    ${out_dir}/text/${out_name}.tex
+
+# }}}
+
+}
