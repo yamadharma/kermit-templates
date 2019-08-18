@@ -6,6 +6,8 @@ pdf:	## Make combined english+russian pdf file
 prepare:	## Prepare source tree for compilation
 	@./scripts/src_prepare
 
+### Template targets:
+
 vestnik:
 	scripts/prepare_vestnik $(NAME) title/*.tex text/*.tex
 
@@ -30,11 +32,11 @@ jpcs:
 lncs:
 	scripts/prepare_lncs $(NAME) text/*.tex
 
-spie:
+spie:	### Make article based on template
 	scripts/prepare spie $(NAME) title/*.tex text/*.tex
 
-iopconf:
-	scripts/prepare iopconf $(NAME) title/*.tex text/*.tex
+iopconf:	### Make article based on template
+	scripts/prepare $@ $(NAME) title/*.tex text/*.tex
 
 svproc:
 	scripts/prepare_svproc $(NAME) title/*.tex text/*.tex
@@ -42,7 +44,10 @@ svproc:
 ieeetran:
 	scripts/prepare_ieeetran $(NAME) title/*.tex text/*.tex
 
-webofc:		## Make article based on template
+webofc:		### Make article based on template
+	scripts/prepare $@ $(NAME) title/*.tex text/*.tex
+
+programm:	### Make article based on template
 	scripts/prepare $@ $(NAME) title/*.tex text/*.tex
 
 arxiv:

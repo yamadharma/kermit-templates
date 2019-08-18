@@ -1,0 +1,41 @@
+# -*- mode:sh -*-
+
+project_hack() {
+
+# {{{ Acknowledgments hacks
+
+sed -i -e 's:\\begin{acknowledgments}:\\section{Благодарности}:g' \
+    ${out_dir}/text/${out_name}.tex
+
+sed -i -e '/\\end{acknowledgments}/D' \
+     ${out_dir}/text/${out_name}.tex
+
+# }}}
+
+sed -i -e 's:\\section:\\He:' ${out_dir}/text/${out_name}.tex
+sed -i -e 's:\\subsection:\\he:' ${out_dir}/text/${out_name}.tex
+sed -i -e '/^\\maketitle.*/D' ${out_dir}/text/${out_name}.tex
+sed -i -e 's:\\begin{abstract}:\\rusabstr{:' ${out_dir}/text/${out_name}.tex
+sed -i -e 's:\\end{abstract}:}\\maketitle:' ${out_dir}/text/${out_name}.tex
+
+# {{{ Embeding bibliography
+
+# sed -i -e '/^[[:space:]]*\\bibliography.*/D' ${out_dir}/text/${out_name}.tex
+
+# sed -i -e '/^\\newblock URL.*/D' \
+#     -e 's:\\providecommand\*{\\BibEmph}\[1\]{\#1}:\\providecommand*{\\BibEmph}[1]{\\emph{#1}}:g' \
+#     ${out_dir}/*.bbl
+
+# cat ${out_dir}/*.bbl >> ${out_dir}/text/${out_name}.tex
+
+# }}}
+
+# {{{ Convert UTF8 -> CP1251
+
+echo -e '\n\n%%% Local Variables:\n%%% mode: latex\n%%% coding: cp1251-unix\n%%% End:\n' >> ${out_dir}/text/${out_name}.tex
+find ${out_dir} -name "*.tex" -exec recode -f UTF-8..WINDOWS1251 "{}" \;
+find ${out_dir} -name "*.bib" -exec recode -f UTF-8..WINDOWS1251 "{}" \;
+
+# }}}
+
+}
