@@ -5,14 +5,16 @@ parentracker=true,%
 backend=biber,%
 hyperref=auto,%
 language=auto,%
-%autolang=other*,%
-%citestyle=numeric-comp,%
+autolang=other*,%
+%citestyle=,%
 defernumbers=true,%
-style=ieee,%
-dashed=false,%
+%bibstyle=gost-footnote,%
+style=phys,%
 % disable printing the URLs and ISBNs in the bibliography
-%url=false,
-%isbn=false,
+url=false,
+isbn=false,
+doi=true,
+eprint=true,
 % enables/disables generation of the back references to the citation,
 % which are usually number(s) of the page where citation appears
 %backref=true,
@@ -36,6 +38,12 @@ minnames=1,%
 %citecounter=false,%
 % sorting=nty,nyt,nyvt,anyt,anyvt,ynt,ydnt,none
 %sorting=nty,
+% Article titles are not always included in the bibliography
+articletitle=true,%
+articletitle=true,%
+biblabel=brackets,%
+chaptertitle=true,%
+pageranges=true,%
 ]{biblatex}
 
 %\ExecuteBibliographyOptions{%

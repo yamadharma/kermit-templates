@@ -1,0 +1,4 @@
+# Change fields semantic
+rename.field {pages = pagetotal if $type = "Book"}
+rename.field {numpages = pagetotal if $type = "Book"}
+add.field = {numpages = "%s(pagetotal)"}

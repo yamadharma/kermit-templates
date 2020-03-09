@@ -81,6 +81,11 @@ LATEX_CMD = TEXMFCNF=${TEXMFCNF} ${LATEX_CMD_MAIN}
 # must be compiled not in draft mode
 LATEX_FLAGS = -shell-escape
 
+# Pre latex command
+ifndef PRE_LATEX_CMD
+PRE_LATEX_CMD = echo "No pre-latex command"
+endif
+
 # Post latex command
 ifndef POST_LATEX_CMD
 POST_LATEX_CMD = echo "No post-latex command"

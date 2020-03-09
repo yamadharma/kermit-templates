@@ -1,0 +1,3 @@
+# For BibLaTex
+rename.field {language=langid}
+add.field = {language = "%s(langid)"}

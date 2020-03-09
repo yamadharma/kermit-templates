@@ -1,0 +1,34 @@
+#
+# This resource file tries to introduce BibTeX strings for month names.
+# Provisions are made to preserve other information contained in the
+# month field.
+#
+
+rewrite.rule { month = "^[\"{] *\(.*\)january\(.*\) *[\"}]$" # "{\1} # 1 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)february\(.*\) *[\"}]$" # "{\1} # 2 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)march\(.*\) *[\"}]$" # "{\1} # 3 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)april\(.*\) *[\"}]$" # "{\1} # 4 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)may\(.*\) *[\"}]$" # "{\1} # 5 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)june\(.*\) *[\"}]$" # "{\1} # 6 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)july\(.*\) *[\"}]$" # "{\1} # 7 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)august\(.*\) *[\"}]$" # "{\1} # 8 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)september\(.*\) *[\"}]$" # "{\1} # 9 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)october\(.*\) *[\"}]$" # "{\1} # 10 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)november\(.*\) *[\"}]$" # "{\1} # 11 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)december\(.*\) *[\"}]$" # "{\1} # 12 # {\2}" }
+
+rewrite.rule { month = "^[\"{] *\(.*\)jan\(.*\) *[\"}]$" # "{\1} # 1 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)feb\(.*\) *[\"}]$" # "{\1} # 2 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)mar\(.*\) *[\"}]$" # "{\1} # 3 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)apr\(.*\) *[\"}]$" # "{\1} # 4 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)may\(.*\) *[\"}]$" # "{\1} # 5 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)jun\(.*\) *[\"}]$" # "{\1} # 6 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)jul\(.*\) *[\"}]$" # "{\1} # 7 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)aug\(.*\) *[\"}]$" # "{\1} # 8 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)sep\(.*\) *[\"}]$" # "{\1} # 9 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)oct\(.*\) *[\"}]$" # "{\1} # 10 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)nov\(.*\) *[\"}]$" # "{\1} # 11 # {\2}" }
+rewrite.rule { month = "^[\"{] *\(.*\)dec\(.*\) *[\"}]$" # "{\1} # 12 # {\2}" }
+
+rewrite.rule { month = "^{ *} # " = ""}
+rewrite.rule { month = " # { *}$" = ""}

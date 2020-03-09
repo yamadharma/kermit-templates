@@ -1,18 +1,5 @@
-# pretty printing options
-key.format = short
-preserve.keys=on 
-preserve.key.case=on
-print.align=0
-print.align.key=0
-print.align.string=0
-print.indent=2
-print.use.tab=off
-print.wide.equal=on
-sort = on
-suppress.initial.newline=on
-verbose = on
-print.line.length = 200
-
+# Preamble
+resource bibtool/include/preamble
 
 new.entry.type{online}
 new.entry.type{patent}
@@ -53,14 +40,15 @@ new.entry.type{patent}
 #rewrite.rule = {language # "English"}
 
 # Sanitize month
-#resource bibtool.d/month
+resource bibtool/include/month
 
 # Fix for concret entry types
-resource bibtool.d/eprint
-resource bibtool.d/book
+resource bibtool/include/eprint
+resource bibtool/include/book
 
 # Biblatex specific
-resource bibtool.d/language
+resource bibtool/include/language
+
 
 #
 # Semantic checks for year fields
@@ -99,6 +87,8 @@ rewrite.rule = {address # "Москва" # "М."}
 
 # rename url date field to be correctly used by BibTeX, BibLaTeX, abnTeX etc
 rename.field {urldate = urlaccessdate}
+
+#rename.field {$Misc = $Book}
 
 # BibTeX-1.0 Support
 apply.alias = on

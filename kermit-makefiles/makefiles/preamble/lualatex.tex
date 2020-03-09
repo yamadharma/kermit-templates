@@ -15,18 +15,21 @@
 
 % \usepackage{xecyr}
 
+\usepackage{lualatex-math}
+
+\input{preamble/pkg/polyglossia/default/russian}
+\input{preamble/pkg/polyglossia/other/english}
+
 %{{{ Fonts
-
-\input{preamble/font/fontspec}
-
-%}}}
-
-\setdefaultlanguage[spelling=modern]{russian}  % устанавливает язык по умолчанию
-%\setkeys{russian}{babelshorthands=true}
-\setotherlanguages{english}
 
 \usepackage{fontspec}
 \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase} % устанавливает поведение шрифтов по умолчанию
+\input{preamble/font/fontspec}
+
+% Math fonts
+\input{preamble/font/unicode-math}
+
+%}}}
 
 \input{preamble/fix/xelatex}
 

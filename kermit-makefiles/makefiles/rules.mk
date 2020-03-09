@@ -40,8 +40,8 @@ AUTO_GENERATE_IMAGE_DIRECTORY = image
 # bibtex | bibtexu -l ru | bibtex8 -W -c cp1251 | biber
 #BIBTEX_CMD = bibtex
 
-# Post BibTeX command
-#POST_BIBTEX_CMD = scripts/post_bibtex_cmd
+# Pre LaTeX command
+#PRE_LATEX_CMD = scripts/pre_latex_cmd
 
 # Post LaTeX command
 #POST_LATEX_CMD = scripts/post_latex_cmd ; scripts/pre_bibtex_cmd
