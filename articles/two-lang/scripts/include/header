@@ -18,16 +18,18 @@ else
     file_list=$@
 fi
 
-out_dir="out/${PROJECT_NAME}"
-out_name="${PROJECT_NAME}_${NAME}"
+## Variables
+OUT_DIR="out/${PROJECT_NAME}"
+OUT_NAME="${PROJECT_NAME}_${NAME}"
 
-# Создаём каталоги
-rm -rf ${out_dir}
-mkdir -p ${out_dir}/{text,bib}
-# Копируем библиографию
-cp -r bib/* ${out_dir}/bib/
+## Создаём каталоги
+# rm -rf ${out_dir}
+# mkdir -p ${out_dir}/{text,bib}
+## Копируем библиографию
+# cp -r bib/* ${out_dir}/bib/
 
 comment_tag_list=(
+    arxiv
     vestnik
     spie
     ecms
