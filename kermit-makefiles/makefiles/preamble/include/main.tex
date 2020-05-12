@@ -6,9 +6,11 @@
 \makeatother
 
 % looks for pdfTEX in pdf mode
-\IfFileExists{ifpdf.sty}{\usepackage{ifpdf}}{}
-\IfFileExists{ifxetex.sty}{\usepackage{ifxetex}}{}
-\IfFileExists{ifluatex.sty}{\usepackage{ifluatex}}{}
+\IfFileExists{iftex.sty}{\usepackage{iftex}}{%
+  \IfFileExists{ifpdf.sty}{\usepackage{ifpdf}}{}
+  \IfFileExists{ifxetex.sty}{\usepackage{ifxetex}}{}
+  \IfFileExists{ifluatex.sty}{\usepackage{ifluatex}}{}
+}
 
 \usepackage{xifthen}
 
@@ -36,10 +38,10 @@
     {\input preamble/xelatex}
     %else
     {
-	\input preamble/latex
-	\ifpdf
-	    \input preamble/pdflatex
-	\fi
+        \input preamble/latex
+        \ifpdf
+            \input preamble/pdflatex
+        \fi
     }
 }
 

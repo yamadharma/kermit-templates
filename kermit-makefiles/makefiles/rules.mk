@@ -37,7 +37,7 @@ AUTO_GENERATE_IMAGE_DIRECTORY = image
 #AUTO_GENERATE_LST_DIRECTORY = lst
 
 # BibTeX command
-# bibtex | bibtexu -l ru | bibtex8 -W -c cp1251 | biber
+# bibtex | bibtexu -l ru | bibtex8 -W -c utf8cyrillic | biber
 #BIBTEX_CMD = bibtex
 
 # Pre LaTeX command

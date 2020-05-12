@@ -16,5 +16,7 @@ print.line.length = 200
 # Use biblatex
 resource biblatex
 
+# Entry types
 new.entry.type{online}
+new.entry.type{electronic}
 new.entry.type{patent}

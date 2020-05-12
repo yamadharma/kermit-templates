@@ -1,11 +1,29 @@
-%% Работа с листингами
+%%% Работа с листингами
 
 %% Для листингов, сгенерённых программой pygment
 \InputIfFileExists{lst.tex}{}{}
 
+%{{{ Package loading
+
 %% Need pygment <http://pygments.org/> <http://pypi.python.org/pypi/Pygments>
+
 \usepackage{minted}
 
+%% Work-around for minted code highlighting in arXiv
+%% https://tex.stackexchange.com/questions/280590/work-around-for-minted-code-highlighting-in-arxiv
+%%
+%% These allow the cache to be prepared for (finalizecache) and then
+%% used (frozencache) in an environment in which -shell-escape 
+%%
+%% Step one: compile with \usepackage[finalizecache,cachedir=.]{minted}.
+%% Step two: go to logs and output files > other logs and files and
+%% download everything with pyg.
+%% Step three: change finalizecache to frozencache and upload the
+%% tex+all those pyg files to arXiv.
+
+% \usepackage[finalizecache]{minted}
+
+%}}}
 %{{{ Поддержка русских букв
 
 \makeatletter
@@ -58,12 +76,12 @@
 %% Выравнивание по центру
 %\RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{}
 
-% Версия для печати
+%% Версия для печати
 \ifdefined\printable
     \usemintedstyle{bw}
 \fi
 
-% Переносить строки
+%% Переносить строки
 \setminted{breaklines=true}
 
 %%% Local Variables:

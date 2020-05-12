@@ -1,0 +1,28 @@
+%%% Enhance support for image inclusion
+%
+% Resize images that are too large (in width or height).
+%
+% Depending on the beamer template used and the resulting
+% available space, you might want to adjust the target
+% maximum height (here: 0.65, which is 65% of the frame
+% height) to another value. Remember headline, footline
+% and titles may need additional space.
+%
+% References:
+% - https://groups.google.com/forum/#!topic/pandoc-discuss/6H-6NcFtFUk
+% - http://tex.stackexchange.com/a/67462/11198
+\usepackage{letltxmacro}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else0.65\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>0.65\textheight 0.65\textheight\else0.65\Gin@nat@height\fi}
+\makeatother
+\AtBeginDocument{
+  \LetLtxMacro\OOldincludegraphics\includegraphics
+  \renewcommand{\includegraphics}[2][]{%
+    \OOldincludegraphics[#1,width=\maxwidth,height=\maxheight,keepaspectratio]{#2}}
+}
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End:

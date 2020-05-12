@@ -3,17 +3,10 @@
 %% This package provides emulation of pdfTeX primitives for LuaTeX v0.85+
 \RequirePackage{luatex85}
 
-% \usepackage{mathtext}
-
-% Dirty hack. We need amssymb befor xunicode
-\usepackage{amssymb}
-
-% \usepackage{xunicode}
-% \usepackage{xltxtra}
+%% Dirty hack. We need amssymb befor xunicode
+% \usepackage{amssymb}
 
 \usepackage{polyglossia}
-
-% \usepackage{xecyr}
 
 \usepackage{lualatex-math}
 
@@ -23,10 +16,10 @@
 %{{{ Fonts
 
 \usepackage{fontspec}
-\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase} % устанавливает поведение шрифтов по умолчанию
+\defaultfontfeatures{Scale=MatchLowercase} % устанавливает поведение шрифтов по умолчанию
 \input{preamble/font/fontspec}
 
-% Math fonts
+%% Math fonts
 \input{preamble/font/unicode-math}
 
 %}}}
@@ -35,6 +28,5 @@
 
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "../default"
 %%% coding: utf-8-unix
 %%% End:
