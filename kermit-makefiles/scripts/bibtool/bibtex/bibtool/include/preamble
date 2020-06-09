@@ -12,3 +12,8 @@ sort = on
 suppress.initial.newline=on
 verbose = on
 print.line.length = 200
+
+# Entry types
+new.entry.type{online}
+new.entry.type{electronic}
+new.entry.type{patent}
