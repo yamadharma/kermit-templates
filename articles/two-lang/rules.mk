@@ -30,8 +30,8 @@ AUTO_GENERATE_IMAGE_DIRECTORY = image
 #AUTO_GENERATE_LST_DIRECTORY = lst
 
 # BibTeX command
-# bibtex | bibtexu -l ru | bibtex8 -W -c cp1251 | biber
-BIBTEX_CMD = bibtexu -l ru
+# bibtex | pybtex | bibtexu -l ru | bibtex8 -W -c cp1251 | biber
+BIBTEX_CMD = pybtex
 
 # Post BibTeX command
 #POST_BIBTEX_CMD = scripts/post_bibtex_cmd
