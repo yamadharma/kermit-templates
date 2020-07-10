@@ -1,2 +1,0 @@
-fixbib:
-	./fixbib.sh

@@ -1,9 +1,0 @@
-#!/bin/bash
-
-make FILE=default $@
-#make FILE=default_16x9 $@
-#make FILE=default_print $@
-#make FILE=default_only-notes $@
-#make FILE=default_with-notes $@
-#make FILE=default_handout-with-notes $@
-#make FILE=default_poster $@

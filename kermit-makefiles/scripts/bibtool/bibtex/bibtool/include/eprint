@@ -1,3 +1,0 @@
-# Non-stadard fields
-add.field = {eprinttype = "%s(archiveprefix)"}
-add.field = {eprintclass = "%s(primaryclass)"}
