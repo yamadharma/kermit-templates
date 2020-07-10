@@ -1,6 +1,0 @@
-#!/bin/sh
-
-bibtex $1
-
-iconv -f cp1251 -t utf-8 $1.bbl > $1.bbl.tmp
-mv $1.bbl.tmp $1.bbl

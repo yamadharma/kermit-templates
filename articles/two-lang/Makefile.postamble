@@ -32,25 +32,24 @@ jpcs:
 lncs:
 	scripts/prepare_lncs $(NAME) text/*.tex
 
-spie:	### Make article based on template
+spie:	### Use template: SPIE
 	scripts/prepare spie $(NAME) title/*.tex text/*.tex
 
-iopconf:	### Make article based on template
+iopconf:	### Use template: IOPconf
 	scripts/prepare $@ $(NAME) title/*.tex text/*.tex
 
-svproc:
+svproc:		### Use template: SVProc
 	scripts/prepare_svproc $(NAME) title/*.tex text/*.tex
 
-ieeetran:
+ieeetran:	### Use template: IEEEtran
 	scripts/prepare_ieeetran $(NAME) title/*.tex text/*.tex
 
-webofc:		### Make article based on template
+webofc:		### Use template: WebOFC
 	scripts/prepare $@ $(NAME) title/*.tex text/*.tex
 
-programm:	### Make article based on template
+programm:	### Use template: Программирование
 	scripts/prepare $@ $(NAME) title/*.tex text/*.tex
 
-arxiv:
-#	./make MACRO_FORMAT=latex
-	scripts/prepare_arxiv $(NAME) title/*.tex text/*.tex
+arxiv:		### Use template: arXiv
+	scripts/prepare $@ $(NAME) title/*.tex text/*.tex
 

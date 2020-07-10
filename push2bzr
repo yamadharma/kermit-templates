@@ -1,5 +1,0 @@
-#!/bin/bash
-
-PROJNAME=`cat PROJECT`
-
-git bzr push bzr+ssh://yamadharma@bazaar.launchpad.net/~yamadharma/${PROJNAME}/trunk

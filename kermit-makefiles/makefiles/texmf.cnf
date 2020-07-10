@@ -1,2 +1,0 @@
-TEXMFPROJECT = ./texmf
-TEXMFHOME = {$TEXMFPROJECT,~/texmf}

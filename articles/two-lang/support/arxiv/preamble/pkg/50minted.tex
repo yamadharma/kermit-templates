@@ -1,0 +1,20 @@
+%%% Работа с листингами
+
+%% Work-around for minted code highlighting in arXiv
+%% https://tex.stackexchange.com/questions/280590/work-around-for-minted-code-highlighting-in-arxiv
+%%
+%% These allow the cache to be prepared for (finalizecache) and then
+%% used (frozencache) in an environment in which -shell-escape 
+%%
+%% Step one: compile with \usepackage[finalizecache,cachedir=.]{minted}.
+%% Step two: go to logs and output files > other logs and files and
+%% download everything with pyg.
+%% Step three: change finalizecache to frozencache and upload the
+%% tex+all those pyg files to arXiv.
+
+\usepackage[frozencache]{minted}
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End:

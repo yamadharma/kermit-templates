@@ -1,0 +1,25 @@
+# -*- mode:sh -*-
+
+project_hack() {
+
+#{{{ minted support hack
+
+    cp -R _minted* ${OUT_DIR}/
+
+#}}}
+
+for lang in ${LANGLIST}
+do
+    [[ $TWOFILES == yes ]] && out_dir="${OUT_DIR}/${lang}"
+
+    cp ${out_dir}/text/${out_name}.tex ${OUT_DIR}/${lang}.tex
+    cp ${out_dir}/*.bbl ${OUT_DIR}/
+    cp -R ${out_dir}/bib ${OUT_DIR}/
+    cp -R ${out_dir}/image ${OUT_DIR}/
+    rm -rf ${OUT_DIR}/${lang}
+done
+
+cd "${OUT_DIR}"
+tar czvf ../${PROJECT_NAME}.tar.gz *
+
+}

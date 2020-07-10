@@ -1,4 +1,0 @@
-NAME=`cat NAME`
-
-rename:
-	mmv "*.pdf" "$(NAME)_#1.pdf"

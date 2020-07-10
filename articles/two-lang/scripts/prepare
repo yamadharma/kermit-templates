@@ -33,9 +33,16 @@ fi
 
 if [[ -f "support/${PROJECT_NAME}/TWOLANG" ]]
 then
-    LANGLIST=${MAINLANG} ${ALTLANG}
+    LANGLIST="${MAINLANG} ${ALTLANG}"
 else
     LANGLIST=${MAINLANG}
+fi
+
+if [[ -f "support/${PROJECT_NAME}/TWOFILES" ]]
+then
+    TWOFILES=yes
+else
+    TWOFILES=no
 fi
 
 # For specific project
@@ -44,25 +51,33 @@ then
     source "scripts/include/project/${PROJECT_NAME}"
 fi
 
+## Variables
+out_name=${OUT_NAME}
+out_dir=${OUT_DIR}
+
 # {{{ Make preamble
 
-for i in ${LANGLIST}
+for lang in ${LANGLIST}
 do
-    touch ${out_dir}/${i}.tex
-    # mkdir -p ${out_dir}/pre
-    cat support/${PROJECT_NAME}/preamble/class/*.tex >> ${out_dir}/${i}.tex
-    cat support/${PROJECT_NAME}/preamble/lang/${i}.tex >> ${out_dir}/${i}.tex
-    cat support/${PROJECT_NAME}/preamble/pkg/*.tex >> ${out_dir}/${i}.tex
-    mkdir -p ${out_dir}/title
-    # cp support/${PROJECT_NAME}/title/*.tex ${out_dir}/title/
-    
-    cp ${i}.bbl ${out_dir}/
+    [[ $TWOFILES == yes ]] && out_dir="${OUT_DIR}/${lang}"
 
-    cat ${out_dir}/${i}.tex >> ${out_dir}/text/${out_name}.tex
+    mkdir -p ${out_dir}/{title,text,bib,image}
+
+    touch ${out_dir}/${lang}.tex
+
+    cat support/${PROJECT_NAME}/preamble/class/*.tex >> ${out_dir}/${lang}.tex
+    cat support/${PROJECT_NAME}/preamble/lang/${lang}.tex >> ${out_dir}/${lang}.tex
+    cat support/${PROJECT_NAME}/preamble/pkg/*.tex >> ${out_dir}/${lang}.tex
+
+    cp ${lang}.bbl ${out_dir}/
+
+    cat ${out_dir}/${lang}.tex >> ${out_dir}/text/${out_name}.tex
+
+    # Копируем библиографию
+    cp -r bib/* ${out_dir}/bib/
 done
 
 # }}}
-
 
 # {{{ title
 
@@ -72,12 +87,15 @@ do
     if [[ $file == +(title/*head*) ]]
     then
 
-	clear_all_lang
-
-	cat ./${out_dir}/${MAINLANG}_clean.tex >> ./${out_dir}/${file}
-	# cat ./${out_dir}/${ALTLANG}_clean.tex >> ./${out_dir}/text/${out_name}.tex
+	for lang in ${LANGLIST}
+	do
+	    [[ $TWOFILES == yes ]] && out_dir="${OUT_DIR}/${lang}"
 	
-	rm ./${out_dir}/*.tex
+	    clear_all_lang
+	    
+	    cat ./${out_dir}/${lang}_clean.tex >> ./${out_dir}/${file}
+	    rm ./${out_dir}/*.tex
+	done
 	
 	shift
 	continue
@@ -87,13 +105,18 @@ do
     if [[ $file == +(title/*author*) ]]
     then
 
-	echo $file
-	clear_all_lang
+	for lang in ${LANGLIST}
+	do
+	    [[ $TWOFILES == yes ]] && out_dir="${OUT_DIR}/${lang}"
 
-	cat ./${out_dir}/${MAINLANG}_clean.tex >> ./${out_dir}/${file%%_*}.tex
-	# cat ./${out_dir}/${ALTLANG}_clean.tex >> ./${out_dir}/text/${out_name}.tex
 	
-	rm ./${out_dir}/*.tex
+	    clear_all_lang
+
+	    cat ./${out_dir}/${lang}_clean.tex >> ./${out_dir}/${file%%_*}.tex
+
+	    rm ./${out_dir}/*.tex
+
+	done
 	
 	shift
 	continue
@@ -103,24 +126,35 @@ do
     then
 
 
-	clear_all_lang
-	
-	# clear_maintitle
-	# clear_alttitle
-	
-	# Только основной язык
-	cat ./${out_dir}/${MAINLANG}_clean.tex >> ./${out_dir}/${file}
-	# cat ./${out_dir}/${ALTLANG}_clean.tex >> ./${out_dir}/text/${out_name}.tex
-	
-	rm ./${out_dir}/*.tex
+	for lang in ${LANGLIST}
+	do
+	    [[ $TWOFILES == yes ]] && out_dir="${OUT_DIR}/${lang}"
+
+	    clear_all_lang
+	    
+	    # clear_maintitle
+	    # clear_alttitle
+
+	    # Только основной язык
+	    cat ./${out_dir}/${lang}_clean.tex >> ./${out_dir}/${file}
+
+	    rm ./${out_dir}/*.tex
+
+	done
 	
 	shift
     fi
 done
 
-cp support/${PROJECT_NAME}/title/*.tex ${out_dir}/title/
-cat ./${out_dir}/title/*.tex >> ./${out_dir}/text/${out_name}.tex
-rm -rvf ./${out_dir}/title
+for lang in ${LANGLIST}
+do
+    [[ $TWOFILES == yes ]] && out_dir="${OUT_DIR}/${lang}"
+
+    cp support/${PROJECT_NAME}/title/*.tex ${out_dir}/title/
+    cat ./${out_dir}/title/*.tex >> ./${out_dir}/text/${out_name}.tex
+    rm -rvf ./${out_dir}/title
+
+done
 
 # }}}
 
@@ -129,33 +163,41 @@ rm -rvf ./${out_dir}/title
 for file in "$@"
 do
 
-    clear_all_lang
+    for lang in ${LANGLIST}
+    do
+	[[ $TWOFILES == yes ]] && out_dir="${OUT_DIR}/${lang}"
     
-    # Нужен только один язык
-    cat ./${out_dir}/${MAINLANG}_clean.tex >> ./${out_dir}/text/${out_name}.tex
-    # cat ./${out_dir}/${ALTLANG}_clean.tex >> ./${out_dir}/text/${out_name}.tex
-    
-    rm ./${out_dir}/*.tex
-    
+	clear_all_lang
+		
+	# Нужен только один язык
+	cat ./${out_dir}/${lang}_clean.tex >> ./${out_dir}/text/${out_name}.tex
+	
+	rm ./${out_dir}/*.tex
+
+    done
 done
 
-clear_comment "${out_dir}/text/${out_name}.tex"
+for lang in ${LANGLIST}
+do
+    [[ $TWOFILES == yes ]] && out_dir="${OUT_DIR}/${lang}"
 
+    clear_comment "${out_dir}/text/${out_name}.tex"
+done
+    
 # }}}
 
 # {{{ Make postamble
 
-cat support/${PROJECT_NAME}/preamble/end/* >> ${out_dir}/text/${out_name}.tex
+for lang in ${LANGLIST}
+do
+    [[ $TWOFILES == yes ]] && out_dir="${OUT_DIR}/${lang}"
+
+    cat support/${PROJECT_NAME}/preamble/end/* >> ${out_dir}/text/${out_name}.tex
+
+    clear_garbage
+done
 
 # }}}
-
-# {{{ Project specific hack
-
-project_hack
-
-# }}}
-
-clear_garbage
 
 # {{{ Copy support files
 
@@ -168,3 +210,10 @@ then
 fi
 
 # }}}
+
+# {{{ Project specific hack
+
+project_hack
+
+# }}}
+
