@@ -1,4 +1,25 @@
 
+v0.4.0 / 2020-07-10
+==================
+
+  * Changed: kermit-makefiles as submodule
+
+v0.3.23 / 2020-07-10
+====================
+
+  * Changed: removed static makefiles
+  * Changed: removed unused scripts
+  * Added: LICENSE
+  * Added: Apreutesey, Fedorov. Changed: Velieva
+  * Fixed: article's intro structure
+  * Fixed: addresses
+  * Added: pybtex support
+  * Updated: kermit-makefiles
+  * Extended article structure for IMRAD conformity
+  * Updated makefiles
+  * Scripts for arXiv
+  * ifpdf for arxiv.org preamble
+
 v0.3.22 / 2020-03-27
 ==================
 
