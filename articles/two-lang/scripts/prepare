@@ -199,6 +199,12 @@ done
 
 # }}}
 
+# {{{ Copy images
+
+cp -R image "${out_dir}"
+
+# }}}
+
 # {{{ Copy support files
 
 if [[ -d "support/${PROJECT_NAME}/files" ]]
