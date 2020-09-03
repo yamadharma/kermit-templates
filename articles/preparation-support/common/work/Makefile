@@ -1,7 +1,7 @@
 FILE = `cat NAME`
 LATEX=pdflatex
 LATEX_FLAGS=-shell-escape
-BIBTEX=bibtexu
+BIBTEX=bibtex
 
 
 all:
