@@ -29,8 +29,8 @@ aisc:
 jpcs:
 	scripts/prepare_jpcs $(NAME) text/*.tex
 
-lncs:
-	scripts/prepare_lncs $(NAME) text/*.tex
+lncs:	### Use template: Lecture Notes in Computer Science (LNCS)
+	scripts/prepare lncs $(NAME) title/*.tex text/*.tex
 
 spie:	### Use template: SPIE
 	scripts/prepare spie $(NAME) title/*.tex text/*.tex
